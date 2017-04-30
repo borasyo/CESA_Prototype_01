@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class FieldData : MonoBehaviour
 {
+    ///<summary>
+    /// 
+    /// フィールドのデータ配列
+    /// 何も配置されていない場合はnullが入っている
+    /// 
+    /// </summary>
+
     #region Singleton
 
     private static FieldData instance;
@@ -44,7 +51,7 @@ public class FieldData : MonoBehaviour
         FieldCreator creator = new FieldCreator();
         _ObjectDataArray = creator.Create(_nWidth, _nHeight);
 
-        DebugCheck();
+        //DebugCheck();
     }
 
     //  データを格納
@@ -56,7 +63,24 @@ public class FieldData : MonoBehaviour
     //  データを取得
     public FieldObjectBase GetObjData(int number)
     {
+        if (0 > number || number > _nWidth * _nHeight)
+            return null;
+
         return _ObjectDataArray[number];
+    }
+
+    //  キャラクターを取得する時のみ使用する
+    public FieldObjectBase GetCharaData(string tag)
+    {
+        for (int i = 0; i < _ObjectDataArray.Length; i++)
+        {
+            if (_ObjectDataArray[i].tag != tag)
+                continue;
+
+            return _ObjectDataArray[i]; 
+        }
+
+        return null;    //  失敗
     }
 
     #if DEBUG

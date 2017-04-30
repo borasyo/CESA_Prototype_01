@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class CharactorInput : MonoBehaviour
 {
-    public enum eDirection
-    {
-        FORWARD = 0,
-        BACK,
-        RIGHT,
-        LEFT,
-
-        MAX,
-    };
-
     [SerializeField] bool _IsPlayer = true;
 
     private bool _IsForawrd = false;
     private bool _IsBack = false;
     private bool _IsRight = false;
     private bool _IsLeft = false;
+
+    private bool _IsPut = false;
+    private bool _IsBreak = false;
 	
     void Update()
     {
@@ -29,6 +22,8 @@ public class CharactorInput : MonoBehaviour
             _IsBack    = Input.GetKey(KeyCode.S);
             _IsRight   = Input.GetKey(KeyCode.D);
             _IsLeft    = Input.GetKey(KeyCode.A); 
+            _IsPut   = Input.GetKeyDown(KeyCode.R);
+            _IsBreak = Input.GetKeyDown(KeyCode.T); 
         }
         else 
         {
@@ -36,21 +31,38 @@ public class CharactorInput : MonoBehaviour
             _IsBack    = Input.GetKey(KeyCode.DownArrow);
             _IsRight   = Input.GetKey(KeyCode.RightArrow);
             _IsLeft    = Input.GetKey(KeyCode.LeftArrow);   
+            _IsPut   = Input.GetKeyDown(KeyCode.O);
+            _IsBreak = Input.GetKeyDown(KeyCode.P); 
         }
     }
 
-    public bool GetInput(eDirection dir)
+    public bool GetMoveInput(Charactor.eDirection dir)
     {
         switch(dir)
         {
-            case eDirection.FORWARD:
+            case Charactor.eDirection.FORWARD:
                 return _IsForawrd;
-            case eDirection.BACK:
+            case Charactor.eDirection.BACK:
                 return _IsBack;
-            case eDirection.RIGHT:
+            case Charactor.eDirection.RIGHT:
                 return _IsRight;
-            case eDirection.LEFT:
+            case Charactor.eDirection.LEFT:
                 return _IsLeft;
+            default:
+                break;
+        }
+
+        return false;
+    }
+
+    public bool GetActionInput(Charactor.eAction act)
+    {
+        switch(act)
+        {
+            case Charactor.eAction.PUT:
+                return _IsPut;
+            case Charactor.eAction.BREAK:
+                return _IsBreak;
             default:
                 break;
         }

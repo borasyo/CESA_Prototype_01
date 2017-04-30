@@ -37,7 +37,6 @@ public class FieldCreator : MonoBehaviour
         {
             for (int z = 0; z < _nHeight; z ++)
             {
-                GameObject createObj = null;
                 Vector3 createPos = new Vector3(x * GameScaler._fScale, 0.0f, z * GameScaler._fScale);
 
                 if (FenceCheck(x,z))

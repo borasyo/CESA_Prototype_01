@@ -1,0 +1,41 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CharactorGauge : MonoBehaviour
+{
+    public float _fGauge { get; private set; }
+    [SerializeField] float _fChargeSeed = 1.0f;
+    [SerializeField] float _fMaxGauge = 5.0f;
+
+    [SerializeField] float _fPutGauge = 2.0f;
+    [SerializeField] float _fBreakGauge = 2.0f;
+
+    void Update()
+    {
+        _fGauge += Time.deltaTime / _fChargeSeed;
+        if (_fGauge > _fMaxGauge)
+            _fGauge = _fMaxGauge;
+    }
+
+    public bool PutGaugeCheck()
+    {
+        return _fGauge >= _fPutGauge;
+    }
+
+    public void PutAction()
+    {
+        _fGauge -= _fPutGauge;
+    }
+
+    public bool BreakGaugeCheck()
+    {
+        return _fGauge >= _fBreakGauge;
+    }
+
+    public void BreakAction()
+    {
+        _fGauge -= _fBreakGauge;
+    }
+
+}
