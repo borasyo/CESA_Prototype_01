@@ -12,6 +12,7 @@ public class Referee : MonoBehaviour
         FieldObjectBase player = FieldData.Instance.GetCharaData("Player");
         for (int i = 0; i < sandDataList.Count; i++)
         {
+            Debug.Log(sandDataList[i]._number + "," +  sandDataList[i]._Type);
             if (sandDataList[i]._number != player.GetDataNumber())
                 continue;
 
@@ -22,7 +23,8 @@ public class Referee : MonoBehaviour
             EditorApplication.isPaused = true;
         }
             
-        FieldObjectBase enemy  = FieldData.Instance.GetCharaData("Enemy");for (int i = 0; i < sandDataList.Count; i++)
+        FieldObjectBase enemy  = FieldData.Instance.GetCharaData("Enemy");
+        for (int i = 0; i < sandDataList.Count; i++)
         {
             if (sandDataList[i]._number != enemy.GetDataNumber())
                 continue;

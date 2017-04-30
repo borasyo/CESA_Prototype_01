@@ -14,7 +14,7 @@ public class SandItem : FieldObjectBase
         MAX,
     };
     [SerializeField] eType _Type;
-    public eType GetType { get; private set; }
+    public eType GetType { get { return _Type; } private set { _Type = value; } }
 
     void Awake()
     {
