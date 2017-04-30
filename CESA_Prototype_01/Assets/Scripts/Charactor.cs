@@ -36,7 +36,15 @@ public class Charactor : FieldObjectBase
     {
         _charactorInput = GetComponent<CharactorInput>();
         _charactorGauge = GetComponent<CharactorGauge>();
-        _sandItem = Resources.Load<GameObject>("Prefabs/Field/SandItem");
+
+        if (this.name.Contains("Player"))
+        {
+            _sandItem = Resources.Load<GameObject>("Prefabs/Field/SandItemPlayer");
+        }
+        else
+        {
+            _sandItem = Resources.Load<GameObject>("Prefabs/Field/SandItemEnemy");
+        }
     }
 	
     // Update is called once per frame
@@ -86,6 +94,8 @@ public class Charactor : FieldObjectBase
 
         GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumber), Quaternion.identity);
         FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumber);
+//        item.GetComponent<SandItem>().SetType(this.name);
+        _charactorGauge.PutAction();
     }
 
     void ItemBreak()

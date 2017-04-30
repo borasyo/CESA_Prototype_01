@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharactorGauge : MonoBehaviour
 {
     public float _fGauge { get; private set; }
-    [SerializeField] float _fChargeSeed = 1.0f;
+    [SerializeField] float _fChargeSpeed = 1.0f;
     [SerializeField] float _fMaxGauge = 5.0f;
 
     [SerializeField] float _fPutGauge = 2.0f;
@@ -13,9 +13,10 @@ public class CharactorGauge : MonoBehaviour
 
     void Update()
     {
-        _fGauge += Time.deltaTime / _fChargeSeed;
+        _fGauge += Time.deltaTime / _fChargeSpeed;
         if (_fGauge > _fMaxGauge)
             _fGauge = _fMaxGauge;
+        //Debug.Log(_fGauge);
     }
 
     public bool PutGaugeCheck()

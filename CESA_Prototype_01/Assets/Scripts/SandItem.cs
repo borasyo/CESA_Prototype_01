@@ -6,6 +6,16 @@ public class SandItem : FieldObjectBase
 {
     static GameObject _SandItemHolder = null;
 
+    public enum eType
+    {
+        PLAYER = 0,
+        ENEMY,
+
+        MAX,
+    };
+    [SerializeField] eType _Type;
+    public eType GetType { get; private set; }
+
     void Awake()
     {
         if (_SandItemHolder)
@@ -13,6 +23,14 @@ public class SandItem : FieldObjectBase
         
         _SandItemHolder = new GameObject("SandItemHolder");
     }
+
+/*    public void SetType(string name)
+    {
+        if(name.Contains("Player"))
+            _Type = eType.PLAYER;
+        else if (name.Contains("Enemy"))
+            _Type = eType.ENEMY;
+    }*/
 
     void Start()
     {

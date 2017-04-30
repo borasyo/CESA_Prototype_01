@@ -35,7 +35,7 @@ public class FieldObjectBase : MonoBehaviour
     }
 
     //  現在の自分の位置をデータ上の番号で返す
-    protected int GetDataNumber()
+    public int GetDataNumber()
     {
         Vector3 npos = NormalizePositionToInt();
 

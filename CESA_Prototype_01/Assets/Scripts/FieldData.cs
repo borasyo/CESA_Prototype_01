@@ -38,6 +38,7 @@ public class FieldData : MonoBehaviour
     #endregion
 
     FieldObjectBase[] _ObjectDataArray = null;
+    public FieldObjectBase[] GetObjDataArray { get { return _ObjectDataArray; } }
 
     [SerializeField] int _nWidth = 12;
     [SerializeField] int _nHeight = 10;
@@ -70,11 +71,14 @@ public class FieldData : MonoBehaviour
     }
 
     //  キャラクターを取得する時のみ使用する
-    public FieldObjectBase GetCharaData(string tag)
+    public FieldObjectBase GetCharaData(string name)
     {
         for (int i = 0; i < _ObjectDataArray.Length; i++)
         {
-            if (_ObjectDataArray[i].tag != tag)
+            if (!_ObjectDataArray[i])
+                continue;
+
+            if (!_ObjectDataArray[i].name.Contains(name))
                 continue;
 
             return _ObjectDataArray[i]; 
