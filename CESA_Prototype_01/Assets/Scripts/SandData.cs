@@ -63,23 +63,19 @@ public class SandData : MonoBehaviour
 
             first  = objDataArray[number + GameScaler._nWidth - 1];   //  左上
             second = objDataArray[number - GameScaler._nWidth + 1];   //  右下
-            if (SandCheck(first, second, number))
-                continue;
+            SandCheck(first, second, number);
 
             first  = objDataArray[number + GameScaler._nWidth];   //  上
             second = objDataArray[number - GameScaler._nWidth];   //  下
-            if (SandCheck(first, second, number))
-                continue;
+            SandCheck(first, second, number);
 
             first  = objDataArray[number + GameScaler._nWidth + 1];   //  右上
             second = objDataArray[number - GameScaler._nWidth - 1];   //  左下
-            if (SandCheck(first, second, number))
-                continue;
+            SandCheck(first, second, number);
 
             first  = objDataArray[number + 1];   //  右
             second = objDataArray[number - 1];   //  左
-            if (SandCheck(first, second, number))
-                continue;
+            SandCheck(first, second, number);
         }
     }
      

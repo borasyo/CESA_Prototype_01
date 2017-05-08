@@ -53,9 +53,13 @@
      <Compile Include="Assets\Scripts\FieldData.cs" />
      <Compile Include="Assets\Scripts\FieldObjectBase.cs" />
      <Compile Include="Assets\Scripts\GameScaler.cs" />
+     <Compile Include="Assets\Scripts\GaugeUI.cs" />
      <Compile Include="Assets\Scripts\Referee.cs" />
      <Compile Include="Assets\Scripts\SandData.cs" />
      <Compile Include="Assets\Scripts\SandItem.cs" />
+     <Compile Include="Assets\Scripts\SandMass.cs" />
+     <Compile Include="Assets\Scripts\SandMassCreator.cs" />
+     <Compile Include="Assets\Scripts\SandMassData.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

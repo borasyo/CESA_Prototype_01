@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharactorGauge : MonoBehaviour
 {
     public float _fGauge { get; private set; }
+    public float GaugePercent { get { return _fGauge / _fMaxGauge; } }
     [SerializeField] float _fChargeSpeed = 1.0f;
     [SerializeField] float _fMaxGauge = 5.0f;
 
@@ -38,5 +39,4 @@ public class CharactorGauge : MonoBehaviour
     {
         _fGauge -= _fBreakGauge;
     }
-
 }

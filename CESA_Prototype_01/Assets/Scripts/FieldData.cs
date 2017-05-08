@@ -27,7 +27,7 @@ public class FieldData : MonoBehaviour
             if (instance)
                 return instance;
 
-            GameObject obj = new GameObject();
+            GameObject obj = new GameObject("FieldData");
             obj.AddComponent<FieldData>();
             Debug.Log(typeof(FieldData) + "が存在していないのに参照されたので生成");
 
@@ -40,17 +40,14 @@ public class FieldData : MonoBehaviour
     FieldObjectBase[] _ObjectDataArray = null;
     public FieldObjectBase[] GetObjDataArray { get { return _ObjectDataArray; } }
 
-    [SerializeField] int _nWidth = 12;
-    [SerializeField] int _nHeight = 10;
-
     void Awake()
     {
         //  データ配列生成
-        _ObjectDataArray = new FieldObjectBase[_nWidth * _nHeight];
+        _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
 
         //  フィールドにオブジェクトを生成し、データを格納
         FieldCreator creator = new FieldCreator();
-        _ObjectDataArray = creator.Create(_nWidth, _nHeight);
+        _ObjectDataArray = creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
         //DebugCheck();
     }
@@ -64,7 +61,7 @@ public class FieldData : MonoBehaviour
     //  データを取得
     public FieldObjectBase GetObjData(int number)
     {
-        if (0 > number || number > _nWidth * _nHeight)
+        if (0 > number || number > GameScaler._nWidth * GameScaler._nHeight)
             return null;
 
         return _ObjectDataArray[number];
@@ -76,6 +73,9 @@ public class FieldData : MonoBehaviour
         for (int i = 0; i < _ObjectDataArray.Length; i++)
         {
             if (!_ObjectDataArray[i])
+                continue;
+
+            if (_ObjectDataArray[i].tag != "Charactor")
                 continue;
 
             if (!_ObjectDataArray[i].name.Contains(name))
