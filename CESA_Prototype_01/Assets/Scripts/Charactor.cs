@@ -25,7 +25,7 @@ public class Charactor : FieldObjectBase
     CharactorInput _charactorInput = null;
     CharactorGauge _charactorGauge = null;
 
-    [SerializeField] Vector3 _moveAmount_Sec = new Vector3(1,0,1);
+    [SerializeField] float _moveAmount_Sec = 0.5f;
     int _nOldNumber = 0;
     eDirection _nowDirection = eDirection.MAX;
 
@@ -55,19 +55,19 @@ public class Charactor : FieldObjectBase
         //  移動
         if (MoveCheck(eDirection.FORWARD))
         {
-            transform.position += new Vector3(0,0, _moveAmount_Sec.z) * Time.deltaTime;
+            transform.position += new Vector3(0,0, _moveAmount_Sec) * Time.deltaTime;
         }
         else if(MoveCheck(eDirection.BACK)) 
         {
-            transform.position -= new Vector3(0,0, _moveAmount_Sec.z) * Time.deltaTime;
+            transform.position -= new Vector3(0,0, _moveAmount_Sec) * Time.deltaTime;
         }
         else if(MoveCheck(eDirection.RIGHT)) 
         {
-            transform.position += new Vector3(_moveAmount_Sec.x, 0,0) * Time.deltaTime;
+            transform.position += new Vector3(_moveAmount_Sec, 0,0) * Time.deltaTime;
         }
         else if(MoveCheck(eDirection.LEFT)) 
         {
-            transform.position -= new Vector3(_moveAmount_Sec.x, 0,0) * Time.deltaTime;
+            transform.position -= new Vector3(_moveAmount_Sec, 0,0) * Time.deltaTime;
         }
 
         DirUpdate();

@@ -32,14 +32,13 @@ public class FieldCreator : MonoBehaviour
         GameObject BlockObj = Resources.Load<GameObject> ("Prefabs/Field/Block");
         GameObject TileObj  = Resources.Load<GameObject> ("Prefabs/Field/Tile");
 
-        //  
         for (int x = 0; x < _nWidth; x ++)
         {
             for (int z = 0; z < _nHeight; z ++)
             {
                 Vector3 createPos = new Vector3(x * GameScaler._fScale, 0.0f, z * GameScaler._fScale);
 
-                if (FenceCheck(x,z))
+                if (FenceCheck(x,z) || RandomBlock(x,z))
                 {
                     GameObject block = CreateObj(BlockObj, createPos);
                     _objBaseArray[x + (z * _nWidth)] = block.GetComponent<FieldObjectBase>();
@@ -91,5 +90,25 @@ public class FieldCreator : MonoBehaviour
             return true;
 
         return false;
+    }
+
+    bool RandomBlock(float x, float z)
+    {
+        if (Random.Range(0, 10) != 0)
+            return false;
+
+        if (z < 2)
+            return false;
+        
+        if (z >= _nHeight - 2)
+            return false;
+        
+        if (x % _nWidth < 2)
+            return false;
+
+        if (x % _nWidth >= _nWidth - 2)
+            return false;
+
+        return true;
     }
 }
