@@ -44,6 +44,8 @@ public class SandData : MonoBehaviour
     List<tSandData> _SandDataList = new List<tSandData>();   //  はさまれている箇所のリスト
     public List<tSandData> GetSandDataList { get { return _SandDataList; } }
 
+    [SerializeField] bool _IsOn = true;
+
     void Update()
     {
         //  初期化
@@ -61,20 +63,23 @@ public class SandData : MonoBehaviour
             FieldObjectBase first; 
             FieldObjectBase second;
 
-            first  = objDataArray[number + GameScaler._nWidth - 1];   //  左上
-            second = objDataArray[number - GameScaler._nWidth + 1];   //  右下
-            SandCheck(first, second, number);
-
             first  = objDataArray[number + GameScaler._nWidth];   //  上
             second = objDataArray[number - GameScaler._nWidth];   //  下
             SandCheck(first, second, number);
 
-            first  = objDataArray[number + GameScaler._nWidth + 1];   //  右上
-            second = objDataArray[number - GameScaler._nWidth - 1];   //  左下
-            SandCheck(first, second, number);
-
             first  = objDataArray[number + 1];   //  右
             second = objDataArray[number - 1];   //  左
+            SandCheck(first, second, number);
+
+            if (!_IsOn)
+                continue;
+
+            first  = objDataArray[number + GameScaler._nWidth - 1];   //  左上
+            second = objDataArray[number - GameScaler._nWidth + 1];   //  右下
+            SandCheck(first, second, number);
+
+            first  = objDataArray[number + GameScaler._nWidth + 1];   //  右上
+            second = objDataArray[number - GameScaler._nWidth - 1];   //  左下
             SandCheck(first, second, number);
         }
     }
