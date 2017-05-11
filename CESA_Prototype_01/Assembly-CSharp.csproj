@@ -54,12 +54,18 @@
      <Compile Include="Assets\Scripts\FieldObjectBase.cs" />
      <Compile Include="Assets\Scripts\GameScaler.cs" />
      <Compile Include="Assets\Scripts\GaugeUI.cs" />
+     <Compile Include="Assets\Scripts\PutMass.cs" />
      <Compile Include="Assets\Scripts\Referee.cs" />
      <Compile Include="Assets\Scripts\SandData.cs" />
      <Compile Include="Assets\Scripts\SandItem.cs" />
      <Compile Include="Assets\Scripts\SandMass.cs" />
      <Compile Include="Assets\Scripts\SandMassCreator.cs" />
      <Compile Include="Assets\Scripts\SandMassData.cs" />
+     <Compile Include="Assets\Scripts\TriangleWave\ICalculator.cs" />
+     <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
+     <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />
+     <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveOscillator.cs" />
+     <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -78,6 +84,10 @@
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{1EFAC012-F6B1-53FF-DAAE-A79DBDEA7C48}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

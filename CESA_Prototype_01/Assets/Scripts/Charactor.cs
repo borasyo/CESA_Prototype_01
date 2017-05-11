@@ -7,8 +7,8 @@ public class Charactor : FieldObjectBase
     public enum eDirection
     {
         FORWARD = 0,
-        BACK,
         RIGHT,
+        BACK,
         LEFT,
 
         MAX,
@@ -27,7 +27,7 @@ public class Charactor : FieldObjectBase
 
     [SerializeField] float _moveAmount_Sec = 0.5f;
     int _nOldNumber = 0;
-    eDirection _nowDirection = eDirection.MAX;
+    eDirection _nowDirection = eDirection.FORWARD;
 
     GameObject _sandItem = null;
 
@@ -37,14 +37,9 @@ public class Charactor : FieldObjectBase
         _charactorInput = GetComponent<CharactorInput>();
         _charactorGauge = GetComponent<CharactorGauge>();
 
-        if (this.name.Contains("Player"))
-        {
-            _sandItem = Resources.Load<GameObject>("Prefabs/Field/SandItemPlayer");
-        }
-        else
-        {
-            _sandItem = Resources.Load<GameObject>("Prefabs/Field/SandItemEnemy");
-        }
+        string charaName = this.name.Replace("(Clone)", "");   //  オブジェクトの名前から(Clone)を削除した文字列を作成
+        _sandItem = Resources.Load<GameObject>("Prefabs/Field/SandItem" + charaName);
+        _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
     }
 	
     // Update is called once per frame
@@ -194,7 +189,7 @@ public class Charactor : FieldObjectBase
     }
         
     //  向いている方向を元にデータ番号を取得
-    int GetDataNumberForDir()
+    public int GetDataNumberForDir()
     {
         int number = GetDataNumber();
         switch(_nowDirection)

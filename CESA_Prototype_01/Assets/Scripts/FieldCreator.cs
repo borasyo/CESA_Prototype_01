@@ -68,7 +68,7 @@ public class FieldCreator : MonoBehaviour
 
     GameObject CreateObj(GameObject obj, Vector3 pos)
     {
-        GameObject instance = (GameObject)Instantiate(obj, pos, Quaternion.identity);
+        GameObject instance = (GameObject)Instantiate(obj, pos, obj.transform.rotation);
         instance.transform.SetParent(_fieldHolder.transform);
 
         return instance;

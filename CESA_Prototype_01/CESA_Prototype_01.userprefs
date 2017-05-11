@@ -1,8 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FieldCreator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Charactor.cs">
     <Files>
-      <File FileName="Assets\Scripts\SandMass.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SandMass.cs" Line="7" Column="24" />
       <File FileName="Assets\Scripts\SandMassCreator.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SandMassData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharactorGauge.cs" Line="1" Column="1" />
@@ -10,12 +10,14 @@
       <File FileName="Assets\Scripts\SandData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SandItem.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FieldData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FieldCreator.cs" Line="110" Column="25" />
-      <File FileName="Assets\Scripts\FieldObjectBase.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FieldCreator.cs" Line="90" Column="25" />
+      <File FileName="Assets\Scripts\FieldObjectBase.cs" Line="55" Column="82" />
       <File FileName="Assets\Scripts\GameScaler.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor.cs" Line="59" Column="10" />
-      <File FileName="Assets\Scripts\CharactorInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Charactor.cs" Line="33" Column="5" />
+      <File FileName="Assets\Scripts\CharactorInput.cs" Line="6" Column="2" />
       <File FileName="Assets\Scripts\Referee.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PutMass.cs" Line="15" Column="50" />
+      <File FileName="Assets\Scripts\TriangleWave\TriangleWave.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

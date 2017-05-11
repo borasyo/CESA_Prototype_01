@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CharactorInput : MonoBehaviour
 {
-    [SerializeField] bool _IsPlayer = true;
-
     private bool _IsForawrd = false;
     private bool _IsBack = false;
     private bool _IsRight = false;
@@ -16,7 +14,7 @@ public class CharactorInput : MonoBehaviour
 	
     void Update()
     {
-        if(_IsPlayer) 
+        if(transform.name.Contains("Player")) 
         {
             _IsForawrd = Input.GetKey(KeyCode.W);
             _IsBack    = Input.GetKey(KeyCode.S);
