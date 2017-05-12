@@ -31,22 +31,23 @@ public class SelectMassSprite : MonoBehaviour
     void SpriteCheck()
     {
         int number = _charactor.GetDataNumberForDir();
+        _SpRend.sprite = _defaultSprite;
 
         //  置ける、壊せる、何もできないを判定
         FieldObjectBase obj = FieldData.Instance.GetObjData(number);
-        Sprite setSprite = _defaultSprite;
         if (obj)
         {
-            if (obj.tag != "SandItem" || !_charactorGauge.BreakGaugeCheck())
+            if (obj.tag == "SandItem" && _charactorGauge.BreakGaugeCheck())
             {
-                setSprite = _notSprite;
+                return;
             }
         }
-        else if(!_charactorGauge.PutGaugeCheck())
+        else if(_charactorGauge.PutGaugeCheck())
         {
-            setSprite = _notSprite;
+            return;
         }
 
-        _SpRend.sprite = setSprite;
+        _SpRend.sprite = _notSprite;
+        transform.localScale = new Vector3(1,1,1);
     }
 }

@@ -40,7 +40,7 @@ public class SelectMass : FieldObjectBase
         //  テクスチャ拡縮処理
         _triangleWaveVector3 = TriangleWaveFactory.Vector3(Vector3.zero, Vector3.one, _fInterval_Sec/2.0f);
         this.UpdateAsObservable()
-            .Where(_ => this.enabled)
+            .Where(_ => this.enabled && _SpRend.sprite.name == "SelectMass")
             .Subscribe(_ => {
                 _triangleWaveVector3.Progress();
                 transform.localScale = _triangleWaveVector3.CurrentValue;

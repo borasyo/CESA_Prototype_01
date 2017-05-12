@@ -27,3 +27,4 @@ C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Temp\bin\Debug
 C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\obj\Debug\Assembly-CSharp.dll
 C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\obj\Debug\Assembly-CSharp.pdb
+C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb

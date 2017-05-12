@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Elementals\Demo\Scripts\GE_Elementals_Demo.cs" />
      <Compile Include="Assets\Scripts\Charactor.cs" />
      <Compile Include="Assets\Scripts\CharactorGauge.cs" />
      <Compile Include="Assets\Scripts\CharactorInput.cs" />
@@ -54,6 +55,8 @@
      <Compile Include="Assets\Scripts\FieldObjectBase.cs" />
      <Compile Include="Assets\Scripts\GameScaler.cs" />
      <Compile Include="Assets\Scripts\GaugeUI.cs" />
+     <Compile Include="Assets\Scripts\PullsObject.cs" />
+     <Compile Include="Assets\Scripts\ReStart.cs" />
      <Compile Include="Assets\Scripts\Referee.cs" />
      <Compile Include="Assets\Scripts\SandData.cs" />
      <Compile Include="Assets\Scripts\SandItem.cs" />
@@ -66,6 +69,7 @@
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveOscillator.cs" />
+     <None Include="Assets\Elementals\Readme.txt" />
      <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
