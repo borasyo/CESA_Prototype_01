@@ -1,26 +1,26 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameScaler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Referee.cs">
     <Files>
       <File FileName="Assets\Scripts\SandMass.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SandMassCreator.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SandMassData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharactorGauge.cs" Line="12" Column="32" />
+      <File FileName="Assets\Scripts\CharactorGauge.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GaugeUI.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SandData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SandItem.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FieldData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FieldCreator.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FieldObjectBase.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameScaler.cs" Line="9" Column="36" />
+      <File FileName="Assets\Scripts\GameScaler.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Charactor.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CharactorInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Referee.cs" Line="18" Column="10" />
+      <File FileName="Assets\Scripts\Referee.cs" Line="3" Column="19" />
       <File FileName="Assets\Scripts\TriangleWave\TriangleWave.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SelectMass.cs" Line="46" Column="38" />
-      <File FileName="Assets\Scripts\SelectMassSprite.cs" Line="40" Column="41" />
-      <File FileName="Assets\Scripts\ReStart.cs" Line="24" Column="1" />
-      <File FileName="Assets\Scripts\PullsObject.cs" Line="12" Column="6" />
+      <File FileName="Assets\Scripts\SelectMass.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SelectMassSprite.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ReStart.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PullsObject.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
