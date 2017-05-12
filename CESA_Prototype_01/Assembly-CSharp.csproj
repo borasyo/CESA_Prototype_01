@@ -54,13 +54,14 @@
      <Compile Include="Assets\Scripts\FieldObjectBase.cs" />
      <Compile Include="Assets\Scripts\GameScaler.cs" />
      <Compile Include="Assets\Scripts\GaugeUI.cs" />
-     <Compile Include="Assets\Scripts\PutMass.cs" />
      <Compile Include="Assets\Scripts\Referee.cs" />
      <Compile Include="Assets\Scripts\SandData.cs" />
      <Compile Include="Assets\Scripts\SandItem.cs" />
      <Compile Include="Assets\Scripts\SandMass.cs" />
      <Compile Include="Assets\Scripts\SandMassCreator.cs" />
      <Compile Include="Assets\Scripts\SandMassData.cs" />
+     <Compile Include="Assets\Scripts\SelectMass.cs" />
+     <Compile Include="Assets\Scripts\SelectMassSprite.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\ICalculator.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />

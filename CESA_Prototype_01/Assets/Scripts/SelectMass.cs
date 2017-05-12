@@ -5,15 +5,18 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 
-public class PutMass : FieldObjectBase 
+public class SelectMass : FieldObjectBase 
 {
     Transform _normalizeTrans = null;
     Charactor _charactor = null;
 
     SpriteRenderer _SpRend = null;
-    TriangleWave<float> _triangleWave = null;
+    TriangleWave<float> _triangleWaveFloat = null;
+    TriangleWave<Vector3> _triangleWaveVector3 = null;
+
     [SerializeField] float _fInterval_Sec = 0.5f;
 
+    [SerializeField] Color _notColor   = new Color(1,1,1,1);
     [SerializeField] Color _putColor   = new Color(1,1,1,1);
     [SerializeField] Color _crashColor = new Color(1,1,1,1);
 
@@ -24,41 +27,64 @@ public class PutMass : FieldObjectBase
 
         // テクスチャ点滅処理
         _SpRend = GetComponent<SpriteRenderer>();
-        _triangleWave = TriangleWaveFactory.Float(0.0f, 1.0f, _fInterval_Sec/2.0f);
+        _triangleWaveFloat = TriangleWaveFactory.Float(1.0f, 0.0f, _fInterval_Sec/2.0f);
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
             .Subscribe(_ => {
-                _triangleWave.Progress();
+                _triangleWaveFloat.Progress();
                 Color setCol = _SpRend.color;
-                setCol.a = _triangleWave.CurrentValue;
+                setCol.a = _triangleWaveFloat.CurrentValue;
                 _SpRend.color = setCol;
+            });
+
+        //  テクスチャ拡縮処理
+        _triangleWaveVector3 = TriangleWaveFactory.Vector3(Vector3.zero, Vector3.one, _fInterval_Sec/2.0f);
+        this.UpdateAsObservable()
+            .Where(_ => this.enabled)
+            .Subscribe(_ => {
+                _triangleWaveVector3.Progress();
+                transform.localScale = _triangleWaveVector3.CurrentValue;
             });
     }
 
     void Update()
     {
+        SetAlpha();
+        ColorCheck();
+    }
+
+    void SetAlpha()
+    {
+        float alpha = _SpRend.color.a;
+        _notColor.a = alpha;
+        _putColor.a = alpha;
+        _crashColor.a = alpha;
+    }
+
+    void ColorCheck()
+    {
         int number = _charactor.GetDataNumberForDir();
         transform.position = GetPosForNumber(number);
 
         //  置ける、壊せる、何もできないを判定
-        float alpha = _SpRend.color.a;
         FieldObjectBase obj = FieldData.Instance.GetObjData(number);
+        Color setCol;
         if (obj)
         {
             if (obj.tag == "SandItem")
             {
-                _crashColor.a = alpha;
-                _SpRend.color = _crashColor;
+                setCol = _crashColor;
             }
             else
             {
-                _SpRend.color = new Color(1, 1, 1, alpha);
+                setCol = _notColor;
             }
         }
         else
         {
-            _putColor.a = alpha;
-            _SpRend.color = _putColor;
+            setCol = _putColor;
         }
+
+        _SpRend.color = setCol;
     }
 }
