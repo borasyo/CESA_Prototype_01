@@ -37,7 +37,7 @@ public class Charactor : FieldObjectBase
         _charactorInput = GetComponent<CharactorInput>();
         _charactorGauge = GetComponent<CharactorGauge>();
 
-        string charaName = this.name.Replace("(Clone)", "");   //  オブジェクトの名前から(Clone)を削除した文字列を作成
+        string charaName = this.name.Remove(0, this.name.IndexOf(")") + 1);   //  オブジェクトの名前からxP以外を削除した文字列を作成
         _sandItem = Resources.Load<GameObject>("Prefabs/Field/SandItem" + charaName);
         _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
     }

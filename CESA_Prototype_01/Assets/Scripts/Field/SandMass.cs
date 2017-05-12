@@ -23,11 +23,17 @@ public class SandMass : FieldObjectBase
             SandData.tSandData data = sandDataList[i];
             switch (data._Type)
             {
-                case SandItem.eType.PLAYER:
+                case SandItem.eType.ONE_P:
                     _spRend.color += new Color(255,0,0,255);
                     break;
-                case SandItem.eType.ENEMY:
+                case SandItem.eType.TWO_P:
                     _spRend.color += new Color(0,0,255,255);
+                    break;
+                case SandItem.eType.THREE_P:
+                    _spRend.color += new Color(0,255,0,255);
+                    break;
+                case SandItem.eType.FOUR_P:
+                    _spRend.color += new Color(255,255,0,255);
                     break;
             }
         }

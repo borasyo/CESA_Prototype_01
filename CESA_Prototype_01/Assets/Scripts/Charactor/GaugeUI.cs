@@ -6,7 +6,7 @@ public class GaugeUI : MonoBehaviour {
 
     const float fMaxGaugeSize = 600.0f;
 
-    [SerializeField] bool _IsPlayer = false;
+    [SerializeField] SandItem.eType _type = SandItem.eType.MAX;
     CharactorGauge _charaGauge = null;
     Image _image = null;
     [SerializeField] Color _NonGaugeColor = new Color (255,0,0,255);
@@ -18,20 +18,42 @@ public class GaugeUI : MonoBehaviour {
     {
 		_image = GetComponent<Image> ();
 
-        if (_IsPlayer)  FindCharaGauge("Player");
-        else            FindCharaGauge("Enemy");
+        FindCharaGauge();
 	}
 
-    void FindCharaGauge (string name)
+    void FindCharaGauge ()
     {
+        string typeName = "";
+        switch(_type)
+        {
+            case SandItem.eType.ONE_P:
+                typeName = "1P";
+                break;
+            case SandItem.eType.TWO_P:
+                typeName = "2P";
+                break;
+            case SandItem.eType.THREE_P:
+                typeName = "3P";
+                break;
+            case SandItem.eType.FOUR_P:
+                typeName = "4P";
+                break;
+        }
+
+
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Charactor");
         for (int i = 0; i < objs.Length; i++)
         {
-            if (!objs[i].name.Contains(name))
+            if (!objs[i].name.Contains(typeName))
                 continue;
 
             _charaGauge = objs[i].GetComponent<CharactorGauge>();
             break;
+        }
+
+        if (!_charaGauge)
+        {
+            Destroy(this.gameObject);
         }
     }
 	

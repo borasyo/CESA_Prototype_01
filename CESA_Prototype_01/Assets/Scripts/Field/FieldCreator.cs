@@ -55,15 +55,32 @@ public class FieldCreator : MonoBehaviour
         GameObject PlayerObj = Resources.Load<GameObject> ("Prefabs/Field/Player");
         GameObject EnemyObj  = Resources.Load<GameObject> ("Prefabs/Field/Enemy");
 
+        Vector3 pos = Vector3.zero;
+        GameObject obj = null;
+
         // 左下に生成
-        Vector3 ppos = new Vector3(1.0f  * GameScaler._fScale, 0.0f, 1.0f  * GameScaler._fScale);
-        GameObject p = CreateObj(PlayerObj, ppos);
-        _objBaseArray[_nWidth + 1] = p.GetComponent<FieldObjectBase>();
+        pos = new Vector3(1.0f  * GameScaler._fScale, 0.0f, 1.0f  * GameScaler._fScale);
+        obj = CreateObj(PlayerObj, pos);
+        obj.name += "1P";
+        _objBaseArray[_nWidth + 1] = obj.GetComponent<FieldObjectBase>();
+
+        //  左上に生成
+        /*pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
+        obj = CreateObj(EnemyObj, pos);
+        obj.name += "2P";
+        _objBaseArray[1 + _nWidth * (_nHeight - 2)] = obj.GetComponent<FieldObjectBase>();
 
         //  右上に生成
-        Vector3 epos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
-        GameObject e = CreateObj(EnemyObj, epos);
-        _objBaseArray[(_nWidth - 2) * (_nHeight - 2)] = e.GetComponent<FieldObjectBase>();
+        pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f  * GameScaler._fScale);
+        obj = CreateObj(PlayerObj, pos);
+        obj.name += "3P";
+        _objBaseArray[(_nWidth - 2) + _nWidth] = obj.GetComponent<FieldObjectBase>();*/
+
+        //  右上に生成
+        pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
+        obj = CreateObj(EnemyObj, pos);
+        obj.name += "4P";
+        _objBaseArray[_nWidth * (_nHeight - 2) + _nWidth - 2] = obj.GetComponent<FieldObjectBase>();
     }
 
     GameObject CreateObj(GameObject obj, Vector3 pos)

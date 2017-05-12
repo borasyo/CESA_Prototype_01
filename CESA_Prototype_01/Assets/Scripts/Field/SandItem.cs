@@ -8,8 +8,10 @@ public class SandItem : FieldObjectBase
 
     public enum eType
     {
-        PLAYER = 0,
-        ENEMY,
+        ONE_P = 0,
+        TWO_P,
+        THREE_P,
+        FOUR_P,
 
         MAX,
     };
@@ -23,14 +25,6 @@ public class SandItem : FieldObjectBase
         
         _SandItemHolder = new GameObject("SandItemHolder");
     }
-
-/*    public void SetType(string name)
-    {
-        if(name.Contains("Player"))
-            _Type = eType.PLAYER;
-        else if (name.Contains("Enemy"))
-            _Type = eType.ENEMY;
-    }*/
 
     void Start()
     {

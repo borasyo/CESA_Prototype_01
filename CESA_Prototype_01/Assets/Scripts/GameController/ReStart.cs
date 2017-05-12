@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ReStart : MonoBehaviour 
 {    
     ParticleSystem _particle = null;
+    public bool _IsEnd { get; set; }
 
     void Start()
     {
@@ -18,6 +19,13 @@ public class ReStart : MonoBehaviour
         if (_particle.isPlaying)
             return;
 
-        SceneManager.LoadScene("Prototype");
+        if (_IsEnd)
+        {
+            SceneManager.LoadScene("Prototype");
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 	}
 }

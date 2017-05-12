@@ -4,51 +4,76 @@ using UnityEngine;
 
 public class Referee : MonoBehaviour
 {
+    List<FieldObjectBase> _charaList = new List<FieldObjectBase>();
     [SerializeField] GameObject _explosionPrefab = null;
+
+    void Start()
+    {
+        GameObject[] charaObjects = GameObject.FindGameObjectsWithTag("Charactor");
+        for(int i = 0; i < charaObjects.Length; i++) {
+            _charaList.Add(charaObjects[i].GetComponent<FieldObjectBase>());
+        }
+    }
 
     void LateUpdate()
     {
         List<SandData.tSandData> sandDataList = SandData.Instance.GetSandDataList;
 
-        FieldObjectBase player = FieldData.Instance.GetCharaData("Player");
-        //MeshRenderer msRend = player.gameObject.GetComponent<MeshRenderer>();
-        //msRend.material.color = new Color(1, 1, 1, 1);
-        for (int i = 0; i < sandDataList.Count; i++)
+        for (int i = 0; i < _charaList.Count; i++)
         {
-            //Debug.Log(sandDataList[i]._number + "," +  sandDataList[i]._Type);
-            if (sandDataList[i]._number != player.GetDataNumber())
+            if (!_charaList[i])
                 continue;
 
-            if (sandDataList[i]._Type == SandItem.eType.PLAYER)
-                continue;
+            SandItem.eType type = CheckType(_charaList[i].name);
 
-            StartResult(player.gameObject);
-            //msRend.material.color = new Color(0, 0, 1, 1);
-            // EditorApplication.isPaused = true;
-        }
-            
-        FieldObjectBase enemy  = FieldData.Instance.GetCharaData("Enemy");
-        //msRend = enemy.gameObject.GetComponent<MeshRenderer>();
-        //msRend.material.color = new Color(1, 1, 1, 1);
-        for (int i = 0; i < sandDataList.Count; i++)
-        {
-            if (sandDataList[i]._number != enemy.GetDataNumber())
-                continue;
+            for (int j = 0; j < sandDataList.Count; j++)
+            {
+                if (sandDataList[j]._number != _charaList[i].GetDataNumber())
+                    continue;
 
-            if (sandDataList[i]._Type == SandItem.eType.ENEMY)
-                continue;
+                if (sandDataList[j]._Type == type)
+                    continue;
 
-            StartResult(enemy.gameObject);
-            //msRend.material.color = new Color(1, 0, 0, 1);
-            //EditorApplication.isPaused = true;
+                GameObject obj =_charaList[i].gameObject;
+                _charaList.Remove(_charaList[i]);
+                StartResult(obj.gameObject);
+            }
         }
     }
 
     void StartResult(GameObject obj)
     {
-        Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity);
-        Camera.main.gameObject.AddComponent<PullsObject>();
+        ReStart reStart = Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity).GetComponent<ReStart>();
+        reStart._IsEnd= false;
         Destroy(obj);
+
+        if (_charaList.Count > 1)
+            return;
+
+        reStart._IsEnd = true;
+        Camera.main.gameObject.AddComponent<PullsObject>();
         this.enabled = false;
+    }
+
+    SandItem.eType CheckType(string name)
+    {
+        SandItem.eType type = SandItem.eType.MAX;
+        if (name.Contains("1P"))
+        {
+            type = SandItem.eType.ONE_P;
+        }
+        else if ((name.Contains("2P")))
+        {
+            type = SandItem.eType.TWO_P;
+        }
+        else if ((name.Contains("3P")))
+        {
+            type = SandItem.eType.THREE_P;
+        }
+        else if ((name.Contains("4P")))
+        {
+            type = SandItem.eType.FOUR_P;
+        }
+        return type;
     }
 }

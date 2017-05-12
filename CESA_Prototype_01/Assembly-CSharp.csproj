@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Field\SandMassData.cs" />
      <Compile Include="Assets\Scripts\Field\SelectMass.cs" />
      <Compile Include="Assets\Scripts\Field\SelectMassSprite.cs" />
+     <Compile Include="Assets\Scripts\GameController\CharactorSelect.cs" />
      <Compile Include="Assets\Scripts\GameController\FieldObjectBase.cs" />
      <Compile Include="Assets\Scripts\GameController\GameScaler.cs" />
      <Compile Include="Assets\Scripts\GameController\ReStart.cs" />
