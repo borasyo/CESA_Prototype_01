@@ -29,6 +29,27 @@ public class CharactorGauge : MonoBehaviour
         //Debug.Log(_fGauge);
     }
 
+    #region Gauge
+
+    public void GaugeMax()
+    {
+        _fGauge = _fMaxGauge;
+    }
+
+    public void ChangeChargeSpeed(float per)
+    {
+        _fChargeSpeed *= per;
+    }
+
+    public void SetChargeSpeed(float speed)
+    {
+        _fChargeSpeed = speed;
+    }
+
+    #endregion
+
+    #region PutGauge
+
     public bool PutGaugeCheck()
     {
         return _fGauge >= _fPutGauge;
@@ -39,6 +60,20 @@ public class CharactorGauge : MonoBehaviour
         _fGauge -= _fPutGauge;
     }
 
+    public void ChangePutGauge(float per)
+    {
+        _fPutGauge *= per;
+    }
+
+    public void SetPutGauge(float speed)
+    {
+        _fPutGauge = speed;
+    }
+
+    #endregion
+
+    #region BreakGauge
+
     public bool BreakGaugeCheck()
     {
         return _fGauge >= _fBreakGauge;
@@ -48,4 +83,16 @@ public class CharactorGauge : MonoBehaviour
     {
         _fGauge -= _fBreakGauge;
     }
+
+    public void ChangeBreakGauge(float per)
+    {
+        _fBreakGauge *= per;
+    }
+
+    public void SetBreakGauge(float speed)
+    {
+        _fBreakGauge = speed;
+    }
+
+    #endregion
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SandData : MonoBehaviour
 {    
@@ -44,7 +45,9 @@ public class SandData : MonoBehaviour
     List<tSandData> _SandDataList = new List<tSandData>();   //  はさまれている箇所のリスト
     public List<tSandData> GetSandDataList { get { return _SandDataList; } }
 
-    [SerializeField] bool _IsOn = true;
+    [SerializeField] bool _IsSlope = true;
+    [SerializeField] bool _IsOverLapToSafe = true;
+    [SerializeField] int _nRange = 1;   //  はさめる範囲
 
     void Update()
     {
@@ -71,7 +74,7 @@ public class SandData : MonoBehaviour
             second = objDataArray[number - 1];   //  左
             SandCheck(first, second, number);
 
-            if (!_IsOn)
+            if (!_IsSlope)
                 continue;
 
             first  = objDataArray[number + GameScaler._nWidth - 1];   //  左上
@@ -81,6 +84,22 @@ public class SandData : MonoBehaviour
             first  = objDataArray[number + GameScaler._nWidth + 1];   //  右上
             second = objDataArray[number - GameScaler._nWidth - 1];   //  左下
             SandCheck(first, second, number);
+        }
+
+        if (!_IsOverLapToSafe)
+            return;
+        
+        OverLapDistinct();
+    }
+
+    // TODO : 処理効率が懸念材料....
+    void OverLapDistinct()
+    {
+        for(int i = 0; i < GameScaler._nWidth * GameScaler._nHeight; i++) {
+            if (_SandDataList.Where(_ => _._number == i).Count() <= 1)
+                continue;
+            
+            _SandDataList.RemoveAll(x => x._number == i);
         }
     }
      

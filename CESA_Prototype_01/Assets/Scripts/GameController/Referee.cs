@@ -21,7 +21,7 @@ public class Referee : MonoBehaviour
 
         for (int i = 0; i < _charaList.Count; i++)
         {
-            if (!_charaList[i])
+            if (_charaList[i].name.Contains("Invincible"))
                 continue;
 
             SandItem.eType type = CheckType(_charaList[i].name);
@@ -75,6 +75,7 @@ public class Referee : MonoBehaviour
         {
             type = SandItem.eType.FOUR_P;
         }
+
         return type;
     }
 }

@@ -210,4 +210,14 @@ public class Charactor : FieldObjectBase
 
         return number;
     }
+
+    public void ChangeSpeed(float per)
+    {
+        _moveAmount_Sec *= per;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        _moveAmount_Sec = speed;
+    }
 }

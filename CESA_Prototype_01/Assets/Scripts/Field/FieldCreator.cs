@@ -38,7 +38,13 @@ public class FieldCreator : MonoBehaviour
             {
                 Vector3 createPos = new Vector3(x * GameScaler._fScale, 0.0f, z * GameScaler._fScale);
 
-                if (FenceCheck(x,z) || RandomBlock(x,z))
+                if (FenceCheck(x, z))
+                {
+                    GameObject block = CreateObj(BlockObj, createPos);
+                    block.name += ",Fence";
+                    _objBaseArray[x + (z * _nWidth)] = block.GetComponent<FieldObjectBase>();
+                }
+                else if (RandomBlock(x, z))
                 {
                     GameObject block = CreateObj(BlockObj, createPos);
                     _objBaseArray[x + (z * _nWidth)] = block.GetComponent<FieldObjectBase>();
@@ -54,8 +60,8 @@ public class FieldCreator : MonoBehaviour
         //  リソース取得
         GameObject BalanceObj = Resources.Load<GameObject> ("Prefabs/Chara/Balance");
         GameObject PowerObj = Resources.Load<GameObject> ("Prefabs/Chara/Power");
-        GameObject SpeedObj = Resources.Load<GameObject> ("Prefabs/Chara/Speed");
         GameObject TechnicalObj = Resources.Load<GameObject> ("Prefabs/Chara/Technical");
+        GameObject SpeedObj = Resources.Load<GameObject> ("Prefabs/Chara/Speed");
 
         Vector3 pos = Vector3.zero;
         GameObject obj = null;
@@ -74,13 +80,13 @@ public class FieldCreator : MonoBehaviour
 
         //  右上に生成
         pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f  * GameScaler._fScale);
-        obj = CreateObj(SpeedObj, pos);
+        obj = CreateObj(TechnicalObj, pos);
         obj.name += "3P";
         _objBaseArray[(_nWidth - 2) + _nWidth] = obj.GetComponent<FieldObjectBase>();*/
 
         //  右上に生成
         pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
-        obj = CreateObj(TechnicalObj, pos);
+        obj = CreateObj(SpeedObj, pos);
         obj.name += "4P";
         _objBaseArray[_nWidth * (_nHeight - 2) + _nWidth - 2] = obj.GetComponent<FieldObjectBase>();
     }
@@ -116,7 +122,7 @@ public class FieldCreator : MonoBehaviour
         if (Random.Range(0, 10) != 0)
             return false;
 
-        if (z < 2)
+        /*if (z < 2)
             return false;
         
         if (z >= _nHeight - 2)
@@ -126,7 +132,7 @@ public class FieldCreator : MonoBehaviour
             return false;
 
         if (x % _nWidth >= _nWidth - 2)
-            return false;
+            return false;*/
 
         return true;
     }

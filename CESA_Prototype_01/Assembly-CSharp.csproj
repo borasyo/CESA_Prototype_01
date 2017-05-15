@@ -68,6 +68,13 @@
      <Compile Include="Assets\Scripts\GameController\GameScaler.cs" />
      <Compile Include="Assets\Scripts\GameController\ReStart.cs" />
      <Compile Include="Assets\Scripts\GameController\Referee.cs" />
+     <Compile Include="Assets\Scripts\Item\GaugeSpeedUp.cs" />
+     <Compile Include="Assets\Scripts\Item\InvincibleItem.cs" />
+     <Compile Include="Assets\Scripts\Item\ItemBase.cs" />
+     <Compile Include="Assets\Scripts\Item\ItemCreator.cs" />
+     <Compile Include="Assets\Scripts\Item\MoveSpeedUp.cs" />
+     <Compile Include="Assets\Scripts\Item\SpecialItem.cs" />
+     <Compile Include="Assets\Scripts\System\IEnumerableExtensions.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\ICalculator.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />

@@ -40,6 +40,11 @@ public class FieldData : MonoBehaviour
     FieldObjectBase[] _ObjectDataArray = null;
     public FieldObjectBase[] GetObjDataArray { get { return _ObjectDataArray; } }
 
+    List<FieldObjectBase> _CharaList = new List<FieldObjectBase>();
+    public List<FieldObjectBase> GetCharactors { get { return _CharaList; } } 
+
+    #region Init
+
     void Awake()
     {
         //  データ配列生成
@@ -48,9 +53,27 @@ public class FieldData : MonoBehaviour
         //  フィールドにオブジェクトを生成し、データを格納
         FieldCreator creator = new FieldCreator();
         _ObjectDataArray = creator.Create(GameScaler._nWidth, GameScaler._nHeight);
-
+      
+        CreateCharaList();
         //DebugCheck();
     }
+
+    void CreateCharaList()
+    {
+        //  キャラデータのリストを作成
+        foreach (FieldObjectBase obj in _ObjectDataArray)
+        {
+            if (!obj)
+                continue;
+
+            if (obj.tag != "Charactor")
+                continue;
+
+            GetCharactors.Add(obj);
+        }
+    }
+
+    #endregion
 
     //  データを格納
     public void SetObjData(FieldObjectBase objBase, int number)
@@ -70,38 +93,65 @@ public class FieldData : MonoBehaviour
     //  キャラクターを取得する時のみ使用する
     public FieldObjectBase GetCharaData(string name)
     {
-        for (int i = 0; i < _ObjectDataArray.Length; i++)
+        foreach (FieldObjectBase obj in _ObjectDataArray)
         {
-            if (!_ObjectDataArray[i])
+            if (!obj)
                 continue;
 
-            if (_ObjectDataArray[i].tag != "Charactor")
+            if (obj.tag != "Charactor")
                 continue;
 
-            if (!_ObjectDataArray[i].name.Contains(name))
+            if (!obj.name.Contains(name))
                 continue;
 
-            return _ObjectDataArray[i]; 
+            return obj; 
         }
 
         return null;    //  失敗
+    }
+
+    public Vector3 GetNonObjPos()
+    {
+        Vector3 pos = Vector3.zero;
+        while (true)
+        {
+            int number = Random.Range(0, _ObjectDataArray.Length);
+            FieldObjectBase obj = GetObjData(number);
+        
+            if (obj)
+                continue;
+
+            pos = GetPosForNumber(number);
+            break;
+        }
+        
+        return pos;
+    }
+
+    Vector3 GetPosForNumber(int number)
+    {
+        float x, z;
+        x = (float)((number % GameScaler._nWidth) * GameScaler._fScale);
+        z = (float)((number / GameScaler._nWidth) * GameScaler._fScale);
+
+        return new Vector3(x,0,z);
     }
 
     #if DEBUG
 
     void DebugCheck()
     {
-        for (int i = 0; i < _ObjectDataArray.Length; i++)
+        for (int mass = 0; mass < _ObjectDataArray.Length; mass++)
         {
-            if (!_ObjectDataArray[i])
+            if (!_ObjectDataArray[mass])
             {
                 //Debug.Log("空");
-                Debug.Log(i + "は空");
+                Debug.Log(mass + "は空");
                 continue;
             }
 
             //Debug.Log(_ObjectDataArray[i].name);
-            Debug.Log(i + "は" + _ObjectDataArray[i].name);
+            Debug.Log(mass + "は" + _ObjectDataArray[mass].name);
         }
     }
 
