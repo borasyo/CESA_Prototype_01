@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Elementals\Demo\Scripts\GE_Elementals_Demo.cs" />
+     <Compile Include="Assets\Scripts\Camera\PullsObject.cs" />
+     <Compile Include="Assets\Scripts\Camera\SetCameraPos.cs" />
      <Compile Include="Assets\Scripts\Charactor\CharaMass.cs" />
      <Compile Include="Assets\Scripts\Charactor\Charactor.cs" />
      <Compile Include="Assets\Scripts\Charactor\CharactorGauge.cs" />
@@ -66,7 +68,6 @@
      <Compile Include="Assets\Scripts\GameController\GameScaler.cs" />
      <Compile Include="Assets\Scripts\GameController\ReStart.cs" />
      <Compile Include="Assets\Scripts\GameController\Referee.cs" />
-     <Compile Include="Assets\Scripts\PullsObject.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\ICalculator.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />

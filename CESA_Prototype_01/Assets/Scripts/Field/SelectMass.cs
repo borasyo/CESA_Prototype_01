@@ -9,6 +9,7 @@ public class SelectMass : FieldObjectBase
 {
     Transform _normalizeTrans = null;
     Charactor _charactor = null;
+    CharactorGauge _charactorGauge = null;
 
     SpriteRenderer _SpRend = null;
     TriangleWave<float> _triangleWaveFloat = null;
@@ -24,6 +25,7 @@ public class SelectMass : FieldObjectBase
     {
         _normalizeTrans = transform.parent.FindChild("NormalizePos");
         _charactor = GetComponentInParent<Charactor>();
+        _charactorGauge = GetComponentInParent<CharactorGauge>();
 
         // テクスチャ点滅処理
         _SpRend = GetComponent<SpriteRenderer>();
@@ -68,21 +70,20 @@ public class SelectMass : FieldObjectBase
 
         //  置ける、壊せる、何もできないを判定
         FieldObjectBase obj = FieldData.Instance.GetObjData(number);
-        Color setCol;
+        Color setCol = _notColor;
         if (obj)
         {
-            if (obj.tag == "SandItem")
+            if (obj.tag == "SandItem" && _charactorGauge.BreakGaugeCheck())
             {
                 setCol = _crashColor;
-            }
-            else
-            {
-                setCol = _notColor;
             }
         }
         else
         {
-            setCol = _putColor;
+            if (_charactorGauge.PutGaugeCheck())
+            {
+                setCol = _putColor;
+            }
         }
 
         _SpRend.color = setCol;

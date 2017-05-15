@@ -33,6 +33,9 @@ public class SandMassCreator : MonoBehaviour
         {
             for (int z = 0; z < _nHeight; z ++)
             {
+                if (FenceCheck(x, z))
+                    continue;
+
                 Vector3 createPos = new Vector3(x * GameScaler._fScale, 0.0f, z * GameScaler._fScale);
 
                 GameObject sandMass = CreateObj(SandMass, createPos);
@@ -48,5 +51,23 @@ public class SandMassCreator : MonoBehaviour
         instance.transform.SetParent(_sandMassHolder.transform);
 
         return instance;
+    }
+
+    //  フィールドの外周かどうかをチェックする
+    bool FenceCheck(float x, float z)
+    {
+        if (x % _nWidth == 0)
+            return true;
+
+        if (x % _nWidth == _nWidth - 1)
+            return true;
+
+        if (z == 0)
+            return true;
+
+        if (z == _nHeight - 1)
+            return true;
+
+        return false;
     }
 }

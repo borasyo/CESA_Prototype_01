@@ -7,10 +7,19 @@ public class CharactorGauge : MonoBehaviour
     public float _fGauge { get; private set; }
     public float GaugePercent { get { return _fGauge / _fMaxGauge; } }
     [SerializeField] float _fChargeSpeed = 1.0f;
-    [SerializeField] float _fMaxGauge = 5.0f;
+    [SerializeField] float _fMaxGauge    = 5.0f;
 
-    [SerializeField] float _fPutGauge = 2.0f;
+    [SerializeField] float _fPutGauge   = 2.0f;
     [SerializeField] float _fBreakGauge = 2.0f;
+
+    void Start()
+    {
+        if (!name.Contains("Technical"))
+            return;
+
+        _fPutGauge   = Random.Range(0.0f, 5.0f);
+        _fBreakGauge = Random.Range(0.0f, 5.0f);
+    }
 
     void Update()
     {

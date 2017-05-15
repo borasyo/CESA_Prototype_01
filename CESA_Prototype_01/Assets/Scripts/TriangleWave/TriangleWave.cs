@@ -44,7 +44,7 @@ public class TriangleWave<T>
     public int GetHalfLapCnt { get { return oscillator.GetHalfLapCnt; } }   //  何半復したかを返す(偶数の場合は加算、逆は減算)
 
     // 現在、値が増加中かを返す
-    private bool IsAdd { get { return (GetHalfLapCnt % 2 == 0); } }
+    public bool IsAdd { get { return (GetHalfLapCnt % 2 == 0); } }
 
     // Reverseタイミングで実行されるObservableを生成
     public IObservable<bool> OnReverse { get { return this.ObserveEveryValueChanged (x => x.IsAdd); } }

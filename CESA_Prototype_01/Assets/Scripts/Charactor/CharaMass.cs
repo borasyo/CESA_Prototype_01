@@ -26,7 +26,7 @@ public class CharaMass : FieldObjectBase {
 
         //  拡縮運動
         _SpRend = GetComponent<SpriteRenderer>();
-        _triangleWaveColor = TriangleWaveFactory.Color(new Color(1,1,1,0), new Color(1,1,1,1), _fPeriod_Sec / 2.0f);
+        _triangleWaveColor = TriangleWaveFactory.Color(new Color(1,1,1,0.5f), new Color(1,1,1,1), _fPeriod_Sec / 2.0f);
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
             .Subscribe(_ =>

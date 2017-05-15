@@ -1,24 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Field\SelectMass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController\GameScaler.cs">
     <Files>
-      <File FileName="Assets\Scripts\Field\FieldCreator.cs" Line="83" Column="50" />
-      <File FileName="Assets\Scripts\TriangleWave\TriangleWave.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PullsObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\CharaMass.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Field\SelectMass.cs" Line="80" Column="36" />
-      <File FileName="Assets\Scripts\Charactor\GaugeUI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Field\SandData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Field\FieldData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Field\SandMassCreator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Field\SandMassData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\Charactor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Field\SandItem.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Field\SandMass.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController\Referee.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController\CharactorSelect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\CharactorInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController\ReStart.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController\Referee.cs" Line="36" Column="17" />
+      <File FileName="Assets\Scripts\Field\FieldCreator.cs" Line="15" Column="52" />
+      <File FileName="Assets\Scripts\Camera\SetCameraPos.cs" Line="12" Column="66" />
+      <File FileName="Assets\Scripts\GameController\GameScaler.cs" Line="10" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -36,12 +36,13 @@ public class Referee : MonoBehaviour
 
                 GameObject obj =_charaList[i].gameObject;
                 _charaList.Remove(_charaList[i]);
-                StartResult(obj.gameObject);
+                CheckResult(obj.gameObject);
+                return;
             }
         }
     }
 
-    void StartResult(GameObject obj)
+    void CheckResult(GameObject obj)
     {
         ReStart reStart = Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity).GetComponent<ReStart>();
         reStart._IsEnd= false;

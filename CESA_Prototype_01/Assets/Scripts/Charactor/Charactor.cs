@@ -38,7 +38,7 @@ public class Charactor : FieldObjectBase
         _charactorGauge = GetComponent<CharactorGauge>();
 
         string charaName = this.name.Remove(0, this.name.IndexOf(")") + 1);   //  オブジェクトの名前からxP以外を削除した文字列を作成
-        _sandItem = Resources.Load<GameObject>("Prefabs/Field/SandItem" + charaName);
+        _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
         _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
     }
 	
