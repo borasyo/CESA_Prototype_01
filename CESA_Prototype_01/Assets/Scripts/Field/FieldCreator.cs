@@ -68,7 +68,7 @@ public class FieldCreator : MonoBehaviour
 
         // 左下に生成
         pos = new Vector3(1.0f  * GameScaler._fScale, 0.0f, 1.0f  * GameScaler._fScale);
-        obj = CreateObj(TechnicalObj, pos);
+        obj = CreateObj(SpeedObj, pos);
         obj.name += "1P";
         _objBaseArray[_nWidth + 1] = obj.GetComponent<FieldObjectBase>();
 
@@ -86,7 +86,7 @@ public class FieldCreator : MonoBehaviour
 
         //  右上に生成
         pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
-        obj = CreateObj(SpeedObj, pos);
+        obj = CreateObj(BalanceObj, pos);
         obj.name += "4P";
         _objBaseArray[_nWidth * (_nHeight - 2) + _nWidth - 2] = obj.GetComponent<FieldObjectBase>();
     }

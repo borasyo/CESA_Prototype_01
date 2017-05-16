@@ -27,8 +27,8 @@ public class Charactor : FieldObjectBase
 
     [SerializeField] float _moveAmount_Sec = 0.5f;
     int _nOldNumber = 0;
-    eDirection _nowDirection = eDirection.FORWARD;
 
+    protected eDirection _nowDirection = eDirection.FORWARD;
     protected GameObject _sandItem = null;
     protected bool _IsSpecialMode = false;
 
@@ -110,7 +110,7 @@ public class Charactor : FieldObjectBase
                 break;
         }
 
-        if (check < 0 || GameScaler._nWidth * GameScaler._nHeight < check)
+        if (check < 0 || GameScaler._nWidth * GameScaler._nHeight <= check)
             return false;
 
         FieldObjectBase checkData = FieldData.Instance.GetObjData(check);

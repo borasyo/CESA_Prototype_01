@@ -33,6 +33,6 @@ public class SandItem : FieldObjectBase
 	
     void Update()
     {
-        
+        DataUpdate();
     }
 }
