@@ -14,7 +14,7 @@ public class ItemCreator : MonoBehaviour
     {
         this.UpdateAsObservable()
             .Subscribe(_ => {
-                if(!Input.GetKeyDown(KeyCode.Return) && Random.Range(0,300) != 0)
+                if(!Input.GetKeyDown(KeyCode.Return))// && Random.Range(0,300) != 0)
                     return;
                 
                 int number = Random.Range(0,_ItemPrefabs.Length);

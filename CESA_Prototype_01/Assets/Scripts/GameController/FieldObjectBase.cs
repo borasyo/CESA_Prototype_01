@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class FieldObjectBase : MonoBehaviour
 {
+    //  データ配列の自分の情報を手動で更新する
+    protected void DataUpdate()
+    {
+        if (FieldData.Instance.GetObjData(GetDataNumber()))
+            return;
+
+        FieldData.Instance.SetObjData(this, GetDataNumber());
+    }
+
     //  1座標1マスの値に変換
     protected Vector3 NormalizePosition()
     {

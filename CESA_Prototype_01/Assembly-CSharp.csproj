@@ -57,6 +57,8 @@
      <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMass.cs" />
      <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMassSprite.cs" />
      <Compile Include="Assets\Scripts\Charactor\Type\PowerType.cs" />
+     <Compile Include="Assets\Scripts\Charactor\Type\TechnicalType.cs" />
+     <Compile Include="Assets\Scripts\Field\DelayPut.cs" />
      <Compile Include="Assets\Scripts\Field\FieldCreator.cs" />
      <Compile Include="Assets\Scripts\Field\FieldData.cs" />
      <Compile Include="Assets\Scripts\Field\SandData.cs" />

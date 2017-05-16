@@ -31,7 +31,7 @@ public class Referee : MonoBehaviour
                 if (sandDataList[j]._number != _charaList[i].GetDataNumber())
                     continue;
 
-                if (sandDataList[j]._Type == type)
+                if (sandDataList[j]._Type == type || sandDataList[j]._Type == SandItem.eType.MAX)
                     continue;
 
                 GameObject obj =_charaList[i].gameObject;

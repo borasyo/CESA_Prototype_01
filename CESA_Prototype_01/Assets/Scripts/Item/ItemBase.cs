@@ -19,6 +19,9 @@ public class ItemBase : FieldObjectBase
 
                 foreach (FieldObjectBase chara in charactors)
                 {
+                    if(!chara)
+                        continue;
+
                     if (chara.GetDataNumber() != GetDataNumber())
                         continue;
 

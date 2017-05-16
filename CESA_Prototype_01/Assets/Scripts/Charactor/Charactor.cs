@@ -29,7 +29,8 @@ public class Charactor : FieldObjectBase
     int _nOldNumber = 0;
     eDirection _nowDirection = eDirection.FORWARD;
 
-    GameObject _sandItem = null;
+    protected GameObject _sandItem = null;
+    protected bool _IsSpecialMode = false;
 
     #region Event
 
@@ -84,7 +85,7 @@ public class Charactor : FieldObjectBase
         }
     }
 
-    bool MoveCheck(eDirection dir)
+    virtual protected bool MoveCheck(eDirection dir)
     {
         if (!_charactorInput.GetMoveInput(dir))
             return false;
@@ -151,7 +152,9 @@ public class Charactor : FieldObjectBase
 
     #endregion
 
-    void ItemPut()
+    #region Action
+
+    virtual protected void ItemPut()
     {
         if (!_charactorGauge.PutGaugeCheck() || 
             !_charactorInput.GetActionInput(eAction.PUT))
@@ -167,7 +170,6 @@ public class Charactor : FieldObjectBase
 
         GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumber), Quaternion.identity);
         FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumber);
-//        item.GetComponent<SandItem>().SetType(this.name);
         _charactorGauge.PutAction();
     }
 
@@ -186,6 +188,8 @@ public class Charactor : FieldObjectBase
         Destroy(obj.gameObject);
         _charactorGauge.BreakAction();
     }
+
+    #endregion
 
     void DirUpdate()
     {

@@ -68,7 +68,7 @@ public class FieldCreator : MonoBehaviour
 
         // 左下に生成
         pos = new Vector3(1.0f  * GameScaler._fScale, 0.0f, 1.0f  * GameScaler._fScale);
-        obj = CreateObj(PowerObj, pos);
+        obj = CreateObj(TechnicalObj, pos);
         obj.name += "1P";
         _objBaseArray[_nWidth + 1] = obj.GetComponent<FieldObjectBase>();
 
@@ -122,7 +122,8 @@ public class FieldCreator : MonoBehaviour
         if (Random.Range(0, 10) != 0)
             return false;
 
-        /*if (z < 2)
+        //  詰み状態回避処理
+        if (z < 2)
             return false;
         
         if (z >= _nHeight - 2)
@@ -132,7 +133,7 @@ public class FieldCreator : MonoBehaviour
             return false;
 
         if (x % _nWidth >= _nWidth - 2)
-            return false;*/
+            return false;
 
         return true;
     }

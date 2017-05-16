@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PowerType : Charactor
 {
-    bool _IsSpecialMode = false;
     float _InitBreakGauge;
 
     override protected void ItemBreak()
