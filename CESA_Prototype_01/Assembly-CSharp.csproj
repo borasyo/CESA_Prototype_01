@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Charactor\Type\PowerType.cs" />
      <Compile Include="Assets\Scripts\Charactor\Type\SpeedType.cs" />
      <Compile Include="Assets\Scripts\Charactor\Type\TechnicalType.cs" />
+     <Compile Include="Assets\Scripts\Field\AutoMoveObj.cs" />
      <Compile Include="Assets\Scripts\Field\Block.cs" />
      <Compile Include="Assets\Scripts\Field\DelayPut.cs" />
      <Compile Include="Assets\Scripts\Field\FieldCreator.cs" />

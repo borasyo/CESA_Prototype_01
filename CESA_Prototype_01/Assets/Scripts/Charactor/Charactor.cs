@@ -35,7 +35,7 @@ public class Charactor : FieldObjectBase
     #region Event
 
     // Use this for initialization
-    void Start()
+    public void Start()
     {
         _charactorInput = GetComponent<CharactorInput>();
         _charactorGauge = GetComponent<CharactorGauge>();

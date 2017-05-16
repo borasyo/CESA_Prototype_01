@@ -58,7 +58,7 @@ public class FieldObjectBase : MonoBehaviour
         return (int)(npos.x + (npos.z * GameScaler._nWidth));
     }
 
-    protected Vector3 GetPosForNumber()
+    public Vector3 GetPosForNumber()
     {
         float x, z;
         x = (float)((GetDataNumber() % GameScaler._nWidth) * GameScaler._fScale);
