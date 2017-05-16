@@ -21,9 +21,9 @@ public class ItemCreator : MonoBehaviour
             .Subscribe(_ => {
                 _fNowInteval += Time.deltaTime;
 
-                if(_fNowInteval < _fInterval && 
+                if(_fNowInteval < _fInterval
                     #if DEBUG
-                    !Input.GetKeyDown(KeyCode.Return)
+                    && !Input.GetKeyDown(KeyCode.Return)
                     #endif               
                 )
                     return;

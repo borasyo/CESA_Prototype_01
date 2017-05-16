@@ -8,6 +8,7 @@ using UniRx.Triggers;
 public class ItemBase : FieldObjectBase
 {
     protected bool _IsCollision = false;
+    [SerializeField] float _fLife = 10.0f;
 
     public void Start()
     {
@@ -48,6 +49,18 @@ public class ItemBase : FieldObjectBase
                     Destroy (this.gameObject);
                     break;
                 }
+            });
+
+        // LifeCheck
+        this.UpdateAsObservable()
+            .Where(_ => this.enabled && !_IsCollision)
+            .Subscribe(_ => {
+                _fLife -= Time.deltaTime;
+
+                if(_fLife > 0.0f)
+                    return;
+
+                Destroy (this.gameObject);
             });
     }
 

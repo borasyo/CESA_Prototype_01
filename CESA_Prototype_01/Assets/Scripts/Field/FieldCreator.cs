@@ -57,12 +57,6 @@ public class FieldCreator : MonoBehaviour
      
     void CreateChara()
     {
-        //  リソース取得
-        /*GameObject BalanceObj = Resources.Load<GameObject> ("Prefabs/Chara/Balance");
-        GameObject PowerObj = Resources.Load<GameObject> ("Prefabs/Chara/Power");
-        GameObject TechnicalObj = Resources.Load<GameObject> ("Prefabs/Chara/Technical");
-        GameObject SpeedObj = Resources.Load<GameObject> ("Prefabs/Chara/Speed");*/
-
         Vector3 pos = Vector3.zero;
         GameObject obj = null;
         GameObject[] SelectCharas = CharactorSelect.SelectCharas;
@@ -74,32 +68,36 @@ public class FieldCreator : MonoBehaviour
         pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
         obj = CreateObj(SelectCharas[0], pos);
         obj.name += "1P";
+        obj.transform.eulerAngles = new Vector3(0, 90, 0);
         _objBaseArray[_nWidth + 1] = obj.GetComponent<FieldObjectBase>();
 
+        //  右上に生成
         if (!SelectCharas[1])
             SelectCharas[1] = Resources.Load<GameObject> ("Prefabs/Chara/Balance");
         
-        //  右上に生成
         pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
         obj = CreateObj(SelectCharas[1], pos);
         obj.name += "2P";
+        obj.transform.eulerAngles = new Vector3(0, 270, 0);
         _objBaseArray[_nWidth * (_nHeight - 2) + _nWidth - 2] = obj.GetComponent<FieldObjectBase>();
-            
+
+        //  左上に生成
         if (SelectCharas[2])
         {
-            //  左上に生成
             pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
             obj = CreateObj(SelectCharas[2], pos);
             obj.name += "3P";
+            obj.transform.eulerAngles = new Vector3(0, 90, 0);
             _objBaseArray[1 + _nWidth * (_nHeight - 2)] = obj.GetComponent<FieldObjectBase>();
         }
 
+        //  右上に生成
         if (SelectCharas[3])
         {
-            //  右上に生成
             pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
             obj = CreateObj(SelectCharas[3], pos);
             obj.name += "4P";
+            obj.transform.eulerAngles = new Vector3(0, 270, 0);
             _objBaseArray[(_nWidth - 2) + _nWidth] = obj.GetComponent<FieldObjectBase>();
         }
 

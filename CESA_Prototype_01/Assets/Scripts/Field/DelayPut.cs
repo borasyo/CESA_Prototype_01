@@ -54,6 +54,6 @@ public class DelayPut : MonoBehaviour
         if (!_MeRend.enabled)
             return;
 
-        transform.localScale += _InitScale * Time.deltaTime;
+        transform.localScale += _InitScale * (Time.deltaTime / DangerTime);
     }
 }
