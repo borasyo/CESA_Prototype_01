@@ -1,24 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Field\DelayPut.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Charactor\Type\BalanceType.cs">
     <Files>
-      <File FileName="Assets\Scripts\Charactor\CharactorGauge.cs" Line="7" Column="26" />
+      <File FileName="Assets\Scripts\Charactor\CharactorGauge.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Charactor\CharaMass.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Charactor\CharactorInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Item\SpecialItem.cs" Line="35" Column="9" />
-      <File FileName="Assets\Scripts\Field\FieldCreator.cs" Line="71" Column="37" />
-      <File FileName="Assets\Scripts\Charactor\SelectMass\SelectMass.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\Charactor.cs" Line="90" Column="47" />
-      <File FileName="Assets\Scripts\GameController\Referee.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Item\ItemCreator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\Type\SpeedType.cs" Line="85" Column="28" />
-      <File FileName="Assets\Scripts\Charactor\Type\PowerType.cs" Line="47" Column="10" />
-      <File FileName="Assets\Scripts\Field\SandItem.cs" Line="17" Column="7" />
-      <File FileName="Assets\Scripts\Charactor\Type\TechnicalType.cs" Line="38" Column="36" />
-      <File FileName="Assets\Scripts\Field\AutoMoveObj.cs" Line="31" Column="18" />
-      <File FileName="Assets\Scripts\GameController\FieldObjectBase.cs" Line="12" Column="9" />
-      <File FileName="Assets\Scripts\Item\ItemBase.cs" Line="30" Column="24" />
-      <File FileName="Assets\Scripts\Field\DelayPut.cs" Line="15" Column="5" />
+      <File FileName="Assets\Scripts\Item\SpecialItem.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Field\FieldCreator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Charactor\Charactor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Charactor\Type\SpeedType.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Charactor\Type\PowerType.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Charactor\Type\TechnicalType.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Charactor\Type\BalanceType.cs" Line="17" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
