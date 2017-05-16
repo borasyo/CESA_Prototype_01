@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Charactor\Type\TechnicalType.cs" />
      <Compile Include="Assets\Scripts\CharactorSelect\CharactorSelect.cs" />
      <Compile Include="Assets\Scripts\CharactorSelect\NowSelect.cs" />
+     <Compile Include="Assets\Scripts\CharactorSelect\StageScaleSelect.cs" />
      <Compile Include="Assets\Scripts\Field\AutoMoveObj.cs" />
      <Compile Include="Assets\Scripts\Field\Block.cs" />
      <Compile Include="Assets\Scripts\Field\DelayPut.cs" />
