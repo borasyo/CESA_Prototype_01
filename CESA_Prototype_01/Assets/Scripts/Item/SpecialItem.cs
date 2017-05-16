@@ -4,6 +4,7 @@ using UnityEngine;
 
 using UniRx;
 using UniRx.Triggers;
+using UnityEngine.UI;
 
 public class SpecialItem : ItemBase
 {
@@ -15,11 +16,12 @@ public class SpecialItem : ItemBase
 
     void Start()
     {
+        TextMesh textMesh = GetComponentInChildren<TextMesh>();
         _MeRend = GetComponentInChildren<MeshRenderer>();
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
             .Subscribe(_ => {
-                _MeRend.material.color = Random.ColorHSV();
+                textMesh.color = _MeRend.material.color = Random.ColorHSV();
             });
 
         base.Start();

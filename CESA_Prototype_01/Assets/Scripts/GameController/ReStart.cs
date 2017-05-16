@@ -21,7 +21,7 @@ public class ReStart : MonoBehaviour
 
         if (_IsEnd)
         {
-            SceneManager.LoadScene("Prototype");
+            SceneManager.LoadScene("GameMain");
         }
         else
         {

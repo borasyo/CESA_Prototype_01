@@ -60,6 +60,8 @@
      <Compile Include="Assets\Scripts\Charactor\Type\PowerType.cs" />
      <Compile Include="Assets\Scripts\Charactor\Type\SpeedType.cs" />
      <Compile Include="Assets\Scripts\Charactor\Type\TechnicalType.cs" />
+     <Compile Include="Assets\Scripts\CharactorSelect\CharactorSelect.cs" />
+     <Compile Include="Assets\Scripts\CharactorSelect\NowSelect.cs" />
      <Compile Include="Assets\Scripts\Field\AutoMoveObj.cs" />
      <Compile Include="Assets\Scripts\Field\Block.cs" />
      <Compile Include="Assets\Scripts\Field\DelayPut.cs" />
@@ -70,9 +72,9 @@
      <Compile Include="Assets\Scripts\Field\SandMass.cs" />
      <Compile Include="Assets\Scripts\Field\SandMassCreator.cs" />
      <Compile Include="Assets\Scripts\Field\SandMassData.cs" />
-     <Compile Include="Assets\Scripts\GameController\CharactorSelect.cs" />
      <Compile Include="Assets\Scripts\GameController\FieldObjectBase.cs" />
      <Compile Include="Assets\Scripts\GameController\GameScaler.cs" />
+     <Compile Include="Assets\Scripts\GameController\ReCharaSelect.cs" />
      <Compile Include="Assets\Scripts\GameController\ReStart.cs" />
      <Compile Include="Assets\Scripts\GameController\Referee.cs" />
      <Compile Include="Assets\Scripts\Item\FixText.cs" />
