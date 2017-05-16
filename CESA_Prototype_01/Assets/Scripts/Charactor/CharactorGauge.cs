@@ -10,16 +10,9 @@ public class CharactorGauge : MonoBehaviour
     [SerializeField] float _fMaxGauge    = 5.0f;
 
     [SerializeField] float _fPutGauge   = 2.0f;
+    public float GetPutGauge { get { return _fPutGauge; } }
     [SerializeField] float _fBreakGauge = 2.0f;
-
-    void Start()
-    {
-        if (!name.Contains("Technical"))
-            return;
-
-        _fPutGauge   = Random.Range(0.0f, 5.0f);
-        _fBreakGauge = Random.Range(0.0f, 5.0f);
-    }
+    public float GetBreakGauge { get { return _fBreakGauge; } }
 
     void Update()
     {

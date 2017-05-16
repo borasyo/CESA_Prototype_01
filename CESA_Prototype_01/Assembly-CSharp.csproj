@@ -54,6 +54,9 @@
      <Compile Include="Assets\Scripts\Charactor\CharactorGauge.cs" />
      <Compile Include="Assets\Scripts\Charactor\CharactorInput.cs" />
      <Compile Include="Assets\Scripts\Charactor\GaugeUI.cs" />
+     <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMass.cs" />
+     <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMassSprite.cs" />
+     <Compile Include="Assets\Scripts\Charactor\Type\PowerType.cs" />
      <Compile Include="Assets\Scripts\Field\FieldCreator.cs" />
      <Compile Include="Assets\Scripts\Field\FieldData.cs" />
      <Compile Include="Assets\Scripts\Field\SandData.cs" />
@@ -61,13 +64,12 @@
      <Compile Include="Assets\Scripts\Field\SandMass.cs" />
      <Compile Include="Assets\Scripts\Field\SandMassCreator.cs" />
      <Compile Include="Assets\Scripts\Field\SandMassData.cs" />
-     <Compile Include="Assets\Scripts\Field\SelectMass.cs" />
-     <Compile Include="Assets\Scripts\Field\SelectMassSprite.cs" />
      <Compile Include="Assets\Scripts\GameController\CharactorSelect.cs" />
      <Compile Include="Assets\Scripts\GameController\FieldObjectBase.cs" />
      <Compile Include="Assets\Scripts\GameController\GameScaler.cs" />
      <Compile Include="Assets\Scripts\GameController\ReStart.cs" />
      <Compile Include="Assets\Scripts\GameController\Referee.cs" />
+     <Compile Include="Assets\Scripts\Item\FixText.cs" />
      <Compile Include="Assets\Scripts\Item\GaugeSpeedUp.cs" />
      <Compile Include="Assets\Scripts\Item\InvincibleItem.cs" />
      <Compile Include="Assets\Scripts\Item\ItemBase.cs" />

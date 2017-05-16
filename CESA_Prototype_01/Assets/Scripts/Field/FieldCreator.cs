@@ -68,7 +68,7 @@ public class FieldCreator : MonoBehaviour
 
         // 左下に生成
         pos = new Vector3(1.0f  * GameScaler._fScale, 0.0f, 1.0f  * GameScaler._fScale);
-        obj = CreateObj(BalanceObj, pos);
+        obj = CreateObj(PowerObj, pos);
         obj.name += "1P";
         _objBaseArray[_nWidth + 1] = obj.GetComponent<FieldObjectBase>();
 

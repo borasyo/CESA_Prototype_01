@@ -19,14 +19,2176 @@ Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototyp
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Prototype_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Prototype_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Prototype_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.030 seconds
+- Completed reload, in  0.029 seconds
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Prototype_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Prototype_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 2.019160 ms
+UnloadTime: 1.184001 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 36dc -> priority: 1 
-  Thread -> id: 100 -> priority: 1 
+  Thread -> id: 194c -> priority: 1 
+  Thread -> id: 540 -> priority: 1 
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:get_transform ()
+  at FieldObjectBase.NormalizePosition () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.NormalizePositionToInt () [0x00000] in <filename unknown>:0 
+  at FieldObjectBase.GetDataNumber () [0x00000] in <filename unknown>:0 
+  at ItemBase.<Start>m__1 (Unit _) [0x00000] in <filename unknown>:0 
+  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
+  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.552994 ms
+
+Unloading 100 unused Assets to reduce memory usage. Loaded Objects now: 2027.
+Total: 0.755358 ms (FindLiveObjects: 0.174617 ms CreateObjectMapping: 0.044642 ms MarkObjects: 0.488691 ms  DeleteObjects: 0.047012 ms)
+

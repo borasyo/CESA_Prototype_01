@@ -28,18 +28,23 @@ public class SpecialItem : ItemBase
     override public void Run()
     {
         _charactor = this.GetComponentInParent<Charactor>();
+        _charactor.RunSpecialMode(true);
+
         _charactorGauge = this.GetComponentInParent<CharactorGauge>();
         _charactorGauge.GaugeMax();
-        //  特殊開始
 
         this.UpdateAsObservable()
             .Subscribe(_ => {
                 _fDuration_Sec -= Time.deltaTime;
 
-                if(_fDuration_Sec > 0.0f)
+                if(_fDuration_Sec > 0.0f
+                    #if DEBUG
+                    && !Input.GetKeyDown(KeyCode.Return)
+                    #endif
+                )
                     return;
-                
-                // 特殊終了
+
+                _charactor.RunSpecialMode(false);
                 Destroy(this.gameObject);
             });
     }

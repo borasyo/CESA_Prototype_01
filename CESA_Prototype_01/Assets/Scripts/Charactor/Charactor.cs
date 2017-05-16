@@ -22,14 +22,16 @@ public class Charactor : FieldObjectBase
         MAX,
     };
     
-    CharactorInput _charactorInput = null;
-    CharactorGauge _charactorGauge = null;
+    protected CharactorInput _charactorInput = null;
+    protected CharactorGauge _charactorGauge = null;
 
     [SerializeField] float _moveAmount_Sec = 0.5f;
     int _nOldNumber = 0;
     eDirection _nowDirection = eDirection.FORWARD;
 
     GameObject _sandItem = null;
+
+    #region Event
 
     // Use this for initialization
     void Start()
@@ -47,6 +49,22 @@ public class Charactor : FieldObjectBase
     {
         _nOldNumber = GetDataNumber();
 
+        MoveUpdate();
+
+        DirUpdate();
+        DataUpdate();
+
+        //  アクション
+        ItemPut();
+        ItemBreak();
+    }
+
+    #endregion
+
+    #region Move
+
+    void MoveUpdate()
+    {
         //  移動
         if (MoveCheck(eDirection.FORWARD))
         {
@@ -64,56 +82,13 @@ public class Charactor : FieldObjectBase
         {
             transform.position -= new Vector3(_moveAmount_Sec, 0,0) * Time.deltaTime;
         }
-
-        DirUpdate();
-        DataUpdate();
-
-        //  アクション
-        ItemPut();
-        ItemBreak();
-    }
-
-    void ItemPut()
-    {
-        if (!_charactorGauge.PutGaugeCheck() || 
-            !_charactorInput.GetActionInput(eAction.PUT))
-            return;
-
-        int dirNumber = GetDataNumberForDir();
-        if (dirNumber < 0 || GameScaler._nWidth * GameScaler._nHeight < dirNumber)
-            return;
-
-        FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
-        if (obj)
-            return;
-
-        GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumber), Quaternion.identity);
-        FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumber);
-//        item.GetComponent<SandItem>().SetType(this.name);
-        _charactorGauge.PutAction();
-    }
-
-    void ItemBreak()
-    {
-        if (!_charactorGauge.BreakGaugeCheck() || 
-            !_charactorInput.GetActionInput(eAction.BREAK))
-            return;
-
-        FieldObjectBase obj = FieldData.Instance.GetObjData(GetDataNumberForDir());
-
-        if (!obj || obj.tag != "SandItem")
-            return;
-
-        FieldData.Instance.SetObjData(null, GetDataNumberForDir());
-        Destroy(obj.gameObject);
-        _charactorGauge.BreakAction();
     }
 
     bool MoveCheck(eDirection dir)
     {
         if (!_charactorInput.GetMoveInput(dir))
             return false;
-        
+
         _nowDirection = dir;
         int number = GetDataNumber();
 
@@ -161,6 +136,55 @@ public class Charactor : FieldObjectBase
         }
 
         return true;
+    }
+      
+    public void ChangeSpeed(float per)
+    {
+        _moveAmount_Sec *= per;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        _moveAmount_Sec = speed;
+    }
+
+
+    #endregion
+
+    void ItemPut()
+    {
+        if (!_charactorGauge.PutGaugeCheck() || 
+            !_charactorInput.GetActionInput(eAction.PUT))
+            return;
+
+        int dirNumber = GetDataNumberForDir();
+        if (dirNumber < 0 || GameScaler._nWidth * GameScaler._nHeight < dirNumber)
+            return;
+
+        FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
+        if (obj)
+            return;
+
+        GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumber), Quaternion.identity);
+        FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumber);
+//        item.GetComponent<SandItem>().SetType(this.name);
+        _charactorGauge.PutAction();
+    }
+
+    virtual protected void ItemBreak()
+    {
+        if (!_charactorGauge.BreakGaugeCheck() || 
+            !_charactorInput.GetActionInput(eAction.BREAK))
+            return;
+
+        FieldObjectBase obj = FieldData.Instance.GetObjData(GetDataNumberForDir());
+
+        if (!obj || obj.tag != "SandItem")
+            return;
+
+        FieldData.Instance.SetObjData(null, GetDataNumberForDir());
+        Destroy(obj.gameObject);
+        _charactorGauge.BreakAction();
     }
 
     void DirUpdate()
@@ -211,13 +235,8 @@ public class Charactor : FieldObjectBase
         return number;
     }
 
-    public void ChangeSpeed(float per)
+    virtual public void RunSpecialMode(bool IsRun)
     {
-        _moveAmount_Sec *= per;
-    }
-
-    public void SetSpeed(float speed)
-    {
-        _moveAmount_Sec = speed;
+        //  継承先で記述
     }
 }
