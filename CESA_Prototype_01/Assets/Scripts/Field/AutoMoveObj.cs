@@ -13,7 +13,7 @@ public class AutoMoveObj : MonoBehaviour
     {
         _fieldObjBase = GetComponent<FieldObjectBase>();
         AutoMoveObj me = GetComponent<AutoMoveObj>(); 
-        transform.name += "Kick";
+        transform.name += "Move";
 
         this.UpdateAsObservable()
             .Where(_ => me)
@@ -32,7 +32,7 @@ public class AutoMoveObj : MonoBehaviour
                 else
                 {
                     transform.position = _fieldObjBase.GetPosForNumber();
-                    transform.name.Replace("Kick", "");
+                    transform.name = transform.name.Replace("Move", "");
                     Destroy(me);
                 }
             });

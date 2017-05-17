@@ -8,7 +8,7 @@ using UniRx.Triggers;
 public class TechnicalType : Charactor 
 {
     [SerializeField] float _fKickMoveAmount_Sec = 1.0f;
-    [SerializeField] bool _IsAutoBlock = true;
+    [SerializeField] bool _IsAuthBlock = true;
 
     void Start()
     {
@@ -32,13 +32,13 @@ public class TechnicalType : Charactor
         if (!obj)
             return;
 
-        if (obj.name.Contains("Kick"))
+        if (obj.name.Contains("Move"))
             return;
 
         if (obj.tag == "Charactor")
             return;
 
-        if (obj.tag == "Block" && (!_IsAutoBlock || obj.name.Contains("Fence")))
+        if (obj.tag == "Block" && (!_IsAuthBlock || obj.name.Contains("Fence")))
             return;
 
         if (!PushObj())
