@@ -8,18 +8,18 @@ using UniRx.Triggers;
 public class SelectMass : FieldObjectBase 
 {
     Transform _normalizeTrans = null;
-    Charactor _charactor = null;
-    CharactorGauge _charactorGauge = null;
+    protected Charactor _charactor = null;
+    protected CharactorGauge _charactorGauge = null;
 
-    SpriteRenderer _SpRend = null;
+    protected SpriteRenderer _SpRend = null;
     TriangleWave<float> _triangleWaveFloat = null;
     TriangleWave<Vector3> _triangleWaveVector3 = null;
 
     [SerializeField] float _fInterval_Sec = 0.5f;
 
-    [SerializeField] Color _notColor   = new Color(1,1,1,1);
-    [SerializeField] Color _putColor   = new Color(1,1,1,1);
-    [SerializeField] Color _crashColor = new Color(1,1,1,1);
+    [SerializeField] protected Color _notColor   = new Color(1,1,1,1);
+    [SerializeField] protected Color _putColor   = new Color(1,1,1,1);
+    [SerializeField] protected Color _crashColor = new Color(1,1,1,1);
 
     void Start()
     {
@@ -63,7 +63,7 @@ public class SelectMass : FieldObjectBase
         _crashColor.a = alpha;
     }
 
-    void ColorCheck()
+    virtual protected void ColorCheck()
     {
         int number = _charactor.GetDataNumberForDir();
         transform.position = GetPosForNumber(number);

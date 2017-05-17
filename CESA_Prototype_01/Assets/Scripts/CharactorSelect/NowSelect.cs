@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class NowSelect : MonoBehaviour 
 {
     CharactorSelect.eCharaType _charaType = CharactorSelect.eCharaType.BALANCE;
-    public CharactorSelect.eCharaType GetCharaType {  get { return _charaType; } }
+    public CharactorSelect.eCharaType CharaType {  get { return _charaType; } set { _charaType = value; } }
 
     Text _text = null;
 
@@ -21,12 +21,14 @@ public class NowSelect : MonoBehaviour
             _charaType = CharactorSelect.eCharaType.NONE;
 
         _text = GetComponent<Text>();
-        TextUpdate();
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
+        //  テキスト更新
+        TextUpdate();
+
         //  Input
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -64,12 +66,9 @@ public class NowSelect : MonoBehaviour
                 _charaType = (CharactorSelect.eCharaType)(CharactorSelect.eCharaType.MAX - 1);
             }
         }
-
-        //  テキスト更新
-        TextUpdate();
 	}
 
-    void TextUpdate()
+    public void TextUpdate()
     {
         switch (_charaType)
         {

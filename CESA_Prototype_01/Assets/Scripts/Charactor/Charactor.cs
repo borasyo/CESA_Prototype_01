@@ -31,6 +31,7 @@ public class Charactor : FieldObjectBase
     protected eDirection _nowDirection = eDirection.FORWARD;
     protected GameObject _sandItem = null;
     protected bool _IsSpecialMode = false;
+    public bool GetSpecialModeFlg { get { return _IsSpecialMode; } }
 
     #region Event
 

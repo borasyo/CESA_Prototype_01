@@ -7,7 +7,7 @@ public class StageScaleSelect : MonoBehaviour
 {
     [SerializeField] bool _IsWidth = true;
     Text _text = null;
-    [SerializeField] int _size = 0;
+    int _size = 0;
     public int GetSize { get { return _size; } }
 
     float _fNowInterval = 0.0f;
@@ -16,6 +16,10 @@ public class StageScaleSelect : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        if (_IsWidth)
+            _size = GameScaler._nWidth  - 2;
+        else
+            _size = GameScaler._nHeight - 2;
         _text = GetComponent<Text>();
         _fNowInterval = _fInterval;
 	}
@@ -44,6 +48,11 @@ public class StageScaleSelect : MonoBehaviour
                     _size = 6;
             }
 
+            // 毎回チェック
+            if (_size < GameScaler._nHeight - 2)
+                _size = GameScaler._nHeight - 2;
+
+            GameScaler._nWidth = _size + 2;
             _text.text = "Width : " + _size;
         }
         else
@@ -63,6 +72,7 @@ public class StageScaleSelect : MonoBehaviour
                     _size = 5;
             }
 
+            GameScaler._nHeight = _size + 2;
             _text.text = "Height : " + _size;
         }
 	}

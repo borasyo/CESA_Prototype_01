@@ -14,6 +14,18 @@ public class CharactorSelect : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        for (int i = 0; i < SelectCharas.Length; i++)
+        {
+            if (!SelectCharas[i])
+            {
+                _nowSelectDatas[i].TextUpdate();
+                continue;
+            }
+
+            _nowSelectDatas[i].CharaType = SearchCharaType(SelectCharas[i]);
+            _nowSelectDatas[i].TextUpdate();
+        }
+
         // Scene遷移
         this.UpdateAsObservable()
             .Where(_ => SceneManager.GetActiveScene().name == "CharactorSelect")
@@ -68,7 +80,7 @@ public class CharactorSelect : MonoBehaviour
 
         for (int i = 0; i < _nowSelectDatas.Length; i++)
         {
-            switch (_nowSelectDatas[i].GetCharaType)
+            switch (_nowSelectDatas[i].CharaType)
             {
                 case eCharaType.NONE:
                     SelectCharas[i] = null;
@@ -100,5 +112,29 @@ public class CharactorSelect : MonoBehaviour
         }
 
         _nowSelectDatas[nSelect].enabled = true;
+    }
+
+    eCharaType SearchCharaType(GameObject charaData)
+    {
+        eCharaType type = eCharaType.NONE;
+
+        if (charaData.name.Contains("Balance"))
+        {
+            type = eCharaType.BALANCE;
+        }
+        else if (charaData.name.Contains("Power"))
+        {
+            type = eCharaType.POWER;
+        }
+        else if (charaData.name.Contains("Speed"))
+        {
+            type = eCharaType.SPEED;
+        }
+        else if (charaData.name.Contains("Technical"))
+        {
+            type = eCharaType.TECHNICAL;
+        }
+
+        return type;
     }
 }

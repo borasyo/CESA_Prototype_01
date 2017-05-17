@@ -54,6 +54,8 @@
      <Compile Include="Assets\Scripts\Charactor\CharactorGauge.cs" />
      <Compile Include="Assets\Scripts\Charactor\CharactorInput.cs" />
      <Compile Include="Assets\Scripts\Charactor\GaugeUI.cs" />
+     <Compile Include="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMass.cs" />
+     <Compile Include="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMassSprite.cs" />
      <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMass.cs" />
      <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMassSprite.cs" />
      <Compile Include="Assets\Scripts\Charactor\Type\BalanceType.cs" />

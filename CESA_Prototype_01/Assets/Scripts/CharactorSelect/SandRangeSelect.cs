@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SandRangeSelect : MonoBehaviour
 {
     Text _text = null;
-    [SerializeField] int _size = 1;
+    int _size = 1;
     [SerializeField] StageScaleSelect _width;
     [SerializeField] StageScaleSelect _height;
 
@@ -16,6 +16,7 @@ public class SandRangeSelect : MonoBehaviour
     // Use this for initialization
     void Start () 
     {
+        _size = GameScaler._nSandRange;
         _text = GetComponent<Text>();
         _fNowInterval = _fInterval;
     }

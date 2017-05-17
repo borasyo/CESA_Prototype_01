@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SelectMassSprite : MonoBehaviour 
 {
-    SpriteRenderer _SpRend = null;
-    Charactor _charactor = null;
-    CharactorGauge _charactorGauge = null;
+    protected SpriteRenderer _SpRend = null;
+    protected Charactor _charactor = null;
+    protected CharactorGauge _charactorGauge = null;
 
-    Sprite _defaultSprite = null;
-    Sprite _notSprite = null;
+    protected Sprite _defaultSprite = null;
+    protected Sprite _notSprite = null;
 
 	// Use this for initialization
 	void Start () 
@@ -28,7 +28,7 @@ public class SelectMassSprite : MonoBehaviour
         SpriteCheck();
 	}
 
-    void SpriteCheck()
+    virtual protected void SpriteCheck()
     {
         int number = _charactor.GetDataNumberForDir();
         _SpRend.sprite = _defaultSprite;
