@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Charactor : FieldObjectBase
 {
+    #region Enum
+
+    public enum eCharaType 
+    {
+        BALANCE = 0,
+        POWER,
+        SPEED,
+        TECHNICAL,
+        MAX
+    };
+
     public enum eDirection
     {
         FORWARD = 0,
@@ -21,27 +32,39 @@ public class Charactor : FieldObjectBase
 
         MAX,
     };
-    
+
+    #endregion
+
+    #region Member
+
     protected CharactorInput _charactorInput = null;
     protected CharactorGauge _charactorGauge = null;
 
     [SerializeField] float _moveAmount_Sec = 0.5f;
     int _nOldNumber = 0;
 
+    public eCharaType _charaType { get; protected set; }
     protected eDirection _nowDirection = eDirection.FORWARD;
     protected GameObject _sandItem = null;
     protected bool _IsSpecialMode = false;
     public bool GetSpecialModeFlg { get { return _IsSpecialMode; } }
+
+    # endregion
 
     #region Event
 
     // Use this for initialization
     public void Start()
     {
-        _charactorInput = GetComponent<CharactorInput>();
+        // Input生成
+        if (this.name.Contains("CPU")) 
+            _charactorInput = this.gameObject.AddComponent<CharactorInputAI>();
+        else
+            _charactorInput = this.gameObject.AddComponent<CharactorInputUser>();
+        
         _charactorGauge = GetComponent<CharactorGauge>();
 
-        string charaName = this.name.Remove(0, this.name.IndexOf(")") + 1);   //  オブジェクトの名前からxP以外を削除した文字列を作成
+        string charaName = this.name[this.name.IndexOf("Player") - 1].ToString();
         _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
         _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
     }
@@ -192,6 +215,8 @@ public class Charactor : FieldObjectBase
 
     #endregion
 
+    #region Other
+
     void DirUpdate()
     {
         switch (_nowDirection)
@@ -240,8 +265,14 @@ public class Charactor : FieldObjectBase
         return number;
     }
 
+    #endregion
+
+    #region VirtualMethod
+
     virtual public void RunSpecialMode(bool IsRun)
     {
         //  継承先で記述
     }
+
+    #endregion
 }

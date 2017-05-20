@@ -1,22 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Field\AutoMoveObj.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Charactor\AI\EnemyAI.cs">
     <Files>
-      <File FileName="Assets\Scripts\Charactor\SelectMass\SelectMass.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMass.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\SelectMass\SelectMassSprite.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMassSprite.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\Charactor.cs" Line="15" Column="7" />
-      <File FileName="Assets\Scripts\Charactor\Type\PowerType.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\Type\SpeedType.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharactorSelect\SandRangeSelect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharactorSelect\StageScaleSelect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController\GameScaler.cs" Line="14" Column="1" />
-      <File FileName="Assets\Scripts\CharactorSelect\CharactorSelect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharactorSelect\NowSelect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Charactor\Type\TechnicalType.cs" Line="111" Column="6" />
-      <File FileName="Assets\Scripts\Field\AutoMoveObj.cs" Line="23" Column="18" />
-      <File FileName="Assets\Scripts\Item\InvincibleItem.cs" Line="18" Column="34" />
+      <File FileName="Assets\Scripts\Charactor\Charactor.cs" Line="55" Column="24" />
+      <File FileName="Assets\Scripts\Field\SandData.cs" Line="8" Column="17" />
+      <File FileName="Assets\Scripts\Charactor\CharactorInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Charactor\CharactorInputUser.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Charactor\CharactorInputAI.cs" Line="14" Column="17" />
+      <File FileName="Assets\Scripts\Field\FieldCreator.cs" Line="71" Column="43" />
+      <File FileName="Assets\Scripts\Charactor\Type\BalanceType.cs" Line="34" Column="10" />
+      <File FileName="Assets\Scripts\Charactor\AI\EnemyAI.cs" Line="20" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

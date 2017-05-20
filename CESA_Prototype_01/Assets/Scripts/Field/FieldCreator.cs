@@ -50,7 +50,9 @@ public class FieldCreator : MonoBehaviour
                     _objBaseArray[x + (z * _nWidth)] = block.GetComponent<FieldObjectBase>();
                 }
 
-                CreateObj(TileObj, createPos).transform.eulerAngles = new Vector3(90,0,0);
+                GameObject tile = CreateObj(TileObj, createPos);
+                tile.transform.eulerAngles = new Vector3(90,0,0);
+                //tile.GetComponentInChildren<TextMesh>().text = (z * GameScaler._nWidth + x).ToString();
             }
         } 
     }
@@ -67,7 +69,7 @@ public class FieldCreator : MonoBehaviour
 
         pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
         obj = CreateObj(SelectCharas[0], pos);
-        obj.name += "1P";
+        obj.name += ",1Player";
         obj.transform.eulerAngles = new Vector3(0, 90, 0);
         _objBaseArray[_nWidth + 1] = obj.GetComponent<FieldObjectBase>();
 
@@ -77,7 +79,7 @@ public class FieldCreator : MonoBehaviour
         
         pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
         obj = CreateObj(SelectCharas[1], pos);
-        obj.name += "2P";
+        obj.name += ",2Player" + ",CPU";
         obj.transform.eulerAngles = new Vector3(0, 270, 0);
         _objBaseArray[_nWidth * (_nHeight - 2) + _nWidth - 2] = obj.GetComponent<FieldObjectBase>();
 
@@ -86,7 +88,7 @@ public class FieldCreator : MonoBehaviour
         {
             pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
             obj = CreateObj(SelectCharas[2], pos);
-            obj.name += "3P";
+            obj.name += ",3Player";
             obj.transform.eulerAngles = new Vector3(0, 90, 0);
             _objBaseArray[1 + _nWidth * (_nHeight - 2)] = obj.GetComponent<FieldObjectBase>();
         }
@@ -96,7 +98,7 @@ public class FieldCreator : MonoBehaviour
         {
             pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
             obj = CreateObj(SelectCharas[3], pos);
-            obj.name += "4P";
+            obj.name += ",4Player";
             obj.transform.eulerAngles = new Vector3(0, 270, 0);
             _objBaseArray[(_nWidth - 2) + _nWidth] = obj.GetComponent<FieldObjectBase>();
         }

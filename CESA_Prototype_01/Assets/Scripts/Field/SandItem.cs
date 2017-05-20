@@ -23,7 +23,7 @@ public class SandItem : FieldObjectBase
         if (_SandItemHolder)
             return;
         
-        _SandItemHolder = new GameObject("SandItemHolder");
+        _SandItemHolder = new GameObject ("SandItemHolder");
     }
 
     void Start()

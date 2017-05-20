@@ -12,6 +12,7 @@ public class TechnicalType : Charactor
 
     void Start()
     {
+        _charaType = eCharaType.TECHNICAL;
         base.Start();
 
         this.UpdateAsObservable()

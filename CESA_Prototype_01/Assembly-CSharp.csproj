@@ -49,10 +49,13 @@
      <Compile Include="Assets\Elementals\Demo\Scripts\GE_Elementals_Demo.cs" />
      <Compile Include="Assets\Scripts\Camera\PullsObject.cs" />
      <Compile Include="Assets\Scripts\Camera\SetCameraPos.cs" />
+     <Compile Include="Assets\Scripts\Charactor\AI\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\Charactor\CharaMass.cs" />
      <Compile Include="Assets\Scripts\Charactor\Charactor.cs" />
      <Compile Include="Assets\Scripts\Charactor\CharactorGauge.cs" />
      <Compile Include="Assets\Scripts\Charactor\CharactorInput.cs" />
+     <Compile Include="Assets\Scripts\Charactor\CharactorInputAI.cs" />
+     <Compile Include="Assets\Scripts\Charactor\CharactorInputUser.cs" />
      <Compile Include="Assets\Scripts\Charactor\GaugeUI.cs" />
      <Compile Include="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMass.cs" />
      <Compile Include="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMassSprite.cs" />

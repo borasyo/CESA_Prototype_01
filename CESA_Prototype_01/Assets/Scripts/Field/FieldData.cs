@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class FieldData : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class FieldData : MonoBehaviour
     FieldObjectBase[] _ObjectDataArray = null;
     public FieldObjectBase[] GetObjDataArray { get { return _ObjectDataArray; } }
 
+    bool _IsChangeField = false;            //  Fieldに変更があったか
+    bool _IsChangeFieldWithChara = false;   //  キャラを含めたFieldに変更があったか
+    FieldObjectBase[] _OldObjectDataArray = null;
+
     List<FieldObjectBase> _CharaList = new List<FieldObjectBase>();
     public List<FieldObjectBase> GetCharactors { get { return _CharaList; } } 
 
@@ -48,14 +53,13 @@ public class FieldData : MonoBehaviour
     void Awake()
     {
         //  データ配列生成
-        _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
+        _ObjectDataArray = _OldObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
 
         //  フィールドにオブジェクトを生成し、データを格納
         FieldCreator creator = new FieldCreator();
-        _ObjectDataArray = creator.Create(GameScaler._nWidth, GameScaler._nHeight);
+        _ObjectDataArray = _OldObjectDataArray = creator.Create(GameScaler._nWidth, GameScaler._nHeight);
       
         CreateCharaList();
-        //DebugCheck();
     }
 
     void CreateCharaList()
@@ -74,6 +78,33 @@ public class FieldData : MonoBehaviour
     }
 
     #endregion
+
+    void Update()
+    {
+        //  Fieldに変化があったかをチェック
+        _IsChangeFieldWithChara = !_ObjectDataArray.SequenceEqual(_OldObjectDataArray);
+
+        //  Charaを除いたFieldに変化があったかをチェック
+        for(int i = 0; i < _ObjectDataArray.Length; i++)
+        {
+            if (!_ObjectDataArray[i])
+                continue;
+
+            if (_ObjectDataArray[i].tag == "Charactor" || _OldObjectDataArray[i].tag == "Charactor")
+                continue;
+
+            if (_ObjectDataArray[i] == _OldObjectDataArray[i])
+                continue;
+
+            _IsChangeField = true;
+            break;
+        }
+        Debug.Log("ChangeField : " + _IsChangeField);
+        Debug.Log("ChangeFieldWithChara : " + _IsChangeFieldWithChara);
+
+        //  保存
+        _OldObjectDataArray = _ObjectDataArray;
+    }
 
     //  データを格納
     public void SetObjData(FieldObjectBase objBase, int number)

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class SpeedType : Charactor 
 {
+    void Start()
+    {
+        _charaType = eCharaType.SPEED;
+        base.Start();
+    }
+
     override protected bool MoveCheck(eDirection dir)
     {
         if (!_charactorInput.GetMoveInput(dir))

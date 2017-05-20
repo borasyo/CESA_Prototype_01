@@ -14,18 +14,18 @@ public class FieldObjectBase : MonoBehaviour
     }
 
     //  1座標1マスの値に変換
-    protected Vector3 NormalizePosition()
+    public Vector3 NormalizePosition()
     {
         return transform.position * (1.0f / GameScaler._fScale);
     }
 
-    protected Vector3 NormalizePosition(Vector3 pos)
+    public Vector3 NormalizePosition(Vector3 pos)
     {
         return pos * (1.0f / GameScaler._fScale);
     }
 
     //  1座標1マスの値に変換し、整数化
-    protected Vector3 NormalizePositionToInt()
+    public Vector3 NormalizePositionToInt()
     {
         Vector3 npos = NormalizePosition();
         npos.x = Mathf.FloorToInt(npos.x + 0.5f);
@@ -34,7 +34,7 @@ public class FieldObjectBase : MonoBehaviour
         return npos;
     }
 
-    protected Vector3 NormalizePositionToInt(Vector3 pos)
+    public Vector3 NormalizePositionToInt(Vector3 pos)
     {
         Vector3 npos = NormalizePosition(pos);
         npos.x = Mathf.FloorToInt(npos.x + 0.5f);
@@ -51,7 +51,7 @@ public class FieldObjectBase : MonoBehaviour
         return (int)(npos.x + (npos.z * GameScaler._nWidth));
     }
 
-    protected int GetDataNumber(Vector3 pos)
+    public int GetDataNumber(Vector3 pos)
     {
         Vector3 npos = NormalizePositionToInt(pos);
 
@@ -67,7 +67,7 @@ public class FieldObjectBase : MonoBehaviour
         return new Vector3(x,0,z);
     }
 
-    protected Vector3 GetPosForNumber(int number)
+    public Vector3 GetPosForNumber(int number)
     {
         float x, z;
         x = (float)((number % GameScaler._nWidth) * GameScaler._fScale);

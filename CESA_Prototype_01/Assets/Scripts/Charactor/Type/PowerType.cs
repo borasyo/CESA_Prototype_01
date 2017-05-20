@@ -6,6 +6,12 @@ public class PowerType : Charactor
 {
     float _InitBreakGauge;
 
+    void Start()
+    {
+        _charaType = eCharaType.POWER;
+        base.Start();
+    }
+
     override protected void ItemBreak()
     {
         if (!_charactorGauge.BreakGaugeCheck() || 

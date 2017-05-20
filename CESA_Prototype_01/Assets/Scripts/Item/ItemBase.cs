@@ -7,11 +7,17 @@ using UniRx.Triggers;
 
 public class ItemBase : FieldObjectBase
 {
+    static GameObject _ItemHolder = null;
+
     protected bool _IsCollision = false;
     [SerializeField] float _fLife = 10.0f;
 
     public void Start()
     {
+        if(!_ItemHolder)
+            _ItemHolder = GameObject.Find("ItemHolder");
+        transform.SetParent(_ItemHolder.transform);
+
         //  CollisionCheck
         this.UpdateAsObservable()
             .Where(_ => !_IsCollision)

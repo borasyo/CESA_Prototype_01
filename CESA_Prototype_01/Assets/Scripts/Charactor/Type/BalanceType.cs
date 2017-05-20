@@ -6,6 +6,12 @@ public class BalanceType : Charactor
 {
     [SerializeField] int _nNum = 3;
 
+    void Start()
+    {
+        _charaType = eCharaType.BALANCE;
+        base.Start();
+    }
+
     override protected void ItemPut()
     {
         if (!_charactorGauge.PutGaugeCheck() || 
