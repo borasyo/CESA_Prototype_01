@@ -238,8 +238,12 @@ public class Charactor : FieldObjectBase
 
     void DataUpdate()
     {
+        int nowNumber = GetDataNumber();
+        if (_nOldNumber == nowNumber)
+            return;
+
         FieldData.Instance.SetObjData(null, _nOldNumber);
-        FieldData.Instance.SetObjData(this, GetDataNumber());
+        FieldData.Instance.SetObjData(this, nowNumber);
     }
         
     //  向いている方向を元にデータ番号を取得

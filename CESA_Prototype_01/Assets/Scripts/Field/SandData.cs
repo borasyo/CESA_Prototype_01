@@ -55,6 +55,10 @@ public class SandData : MonoBehaviour
 
     void Update()
     {
+        //  Fieldに変化があったかを確認
+        if (!FieldData.Instance.ChangeField)
+            return;
+
         //  初期化
         _SandDataList.Clear();
 

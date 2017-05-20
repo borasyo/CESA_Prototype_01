@@ -42,8 +42,9 @@ public class FieldData : MonoBehaviour
     public FieldObjectBase[] GetObjDataArray { get { return _ObjectDataArray; } }
 
     bool _IsChangeField = false;            //  Fieldに変更があったか
+    public bool ChangeField { get { return _IsChangeField; } }
     bool _IsChangeFieldWithChara = false;   //  キャラを含めたFieldに変更があったか
-    FieldObjectBase[] _OldObjectDataArray = null;
+    public bool ChangeFieldWithChara { get { return _IsChangeFieldWithChara; } }
 
     List<FieldObjectBase> _CharaList = new List<FieldObjectBase>();
     public List<FieldObjectBase> GetCharactors { get { return _CharaList; } } 
@@ -53,12 +54,12 @@ public class FieldData : MonoBehaviour
     void Awake()
     {
         //  データ配列生成
-        _ObjectDataArray = _OldObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
+        _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
 
         //  フィールドにオブジェクトを生成し、データを格納
         FieldCreator creator = new FieldCreator();
-        _ObjectDataArray = _OldObjectDataArray = creator.Create(GameScaler._nWidth, GameScaler._nHeight);
-      
+        _ObjectDataArray = creator.Create(GameScaler._nWidth, GameScaler._nHeight);
+
         CreateCharaList();
     }
 
@@ -81,35 +82,24 @@ public class FieldData : MonoBehaviour
 
     void Update()
     {
-        //  Fieldに変化があったかをチェック
-        _IsChangeFieldWithChara = !_ObjectDataArray.SequenceEqual(_OldObjectDataArray);
-
-        //  Charaを除いたFieldに変化があったかをチェック
-        for(int i = 0; i < _ObjectDataArray.Length; i++)
-        {
-            if (!_ObjectDataArray[i])
-                continue;
-
-            if (_ObjectDataArray[i].tag == "Charactor" || _OldObjectDataArray[i].tag == "Charactor")
-                continue;
-
-            if (_ObjectDataArray[i] == _OldObjectDataArray[i])
-                continue;
-
-            _IsChangeField = true;
-            break;
-        }
-//        Debug.Log("ChangeField : " + _IsChangeField);
-//        Debug.Log("ChangeFieldWithChara : " + _IsChangeFieldWithChara);
-
-        //  保存
-        _OldObjectDataArray = _ObjectDataArray;
+        _IsChangeField = _IsChangeFieldWithChara = false;
     }
 
     //  データを格納
-    public void SetObjData(FieldObjectBase objBase, int number)
+    public void SetObjData(FieldObjectBase setObj, int number)
     {
-        _ObjectDataArray[number] = objBase;
+        FieldObjectBase obj = _ObjectDataArray[number];
+        if (obj != setObj)
+        {
+            _IsChangeFieldWithChara = true;
+
+            if (!_IsChangeField &&
+               (!obj || obj.tag != "Charactor") &&
+               (!setObj || setObj.tag != "Charactor"))    //  キャラの場合は変更しない
+                _IsChangeField = true;
+        }
+
+        _ObjectDataArray[number] = setObj;
     }
 
     //  データを取得
