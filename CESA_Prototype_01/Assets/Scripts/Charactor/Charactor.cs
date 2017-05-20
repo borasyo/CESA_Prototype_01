@@ -144,19 +144,19 @@ public class Charactor : FieldObjectBase
             switch (dir)
             {
                 case eDirection.FORWARD:
-                    distance = NormalizePosition(checkData.transform.position).z - NormalizePosition().z;
+                    distance = checkData.GetPosForNumber().z - transform.position.z;
                     break;
                 case eDirection.BACK:
-                    distance = NormalizePosition().z - NormalizePosition(checkData.transform.position).z;
+                    distance = transform.position.z - checkData.GetPosForNumber().z;
                     break;
                 case eDirection.RIGHT:
-                    distance = NormalizePosition(checkData.transform.position).x - NormalizePosition().x;
+                    distance = checkData.GetPosForNumber().x - transform.position.x;
                     break;
                 case eDirection.LEFT:
-                    distance = NormalizePosition().x - NormalizePosition(checkData.transform.position).x;
+                    distance = transform.position.x - checkData.GetPosForNumber().x;
                     break;
             }
-            if (distance <= 1.0f)
+            if (distance <= GameScaler._fScale)
                 return false;
         }
 

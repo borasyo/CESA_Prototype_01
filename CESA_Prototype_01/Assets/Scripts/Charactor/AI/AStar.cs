@@ -87,162 +87,147 @@ public class AStar : MonoBehaviour {
 		}
 	}
 
-	/// A-starノード管理.
-	class ANodeMgr
+    /// A-starノード管理.
+    class ANodeMgr
     {
-        /// 地形レイヤー.
-        Layer2D _layer;
-		/// オープンリスト.
-		List<ANode> _openList = null;
-		/// ノードインスタンス管理.
-		Dictionary<int,ANode> _pool = null;
-		/// ゴール座標.
-		int _xgoal = 0;
-		int _zgoal = 0;
-        /// オブジェクトネーム
-        string _name;
-		public ANodeMgr(string name, Layer2D layer, int xgoal, int zgoal) {
-            _layer = layer;
+        /// 自身のポインタ
+        GameObject _me;
+        /// オープンリスト.
+        List<ANode> _openList = null;
+        /// ノードインスタンス管理.
+        Dictionary<int, ANode> _pool = null;
+        /// ゴール座標.
+        int _xgoal = 0;
+        int _zgoal = 0;
+
+        public ANodeMgr(GameObject me, int xgoal, int zgoal)
+        {
+            _me = me;
             _openList = new List<ANode>();
-			_pool = new Dictionary<int, ANode>();
-			_xgoal = xgoal;
-			_zgoal = zgoal;
-            _name = name;
-
+            _pool = new Dictionary<int, ANode>();
+            _xgoal = xgoal;
+            _zgoal = zgoal;
         }
-		/// ノード生成する.
-		public ANode GetNode(int x, int z) {
-			var idx = _layer.ToIdx(x, z);
-			if(_pool.ContainsKey(idx)) {
-				// 既に存在しているのでプーリングから取得.
-				return _pool[idx];
-			}
+        /// ノード生成する.
+        public ANode GetNode(int x, int z)
+        {
+            int idx = FieldDataChecker.Instance.ToIdx(x, z);
+            if (_pool.ContainsKey(idx))
+            {
+                // 既に存在しているのでプーリングから取得.
+                return _pool[idx];
+            }
 
-			// ないので新規作成.
-			var node = new ANode(x, z);
-			_pool[idx] = node;
-			// ヒューリスティック・コストを計算する.
-			node.CalcHeuristic(_xgoal, _zgoal);
-			return node;
-		}
-		/// ノードをオープンリストに追加する.
-		public void AddOpenList(ANode node) {
-			_openList.Add(node);
-		}
-		/// ノードをオープンリストから削除する.
-		public void RemoveOpenList(ANode node) {
-			_openList.Remove(node);
-		}
-		/// 指定の座標にあるノードをオープンする.
-		public ANode OpenNode(int x, int z, int cost, ANode parent) {
-			// 座標をチェック.
-			if(_layer.IsOutOfRange(x, z)) {
-				// 領域外.
-				return null;
-			}
-			if(_layer.Get(x, z)) {
-				// 通過できない.
-				return null;
-			}
+            // ないので新規作成.
+            var node = new ANode(x, z);
+            _pool[idx] = node;
+            // ヒューリスティック・コストを計算する.
+            node.CalcHeuristic(_xgoal, _zgoal);
+            return node;
+        }
+        /// ノードをオープンリストに追加する.
+        public void AddOpenList(ANode node)
+        {
+            _openList.Add(node);
+        }
+        /// ノードをオープンリストから削除する.
+        public void RemoveOpenList(ANode node)
+        {
+            _openList.Remove(node);
+        }
+        /// 指定の座標にあるノードをオープンする.
+        public ANode OpenNode(int x, int z, int cost, ANode parent)
+        {
+            // 座標をチェック.
+            if (FieldDataChecker.Instance.IsOutOfRange(x, z))
+            {
+                // 領域外.
+                return null;
+            }
+            if (FieldDataChecker.Instance.CheckObstacleObj(x, z, _me))
+            {
+                // 通過できない.
+                return null;
+            }
             // SandCheck
-            if(_layer.SandCheck(x, z, _name[_name.IndexOf("Player") - 1].ToString()))
+            if (FieldDataChecker.Instance.SandCheck(x, z, _me.name))
             {
                 // 通過できない
                 return null;
             }
-			// ノードを取得する.
-			var node = GetNode(x, z);
-			if(node.IsNone() == false) {
-				// 既にOpenしているので何もしない
-				return null;
-			}
+            // ノードを取得する.
+            var node = GetNode(x, z);
+            if (node.IsNone() == false)
+            {
+                // 既にOpenしているので何もしない
+                return null;
+            }
 
-			// Openする.
-			node.Open(parent, cost);
-			AddOpenList(node);
+            // Openする.
+            node.Open(parent, cost);
+            AddOpenList(node);
 
-			return node;
-		}
+            return node;
+        }
 
-		/// 周りをOpenする.
-		public void OpenAround(ANode parent) {
-			var xbase = parent.X; // 基準座標(X).
-			var zbase = parent.Z; // 基準座標(Y).
-			var cost = parent.Cost; // コスト.
-			cost += 1; // 一歩進むので+1する.
-			
+        /// 周りをOpenする.
+        public void OpenAround(ANode parent)
+        {
+            var xbase = parent.X; // 基準座標(X).
+            var zbase = parent.Z; // 基準座標(Y).
+            var cost = parent.Cost; // コスト.
+            cost += 1; // 一歩進むので+1する.
+
             // 4方向を開く.
-			var x = xbase;
-			var z = zbase;
-			OpenNode (x-1, z,   cost, parent); // 右.
-			OpenNode (x,   z-1, cost, parent); // 上.
-			OpenNode (x+1, z,   cost, parent); // 左.
-			OpenNode (x,   z+1, cost, parent); // 下.
-		}
+            var x = xbase;
+            var z = zbase;
+            OpenNode(x - 1, z, cost, parent); // 右.
+            OpenNode(x, z - 1, cost, parent); // 上.
+            OpenNode(x + 1, z, cost, parent); // 左.
+            OpenNode(x, z + 1, cost, parent); // 下.
+        }
 
-		/// 最小スコアのノードを取得する.
-		public ANode SearchMinScoreNodeFromOpenList() {
-			// 最小スコア
-			int min = 9999;
-			// 最小実コスト
-			int minCost = 9999;
-			ANode minNode = null;
-			foreach(ANode node in _openList) {
-				int score = node.GetScore();
-				if(score > min) {
-					// スコアが大きい
-					continue;
-				}
-				if(score == min && node.Cost >= minCost) {
-					// スコアが同じときは実コストも比較する
-					continue;
-				}
+        /// 最小スコアのノードを取得する.
+        public ANode SearchMinScoreNodeFromOpenList()
+        {
+            // 最小スコア
+            int min = 9999;
+            // 最小実コスト
+            int minCost = 9999;
+            ANode minNode = null;
+            foreach (ANode node in _openList)
+            {
+                int score = node.GetScore();
+                if (score > min)
+                {
+                    // スコアが大きい
+                    continue;
+                }
+                if (score == min && node.Cost >= minCost)
+                {
+                    // スコアが同じときは実コストも比較する
+                    continue;
+                }
 
-				// 最小値更新.
-				min = score;
-				minCost = node.Cost;
-				minNode = node;
-			}
-			return minNode;
-		}
-	}
-
-	/// ランダムな座標を取得する.
-	Point2 GetRandomPosition(Layer2D layer) {
-		Point2 p;
-		while(true) {
-			p.x = Random.Range(0, layer.Width);
-			p.z = Random.Range(0, layer.Height);
-			if(!layer.Get(p.x, p.z)) {
-				// 通過可能
-				break;
-			}
-		}
-		return p;
-	}
-
-	// 状態.
-	enum eState {
-		Exec, // 実行中.
-		Walk, // 移動中.
-		End,  // おしまい.
-	}
-	eState _state = eState.Exec;
+                // 最小値更新.
+                min = score;
+                minCost = node.Cost;
+                minNode = node;
+            }
+            return minNode;
+        }
+    }
+	
     FieldObjectBase _fieldObjBase;
-    Layer2D _layer;
     List<int> _RouteList = new List<int>();
     public List<int> GetRoute { get { return _RouteList; } }
 
     void Awake()
     {
         _fieldObjBase = GetComponent<FieldObjectBase>();
-
-        // 地形データのロード.
-        _layer = new Layer2D();
-        _layer.Create(this.gameObject);
     }
 
-	public void Search (int nTargetNumber)
+	public bool Search (int nTargetNumber)
     {
         List<Point2> pList = new List<Point2>();
         GameObject player = this.gameObject;
@@ -262,7 +247,7 @@ public class AStar : MonoBehaviour {
             pGoal.z = nTargetNumber / GameScaler._nWidth;
             //Debug.Log("行先の位置 " + nTargetNumber + ", x : " + pGoal.x + ", z : " + pGoal.z);
 
-            var mgr = new ANodeMgr(this.name, _layer, pGoal.x, pGoal.z);
+            var mgr = new ANodeMgr(this.gameObject, pGoal.x, pGoal.z);
 
 			// スタート地点のノード取得
 			// スタート地点なのでコストは「0」
@@ -270,8 +255,8 @@ public class AStar : MonoBehaviour {
 			mgr.AddOpenList(node);
 
 			// 試行回数。100回超えたら強制中断
-			int cnt = 0;
-            while (cnt < 100)
+			int searchCnt = 0;
+            while (searchCnt < 100)
             {
                 mgr.RemoveOpenList(node);
                 // 周囲を開く
@@ -280,7 +265,7 @@ public class AStar : MonoBehaviour {
                 node = mgr.SearchMinScoreNodeFromOpenList();
                 if (node == null)
                 {
-                    break;
+                    return false;
                 }
                 if (node.X == pGoal.x && node.Z == pGoal.z)
                 {
@@ -292,15 +277,22 @@ public class AStar : MonoBehaviour {
                     pList.Reverse();
                     break;
                 }
-                cnt++;
+                searchCnt++;
             }
-            Debug.Log("経路探索回数 : " + cnt);
-		}
+            Debug.Log("経路探索回数 : " + searchCnt);
+            if (searchCnt >= 100)
+                return false;
+        }
 
         //  ルートに変換して実行
         foreach (Point2 point in pList)
         {
-            _RouteList.Add(_layer.ToIdx(point.x, point.z));
+            _RouteList.Add(FieldDataChecker.Instance.ToIdx(point.x, point.z));
         }
+        return true;
+    }
+    int ToIdx(int x, int z)
+    {
+        return x + (z * GameScaler._nWidth);
     }
 }

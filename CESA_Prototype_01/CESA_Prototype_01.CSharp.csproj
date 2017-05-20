@@ -86,7 +86,7 @@
     <Compile Include="Assets\Scripts\Camera\SetCameraPos.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\AStar.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\EnemyAI.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\Layer2D.cs" />
+    <Compile Include="Assets\Scripts\Charactor\AI\FieldDataChecker.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\MoveAI.cs" />
     <Compile Include="Assets\Scripts\Charactor\CharaMass.cs" />
     <Compile Include="Assets\Scripts\Charactor\Charactor.cs" />

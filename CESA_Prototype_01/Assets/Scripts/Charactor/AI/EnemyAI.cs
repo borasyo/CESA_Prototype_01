@@ -47,8 +47,8 @@ public class EnemyAI : MonoBehaviour
                 oldNumber = _fieldObjBase.GetDataNumber();
             });
 
-        moveAI = new MoveAI();
-        moveAI.Start(gameObject.AddComponent<AStar>(), _fieldObjBase);
+        moveAI = gameObject.AddComponent<MoveAI>();
+        moveAI.Init(_fieldObjBase);
     }
 	
 	// Update is called once per frame
@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
         if (moveAI.NowMove)
         {
             _nowInput._direction = moveAI.GetMoveData();
-            //Debug.Log ("Move : " + _nowInput._direction);
+            //Debug.Log ("Move");
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -75,7 +75,8 @@ public class EnemyAI : MonoBehaviour
 
                 break;
             }
-            moveAI.SearchRoute(rand);
+            moveAI.SearchRoute(20);
+           // Debug.Log("Search");
         }
     }
 
@@ -164,15 +165,10 @@ public class EnemyAI : MonoBehaviour
     //  Trueを返す側ではリセットしない。送り続けるだけ
     public bool GetMove(Charactor.eDirection dir)
     {
-        if (dir == Charactor.eDirection.RIGHT && Input.GetKey(KeyCode.RightArrow))
+#if DEBUG
+        if (DebugMoveInput(dir))
             return true;
-        else if (dir == Charactor.eDirection.LEFT && Input.GetKey(KeyCode.LeftArrow))
-            return true;
-        else if (dir == Charactor.eDirection.FORWARD && Input.GetKey(KeyCode.UpArrow))
-            return true;
-        else if (dir == Charactor.eDirection.BACK && Input.GetKey(KeyCode.DownArrow))
-            return true;
-
+#endif
         if (_nowInput._direction != dir)
             return false;
 
@@ -183,8 +179,171 @@ public class EnemyAI : MonoBehaviour
 
     public bool GetAction(Charactor.eAction act)
     {
+#if DEBUG
+        if (DebugActionInput(act))
+            return true;
+#endif
         Charactor.eAction nowAct = _nowInput._action;
         _nowInput._action = Charactor.eAction.MAX;
         return (nowAct == act);
     }
+
+#if DEBUG
+    bool DebugMoveInput(Charactor.eDirection dir)
+    {
+        if (transform.name.Contains("1P"))
+        {
+            switch (dir)
+            {
+                case Charactor.eDirection.FORWARD:
+                    if (!Input.GetKey(KeyCode.W))
+                        return false;
+                    break;
+                case Charactor.eDirection.BACK:
+                    if (!Input.GetKey(KeyCode.S))
+                        return false;
+                    break;
+                case Charactor.eDirection.RIGHT:
+                    if (!Input.GetKey(KeyCode.D))
+                        return false;
+                    break;
+                case Charactor.eDirection.LEFT:
+                    if (!Input.GetKey(KeyCode.A))
+                        return false;
+                    break;
+            }
+        }
+        else if ((transform.name.Contains("2P")))
+        {
+            switch (dir)
+            {
+                case Charactor.eDirection.FORWARD:
+                    if (!Input.GetKey(KeyCode.UpArrow))
+                        return false;
+                    break;
+                case Charactor.eDirection.BACK:
+                    if (!Input.GetKey(KeyCode.DownArrow))
+                        return false;
+                    break;
+                case Charactor.eDirection.RIGHT:
+                    if (!Input.GetKey(KeyCode.RightArrow))
+                        return false;
+                    break;
+                case Charactor.eDirection.LEFT:
+                    if (!Input.GetKey(KeyCode.LeftArrow))
+                        return false;
+                    break;
+            }
+        }
+        else if ((transform.name.Contains("3P")))
+        {
+            switch (dir)
+            {
+                case Charactor.eDirection.FORWARD:
+                    if (!Input.GetKey(KeyCode.F))
+                        return false;
+                    break;
+                case Charactor.eDirection.BACK:
+                    if (!Input.GetKey(KeyCode.V))
+                        return false;
+                    break;
+                case Charactor.eDirection.RIGHT:
+                    if (!Input.GetKey(KeyCode.B))
+                        return false;
+                    break;
+                case Charactor.eDirection.LEFT:
+                    if (!Input.GetKey(KeyCode.C))
+                        return false;
+                    break;
+            }
+
+        }
+        else if ((transform.name.Contains("4P")))
+        {
+            switch (dir)
+            {
+                case Charactor.eDirection.FORWARD:
+                    if (!Input.GetKey(KeyCode.Alpha7))
+                        return false;
+                    break;
+                case Charactor.eDirection.BACK:
+                    if (!Input.GetKey(KeyCode.U))
+                        return false;
+                    break;
+                case Charactor.eDirection.RIGHT:
+                    if (!Input.GetKey(KeyCode.I))
+                        return false;
+                    break;
+                case Charactor.eDirection.LEFT:
+                    if (!Input.GetKey(KeyCode.Y))
+                        return false;
+                    break;
+            }
+        }
+
+        return true;
+    }
+    bool DebugActionInput(Charactor.eAction act)
+    {
+        if (transform.name.Contains("1P"))
+        {
+            switch (act)
+            {
+                case Charactor.eAction.PUT:
+                    if (!Input.GetKey(KeyCode.R))
+                        return false;
+                    break;
+                case Charactor.eAction.BREAK:
+                    if (!Input.GetKey(KeyCode.T))
+                        return false;
+                    break;
+            }
+        }
+        else if ((transform.name.Contains("2P")))
+        {
+            switch (act)
+            {
+                case Charactor.eAction.PUT:
+                    if (!Input.GetKey(KeyCode.O))
+                        return false;
+                    break;
+                case Charactor.eAction.BREAK:
+                    if (!Input.GetKey(KeyCode.P))
+                        return false;
+                    break;
+            }
+        }
+        else if ((transform.name.Contains("3P")))
+        {
+            switch (act)
+            {
+                case Charactor.eAction.PUT:
+                    if (!Input.GetKey(KeyCode.H))
+                        return false;
+                    break;
+                case Charactor.eAction.BREAK:
+                    if (!Input.GetKey(KeyCode.J))
+                        return false;
+                    break;
+            }
+        }
+        else if ((transform.name.Contains("4P")))
+        {
+            switch (act)
+            {
+                case Charactor.eAction.PUT:
+                    if (!Input.GetKey(KeyCode.Alpha9))
+                        return false;
+                    break;
+                case Charactor.eAction.BREAK:
+                    if (!Input.GetKey(KeyCode.Alpha0))
+                        return false;
+                    break;
+            }
+        }
+
+        return true;
+    }
+
+#endif
 }

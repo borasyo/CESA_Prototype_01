@@ -52,7 +52,7 @@ public class FieldCreator : MonoBehaviour
 
                 GameObject tile = CreateObj(TileObj, createPos);
                 tile.transform.eulerAngles = new Vector3(90,0,0);
-                //tile.GetComponentInChildren<TextMesh>().text = (z * GameScaler._nWidth + x).ToString();
+                tile.GetComponentInChildren<TextMesh>().text = (z * GameScaler._nWidth + x).ToString();
             }
         } 
     }
@@ -88,7 +88,7 @@ public class FieldCreator : MonoBehaviour
         {
             pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
             obj = CreateObj(SelectCharas[2], pos);
-            obj.name += ",3Player";
+            obj.name += ",3Player" + ",CPU";
             obj.transform.eulerAngles = new Vector3(0, 90, 0);
             _objBaseArray[1 + _nWidth * (_nHeight - 2)] = obj.GetComponent<FieldObjectBase>();
         }
@@ -98,7 +98,7 @@ public class FieldCreator : MonoBehaviour
         {
             pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
             obj = CreateObj(SelectCharas[3], pos);
-            obj.name += ",4Player";
+            obj.name += ",4Player" + ",CPU";
             obj.transform.eulerAngles = new Vector3(0, 270, 0);
             _objBaseArray[(_nWidth - 2) + _nWidth] = obj.GetComponent<FieldObjectBase>();
         }

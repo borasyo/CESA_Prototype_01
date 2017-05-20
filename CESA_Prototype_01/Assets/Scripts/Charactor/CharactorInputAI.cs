@@ -6,7 +6,7 @@ public class CharactorInputAI : CharactorInput
 {
     EnemyAI _enemyAI = null;
 
-    void Start()
+    void Awake()
     {
         _enemyAI = this.gameObject.AddComponent<EnemyAI>();
     }

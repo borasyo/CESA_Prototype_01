@@ -99,8 +99,8 @@ public class FieldData : MonoBehaviour
             _IsChangeField = true;
             break;
         }
-        Debug.Log("ChangeField : " + _IsChangeField);
-        Debug.Log("ChangeFieldWithChara : " + _IsChangeFieldWithChara);
+//        Debug.Log("ChangeField : " + _IsChangeField);
+//        Debug.Log("ChangeFieldWithChara : " + _IsChangeFieldWithChara);
 
         //  保存
         _OldObjectDataArray = _ObjectDataArray;
