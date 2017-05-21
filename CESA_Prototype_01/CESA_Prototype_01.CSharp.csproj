@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\Field\SandMass.cs" />
     <Compile Include="Assets\Scripts\Field\SandMassCreator.cs" />
     <Compile Include="Assets\Scripts\Field\SandMassData.cs" />
+    <Compile Include="Assets\Scripts\GameController\FPSDrawer.cs" />
     <Compile Include="Assets\Scripts\GameController\FieldObjectBase.cs" />
     <Compile Include="Assets\Scripts\GameController\GameScaler.cs" />
     <Compile Include="Assets\Scripts\GameController\ReCharaSelect.cs" />
