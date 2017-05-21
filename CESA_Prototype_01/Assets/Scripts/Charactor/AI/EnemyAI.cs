@@ -18,16 +18,29 @@ public class EnemyAI : MonoBehaviour
         public Charactor.eDirection _direction;
         public Charactor.eAction    _action;
     };
-
+    
     AIInput _nowInput = new AIInput();
-    int[] _DistanceDatas = null;    //  各マスの自分から見た移動距離を保持する
+    public int[] _DistanceDatas { get; private set; }    //  各マスの自分から見た移動距離を保持する
     FieldObjectBase _fieldObjBase = null;
 
-    //  各行動AI
-    MoveAI moveAI = null;
+    enum eState
+    {
+        WAIT = 0,
+        WALK,
+        PUT,
+        BREAK,
 
-	// Use this for initialization
-	void Start ()
+        MAX,
+    }
+    eState _state = eState.WAIT;
+    int[] _nActionRatio = new int[(int)eState.MAX]; //  行動比率 (合計で100になるようにする)
+    //  各行動AI
+    MoveAI _moveAI = null;
+    PutAI _putAI = null;
+    BreakAI _breakAI = null;
+
+    // Use this for initialization
+    void Start ()
     {
         _DistanceDatas = new int[GameScaler._nWidth * GameScaler._nHeight];
         _fieldObjBase = GetComponent<FieldObjectBase>();
@@ -47,63 +60,102 @@ public class EnemyAI : MonoBehaviour
                 oldNumber = _fieldObjBase.GetDataNumber();
             });
 
-        moveAI = gameObject.AddComponent<MoveAI>();
-        moveAI.Init(_fieldObjBase);
+        _moveAI = gameObject.AddComponent<MoveAI>();
+        _putAI = gameObject.AddComponent<PutAI>();
+        _breakAI = gameObject.AddComponent<BreakAI>();
     }
 	
 	// Update is called once per frame
 	void Update () 
     {
-        if (moveAI.NowMove)
+        switch (_state)
         {
-            _nowInput._direction = moveAI.GetMoveData();
-            //Debug.Log ("Move");
-        }
-        else// if (Input.GetKeyDown(KeyCode.Return))
-        {
-            //Debug.Log("Search");
-            int rand = 0;
-            while (true)
-            {
-                rand = Random.Range(0, GameScaler._nHeight * GameScaler._nWidth);
-                if (FieldData.Instance.GetObjData(rand))
-                    continue;
-
-                List<SandData.tSandData> dataList = SandData.Instance.GetSandDataList.FindAll(_ => _._number == rand);
-                if (dataList.Count > 0 && !TypeCheck(dataList[0]._Type))
-                    continue;
-
+            case eState.WAIT:
+                AIUpdate();
                 break;
-            }
-            moveAI.SearchRoute(rand);
-           // Debug.Log("Search");
+            case eState.WALK:
+                if (!MoveUpdate())
+                    _state = eState.WAIT;
+                break;
+            case eState.PUT:
+                if (!MoveUpdate())
+                {
+                    _nowInput._action = Charactor.eAction.PUT;
+                    _state = eState.WAIT;
+                }
+                break;
+            case eState.BREAK:
+                if (!MoveUpdate())
+                {
+                    _nowInput._action = Charactor.eAction.BREAK;
+                    _state = eState.WAIT;
+                }
+                break;
         }
     }
 
-    bool TypeCheck(SandItem.eType type)
+
+    #region AI
+
+    void AIUpdate()
     {
-        switch(type)
+        _state = GetNextState();
+        //Debug.Log("AI : " + _state);
+        switch (_state)
         {
-            case SandItem.eType.ONE_P:
-                if (this.name.Contains("1P"))
-                    return true;
+            case eState.WAIT:
                 break;
-            case SandItem.eType.TWO_P:
-                if (this.name.Contains("2P"))
-                    return true;
+            case eState.WALK:
+                if (!_moveAI.OnMove())
+                    _state = eState.WAIT;
+                Debug.Log("Walk");
                 break;
-            case SandItem.eType.THREE_P:
-                if (this.name.Contains("3P"))
-                    return true;
+            case eState.PUT:
+                if (!_putAI.OnPut(_moveAI))
+                    _state = eState.WAIT;
+                Debug.Log("Put");
                 break;
-            case SandItem.eType.FOUR_P:
-                if (this.name.Contains("4P"))
-                    return true;
+            case eState.BREAK:
+                if (!_breakAI.OnBreak(_moveAI))
+                    _state = eState.WAIT;
+                Debug.Log("Break");
                 break;
         }
-
-        return false;
     }
+
+    eState GetNextState()
+    {
+        int nRand = Random.Range(0, 100);
+        eState next = eState.WAIT;
+        if(Input.GetKeyDown(KeyCode.RightShift))
+        {
+            next = eState.PUT;//　(eState)Random.Range(1, (int)eState.MAX);
+        }
+        /*for (int i = 0; i < _nActionRatio.Length; i++)
+        {
+            nRand -= _nActionRatio[i];
+            if (nRand > 0)
+                continue;
+            next = (eState)i;
+            break;
+        }*/
+        return next;
+    }
+
+    # endregion
+
+    #region Move
+
+    bool MoveUpdate()
+    {
+        if (!_moveAI.StateWalk)
+            return false;
+
+        _nowInput._direction = _moveAI.GetMoveData();
+        return true;
+    }
+
+    #endregion
 
     #region DistanceData
     /// <summary>
@@ -187,6 +239,8 @@ public class EnemyAI : MonoBehaviour
         _nowInput._action = Charactor.eAction.MAX;
         return (nowAct == act);
     }
+
+
 
 #if DEBUG
     bool DebugMoveInput(Charactor.eDirection dir)

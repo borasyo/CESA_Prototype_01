@@ -41,6 +41,21 @@ public class FieldData : MonoBehaviour
     FieldObjectBase[] _ObjectDataArray = null;
     public FieldObjectBase[] GetObjDataArray { get { return _ObjectDataArray; } }
 
+    #region ChangeData
+    struct tChangeData
+    {
+        public bool _IsChange;
+        public FieldObjectBase _obj;
+
+        public void Set(FieldObjectBase obj)
+        {
+            _IsChange = true;
+            _obj = obj;
+        }
+    };
+    tChangeData[] _ChangeDataList = null;  //  Field情報に変更があった場合、その情報を一時保存する
+    #endregion
+
     bool _IsChangeField = false;            //  Fieldに変更があったか
     public bool ChangeField { get { return _IsChangeField; } }
     bool _IsChangeFieldWithChara = false;   //  キャラを含めたFieldに変更があったか
@@ -55,6 +70,7 @@ public class FieldData : MonoBehaviour
     {
         //  データ配列生成
         _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
+        _ChangeDataList = new tChangeData[GameScaler._nWidth * GameScaler._nHeight];
 
         //  フィールドにオブジェクトを生成し、データを格納
         FieldCreator creator = new FieldCreator();
@@ -82,23 +98,36 @@ public class FieldData : MonoBehaviour
 
     void Update()
     {
+        //  Field情報に変更があったかをチェック
         _IsChangeField = _IsChangeFieldWithChara = false;
+
+        for (int i = 0; i < _ChangeDataList.Length; i++)
+        {
+            if (!_ChangeDataList[i]._IsChange)
+                continue;
+
+            FieldObjectBase obj = _ObjectDataArray[i];
+            FieldObjectBase oldObj = _ChangeDataList[i]._obj;
+            if (obj != oldObj)
+            {
+                _IsChangeFieldWithChara = true;
+
+                if (!_IsChangeField &&
+                   (!obj || obj.tag != "Charactor") &&
+                   (!oldObj || oldObj.tag != "Charactor"))    //  キャラの場合は変更しない
+                    _IsChangeField = true;
+            }
+            _ChangeDataList[i]._IsChange = false;
+
+            if (_IsChangeFieldWithChara && _IsChangeField)
+                break;
+        }
     }
 
     //  データを格納
     public void SetObjData(FieldObjectBase setObj, int number)
     {
-        FieldObjectBase obj = _ObjectDataArray[number];
-        if (obj != setObj)
-        {
-            _IsChangeFieldWithChara = true;
-
-            if (!_IsChangeField &&
-               (!obj || obj.tag != "Charactor") &&
-               (!setObj || setObj.tag != "Charactor"))    //  キャラの場合は変更しない
-                _IsChangeField = true;
-        }
-
+        _ChangeDataList[number].Set(_ObjectDataArray[number]);  //  変更前の情報を一時退避
         _ObjectDataArray[number] = setObj;
     }
 

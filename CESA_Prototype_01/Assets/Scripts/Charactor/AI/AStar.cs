@@ -280,7 +280,7 @@ public class AStar : MonoBehaviour {
                 }
                 searchCnt++;
             }
-            Debug.Log("経路探索回数 : " + searchCnt);
+            //Debug.Log("経路探索回数 : " + searchCnt);
             if (searchCnt >= 100)
                 return false;
         }

@@ -123,4 +123,28 @@ public class FieldDataChecker : MonoBehaviour
         }
         return true;
     }
+    public bool TypeCheck(SandItem.eType type)
+    {
+        switch (type)
+        {
+            case SandItem.eType.ONE_P:
+                if (this.name.Contains("1P"))
+                    return true;
+                break;
+            case SandItem.eType.TWO_P:
+                if (this.name.Contains("2P"))
+                    return true;
+                break;
+            case SandItem.eType.THREE_P:
+                if (this.name.Contains("3P"))
+                    return true;
+                break;
+            case SandItem.eType.FOUR_P:
+                if (this.name.Contains("4P"))
+                    return true;
+                break;
+        }
+
+        return false;
+    }
 }
