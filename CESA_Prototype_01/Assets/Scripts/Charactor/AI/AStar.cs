@@ -252,6 +252,7 @@ public class AStar : MonoBehaviour {
 			// スタート地点のノード取得
 			// スタート地点なのでコストは「0」
 			ANode node = mgr.OpenNode(pStart.x, pStart.z, 0, null);
+
 			mgr.AddOpenList(node);
 
 			// 試行回数。100回超えたら強制中断

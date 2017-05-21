@@ -59,7 +59,7 @@ public class EnemyAI : MonoBehaviour
             _nowInput._direction = moveAI.GetMoveData();
             //Debug.Log ("Move");
         }
-        else if (Input.GetKeyDown(KeyCode.Return))
+        else// if (Input.GetKeyDown(KeyCode.Return))
         {
             //Debug.Log("Search");
             int rand = 0;
@@ -75,7 +75,7 @@ public class EnemyAI : MonoBehaviour
 
                 break;
             }
-            moveAI.SearchRoute(20);
+            moveAI.SearchRoute(rand);
            // Debug.Log("Search");
         }
     }
