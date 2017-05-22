@@ -53,11 +53,19 @@ public class SandData : MonoBehaviour
         public Charactor.eDirection _dir; 
     };
     List<tSandData> _SandDataList = new List<tSandData>();               //  はさまれている箇所のリスト
-    List<tHalfSandData> _HalfSandDataList = new List<tHalfSandData>();   //  半分はさまれている箇所のリスト(重複も可)
     public List<tSandData> GetSandDataList { get { return _SandDataList; } }
+
+    List<tHalfSandData> _HalfSandDataList = new List<tHalfSandData>();   //  半分はさまれている箇所のリスト(重複も可)
+    public List<tHalfSandData> GetHalfSandDataList { get { return _HalfSandDataList; } }
+    
 
     [SerializeField] bool _IsSlope = true;
     [SerializeField] bool _IsOverLapToSafe = true;
+
+    void Start()
+    {
+        SandUpdate();
+    }
 
     void Update()
     {
@@ -65,12 +73,17 @@ public class SandData : MonoBehaviour
         if (!FieldData.Instance.ChangeField)
             return;
 
+        SandUpdate();
+    }
+
+    void SandUpdate()
+    {
         SandDataCheck();
         HalfSandDataCheck();
 
         if (!_IsOverLapToSafe)
             return;
-        
+
         OverLapDistinct();
     }
 
@@ -294,16 +307,16 @@ public class SandData : MonoBehaviour
         if (first)
         {
             if (add == 1)
-                halfSandData._dir = Charactor.eDirection.LEFT;    //  左に置けばはさめる
+                halfSandData._dir = Charactor.eDirection.LEFT;      //  左に置けばはさめる
             else
-                halfSandData._dir = Charactor.eDirection.BACK;    //  下に置けばはさめる
+                halfSandData._dir = Charactor.eDirection.BACK;      //  下に置けばはさめる
         }
         else
         {
             if (add == 1)
-                halfSandData._dir = Charactor.eDirection.RIGHT;       //  右に置けばはさめる
+                halfSandData._dir = Charactor.eDirection.RIGHT;     //  右に置けばはさめる
             else
-                halfSandData._dir = Charactor.eDirection.FORWARD;     //  上に置けばはさめる
+                halfSandData._dir = Charactor.eDirection.FORWARD;   //  上に置けばはさめる
         }
         _HalfSandDataList.Add(halfSandData);
 

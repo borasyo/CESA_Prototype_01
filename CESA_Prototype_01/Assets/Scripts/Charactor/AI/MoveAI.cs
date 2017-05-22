@@ -157,6 +157,7 @@ public class MoveAI : MonoBehaviour
 
         if (DistanceCheck())
         {
+            transform.position = _fieldObjBase.GetPosForNumber(_astar.GetRoute[_nNowRoute]);    //  pos補正
             _nNowRoute++;
             NumberUpdate();
 
@@ -216,7 +217,10 @@ public class MoveAI : MonoBehaviour
     }
     
     bool CheckObstacle()
-    {   
+    {
+        if (_nNowRoute >= _astar.GetRoute.Count)
+            return false;
+
         int idx = _astar.GetRoute[_nNowRoute];
 
         if (!FieldDataChecker.Instance.CheckObstacleObj(idx, this.gameObject) &&

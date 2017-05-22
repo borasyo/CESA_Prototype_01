@@ -7,16 +7,18 @@ public class PutAI : MonoBehaviour
 {
     EnemyAI _enemyAI;
     MoveAI _moveAI;
+    FieldObjectBase _fieldObjBase = null;
 
     void Start()
     {
         _enemyAI = GetComponent<EnemyAI>();
         _moveAI = GetComponent<MoveAI>();
+        _fieldObjBase = GetComponent<FieldObjectBase>();
     }
 
     public bool OnPut()
     {
-        return RandomPut();
+        return CharaPut();
     }
 
     #region AI
@@ -30,7 +32,6 @@ public class PutAI : MonoBehaviour
 
         _moveAI.SearchRoute(rand, 1);
         return true;
-
     }
 
     //  キャラの目の前にアイテムを配置する
@@ -38,6 +39,54 @@ public class PutAI : MonoBehaviour
     {
         List<FieldObjectBase> charas = FieldData.Instance.GetCharactors;
         _moveAI.SearchRoute(charas[Random.Range(0, charas.Count)].GetDataNumber(), 2);
+
+        return true;
+    }
+
+    bool HalfSandPut(bool isNear = false)
+    {
+        List<SandData.tHalfSandData> dataList = SandData.Instance.GetHalfSandDataList.Where(_ => TypeCheck(_._data._Type)).ToList();
+        SandData.tHalfSandData data = new SandData.tHalfSandData();
+
+        if (isNear)
+        {   //  最も近いはさめる箇所を探索
+            int min = 1000;
+            int nowNumber = _fieldObjBase.GetDataNumber();
+            int x = nowNumber % GameScaler._nWidth;
+            int z = nowNumber / GameScaler._nWidth;
+            dataList = dataList.Where(_ =>
+            {
+                int dis = Mathf.Abs(x - _._data._number % GameScaler._nWidth) + Mathf.Abs(z - _._data._number / GameScaler._nWidth);
+                if (dis >= min)
+                    return false;
+
+                min = dis;
+                return true;
+            }).ToList();
+            data = dataList[dataList.Count - 1];
+        }
+        else
+        {
+            data = dataList[Random.Range(0, dataList.Count)];
+        }
+
+        int number = data._data._number;
+        switch(data._dir)
+        {
+            case Charactor.eDirection.FORWARD:
+                number += GameScaler._nWidth;
+                break;
+            case Charactor.eDirection.BACK:
+                number -= GameScaler._nWidth;
+                break;
+            case Charactor.eDirection.RIGHT:
+                number ++;
+                break;
+            case Charactor.eDirection.LEFT:
+                number --;
+                break;
+        }
+        _moveAI.SearchRoute(number, 1);
 
         return true;
     }
@@ -60,5 +109,32 @@ public class PutAI : MonoBehaviour
             return -1;
 
         return nullMassList[Random.Range(0, nullMassList.Count)];
+    }
+
+    //  自分で挟むことが出来るか
+    bool TypeCheck(SandItem.eType type)
+    {
+        if(type == SandItem.eType.BLOCK)
+        {
+            return true;
+        }
+        else if (name.Contains("1P") && type == SandItem.eType.ONE_P)
+        {
+            return true;
+        }
+        else if (name.Contains("2P") && type == SandItem.eType.TWO_P)
+        {
+            return true;
+        }
+        else if (name.Contains("3P") && type == SandItem.eType.THREE_P)
+        {
+            return true;
+        }
+        else if (name.Contains("4P") && type == SandItem.eType.FOUR_P)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
