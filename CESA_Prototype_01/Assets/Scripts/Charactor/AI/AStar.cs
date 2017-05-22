@@ -136,7 +136,7 @@ public class AStar : MonoBehaviour {
             _openList.Remove(node);
         }
         /// 指定の座標にあるノードをオープンする.
-        public ANode OpenNode(int x, int z, int cost, ANode parent)
+        public ANode OpenNode(int x, int z, int cost, ANode parent, int goal)
         {
             // 座標をチェック.
             if (FieldDataChecker.Instance.IsOutOfRange(x, z))
@@ -144,7 +144,8 @@ public class AStar : MonoBehaviour {
                 // 領域外.
                 return null;
             }
-            if (FieldDataChecker.Instance.CheckObstacleObj(x, z, _me))
+            bool isGoal = FieldDataChecker.Instance.ToIdx(x, z) == goal;    //  ゴール地点のオブジェクトは障害物と見なさない
+            if (!isGoal && FieldDataChecker.Instance.CheckObstacleObj(x, z, _me))
             {
                 // 通過できない.
                 return null;
@@ -171,7 +172,7 @@ public class AStar : MonoBehaviour {
         }
 
         /// 周りをOpenする.
-        public void OpenAround(ANode parent)
+        public void OpenAround(ANode parent, int goalIdx)
         {
             var xbase = parent.X; // 基準座標(X).
             var zbase = parent.Z; // 基準座標(Y).
@@ -181,10 +182,10 @@ public class AStar : MonoBehaviour {
             // 4方向を開く.
             var x = xbase;
             var z = zbase;
-            OpenNode(x - 1, z, cost, parent); // 右.
-            OpenNode(x, z - 1, cost, parent); // 上.
-            OpenNode(x + 1, z, cost, parent); // 左.
-            OpenNode(x, z + 1, cost, parent); // 下.
+            OpenNode(x - 1, z, cost, parent, goalIdx); // 右.
+            OpenNode(x, z - 1, cost, parent, goalIdx); // 上.
+            OpenNode(x + 1, z, cost, parent, goalIdx); // 左.
+            OpenNode(x, z + 1, cost, parent, goalIdx); // 下.
         }
 
         /// 最小スコアのノードを取得する.
@@ -241,17 +242,18 @@ public class AStar : MonoBehaviour {
             pStart.z = number / GameScaler._nWidth;
             //Debug.Log("自分の位置 " + number +  ", x : " + pStart.x + ", z : " + pStart.z);
 
-            // ゴール. /* ここから */
+            // ゴール
             Point2 pGoal = new Point2();    //  場所指定
             pGoal.x = nTargetNumber % GameScaler._nWidth;
             pGoal.z = nTargetNumber / GameScaler._nWidth;
+            int goalIdx = ToIdx(pGoal.x, pGoal.z);
             //Debug.Log("行先の位置 " + nTargetNumber + ", x : " + pGoal.x + ", z : " + pGoal.z);
 
             var mgr = new ANodeMgr(this.gameObject, pGoal.x, pGoal.z);
 
 			// スタート地点のノード取得
 			// スタート地点なのでコストは「0」
-			ANode node = mgr.OpenNode(pStart.x, pStart.z, 0, null);
+			ANode node = mgr.OpenNode(pStart.x, pStart.z, 0, null, goalIdx);
 
 			mgr.AddOpenList(node);
 
@@ -261,7 +263,7 @@ public class AStar : MonoBehaviour {
             {
                 mgr.RemoveOpenList(node);
                 // 周囲を開く
-                mgr.OpenAround(node);
+                mgr.OpenAround(node, goalIdx);
                 // 最小スコアのノードを探す.
                 node = mgr.SearchMinScoreNodeFromOpenList();
                 if (node == null)

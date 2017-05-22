@@ -1,47 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PutAI : MonoBehaviour
 {
     EnemyAI _enemyAI;
+    MoveAI _moveAI;
 
     void Start()
     {
         _enemyAI = GetComponent<EnemyAI>();
+        _moveAI = GetComponent<MoveAI>();
     }
 
-    void Update ()
+    public bool OnPut()
     {
-		
-	}
+        return RandomPut();
+    }
 
-    public bool OnPut(MoveAI moveAI)
+    #region AI
+
+    //  ランダムにアイテムを配置する
+    bool RandomPut()
     {
         int rand = RandomPutMass();
         if (rand < 0)
             return false;
-        
-        moveAI.SearchRoute(rand, true);
+
+        _moveAI.SearchRoute(rand, 1);
+        return true;
+
+    }
+
+    //  キャラの目の前にアイテムを配置する
+    bool CharaPut()
+    {
+        List<FieldObjectBase> charas = FieldData.Instance.GetCharactors;
+        _moveAI.SearchRoute(charas[Random.Range(0, charas.Count)].GetDataNumber(), 2);
+
         return true;
     }
 
+    #endregion
+
     int RandomPutMass()
     {
-        int rand = 0;
-        int loopCnt = 0;
-        while (loopCnt < 100)
+        List<int> nullMassList = new List<int>();
+        FieldObjectBase[] objList = FieldData.Instance.GetObjDataArray;
+        for (int i = 0; i < objList.Length; i++)
         {
-            rand = Random.Range(0, GameScaler._nHeight * GameScaler._nWidth);
-            loopCnt ++;
-            if (FieldData.Instance.GetObjData(rand))
+            if (objList[i])
                 continue;
 
-            break;
+            nullMassList.Add(i);
         }
-        if (loopCnt >= 100)
+
+        if (nullMassList.Count <= 0)
             return -1;
 
-        return rand;
+        return nullMassList[Random.Range(0, nullMassList.Count)];
     }
 }

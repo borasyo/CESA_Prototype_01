@@ -12,6 +12,7 @@ public class SandItem : FieldObjectBase
         TWO_P,
         THREE_P,
         FOUR_P,
+        BLOCK,
 
         MAX,
     };

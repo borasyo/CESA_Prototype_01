@@ -1,48 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BreakAI : MonoBehaviour
 {
     EnemyAI _enemyAI;
+    MoveAI _moveAI;
 
-	void Start ()
+    void Start()
     {
         _enemyAI = GetComponent<EnemyAI>();
+        _moveAI = GetComponent<MoveAI>();
     }
 
-    void Update()
+    public bool OnBreak()
     {
-
+        return RandomBreak();
     }
 
-    public bool OnBreak(MoveAI moveAI)
+    #region AI
+
+    bool RandomBreak()
     {
         int rand = RandomBreakMass();
         if (rand < 0)
             return false;
-        
-        moveAI.SearchRoute(rand, true);
+
+        _moveAI.SearchRoute(rand, 1);
         return true;
     }
 
+    #endregion
+
     int RandomBreakMass()
     {
-        int rand = 0;
-        int loopCnt = 0;
-        while (loopCnt < 100)
-        {
-            rand = Random.Range(0, GameScaler._nHeight * GameScaler._nWidth);
-            loopCnt++;
-            FieldObjectBase obj = FieldData.Instance.GetObjData(rand);
-            if (!obj || obj.tag != "SandItem")
-                continue;
+        FieldObjectBase[] sandItemList = FieldData.Instance.GetObjDataArray.Where(element => element && element.tag == "SandItem").ToArray();
 
-            break;
-        }
-        if (loopCnt >= 100)
+        if (sandItemList.Length <= 0)
             return -1;
 
-        return rand;
+        return sandItemList[Random.Range(0, sandItemList.Length)].GetDataNumber();
     }
 }

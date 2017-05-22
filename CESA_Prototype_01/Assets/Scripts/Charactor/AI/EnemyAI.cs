@@ -111,12 +111,12 @@ public class EnemyAI : MonoBehaviour
                 Debug.Log("Walk");
                 break;
             case eState.PUT:
-                if (!_putAI.OnPut(_moveAI))
+                if (!_putAI.OnPut())
                     _state = eState.WAIT;
                 Debug.Log("Put");
                 break;
             case eState.BREAK:
-                if (!_breakAI.OnBreak(_moveAI))
+                if (!_breakAI.OnBreak())
                     _state = eState.WAIT;
                 Debug.Log("Break");
                 break;
@@ -129,7 +129,7 @@ public class EnemyAI : MonoBehaviour
         eState next = eState.WAIT;
         if(Input.GetKeyDown(KeyCode.RightShift))
         {
-            next = eState.PUT;//　(eState)Random.Range(1, (int)eState.MAX);
+            next = eState.PUT; // (eState)Random.Range(1, (int)eState.MAX);
         }
         /*for (int i = 0; i < _nActionRatio.Length; i++)
         {
@@ -235,9 +235,12 @@ public class EnemyAI : MonoBehaviour
         if (DebugActionInput(act))
             return true;
 #endif
+        if (_nowInput._action != act)
+            return false;
+
         Charactor.eAction nowAct = _nowInput._action;
         _nowInput._action = Charactor.eAction.MAX;
-        return (nowAct == act);
+        return true;
     }
 
 

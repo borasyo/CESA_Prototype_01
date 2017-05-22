@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MoveAI : MonoBehaviour
 { 
@@ -38,7 +39,7 @@ public class MoveAI : MonoBehaviour
         }
     }
     
-    void Start ()
+    void Awake ()
     {
         _astar = gameObject.AddComponent<AStar>();
         _fieldObjBase = GetComponent<FieldObjectBase>();
@@ -64,32 +65,31 @@ public class MoveAI : MonoBehaviour
 
     int RandomNullMass()
     {
-        int rand = 0;
-        int loopCnt = 0;
-        while (loopCnt < 100)
+        List<int> nullMassList = new List<int>();
+        FieldObjectBase[] objList = FieldData.Instance.GetObjDataArray;
+        for (int i = 0; i < objList.Length; i++)
         {
-            rand = Random.Range(0, GameScaler._nHeight * GameScaler._nWidth);
-            loopCnt++;
-            if (FieldData.Instance.GetObjData(rand))
+            if (objList[i])
                 continue;
 
-            List<SandData.tSandData> dataList = SandData.Instance.GetSandDataList.FindAll(_ => _._number == rand);
+            List<SandData.tSandData> dataList = SandData.Instance.GetSandDataList.FindAll(_ => _._number == i);
             if (dataList.Count > 0 && !FieldDataChecker.Instance.TypeCheck(dataList[0]._Type))
                 continue;
 
-            break;
+            nullMassList.Add(i);
         }
-        if (loopCnt >= 100)
+
+        if (nullMassList.Count <= 0)
             return -1;
 
-        return rand;
+        return nullMassList[Random.Range(0, nullMassList.Count)];
     }
 
     #endregion
 
     #region Search 
 
-    public bool SearchRoute(int nTarget, bool isAction = false)
+    public bool SearchRoute(int nTarget, int nArrive = 0)
     {
         if (nTarget < 0)
             return false;
@@ -107,12 +107,13 @@ public class MoveAI : MonoBehaviour
         }
 
         _state = eState.WALK;
+        Debug.Log("対象マス : " + nTarget);
         
-        if (!isAction)
+        if (nArrive <= 0)
             return true;
 
         //  移動後にアクションを行う場合の処理
-        SetDirection();
+        SetDirection(nArrive);
 
         // 目の前の場合は向いて終了
         if (_nNowRoute == _astar.GetRoute.Count)
@@ -122,9 +123,12 @@ public class MoveAI : MonoBehaviour
     }
 
     //  移動後がアクションの場合、１マス前を終了とする
-    void SetDirection()
+    void SetDirection(int nArrive)
     {
-        int max = _astar.GetRoute.Count - 1;
+        if (nArrive > _astar.GetRoute.Count)
+            return;
+
+        int max = _astar.GetRoute.Count - nArrive;
         int value = _astar.GetRoute[max - 1] - _astar.GetRoute[max];
         if (value == 1)  
             _LastDirection = Charactor.eDirection.LEFT;
@@ -136,7 +140,10 @@ public class MoveAI : MonoBehaviour
             _LastDirection = Charactor.eDirection.FORWARD;
 
         // 最後は削除
-        _astar.GetRoute.RemoveAt(max);
+        for (int i = 0; i < nArrive; i++)
+        {
+            _astar.GetRoute.RemoveAt(_astar.GetRoute.Count - 1);
+        }
     }
 
     #endregion
@@ -157,7 +164,6 @@ public class MoveAI : MonoBehaviour
             if (_nNowRoute == _astar.GetRoute.Count)
                 _state = _LastDirection != Charactor.eDirection.MAX ? eState.LAST : eState.WAIT;
         }
-
     }
 
     public Charactor.eDirection GetMoveData()
@@ -185,12 +191,15 @@ public class MoveAI : MonoBehaviour
         else if (dis == -1)
             return Charactor.eDirection.LEFT;
 
-        Debug.LogError("経路に問題がある恐れがあります");
+        Debug.LogError("経路に問題がある恐れがあります。" + " 行先 : " + _astar.GetRoute[_nNowRoute] + ", 現地 : " + _nNowNumber);
         return Charactor.eDirection.MAX;
     }
 
     void NumberUpdate()
     {
+        if (!_fieldObjBase)
+            return;
+
         _nNowNumber = _fieldObjBase.GetDataNumber();
         _oldNumberPos = _fieldObjBase.GetPosForNumber();
     }

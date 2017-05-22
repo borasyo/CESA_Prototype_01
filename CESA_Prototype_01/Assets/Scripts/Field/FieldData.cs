@@ -76,22 +76,7 @@ public class FieldData : MonoBehaviour
         FieldCreator creator = new FieldCreator();
         _ObjectDataArray = creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
-        CreateCharaList();
-    }
-
-    void CreateCharaList()
-    {
-        //  キャラデータのリストを作成
-        foreach (FieldObjectBase obj in _ObjectDataArray)
-        {
-            if (!obj)
-                continue;
-
-            if (obj.tag != "Charactor")
-                continue;
-
-            GetCharactors.Add(obj);
-        }
+        _CharaList = _ObjectDataArray.Where(_ => _ && _.tag == "Charactor").ToList();
     }
 
     #endregion
@@ -113,14 +98,14 @@ public class FieldData : MonoBehaviour
                 _IsChangeFieldWithChara = true;
 
                 if (!_IsChangeField &&
-                   (!obj || obj.tag != "Charactor") &&
+                   (!obj    || obj.tag    != "Charactor") &&
                    (!oldObj || oldObj.tag != "Charactor"))    //  キャラの場合は変更しない
                     _IsChangeField = true;
             }
             _ChangeDataList[i]._IsChange = false;
 
-            if (_IsChangeFieldWithChara && _IsChangeField)
-                break;
+            //if (_IsChangeFieldWithChara && _IsChangeField)
+            //    break;
         }
     }
 
@@ -143,21 +128,7 @@ public class FieldData : MonoBehaviour
     //  キャラクターを取得する時のみ使用する
     public FieldObjectBase GetCharaData(string name)
     {
-        foreach (FieldObjectBase obj in _ObjectDataArray)
-        {
-            if (!obj)
-                continue;
-
-            if (obj.tag != "Charactor")
-                continue;
-
-            if (!obj.name.Contains(name))
-                continue;
-
-            return obj; 
-        }
-
-        return null;    //  失敗
+        return _ObjectDataArray.Where(_ => _ && _.tag == "Charactor" && _.name.Contains(name)).First();
     }
 
     public Vector3 GetNonObjPos()
