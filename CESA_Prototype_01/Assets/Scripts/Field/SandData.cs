@@ -233,11 +233,13 @@ public class SandData : MonoBehaviour
             HalfSand(number, GameScaler._nWidth);
         }
 
+/*#if DEBUG
         Debug.Log("半分はさまれリスト");
         for(int i = 0; i < _HalfSandDataList.Count; i++)
         {
             Debug.Log("番号 : " + _HalfSandDataList[i]._data._number + ", タイプ : " + _HalfSandDataList[i]._data._Type + ", 置く所 : " + _HalfSandDataList[i]._dir);
         }
+#endif*/
     }
 
     bool OnSand(int number)

@@ -9,7 +9,7 @@ public class PutAI : MonoBehaviour
     MoveAI _moveAI;
     FieldObjectBase _fieldObjBase = null;
 
-    void Start()
+    public void Init()
     {
         _enemyAI = GetComponent<EnemyAI>();
         _moveAI = GetComponent<MoveAI>();
@@ -18,7 +18,18 @@ public class PutAI : MonoBehaviour
 
     public bool OnPut()
     {
-        return CharaPut();
+        switch(Random.Range(0,4))
+        {
+            case 0:
+                return RandomPut();
+            case 1:
+                return CharaPut();
+            case 2:
+                return HalfSandPut();
+            case 3:
+                return HalfSandPut(true);
+        }
+        return false;
     }
 
     #region AI
@@ -37,7 +48,10 @@ public class PutAI : MonoBehaviour
     //  キャラの目の前にアイテムを配置する
     bool CharaPut()
     {
-        List<FieldObjectBase> charas = FieldData.Instance.GetCharactors;
+        List<FieldObjectBase> charas = FieldData.Instance.GetCharactors.Where(x => x && x != _fieldObjBase).ToList();
+        if (charas.Count <= 0)
+            return false;
+
         _moveAI.SearchRoute(charas[Random.Range(0, charas.Count)].GetDataNumber(), 2);
 
         return true;

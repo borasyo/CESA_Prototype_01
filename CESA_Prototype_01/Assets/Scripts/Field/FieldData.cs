@@ -60,6 +60,8 @@ public class FieldData : MonoBehaviour
     public bool ChangeField { get { return _IsChangeField; } }
     bool _IsChangeFieldWithChara = false;   //  キャラを含めたFieldに変更があったか
     public bool ChangeFieldWithChara { get { return _IsChangeFieldWithChara; } }
+    bool _IsExceptionChangeField = false; 
+    public void ExceptionChangeField() { _IsExceptionChangeField = true; }
 
     List<FieldObjectBase> _CharaList = new List<FieldObjectBase>();
     public List<FieldObjectBase> GetCharactors { get { return _CharaList; } } 
@@ -86,6 +88,13 @@ public class FieldData : MonoBehaviour
         //  Field情報に変更があったかをチェック
         _IsChangeField = _IsChangeFieldWithChara = false;
 
+        if(_IsExceptionChangeField)
+        {
+            _IsExceptionChangeField = false;
+            _IsChangeField = _IsChangeFieldWithChara = true;
+            return;
+        }
+
         for (int i = 0; i < _ChangeDataList.Length; i++)
         {
             if (!_ChangeDataList[i]._IsChange)
@@ -103,9 +112,6 @@ public class FieldData : MonoBehaviour
                     _IsChangeField = true;
             }
             _ChangeDataList[i]._IsChange = false;
-
-            //if (_IsChangeFieldWithChara && _IsChangeField)
-            //    break;
         }
     }
 

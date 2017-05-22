@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
     public int[] _DistanceDatas { get; private set; }    //  各マスの自分から見た移動距離を保持する
     FieldObjectBase _fieldObjBase = null;
 
-    enum eState
+    public enum eState
     {
         WAIT = 0,
         WALK,
@@ -33,6 +33,7 @@ public class EnemyAI : MonoBehaviour
         MAX,
     }
     eState _state = eState.WAIT;
+    public eState GetState { get { return _state; } }
     int[] _nActionRatio = new int[(int)eState.MAX]; //  行動比率 (合計で100になるようにする)
     //  各行動AI
     MoveAI _moveAI = null;
@@ -61,8 +62,11 @@ public class EnemyAI : MonoBehaviour
             });
 
         _moveAI = gameObject.AddComponent<MoveAI>();
+        _moveAI.Init();
         _putAI = gameObject.AddComponent<PutAI>();
+        _putAI.Init();
         _breakAI = gameObject.AddComponent<BreakAI>();
+        _breakAI.Init();
     }
 	
 	// Update is called once per frame
@@ -127,10 +131,10 @@ public class EnemyAI : MonoBehaviour
     {
         int nRand = Random.Range(0, 100);
         eState next = eState.WAIT;
-        if(Input.GetKeyDown(KeyCode.RightShift))
-        {
-            next = eState.PUT; // (eState)Random.Range(1, (int)eState.MAX);
-        }
+        //if(Input.GetKeyDown(KeyCode.RightShift))
+        //{
+            next = (eState)Random.Range(0, (int)eState.MAX);
+        //}
         /*for (int i = 0; i < _nActionRatio.Length; i++)
         {
             nRand -= _nActionRatio[i];
@@ -148,7 +152,8 @@ public class EnemyAI : MonoBehaviour
 
     bool MoveUpdate()
     {
-        if (!_moveAI.StateWalk)
+        // 移動終了か行動不能で次のAIへ
+        if (!_moveAI.StateWalk || _moveAI.StateStop)
             return false;
 
         _nowInput._direction = _moveAI.GetMoveData();

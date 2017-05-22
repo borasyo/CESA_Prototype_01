@@ -171,7 +171,8 @@ public class AStar : MonoBehaviour {
             return node;
         }
 
-        /// 周りをOpenする.
+        /// 周りをOpenする.　
+        /// FIXME : parentがnullになるバグが発生しているが今の所ゲームには影響なし
         public void OpenAround(ANode parent, int goalIdx)
         {
             var xbase = parent.X; // 基準座標(X).
@@ -248,6 +249,12 @@ public class AStar : MonoBehaviour {
             pGoal.z = nTargetNumber / GameScaler._nWidth;
             int goalIdx = ToIdx(pGoal.x, pGoal.z);
             //Debug.Log("行先の位置 " + nTargetNumber + ", x : " + pGoal.x + ", z : " + pGoal.z);
+
+            if (pStart.x == pGoal.x && pStart.z == pGoal.z)
+            {
+                Debug.LogWarning("StartとGoalが同じです！");
+                return false;
+            }
 
             var mgr = new ANodeMgr(this.gameObject, pGoal.x, pGoal.z);
 

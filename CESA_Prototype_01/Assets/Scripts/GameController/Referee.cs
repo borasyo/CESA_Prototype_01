@@ -52,7 +52,7 @@ public class Referee : MonoBehaviour
             return;
 
         reStart._IsEnd = true;
-        Camera.main.gameObject.AddComponent<PullsObject>();
+        //Camera.main.gameObject.AddComponent<PullsObject>();
         this.enabled = false;
     }
 

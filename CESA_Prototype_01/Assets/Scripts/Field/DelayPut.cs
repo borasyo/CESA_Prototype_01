@@ -39,6 +39,7 @@ public class DelayPut : MonoBehaviour
                     return;
                     
                 GetComponent<SandItem>().GetType = SetType;
+                FieldData.Instance.ExceptionChangeField();
                 Destroy(me);
             });
 

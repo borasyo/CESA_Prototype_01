@@ -18,13 +18,16 @@ public class MoveAI : MonoBehaviour
     //  状態を外部から取得
     public bool StateWait { get { return _state == eState.WAIT; } }
     public bool StateWalk { get { return _state == eState.WALK || _state == eState.LAST; } }
-    public bool StateStop { get { return _state == eState.STOP; } } //  行きたい箇所への経路が絶たれている状態
+    public bool StateStop { get { return _state == eState.STOP; } } //  行きたい箇所への経路が絶たれている
+    bool RouteOver { get { return _nNowRoute >= _astar.GetRoute.Count; } }
 
     AStar _astar = null;
+    EnemyAI _enemyAI = null;
     FieldObjectBase _fieldObjBase = null;
 
     int _nNowRoute = 0;
     int _nNowNumber = 0;
+    int _nNowArrive = 0;
 
     Charactor.eDirection _LastDirection = Charactor.eDirection.MAX; //  移動終了時の向きを指定
     Vector3 _oldNumberPos = Vector3.zero;
@@ -39,9 +42,10 @@ public class MoveAI : MonoBehaviour
         }
     }
     
-    void Awake ()
+    public void Init ()
     {
         _astar = gameObject.AddComponent<AStar>();
+        _enemyAI = GetComponent<EnemyAI>();
         _fieldObjBase = GetComponent<FieldObjectBase>();
     }
 
@@ -49,18 +53,33 @@ public class MoveAI : MonoBehaviour
     {
         MoveUpdate();
 
-        //  再検索
-        /*if(StateStop && GetTarget >= 0)
+        //  再検索 (ストップしていて、対象マスにオブジェクトがないなら)
+        if(StateStop)
         {
-            SearchRoute(GetTarget);
-        }*/
+            if (_astar.GetRoute.Count <= 0)
+            {
+                _state = eState.WAIT;
+                return;
+            }
+
+            FieldObjectBase target = FieldData.Instance.GetObjData(_astar.GetRoute[_astar.GetRoute.Count - 1]);
+            if ((_enemyAI.GetState == EnemyAI.eState.BREAK &&  target) ||
+                (_enemyAI.GetState != EnemyAI.eState.BREAK && !target))
+            {
+                Debug.Log("再検索");
+                if (SearchRoute(GetTarget, _nNowArrive))
+                    return;
+            }
+
+            _state = eState.WAIT;
+        }
     }
 
     #region AI
 
     public bool OnMove()
     {
-        return SearchRoute(RandomNullMass());
+        return SearchRoute(RandomNullMass(), 0);
     }
 
     int RandomNullMass()
@@ -89,12 +108,13 @@ public class MoveAI : MonoBehaviour
 
     #region Search 
 
-    public bool SearchRoute(int nTarget, int nArrive = 0)
+    public bool SearchRoute(int nTarget, int nArrive)
     {
         if (nTarget < 0)
             return false;
 
         _nNowRoute = 1;
+        _nNowArrive = nArrive;
         NumberUpdate();
         _LastDirection = Charactor.eDirection.MAX;
 
@@ -102,7 +122,7 @@ public class MoveAI : MonoBehaviour
         {
             _state = eState.STOP;
             _nNowRoute = _astar.GetRoute.Count;
-            Debug.Log("その場所へのルートはありません");
+            Debug.LogWarning("その場所へのルートはありません");
             return false;
         }
 
@@ -113,7 +133,8 @@ public class MoveAI : MonoBehaviour
             return true;
 
         //  移動後にアクションを行う場合の処理
-        SetDirection(nArrive);
+        if (!SetDirection(nArrive))
+            return false;
 
         // 目の前の場合は向いて終了
         if (_nNowRoute == _astar.GetRoute.Count)
@@ -123,10 +144,10 @@ public class MoveAI : MonoBehaviour
     }
 
     //  移動後がアクションの場合、１マス前を終了とする
-    void SetDirection(int nArrive)
+    bool SetDirection(int nArrive)
     {
-        if (nArrive > _astar.GetRoute.Count)
-            return;
+        if (nArrive >= _astar.GetRoute.Count)
+            return false;
 
         int max = _astar.GetRoute.Count - nArrive;
         int value = _astar.GetRoute[max - 1] - _astar.GetRoute[max];
@@ -144,6 +165,8 @@ public class MoveAI : MonoBehaviour
         {
             _astar.GetRoute.RemoveAt(_astar.GetRoute.Count - 1);
         }
+
+        return true;
     }
 
     #endregion
@@ -157,7 +180,6 @@ public class MoveAI : MonoBehaviour
 
         if (DistanceCheck())
         {
-            transform.position = _fieldObjBase.GetPosForNumber(_astar.GetRoute[_nNowRoute]);    //  pos補正
             _nNowRoute++;
             NumberUpdate();
 
@@ -181,6 +203,9 @@ public class MoveAI : MonoBehaviour
         if (CheckObstacle())
             return Charactor.eDirection.MAX;
       
+        if(RouteOver)
+            return Charactor.eDirection.MAX;
+
         int dis = _astar.GetRoute[_nNowRoute] - _nNowNumber;
         
         if (dis == GameScaler._nWidth)
@@ -202,7 +227,7 @@ public class MoveAI : MonoBehaviour
             return;
 
         _nNowNumber = _fieldObjBase.GetDataNumber();
-        _oldNumberPos = _fieldObjBase.GetPosForNumber();
+        transform.position = _oldNumberPos = _fieldObjBase.GetPosForNumber();
     }
 
     bool DistanceCheck()
@@ -218,7 +243,7 @@ public class MoveAI : MonoBehaviour
     
     bool CheckObstacle()
     {
-        if (_nNowRoute >= _astar.GetRoute.Count)
+        if (RouteOver)
             return false;
 
         int idx = _astar.GetRoute[_nNowRoute];
