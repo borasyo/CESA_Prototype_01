@@ -47,7 +47,7 @@ public class BreakAI : MonoBehaviour
     {
         player = DebugStringPlayer();
 
-        List<FieldObjectBase> dataList =  FieldData.Instance.GetObjDataArray.Where(_ => _ && _.tag == "SandItem" && _.name.Contains(player)).ToList();
+        List<FieldObjectBase> dataList =  FieldData.Instance.GetObjDataArray.Where(x => x && x.tag == "SandItem" && x.name.Contains(player) && x.GetSandType() != SandItem.eType.MAX).ToList();
         if (dataList.Count <= 0)
             return false;
 
@@ -85,7 +85,7 @@ public class BreakAI : MonoBehaviour
 
     int RandomBreakMass()
     {
-        FieldObjectBase[] sandItemList = FieldData.Instance.GetObjDataArray.Where(element => element && element.tag == "SandItem").ToArray();
+        FieldObjectBase[] sandItemList = FieldData.Instance.GetObjDataArray.Where(x=> x && x.tag == "SandItem" && x.GetSandType() != SandItem.eType.MAX).ToArray();
 
         if (sandItemList.Length <= 0)
             return -1;

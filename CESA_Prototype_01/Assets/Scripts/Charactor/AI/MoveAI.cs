@@ -31,7 +31,9 @@ public class MoveAI : MonoBehaviour
 
     Charactor.eDirection _LastDirection = Charactor.eDirection.MAX; //  移動終了時の向きを指定
     Vector3 _oldNumberPos = Vector3.zero;
-    
+
+    int _nMoveRange = 0;  //  大きいほど遠くでも移動する
+
     public int GetTarget {
         get
         {
@@ -47,6 +49,24 @@ public class MoveAI : MonoBehaviour
         _astar = gameObject.AddComponent<AStar>();
         _enemyAI = GetComponent<EnemyAI>();
         _fieldObjBase = GetComponent<FieldObjectBase>();
+
+        Charactor chara = GetComponent<Charactor>();
+        switch (chara._charaType)
+        {
+            case Charactor.eCharaType.BALANCE:
+                _nMoveRange = 4;
+                break;
+            case Charactor.eCharaType.POWER:
+                _nMoveRange = 2;
+                break;
+            case Charactor.eCharaType.SPEED:
+                _nMoveRange = 6;
+                break;
+            case Charactor.eCharaType.TECHNICAL:
+                _nMoveRange = 4;
+                break;
+        }
+        _nMoveRange *= (level + 1);
     }
 
     void Update ()
@@ -88,6 +108,9 @@ public class MoveAI : MonoBehaviour
         FieldObjectBase[] objList = FieldData.Instance.GetObjDataArray;
         for (int i = 0; i < objList.Length; i++)
         {
+            if (_enemyAI._DistanceDatas[i]._nDistance > _nMoveRange)
+                continue;
+
             if (objList[i])
                 continue;
 
@@ -226,8 +249,10 @@ public class MoveAI : MonoBehaviour
         if (!_fieldObjBase)
             return;
 
-        _nNowNumber = _fieldObjBase.GetDataNumber();
-        transform.position = _oldNumberPos = _fieldObjBase.GetPosForNumber();
+        // TODO : ここでAIが移動しなくなる可能性あり
+        _oldNumberPos = _fieldObjBase.GetPosForNumber();
+        _nNowNumber = _fieldObjBase.GetDataNumber(_oldNumberPos);
+        //transform.position = 
     }
 
     bool DistanceCheck()

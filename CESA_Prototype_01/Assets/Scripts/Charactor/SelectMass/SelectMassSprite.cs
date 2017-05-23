@@ -37,7 +37,7 @@ public class SelectMassSprite : MonoBehaviour
         FieldObjectBase obj = FieldData.Instance.GetObjData(number);
         if (obj)
         {
-            if (obj.tag == "SandItem" && _charactorGauge.BreakGaugeCheck())
+            if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck())
             {
                 return;
             }

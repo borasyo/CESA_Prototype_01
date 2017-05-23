@@ -73,7 +73,7 @@ public class SelectMass : FieldObjectBase
         Color setCol = _notColor;
         if (obj)
         {
-            if (obj.tag == "SandItem" && _charactorGauge.BreakGaugeCheck())
+            if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck())
             {
                 setCol = _crashColor;
             }

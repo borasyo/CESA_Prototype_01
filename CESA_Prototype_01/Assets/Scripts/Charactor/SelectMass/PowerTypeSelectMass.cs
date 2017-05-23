@@ -19,7 +19,7 @@ public class PowerTypeSelectMass : SelectMass
         {
             if (_charactor.GetSpecialModeFlg)
             {
-                if ((obj.tag == "SandItem" || (obj.tag == "Block" && !obj.name.Contains("Fence"))) &&
+                if ((obj.GetSandType() != SandItem.eType.MAX || (obj.tag == "Block" && !obj.name.Contains("Fence"))) &&
                     _charactorGauge.BreakGaugeCheck())
                 {
                     setCol = _crashColor;
@@ -27,7 +27,7 @@ public class PowerTypeSelectMass : SelectMass
             }
             else
             {
-                if (obj.tag == "SandItem" && _charactorGauge.BreakGaugeCheck())
+                if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck())
                 {
                     setCol = _crashColor;
                 }

@@ -15,7 +15,7 @@ public class PowerTypeSelectMassSprite : SelectMassSprite
         {
             if (_charactor.GetSpecialModeFlg)
             {
-                if ((obj.tag == "SandItem" || (obj.tag == "Block" && !obj.name.Contains("Fence"))) && 
+                if ((obj.GetSandType() != SandItem.eType.MAX || (obj.tag == "Block" && !obj.name.Contains("Fence"))) && 
                     _charactorGauge.BreakGaugeCheck())
                 {
                     return;
@@ -23,7 +23,7 @@ public class PowerTypeSelectMassSprite : SelectMassSprite
             }
             else
             {
-                if (obj.tag == "SandItem" && _charactorGauge.BreakGaugeCheck())
+                if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck())
                 {
                     return;
                 }

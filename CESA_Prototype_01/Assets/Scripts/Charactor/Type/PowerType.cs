@@ -22,7 +22,10 @@ public class PowerType : Charactor
 
         if (_IsSpecialMode)
         {
-            if (!obj || (obj.tag != "SandItem" && obj.tag != "Block"))
+            if (!obj)
+                return;
+
+            if (obj.GetSandType() == SandItem.eType.MAX && obj.tag != "Block")
                 return;
 
             if (obj.name.Contains("Fence"))
@@ -30,7 +33,7 @@ public class PowerType : Charactor
         }
         else
         {
-            if (!obj ||  obj.tag != "SandItem")
+            if (!obj || obj.GetSandType() == SandItem.eType.MAX)
                 return;
         }
 

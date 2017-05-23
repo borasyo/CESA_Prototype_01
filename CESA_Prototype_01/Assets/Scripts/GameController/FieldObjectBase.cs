@@ -76,14 +76,16 @@ public class FieldObjectBase : MonoBehaviour
         return new Vector3(x,0,z);
     }
 
-    /*private bool _IsDestroy = false;
+    //  SandItemが上位クラスの場合のみ使用するクラス
+    //  TODO : 冗長なので変更したい
 
-    public IEnumerator DestroyObj()
+    protected SandItem _sandItem = null;
+
+    public SandItem.eType GetSandType()
     {
-        _IsDestroy = true;
+        if (!_sandItem)
+            return SandItem.eType.MAX;
 
-        yield return null;
-
-        Destroy(this.gameObject);
-    }*/
+        return _sandItem.GetType;
+    }
 }

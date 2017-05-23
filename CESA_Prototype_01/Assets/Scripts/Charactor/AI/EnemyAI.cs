@@ -44,7 +44,7 @@ public class EnemyAI : MonoBehaviour
     public eState GetState { get { return _state; } }
 
     //  AI選択用メソッド
-    int _nLevel = 0;                                         //  大きいほど頭が良くなる (0 : 弱, 1 : 中, 2 : 強)
+    int _nLevel = 0;                                        //  低いほど頭が良くなる (0 : 強, 1 : 中, 2 : 弱)
     bool _IsDanger = false;                                 //  危険状態かどうか trueの時AI変更
     int[] _nActionRatio        = new int[(int)eState.MAX];  //  通常時行動比率 (合計で100になるようにする)
     int[] _nSpecialActionRatio = new int[(int)eState.MAX];  //  特殊時行動比率 (合計で100になるようにする)
@@ -82,7 +82,7 @@ public class EnemyAI : MonoBehaviour
             .Where(_ => _state == eState.WAIT && !_IsDanger)
             .Subscribe(_ =>
             {
-                //AIUpdate();
+                AIUpdate();
             });
 
         // State.WALK
@@ -140,7 +140,7 @@ public class EnemyAI : MonoBehaviour
             });
 
         // Debug
-        //SetRiskData(30, 4);
+        SetRiskData(30, 3);
     }
 
     #endregion
@@ -181,10 +181,10 @@ public class EnemyAI : MonoBehaviour
         eState next = eState.WAIT;
 
         // Debug
-        if(isDanger)
+        if (isDanger)
             return Random.Range(0, 2) == 0 ? eState.WALK : eState.BREAK;
         else
-            return (eState)Random.Range(0, (int)eState.MAX);
+            return eState.BREAK;// (eState)Random.Range(0, (int)eState.MAX);
 
         int nRand = 0;
         int[] ratio = _charactor.GetSpecialModeFlg ? _nSpecialActionRatio : _nActionRatio;

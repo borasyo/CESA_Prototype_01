@@ -205,7 +205,7 @@ public class Charactor : FieldObjectBase
 
         FieldObjectBase obj = FieldData.Instance.GetObjData(GetDataNumberForDir());
 
-        if (!obj || obj.tag != "SandItem")
+        if (!obj || obj.GetSandType() == SandItem.eType.MAX)
             return;
 
         FieldData.Instance.SetObjData(null, GetDataNumberForDir());
