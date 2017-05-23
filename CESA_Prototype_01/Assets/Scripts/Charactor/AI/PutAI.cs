@@ -9,7 +9,7 @@ public class PutAI : MonoBehaviour
     MoveAI _moveAI;
     FieldObjectBase _fieldObjBase = null;
 
-    public void Init()
+    public void Init(int level)
     {
         _enemyAI = GetComponent<EnemyAI>();
         _moveAI = GetComponent<MoveAI>();

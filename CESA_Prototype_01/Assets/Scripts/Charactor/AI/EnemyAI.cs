@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
         public int _nDistance;
     };
     public tDistanceData[] _DistanceDatas { get; private set; }    //  各マスの自分から見た移動距離を保持する
+    Charactor _charactor = null;
     FieldObjectBase _fieldObjBase = null;
 
     public enum eState
@@ -43,49 +44,42 @@ public class EnemyAI : MonoBehaviour
     public eState GetState { get { return _state; } }
 
     //  AI選択用メソッド
-    int[] _nActionRatio        = new int[(int)eState.MAX]; //  通常時行動比率 (合計で100になるようにする)
-    int[] _nSpecialActionRatio = new int[(int)eState.MAX]; //  特殊時行動比率 (合計で100になるようにする)
+    int _nLevel = 0;                                         //  大きいほど頭が良くなる (0 : 弱, 1 : 中, 2 : 強)
+    bool _IsDanger = false;                                 //  危険状態かどうか trueの時AI変更
+    int[] _nActionRatio        = new int[(int)eState.MAX];  //  通常時行動比率 (合計で100になるようにする)
+    int[] _nSpecialActionRatio = new int[(int)eState.MAX];  //  特殊時行動比率 (合計で100になるようにする)
 
     //  各行動AI
     MoveAI _moveAI = null;
     PutAI _putAI = null;
     BreakAI _breakAI = null;
 
-    public void Set(int[] actionRatio, int[] specialActionRatio, int maxRisk, int riskRange)
+    #region Init
+
+    //  キャラのタイプ、CPUのレベルによって設定する情報
+    public void Set(int level, int[] actionRatio, int[] specialActionRatio, int maxRisk, int riskRange)
     {
-
-        //  RiskCheck
-        this.UpdateAsObservable()
-            .Where(_ => _state != eState.WAIT && FieldData.Instance.ChangeFieldWithChara)
-            .Subscribe(_ =>
-            {
-                int risk = 0;
-                List<int> idxList = _DistanceDatas.Where(x => x._nDistance <= riskRange).Select(x => x._nIdx).ToList();
-//                FieldData.Instance.Get
-                foreach (int idx in idxList)
-                {
-                   
-
-                }
-
-
-            });
+        _nLevel = level;
+        _nActionRatio = actionRatio;
+        _nSpecialActionRatio = specialActionRatio;
+        SetRiskData(maxRisk, riskRange);
     }
 
     // Use this for initialization
     void Start()
     {
+        _charactor = GetComponent<Charactor>();
         _fieldObjBase = GetComponent<FieldObjectBase>();
         _moveAI = gameObject.AddComponent<MoveAI>();
-        _moveAI.Init();
+        _moveAI.Init(_nLevel);
         _putAI = gameObject.AddComponent<PutAI>();
-        _putAI.Init();
+        _putAI.Init(_nLevel);
         _breakAI = gameObject.AddComponent<BreakAI>();
-        _breakAI.Init();
+        _breakAI.Init(_nLevel);
 
         // State.WAIT
         this.UpdateAsObservable()
-            .Where(_ => _state == eState.WAIT)
+            .Where(_ => _state == eState.WAIT && !_IsDanger)
             .Subscribe(_ =>
             {
                 AIUpdate();
@@ -144,52 +138,76 @@ public class EnemyAI : MonoBehaviour
                 CheckDistanceData();
                 oldNumber = _fieldObjBase.GetDataNumber();
             });
+
+        // Debug
+        SetRiskData(20, 4);
     }
+
+    #endregion
 
     #region AI
 
-    void AIUpdate()
+    bool AIUpdate(bool isDanger = false)
     {
-        _state = GetNextState();
+        bool isResult = false;
+        _state = GetNextState(isDanger);
         //Debug.Log("AI : " + _state);
         switch (_state)
         {
             case eState.WAIT:
                 break;
             case eState.WALK:
-                if (!_moveAI.OnMove())
-                    _state = eState.WAIT;
+                isResult = _moveAI.OnMove();
                 Debug.Log("Walk");
                 break;
             case eState.PUT:
-                if (!_putAI.OnPut())
-                    _state = eState.WAIT;
+                isResult = _putAI.OnPut();
                 Debug.Log("Put");
                 break;
             case eState.BREAK:
-                if (!_breakAI.OnBreak())
-                    _state = eState.WAIT;
+                isResult = _breakAI.OnBreak();
                 Debug.Log("Break");
                 break;
         }
+
+        if(!isResult)
+            _state = eState.WAIT;
+
+        return isResult;
     }
 
-    eState GetNextState()
+    eState GetNextState(bool isDanger)
     {
-        int nRand = Random.Range(0, 100);
         eState next = eState.WAIT;
-        //if(Input.GetKeyDown(KeyCode.RightShift))
-        //{
-        next = (eState)Random.Range(0, (int)eState.MAX);
-        //}
-        /*for (int i = 0; i < _nActionRatio.Length; i++)
+
+        // Debug
+        if(isDanger)
+            return Random.Range(0, 2) == 0 ? eState.WALK : eState.BREAK;
+        else
+            return (eState)Random.Range(0, (int)eState.MAX);
+
+        int nRand = 0;
+        int[] ratio = _charactor.GetSpecialModeFlg ? _nSpecialActionRatio : _nActionRatio;
+        if (isDanger)
         {
-            nRand -= _nActionRatio[i];
-            if (nRand > 0)
-                continue;
-            next = (eState)i;
-            break;
-        }*/
+            nRand = Random.Range(0, ratio[(int)eState.WALK] + ratio[(int)eState.BREAK]);
+            if (nRand <= ratio[(int)eState.WALK])
+                next = eState.WALK;
+            else
+                next = eState.BREAK;
+        }
+        else
+        {
+            nRand = Random.Range(0, ratio.Sum());
+            for (int i = 0; i < ratio.Length; i++)
+            {
+                nRand -= ratio[i];
+                if (nRand > 0)
+                    continue;
+                next = (eState)i;
+                break;
+            }
+        }
         return next;
     }
 
@@ -265,6 +283,106 @@ public class EnemyAI : MonoBehaviour
 
     #endregion
 
+    #region RiskCheck 
+
+    //  キャラタイプとCPUレベルによって変える
+    public void SetRiskData(int maxRisk, int riskRange)
+    {
+        FieldData.Instance.ExceptionChangeField();  // 開始1F時は計算する
+
+        switch(_nLevel)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+
+        this.UpdateAsObservable()
+            .Where(_ => _IsDanger)
+            .Subscribe(_ =>
+            {
+                //  成功するまで繰り返す
+                _IsDanger = !AIUpdate(true);
+            });
+
+        //  RiskCheck
+        this.UpdateAsObservable()
+            .Where(_ => FieldData.Instance.ChangeFieldWithChara)
+            .Subscribe(_ =>
+            {
+                int risk = 0;
+
+                //  自分の位置のリスク計算
+                risk += RiskCheck(null, _fieldObjBase.GetDataNumber());
+
+                //  周りの状態からリスクを追加
+                List<tDistanceData> distanceList = _DistanceDatas.Where(x => x._nDistance > 0 && x._nDistance <= riskRange).ToList();
+                foreach (tDistanceData data in distanceList)
+                {
+                    //  マスの状態と近さでリスク計算
+                    risk += RiskCheck(FieldData.Instance.GetObjData(data._nIdx), data._nIdx) / data._nDistance;
+
+                    if (risk < maxRisk)
+                        continue;
+
+                    // AI強制切り替え (歩行or破壊のどちらかで)
+                    _IsDanger = true;
+                }
+                Debug.Log("現在リスク : " + risk);
+            });
+    }
+
+    protected virtual int RiskCheck(FieldObjectBase obj, int idx)
+    {
+        if (obj)
+        {
+            switch (obj.tag)
+            {
+                case "Charactor":
+                    return RiskData.nChara;
+
+                case "SandItem":
+                    SandItem item = (SandItem)obj;
+                    if (FieldDataChecker.Instance.TypeCheck(name, item.GetType))
+                        return RiskData.nMySandItem;
+                    else
+                        return RiskData.nEnemySandItem;
+
+                case "Block":
+                    return RiskData.nBlock;
+            }
+        }
+        else
+        {
+            SandItem.eType type = SandData.Instance.GetSandDataList[idx];
+            if (type != SandItem.eType.MAX)
+            {
+                if (FieldDataChecker.Instance.TypeCheck(name, type))
+                    return RiskData.nMySand;
+                else
+                    return RiskData.nEnemySand;
+            }
+
+            type = SandData.Instance.GetHalfSandDataList[idx]._type;
+            if (type != SandItem.eType.MAX)
+            {
+                //  Blockによる半はさまれは危険として処理
+                if (FieldDataChecker.Instance.TypeCheck(name, type))
+                    return RiskData.nMyHalfSand;
+                else
+                    return RiskData.nEnemyHalfSand;
+            }
+        }
+
+        return 0;
+    }
+    #endregion
+
+    #region GetInput
+
     //  取得時にリセットをかける
     //  Trueを返す側ではリセットしない。送り続けるだけ
     public bool GetMove(Charactor.eDirection dir)
@@ -295,9 +413,12 @@ public class EnemyAI : MonoBehaviour
         return true;
     }
 
+    #endregion
 
 
 #if DEBUG
+    #region DebugInput
+
     bool DebugMoveInput(Charactor.eDirection dir)
     {
         if (transform.name.Contains("1P"))
@@ -453,6 +574,7 @@ public class EnemyAI : MonoBehaviour
 
         return true;
     }
-
+    #endregion
 #endif
+
 }

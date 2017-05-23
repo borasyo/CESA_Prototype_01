@@ -23,7 +23,7 @@ public class SelectMass : FieldObjectBase
 
     void Start()
     {
-        _normalizeTrans = transform.parent.FindChild("NormalizePos");
+        _normalizeTrans = transform.parent.Find("NormalizePos");
         _charactor = GetComponentInParent<Charactor>();
         _charactorGauge = GetComponentInParent<CharactorGauge>();
 

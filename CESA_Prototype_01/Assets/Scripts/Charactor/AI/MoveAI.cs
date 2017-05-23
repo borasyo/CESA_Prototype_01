@@ -42,7 +42,7 @@ public class MoveAI : MonoBehaviour
         }
     }
     
-    public void Init ()
+    public void Init (int level)
     {
         _astar = gameObject.AddComponent<AStar>();
         _enemyAI = GetComponent<EnemyAI>();
@@ -92,7 +92,7 @@ public class MoveAI : MonoBehaviour
                 continue;
 
             SandItem.eType type = SandData.Instance.GetSandDataList[i];
-            if (type == SandItem.eType.MAX || !FieldDataChecker.Instance.TypeCheck(name, type))
+            if (type != SandItem.eType.MAX && !FieldDataChecker.Instance.TypeCheck(name, type))
                 continue;
 
             nullMassList.Add(i);
