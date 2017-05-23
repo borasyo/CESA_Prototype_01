@@ -17,28 +17,21 @@ public class Referee : MonoBehaviour
 
     void LateUpdate()
     {
-        List<SandData.tSandData> sandDataList = SandData.Instance.GetSandDataList;
-
         for (int i = 0; i < _charaList.Count; i++)
         {
             if (_charaList[i].name.Contains("Invincible"))
                 continue;
 
-            SandItem.eType type = CheckType(_charaList[i].name);
+            SandItem.eType charaType = CheckType(_charaList[i].name);
+            SandItem.eType type = SandData.Instance.GetSandDataList[_charaList[i].GetDataNumber()];
 
-            for (int j = 0; j < sandDataList.Count; j++)
-            {
-                if (sandDataList[j]._number != _charaList[i].GetDataNumber())
-                    continue;
+            if (type == SandItem.eType.MAX || type == charaType)
+                continue;
 
-                if (sandDataList[j]._Type == type || sandDataList[j]._Type == SandItem.eType.MAX)
-                    continue;
-
-                GameObject obj =_charaList[i].gameObject;
-                _charaList.Remove(_charaList[i]);
-                CheckResult(obj.gameObject);
-                return;
-            }
+            GameObject obj =_charaList[i].gameObject;
+            _charaList.Remove(_charaList[i]);
+            CheckResult(obj.gameObject);
+            return;
         }
     }
 

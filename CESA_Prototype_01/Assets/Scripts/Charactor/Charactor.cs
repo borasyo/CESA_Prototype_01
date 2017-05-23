@@ -209,7 +209,8 @@ public class Charactor : FieldObjectBase
             return;
 
         FieldData.Instance.SetObjData(null, GetDataNumberForDir());
-        StartCoroutine(obj.DestroyObj());
+        FieldData.Instance.ExceptionChangeField();
+        Destroy(obj.gameObject);
         _charactorGauge.BreakAction();
     }
 

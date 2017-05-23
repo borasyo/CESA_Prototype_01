@@ -25,7 +25,7 @@ public class PutAI : MonoBehaviour
             case 1:
                 return CharaPut();
             case 2:
-                return HalfSandPut();
+                return HalfSandPut(false);
             case 3:
                 return HalfSandPut(true);
         }
@@ -57,10 +57,11 @@ public class PutAI : MonoBehaviour
         return true;
     }
 
-    bool HalfSandPut(bool isNear = false)
+    bool HalfSandPut(bool isNear)
     {
-        List<SandData.tHalfSandData> dataList = SandData.Instance.GetHalfSandDataList.Where(_ => TypeCheck(_._data._Type)).ToList();
+        SandData.tHalfSandData[] dataList = SandData.Instance.GetHalfSandDataList; //.Where(_ => TypeCheck(_._type)).ToArray();
         SandData.tHalfSandData data = new SandData.tHalfSandData();
+        int number = 0;
 
         if (isNear)
         {   //  最も近いはさめる箇所を探索
@@ -68,23 +69,28 @@ public class PutAI : MonoBehaviour
             int nowNumber = _fieldObjBase.GetDataNumber();
             int x = nowNumber % GameScaler._nWidth;
             int z = nowNumber / GameScaler._nWidth;
+
+            int element = 0;
             dataList = dataList.Where(_ =>
             {
-                int dis = Mathf.Abs(x - _._data._number % GameScaler._nWidth) + Mathf.Abs(z - _._data._number / GameScaler._nWidth);
-                if (dis >= min)
+                int dis = Mathf.Abs(x - element % GameScaler._nWidth) + Mathf.Abs(z - element / GameScaler._nWidth);
+                element++;
+                if (SandData.Instance.GetHalfSandDataList[element - 1]._type == SandItem.eType.MAX)
+                    return false;
+                if(dis >= min)
                     return false;
 
                 min = dis;
+                number = element - 1;
                 return true;
-            }).ToList();
-            data = dataList[dataList.Count - 1];
+            }).ToArray();
+            data = dataList[dataList.Length - 1];
         }
         else
         {
-            data = dataList[Random.Range(0, dataList.Count)];
+            data = dataList[Random.Range(0, dataList.Length)];
         }
 
-        int number = data._data._number;
         switch(data._dir)
         {
             case Charactor.eDirection.FORWARD:

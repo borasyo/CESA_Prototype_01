@@ -95,52 +95,50 @@ public class FieldDataChecker : MonoBehaviour
         //  変換
         string player = name[name.IndexOf("Player") - 1].ToString();
 
-        List<SandData.tSandData> dataList = SandData.Instance.GetSandDataList.FindAll(_ => _._number == idx);
-        if (dataList.Count <= 0)
+        SandItem.eType type = SandData.Instance.GetSandDataList[idx];
+        if (type == SandItem.eType.MAX)
             return false;
-
-        foreach (SandData.tSandData data in dataList)
+        
+        switch (player)
         {
-            switch (player)
-            {
-                case "1":
-                    if (data._Type == SandItem.eType.ONE_P)
-                        return false;
-                    break;
-                case "2":
-                    if (data._Type == SandItem.eType.TWO_P)
-                        return false;
-                    break;
-                case "3":
-                    if (data._Type == SandItem.eType.THREE_P)
-                        return false;
-                    break;
-                case "4":
-                    if (data._Type == SandItem.eType.FOUR_P)
-                        return false;
-                    break;
-            }
+            case "1":
+                if (type == SandItem.eType.ONE_P)
+                    return false;
+                break;
+            case "2":
+                if (type == SandItem.eType.TWO_P)
+                    return false;
+                break;
+            case "3":
+                if (type == SandItem.eType.THREE_P)
+                    return false;
+                break;
+            case "4":
+                if (type == SandItem.eType.FOUR_P)
+                    return false;
+                break;
         }
+           
         return true;
     }
-    public bool TypeCheck(SandItem.eType type)
+    public bool TypeCheck(string name, SandItem.eType type)
     {
         switch (type)
         {
             case SandItem.eType.ONE_P:
-                if (this.name.Contains("1P"))
+                if (name.Contains("1P"))
                     return true;
                 break;
             case SandItem.eType.TWO_P:
-                if (this.name.Contains("2P"))
+                if (name.Contains("2P"))
                     return true;
                 break;
             case SandItem.eType.THREE_P:
-                if (this.name.Contains("3P"))
+                if (name.Contains("3P"))
                     return true;
                 break;
             case SandItem.eType.FOUR_P:
-                if (this.name.Contains("4P"))
+                if (name.Contains("4P"))
                     return true;
                 break;
         }

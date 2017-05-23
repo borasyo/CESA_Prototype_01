@@ -35,6 +35,7 @@ public class PowerType : Charactor
         }
 
         FieldData.Instance.SetObjData(null, GetDataNumberForDir());
+        FieldData.Instance.ExceptionChangeField();
         Destroy(obj.gameObject);
         _charactorGauge.BreakAction();
     }

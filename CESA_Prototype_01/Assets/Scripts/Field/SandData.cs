@@ -42,25 +42,31 @@ public class SandData : MonoBehaviour
         public FieldObjectBase first;
         public FieldObjectBase second;
     };
-    public struct tSandData
+    /*public struct tSandData
     {
         public int _number;
         public SandItem.eType _Type;
-    };
+    };*/
     public struct tHalfSandData
     {
-        public tSandData _data;
+        public SandItem.eType _type;
         public Charactor.eDirection _dir; 
     };
-    List<tSandData> _SandDataList = new List<tSandData>();               //  はさまれている箇所のリスト
-    public List<tSandData> GetSandDataList { get { return _SandDataList; } }
+    SandItem.eType[] _SandDataList = null;               //  はさまれている箇所のリスト
+    public SandItem.eType[] GetSandDataList { get { return _SandDataList; } }
 
-    List<tHalfSandData> _HalfSandDataList = new List<tHalfSandData>();   //  半分はさまれている箇所のリスト(重複も可)
-    public List<tHalfSandData> GetHalfSandDataList { get { return _HalfSandDataList; } }
+    tHalfSandData[] _HalfSandDataList = null;   //  半分はさまれている箇所のリスト(重複も可)
+    public tHalfSandData[] GetHalfSandDataList { get { return _HalfSandDataList; } }
     
 
     [SerializeField] bool _IsSlope = true;
     [SerializeField] bool _IsOverLapToSafe = true;
+
+    void Awake()
+    {
+        _SandDataList = new SandItem.eType[GameScaler.GetRange];
+        _HalfSandDataList = new tHalfSandData[GameScaler.GetRange];
+    }
 
     void Start()
     {
@@ -81,10 +87,10 @@ public class SandData : MonoBehaviour
         SandDataCheck();
         HalfSandDataCheck();
 
-        if (!_IsOverLapToSafe)
+        /*if (!_IsOverLapToSafe)
             return;
 
-        OverLapDistinct();
+        OverLapDistinct();*/
     }
 
     #region SandCheck
@@ -92,19 +98,21 @@ public class SandData : MonoBehaviour
     void SandDataCheck()
     {
         //  初期化
-        _SandDataList.Clear();
+        //_SandDataList.Clear();
 
         //  チェックする
         FieldObjectBase[] objDataArray = FieldData.Instance.GetObjDataArray;
         for (int number = 0; number < objDataArray.Length; number++)
         {
+            _SandDataList[number] = SandItem.eType.MAX;
+
             //  既に何か配置されていて、キャラクターではないなら
             if (objDataArray[number] && objDataArray[number].tag != "Charactor")
                 continue;
 
             // はさまれていないかチェック(4パターン)
             Sand(FindSandObj(objDataArray, number, GameScaler._nWidth), number);       //  上下
-            Sand(FindSandObj(objDataArray, number, 1), number);                        //  左右
+            Sand(FindSandObj(objDataArray, number,                  1), number);       //  左右
 
             if (!_IsSlope)
                 continue;
@@ -115,7 +123,7 @@ public class SandData : MonoBehaviour
     }
    
     // TODO : 処理効率が懸念材料....
-    void OverLapDistinct()
+    /*void OverLapDistinct()
     {
         for(int i = 0; i < GameScaler._nWidth * GameScaler._nHeight; i++) {
             List<tSandData> overLapList = _SandDataList.Where(_ => _._number == i).ToList();
@@ -136,7 +144,7 @@ public class SandData : MonoBehaviour
             
             _SandDataList.RemoveAll(x => x._number == i);
         }
-    }
+    }*/
 
     //  判定を少し改善した。バグが出る可能性アリ
     tCheckData FindSandObj(FieldObjectBase[] objDataArray, int number, int add)
@@ -179,7 +187,7 @@ public class SandData : MonoBehaviour
         if (!checkData.first || !checkData.second)
             return false;
 
-        tSandData sandData = new tSandData();
+        SandItem.eType type = SandItem.eType.MAX;
 
         if (checkData.first.tag == "Block")
         {
@@ -187,14 +195,14 @@ public class SandData : MonoBehaviour
                 return false;
 
             SandItem sandItem = (SandItem)checkData.second;
-            sandData._Type = sandItem.GetType;
+            type = sandItem.GetType;
         }
         else
         {
             SandItem firstSandItem  = (SandItem)checkData.first;
             if (checkData.second.tag == "Block")
             {
-                sandData._Type = firstSandItem.GetType;
+                type = firstSandItem.GetType;
             }
             else
             {
@@ -202,12 +210,18 @@ public class SandData : MonoBehaviour
                 if (firstSandItem.GetType != secondSandItem.GetType)
                     return false;
 
-                sandData._Type = firstSandItem.GetType;
+                type = firstSandItem.GetType;
             }
         }
 
-        sandData._number = number;
-        _SandDataList.Add(sandData);
+        //  はさまれているが重複しているので削除
+        if (!_IsOverLapToSafe && _SandDataList[number] != SandItem.eType.MAX)
+        {
+            _SandDataList[number] = SandItem.eType.MAX;
+            return false;
+        }
+        
+        _SandDataList[number] = type;
         return true;
     }
 
@@ -217,12 +231,15 @@ public class SandData : MonoBehaviour
 
     void HalfSandDataCheck()
     {
-        _HalfSandDataList.Clear();
+        //_HalfSandDataList.Clear();
 
         FieldObjectBase[] objDataArray = FieldData.Instance.GetObjDataArray;
         for (int number = 0; number < objDataArray.Length; number++)
         {
-            if (objDataArray[number] && objDataArray[number].tag != "Charactor")
+            _HalfSandDataList[number]._type = SandItem.eType.MAX;
+
+            FieldObjectBase obj = objDataArray[number];
+            if (obj && obj.tag != "Charactor")
                 continue;
 
             //  すでに挟まれているか
@@ -235,24 +252,19 @@ public class SandData : MonoBehaviour
 
 /*#if DEBUG
         Debug.Log("半分はさまれリスト");
-        for(int i = 0; i < _HalfSandDataList.Count; i++)
+        for(int i = 0; i < _HalfSandDataList.Length; i++)
         {
-            Debug.Log("番号 : " + _HalfSandDataList[i]._data._number + ", タイプ : " + _HalfSandDataList[i]._data._Type + ", 置く所 : " + _HalfSandDataList[i]._dir);
+            Debug.Log("番号 : " + i + ", タイプ : " + _HalfSandDataList[i]._type + ", 置く所 : " + _HalfSandDataList[i]._dir);
         }
 #endif*/
     }
 
     bool OnSand(int number)
     {
-        foreach (tSandData data in _SandDataList)
-        {
-            if (data._number != number)
-                continue;
+        if (_SandDataList[number] == SandItem.eType.MAX)
+            return false;
 
-            return true;
-        }
-
-        return false;
+        return true;
     }
     bool HalfSand(int number, int add)
     {
@@ -292,35 +304,32 @@ public class SandData : MonoBehaviour
             return false;
 
         //  追加
-        tHalfSandData halfSandData = new tHalfSandData();
-        halfSandData._data._number = number;
         FieldObjectBase obj = first ? first: second;
         if (obj.tag == "Block")
         {
-            halfSandData._data._Type = SandItem.eType.BLOCK;
+            _HalfSandDataList[number]._type = SandItem.eType.BLOCK;
         }
         else
         {
             SandItem item = (SandItem)obj;
-            halfSandData._data._Type = item.GetType;
+            _HalfSandDataList[number]._type = item.GetType;
         }
 
         //  はさむ位置をチェック
         if (first)
         {
             if (add == 1)
-                halfSandData._dir = Charactor.eDirection.LEFT;      //  左に置けばはさめる
+                _HalfSandDataList[number]._dir = Charactor.eDirection.LEFT;      //  左に置けばはさめる
             else
-                halfSandData._dir = Charactor.eDirection.BACK;      //  下に置けばはさめる
+                _HalfSandDataList[number]._dir = Charactor.eDirection.BACK;      //  下に置けばはさめる
         }
         else
         {
             if (add == 1)
-                halfSandData._dir = Charactor.eDirection.RIGHT;     //  右に置けばはさめる
+                _HalfSandDataList[number]._dir = Charactor.eDirection.RIGHT;     //  右に置けばはさめる
             else
-                halfSandData._dir = Charactor.eDirection.FORWARD;   //  上に置けばはさめる
+                _HalfSandDataList[number]._dir = Charactor.eDirection.FORWARD;   //  上に置けばはさめる
         }
-        _HalfSandDataList.Add(halfSandData);
 
         return true;
     }

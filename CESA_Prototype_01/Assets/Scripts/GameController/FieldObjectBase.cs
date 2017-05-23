@@ -7,7 +7,7 @@ public class FieldObjectBase : MonoBehaviour
     //  データ配列の自分の情報を手動で更新する
     protected void DataUpdate()
     {
-        if (_IsDestroy || FieldData.Instance.GetObjData(GetDataNumber()))
+        if (FieldData.Instance.GetObjData(GetDataNumber()))
             return;
 
         FieldData.Instance.SetObjData(this, GetDataNumber());
@@ -76,7 +76,7 @@ public class FieldObjectBase : MonoBehaviour
         return new Vector3(x,0,z);
     }
 
-    private bool _IsDestroy = false;
+    /*private bool _IsDestroy = false;
 
     public IEnumerator DestroyObj()
     {
@@ -85,5 +85,5 @@ public class FieldObjectBase : MonoBehaviour
         yield return null;
 
         Destroy(this.gameObject);
-    }
+    }*/
 }

@@ -91,8 +91,8 @@ public class MoveAI : MonoBehaviour
             if (objList[i])
                 continue;
 
-            List<SandData.tSandData> dataList = SandData.Instance.GetSandDataList.FindAll(_ => _._number == i);
-            if (dataList.Count > 0 && !FieldDataChecker.Instance.TypeCheck(dataList[0]._Type))
+            SandItem.eType type = SandData.Instance.GetSandDataList[i];
+            if (type == SandItem.eType.MAX || !FieldDataChecker.Instance.TypeCheck(name, type))
                 continue;
 
             nullMassList.Add(i);

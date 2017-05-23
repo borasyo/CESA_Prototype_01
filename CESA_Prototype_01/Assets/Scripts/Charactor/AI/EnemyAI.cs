@@ -4,6 +4,7 @@ using UnityEngine;
 
 using UniRx;
 using UniRx.Triggers;
+using System.Linq;
 
 public class EnemyAI : MonoBehaviour 
 {
@@ -20,7 +21,13 @@ public class EnemyAI : MonoBehaviour
     };
     
     AIInput _nowInput = new AIInput();
-    public int[] _DistanceDatas { get; private set; }    //  各マスの自分から見た移動距離を保持する
+
+    public struct tDistanceData
+    {
+        public int _nIdx;
+        public int _nDistance;
+    };
+    public tDistanceData[] _DistanceDatas { get; private set; }    //  各マスの自分から見た移動距離を保持する
     FieldObjectBase _fieldObjBase = null;
 
     public enum eState
@@ -34,19 +41,96 @@ public class EnemyAI : MonoBehaviour
     }
     eState _state = eState.WAIT;
     public eState GetState { get { return _state; } }
-    int[] _nActionRatio = new int[(int)eState.MAX]; //  行動比率 (合計で100になるようにする)
+
+    //  AI選択用メソッド
+    int[] _nActionRatio        = new int[(int)eState.MAX]; //  通常時行動比率 (合計で100になるようにする)
+    int[] _nSpecialActionRatio = new int[(int)eState.MAX]; //  特殊時行動比率 (合計で100になるようにする)
+
     //  各行動AI
     MoveAI _moveAI = null;
     PutAI _putAI = null;
     BreakAI _breakAI = null;
 
-    // Use this for initialization
-    void Start ()
+    public void Set(int[] actionRatio, int[] specialActionRatio, int maxRisk, int riskRange)
     {
-        _DistanceDatas = new int[GameScaler._nWidth * GameScaler._nHeight];
+
+        //  RiskCheck
+        this.UpdateAsObservable()
+            .Where(_ => _state != eState.WAIT && FieldData.Instance.ChangeFieldWithChara)
+            .Subscribe(_ =>
+            {
+                int risk = 0;
+                List<int> idxList = _DistanceDatas.Where(x => x._nDistance <= riskRange).Select(x => x._nIdx).ToList();
+//                FieldData.Instance.Get
+                foreach (int idx in idxList)
+                {
+                   
+
+                }
+
+
+            });
+    }
+
+    // Use this for initialization
+    void Start()
+    {
         _fieldObjBase = GetComponent<FieldObjectBase>();
+        _moveAI = gameObject.AddComponent<MoveAI>();
+        _moveAI.Init();
+        _putAI = gameObject.AddComponent<PutAI>();
+        _putAI.Init();
+        _breakAI = gameObject.AddComponent<BreakAI>();
+        _breakAI.Init();
+
+        // State.WAIT
+        this.UpdateAsObservable()
+            .Where(_ => _state == eState.WAIT)
+            .Subscribe(_ =>
+            {
+                AIUpdate();
+            });
+
+        // State.WALK
+        this.UpdateAsObservable()
+            .Where(_ => _state == eState.WALK)
+            .Subscribe(_ =>
+            {
+                if (MoveUpdate())
+                    return;
+
+                _state = eState.WAIT;
+            });
+
+        // State.PUT
+        this.UpdateAsObservable()
+            .Where(_ => _state == eState.PUT)
+            .Subscribe(_ =>
+            {
+                if (MoveUpdate())
+                    return;
+
+                _nowInput._action = Charactor.eAction.PUT;
+                _state = eState.WAIT;
+            });
+
+        // State.BREAK
+        this.UpdateAsObservable()
+            .Where(_ => _state == eState.BREAK)
+            .Subscribe(_ =>
+            {
+                if (MoveUpdate())
+                    return;
+
+                _nowInput._action = Charactor.eAction.BREAK;
+                _state = eState.WAIT;
+            });
 
         //  DistanceData
+        _DistanceDatas = new tDistanceData[GameScaler._nWidth * GameScaler._nHeight];
+        for (int idx = 0; idx < _DistanceDatas.Length; idx++)
+            _DistanceDatas[idx]._nIdx = idx;
+
         int oldNumber = -1;
         this.UpdateAsObservable()
             .Subscribe(_DistanceDatas =>
@@ -60,44 +144,7 @@ public class EnemyAI : MonoBehaviour
                 CheckDistanceData();
                 oldNumber = _fieldObjBase.GetDataNumber();
             });
-
-        _moveAI = gameObject.AddComponent<MoveAI>();
-        _moveAI.Init();
-        _putAI = gameObject.AddComponent<PutAI>();
-        _putAI.Init();
-        _breakAI = gameObject.AddComponent<BreakAI>();
-        _breakAI.Init();
     }
-	
-	// Update is called once per frame
-	void Update () 
-    {
-        switch (_state)
-        {
-            case eState.WAIT:
-                AIUpdate();
-                break;
-            case eState.WALK:
-                if (!MoveUpdate())
-                    _state = eState.WAIT;
-                break;
-            case eState.PUT:
-                if (!MoveUpdate())
-                {
-                    _nowInput._action = Charactor.eAction.PUT;
-                    _state = eState.WAIT;
-                }
-                break;
-            case eState.BREAK:
-                if (!MoveUpdate())
-                {
-                    _nowInput._action = Charactor.eAction.BREAK;
-                    _state = eState.WAIT;
-                }
-                break;
-        }
-    }
-
 
     #region AI
 
@@ -133,7 +180,7 @@ public class EnemyAI : MonoBehaviour
         eState next = eState.WAIT;
         //if(Input.GetKeyDown(KeyCode.RightShift))
         //{
-            next = (eState)Random.Range(0, (int)eState.MAX);
+        next = (eState)Random.Range(0, (int)eState.MAX);
         //}
         /*for (int i = 0; i < _nActionRatio.Length; i++)
         {
@@ -186,7 +233,7 @@ public class EnemyAI : MonoBehaviour
             if (CheckRivRange(nowNumber, number))
                 distance -= (GameScaler._nWidth + 1);
 
-            _DistanceDatas[number] = step + Mathf.Abs(distance);
+            _DistanceDatas[number]._nDistance = step + Mathf.Abs(distance);
         }
     }
 
