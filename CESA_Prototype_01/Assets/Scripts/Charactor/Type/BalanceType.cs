@@ -76,6 +76,9 @@ public class BalanceType : Charactor
 
     override public void RunSpecialMode(bool IsRun)
     {
+        if (_IsSpecialMode == IsRun)
+            return;
+
         _IsSpecialMode = IsRun;
 
         //  今のところなし

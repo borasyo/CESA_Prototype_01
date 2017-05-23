@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpeedType : Charactor 
 {
+    [SerializeField] bool _IsAuthBlock = false;
+
     void Start()
     {
         _charaType = eCharaType.SPEED;
@@ -42,7 +44,7 @@ public class SpeedType : Charactor
 
         if (_IsSpecialMode)
         {
-            if (checkData && checkData.tag == "Block" && checkData.name.Contains("Fence"))
+            if (checkData && checkData.tag == "Block" && (!_IsAuthBlock || checkData.name.Contains("Fence")))
             {
                 return DistanceCheck(checkData);
             }
@@ -82,9 +84,29 @@ public class SpeedType : Charactor
 
         return true;
     }
+    protected override void DataUpdate()
+    {
+        int nowNumber = GetDataNumber();
+
+        if(_IsSpecialMode && !FieldData.Instance.GetObjData(nowNumber))
+            FieldData.Instance.SetObjData(this, nowNumber);
+
+        if (_nOldNumber == nowNumber)
+            return;
+
+        FieldData.Instance.SetObjData(null, _nOldNumber);
+
+        if (FieldData.Instance.GetObjData(nowNumber))
+            return;
+
+        FieldData.Instance.SetObjData(this, nowNumber);
+    }
 
     override public void RunSpecialMode(bool IsRun)
     {
+        if (_IsSpecialMode == IsRun)
+            return;
+
         _IsSpecialMode = IsRun;
         if (IsRun)
         {

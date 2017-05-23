@@ -8,7 +8,7 @@ using UniRx.Triggers;
 public class TechnicalType : Charactor 
 {
     [SerializeField] float _fKickMoveAmount_Sec = 1.0f;
-    [SerializeField] bool _IsAuthBlock = true;
+    [SerializeField] bool _IsAuthBlock = false;
 
     void Start()
     {
@@ -113,6 +113,9 @@ public class TechnicalType : Charactor
 
     override public void RunSpecialMode(bool IsRun)
     {
+        if (_IsSpecialMode == IsRun)
+            return;
+
         _IsSpecialMode = IsRun;
 
         //  今のところなし

@@ -41,7 +41,7 @@ public class Charactor : FieldObjectBase
     protected CharactorGauge _charactorGauge = null;
 
     [SerializeField] float _moveAmount_Sec = 0.5f;
-    int _nOldNumber = 0;
+    protected int _nOldNumber = 0;
 
     public eCharaType _charaType { get; protected set; }
     protected eDirection _nowDirection = eDirection.FORWARD;
@@ -237,7 +237,7 @@ public class Charactor : FieldObjectBase
         }
     }
 
-    void DataUpdate()
+    protected virtual void DataUpdate()
     {
         int nowNumber = GetDataNumber();
         if (_nOldNumber == nowNumber)

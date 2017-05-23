@@ -82,7 +82,7 @@ public class EnemyAI : MonoBehaviour
             .Where(_ => _state == eState.WAIT && !_IsDanger)
             .Subscribe(_ =>
             {
-                AIUpdate();
+                //AIUpdate();
             });
 
         // State.WALK
@@ -140,7 +140,7 @@ public class EnemyAI : MonoBehaviour
             });
 
         // Debug
-        SetRiskData(20, 4);
+        //SetRiskData(30, 4);
     }
 
     #endregion

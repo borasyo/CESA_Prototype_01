@@ -42,6 +42,9 @@ public class PowerType : Charactor
 
     override public void RunSpecialMode(bool IsRun)
     {
+        if (_IsSpecialMode == IsRun)
+            return;
+
         _IsSpecialMode = IsRun;
         if (IsRun)
         {
