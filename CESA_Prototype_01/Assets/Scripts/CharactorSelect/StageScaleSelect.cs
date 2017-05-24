@@ -13,8 +13,8 @@ public class StageScaleSelect : MonoBehaviour
     float _fNowInterval = 0.0f;
     float _fInterval = 0.2f;
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
     {
         if (_IsWidth)
             _size = GameScaler._nWidth  - 2;
@@ -87,6 +87,41 @@ public class StageScaleSelect : MonoBehaviour
         else
         {
             GameScaler._nHeight = _size + 2;
+        }
+    }
+
+    public void UpSize()
+    {
+        if (_IsWidth)
+        {
+            _size++;
+            _fNowInterval = 0.0f;
+            if (_size > 30)
+                _size = 30;
+        }
+        else
+        {
+            _size++;
+            _fNowInterval = 0.0f;
+            if (_size > 25)
+                _size = 25;
+        }
+    }
+    public void DownSize()
+    {
+        if (_IsWidth)
+        {
+            _size--;
+            _fNowInterval = 0.0f;
+            if (_size < 6)
+                _size = 6;
+        }
+        else
+        {
+            _size--;
+            _fNowInterval = 0.0f;
+            if (_size < 5)
+                _size = 5;
         }
     }
 }

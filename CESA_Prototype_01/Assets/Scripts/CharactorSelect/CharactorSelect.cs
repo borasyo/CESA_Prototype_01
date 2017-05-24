@@ -39,7 +39,7 @@ public class CharactorSelect : MonoBehaviour
                 SceneManager.LoadScene("GameMain");
             });
 
-        int nSelect = 0;
+        /*int nSelect = 0;
         ChangeActive(nSelect);
         this.UpdateAsObservable()
             .Where(_ => SceneManager.GetActiveScene().name == "CharactorSelect")
@@ -58,7 +58,7 @@ public class CharactorSelect : MonoBehaviour
                     nSelect = 0;
 
                 ChangeActive(nSelect);
-            });
+            });*/
 
     }
 
@@ -137,5 +137,11 @@ public class CharactorSelect : MonoBehaviour
         }
 
         return type;
+    }
+
+    public void GameStart()
+    {
+        SetChara();
+        SceneManager.LoadScene("GameMain");
     }
 }

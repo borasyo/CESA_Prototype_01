@@ -1,0 +1,159 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class CharactorInputUser : CharactorInput
+{
+    MoveButton _moveButton = null;
+
+    void Start()
+    {
+        Transform InputCanvas = GameObject.Find("InputCanvas").transform;
+
+        Transform Move = InputCanvas.Find("Move");
+        _moveButton = Move.GetComponent<MoveButton>();
+        //CreateMoveEvent(Move.Find("Forward").gameObject.GetComponent<EventTrigger>(), Charactor.eDirection.FORWARD);
+        //CreateMoveEvent(Move.Find("Back").gameObject.GetComponent<EventTrigger>(), Charactor.eDirection.BACK);
+        //CreateMoveEvent(Move.Find("Right").gameObject.GetComponent<EventTrigger>(), Charactor.eDirection.RIGHT);
+        //CreateMoveEvent(Move.Find("Left").gameObject.GetComponent<EventTrigger>(), Charactor.eDirection.LEFT);
+
+        CreateActionEvent(InputCanvas.Find("Put").gameObject.GetComponent<EventTrigger>(), Charactor.eAction.PUT);
+        CreateActionEvent(InputCanvas.Find("Break").gameObject.GetComponent<EventTrigger>(), Charactor.eAction.BREAK);
+
+        //Transform Action = InputCanvas.Find("Action");
+    }
+
+   /*void CreateMoveEvent(EventTrigger eventTrigger, Charactor.eDirection dir)
+    {
+        eventTrigger.triggers.Add(CreateMoveEntry(dir, EventTriggerType.PointerEnter, true));
+        eventTrigger.triggers.Add(CreateMoveEntry(dir, EventTriggerType.PointerExit, false));
+ //       eventTrigger.triggers.Add(CreateMoveEntry(dir, EventTriggerType.PointerExit, false));
+    }
+
+    EventTrigger.Entry CreateMoveEntry(Charactor.eDirection dir, EventTriggerType type, bool isOn)
+    {
+        EventTrigger.Entry press = new EventTrigger.Entry();
+        press.eventID = type;
+        press.callback.AddListener((data) => { MoveClick(dir, isOn); });
+
+        return press;
+    }
+
+    public void MoveClick(Charactor.eDirection dir, bool isOn)
+    {
+        switch (dir)
+        {
+            case Charactor.eDirection.FORWARD:
+                _IsForawrd = isOn;
+                break;
+            case Charactor.eDirection.BACK:
+                _IsBack = isOn;
+                break;
+            case Charactor.eDirection.RIGHT:
+                _IsRight = isOn;
+                break;
+            case Charactor.eDirection.LEFT:
+                _IsLeft = isOn;
+                break;
+        }
+    }*/
+
+    void CreateActionEvent(EventTrigger eventTrigger, Charactor.eAction act)
+    {
+        eventTrigger.triggers.Add(CreateActionEntry(act));
+    }
+
+    EventTrigger.Entry CreateActionEntry(Charactor.eAction act)
+    {
+        EventTrigger.Entry press = new EventTrigger.Entry();
+        press.eventID = EventTriggerType.PointerDown;
+        press.callback.AddListener((data) => { StartCoroutine(ActionClick(act)); });
+
+        return press;
+    }
+
+    public IEnumerator ActionClick(Charactor.eAction act)
+    {
+        switch(act)
+        {
+            case Charactor.eAction.PUT:
+                _IsPut = true;
+                break;
+            case Charactor.eAction.BREAK:
+                _IsBreak = true;
+                break;
+        }
+
+        yield return null;
+
+        switch (act)
+        {
+            case Charactor.eAction.PUT:
+                _IsPut = false;
+                break;
+            case Charactor.eAction.BREAK:
+                _IsBreak = false;
+                break;
+        }
+    }
+
+    override protected void InputCheck()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (!_moveButton.IsActive)
+            {
+                _IsForawrd = _IsBack = _IsRight = _IsLeft = false;
+                return;
+            }
+
+            int angle = (int)(_moveButton.GetMoveAngle);
+            _IsForawrd = (angle <  135 && angle >=   45);
+            _IsBack    = (angle <  -45 && angle >= -135);
+            _IsRight   = (angle <   45 && angle >=  -45);
+            _IsLeft    = (angle < -135 || angle >=  135);
+        }
+        else
+        {
+            if (transform.name.Contains("1P"))
+            {
+                _IsForawrd = Input.GetKey(KeyCode.W);
+                _IsBack = Input.GetKey(KeyCode.S);
+                _IsRight = Input.GetKey(KeyCode.D);
+                _IsLeft = Input.GetKey(KeyCode.A);
+                _IsPut = Input.GetKeyDown(KeyCode.R);
+                _IsBreak = Input.GetKeyDown(KeyCode.T);
+            }
+            else if ((transform.name.Contains("2P")))
+            {
+                _IsForawrd = Input.GetKey(KeyCode.UpArrow);
+                _IsBack = Input.GetKey(KeyCode.DownArrow);
+                _IsRight = Input.GetKey(KeyCode.RightArrow);
+                _IsLeft = Input.GetKey(KeyCode.LeftArrow);
+                _IsPut = Input.GetKeyDown(KeyCode.O);
+                _IsBreak = Input.GetKeyDown(KeyCode.P);
+            }
+            else if ((transform.name.Contains("3P")))
+            {
+                _IsForawrd = Input.GetKey(KeyCode.F);
+                _IsBack = Input.GetKey(KeyCode.V);
+                _IsRight = Input.GetKey(KeyCode.B);
+                _IsLeft = Input.GetKey(KeyCode.C);
+                _IsPut = Input.GetKeyDown(KeyCode.H);
+                _IsBreak = Input.GetKeyDown(KeyCode.J);
+
+            }
+            else if ((transform.name.Contains("4P")))
+            {
+                _IsForawrd = Input.GetKey(KeyCode.Alpha7);
+                _IsBack = Input.GetKey(KeyCode.U);
+                _IsRight = Input.GetKey(KeyCode.I);
+                _IsLeft = Input.GetKey(KeyCode.Y);
+                _IsPut = Input.GetKeyDown(KeyCode.Alpha9);
+                _IsBreak = Input.GetKeyDown(KeyCode.Alpha0);
+            }
+        }
+    }
+}

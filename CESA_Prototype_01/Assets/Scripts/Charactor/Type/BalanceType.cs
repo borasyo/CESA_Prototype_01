@@ -21,12 +21,16 @@ public class BalanceType : Charactor
         bool IsPut = false;
         int[] dirNumbers = GetNumberList();
         for(int i = 0; i < dirNumbers.Length; i++) {
-            if (dirNumbers[i] < 0 || GameScaler._nWidth * GameScaler._nHeight < dirNumbers[i])
+            if (dirNumbers[i] < 0 || GameScaler.GetRange < dirNumbers[i])
                 continue;
 
             FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumbers[i]);
             if (obj)
+            {
+                if(i == 0)  //  目の前に置けない場合は置けない
+                    break;
                 continue;
+            }
 
             GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumbers[i]), Quaternion.identity);
             FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumbers[i]);

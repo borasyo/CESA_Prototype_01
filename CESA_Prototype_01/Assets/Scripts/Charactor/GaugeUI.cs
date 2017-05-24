@@ -3,9 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GaugeUI : MonoBehaviour {
-
-    const float fMaxGaugeSize = 600.0f;
-
+    
     [SerializeField] SandItem.eType _type = SandItem.eType.MAX;
     CharactorGauge _charaGauge = null;
     Image _image = null;

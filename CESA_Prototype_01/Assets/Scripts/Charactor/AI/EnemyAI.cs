@@ -208,10 +208,10 @@ public class EnemyAI : MonoBehaviour
         eState next = eState.WAIT;
 
         // Debug
-        if (isDanger)
+        /*if (isDanger)
             return eState.WALK; // Random.Range(0, 2) == 0 ? eState.WALK : eState.BREAK;
         else
-            return eState.WALK; // (eState)Random.Range(0, (int)eState.MAX);
+            return eState.WALK; // (eState)Random.Range(0, (int)eState.MAX);*/
 
         int nRand = 0;
         int[] ratio = _charactor.GetSpecialModeFlg ? _nSpecialActionRatio : _nActionRatio;

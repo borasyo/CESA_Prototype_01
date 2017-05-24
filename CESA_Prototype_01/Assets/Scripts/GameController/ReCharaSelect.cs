@@ -13,4 +13,9 @@ public class ReCharaSelect : MonoBehaviour
 
         SceneManager.LoadScene("CharactorSelect");
 	}
+
+    public void ReChara()
+    {
+        SceneManager.LoadScene("CharactorSelect");
+    }
 }

@@ -30,7 +30,7 @@ public class NowSelect : MonoBehaviour
         TextUpdate();
 
         //  Input
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        /*if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             _charaType++;
         }
@@ -41,7 +41,7 @@ public class NowSelect : MonoBehaviour
         else
         {
             return;
-        }
+        }*/
 
         // 範囲外処理
         if (_IsOnNone)
@@ -90,7 +90,12 @@ public class NowSelect : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    public void Add()
+    {
+        _charaType ++;
+    }
+
+    /*void OnEnable()
     {
         _text.color = Color.red;
     }
@@ -98,5 +103,5 @@ public class NowSelect : MonoBehaviour
     void OnDisable()
     {
         _text.color = Color.black;
-    }
+    }*/
 }
