@@ -7,16 +7,23 @@ using UniRx.Triggers;
 
 public class ItemBase : FieldObjectBase
 {
-    static GameObject _ItemHolder = null;
+    public enum eItemType
+    {
+        MOVEUP = 0,
+        GAUGEUP,
+        INVINCIBLE,
+        SPECIAL,
+    };
+    protected eItemType _itemType;
+    public eItemType GetItemType { get { return _itemType; } }
 
     protected bool _IsCollision = false;
     [SerializeField] float _fLife = 10.0f;
 
     public void Start()
     {
-        if(!_ItemHolder)
-            _ItemHolder = GameObject.Find("ItemHolder");
-        transform.SetParent(_ItemHolder.transform);
+        // Holderに追加
+        ItemHolder.Instance.Add(this);
 
         //  CollisionCheck
         this.UpdateAsObservable()
@@ -52,7 +59,7 @@ public class ItemBase : FieldObjectBase
                     if (obj.GetDataNumber() != GetDataNumber())
                         continue;
 
-                    Destroy (this.gameObject);
+                    Destroy();
                     break;
                 }
             });
@@ -66,7 +73,7 @@ public class ItemBase : FieldObjectBase
                 if(_fLife > 0.0f)
                     return;
 
-                Destroy (this.gameObject);
+                Destroy ();
             });
     }
 
@@ -75,6 +82,13 @@ public class ItemBase : FieldObjectBase
         FieldObjectBase obj = FieldData.Instance.GetObjData(GetDataNumber());
         transform.SetParent(obj.transform);
         transform.GetComponentInChildren<MeshRenderer>().enabled = false;
+        ItemHolder.Instance.Remove(this);
+    }
+
+    void Destroy()
+    {
+        ItemHolder.Instance.Remove(this);
+        Destroy(gameObject);
     }
 
     virtual public void Run()

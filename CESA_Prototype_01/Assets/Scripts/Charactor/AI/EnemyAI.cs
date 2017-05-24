@@ -68,10 +68,10 @@ public class EnemyAI : MonoBehaviour
         AIData.RiskData riskData = AIData.Instance.GetRisk(level, type);
         SetRiskData(riskData.maxRisk, riskData.riskRange);
 
-        Debug.Log(this.name + "は");
-        Debug.Log("Wait : " + _nActionRatio[0] + ", Walk : " + _nActionRatio[1] + ", Put : " + _nActionRatio[2] + ", Break : " + _nActionRatio[3]);
-        Debug.Log("SpecialWait : " + _nSpecialActionRatio[0] + ", SpecialWalk : " + _nSpecialActionRatio[1] + ", SpecialPut : " + _nSpecialActionRatio[2] + ", SpecialBreak : " + _nSpecialActionRatio[3]);
-        Debug.Log("許容リスク : " + riskData.maxRisk + ", 探索範囲 : " + riskData.riskRange);
+        //Debug.Log(this.name + "は");
+        //Debug.Log("Wait : " + _nActionRatio[0] + ", Walk : " + _nActionRatio[1] + ", Put : " + _nActionRatio[2] + ", Break : " + _nActionRatio[3]);
+        //Debug.Log("SpecialWait : " + _nSpecialActionRatio[0] + ", SpecialWalk : " + _nSpecialActionRatio[1] + ", SpecialPut : " + _nSpecialActionRatio[2] + ", SpecialBreak : " + _nSpecialActionRatio[3]);
+        //Debug.Log("許容リスク : " + riskData.maxRisk + ", 探索範囲 : " + riskData.riskRange);
 
         // 各行動AIを生成
         if(_charactor._charaType != Charactor.eCharaType.TECHNICAL)
@@ -88,6 +88,32 @@ public class EnemyAI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //  ItemCheck
+        bool IsGetItem = false;
+        this.ObserveEveryValueChanged(_ => _fieldObjBase.GetDataNumber())
+            .Where(_ => !IsGetItem && ItemHolder.Instance.transform.childCount > 0)
+            .Subscribe(_ =>
+            {
+                List<ItemBase> itemList = ItemHolder.Instance.ItemList;
+                foreach (ItemBase item in itemList)
+                {
+                    int number = item.GetDataNumber();
+                    int distance = ItemHolder.Instance.GetDistanceForType(item.GetItemType) / (_nLevel + 1);
+                    if (_DistanceDatas[number]._nDistance > distance)
+                        continue;
+
+                    if (FieldDataChecker.Instance.SandCheck(number, name))
+                        continue;
+
+                    if (!_moveAI.SearchRoute(number, 0))
+                        continue;
+
+                    _state = eState.WALK;
+                    IsGetItem = true;
+                    break;
+                }
+            });
+
         // State.WAIT
         this.UpdateAsObservable()
             .Where(_ => _state == eState.WAIT && !_IsDanger)
@@ -105,6 +131,7 @@ public class EnemyAI : MonoBehaviour
                     return;
 
                 _state = eState.WAIT;
+                IsGetItem = false;
             });
 
         // State.PUT
@@ -135,19 +162,11 @@ public class EnemyAI : MonoBehaviour
         _DistanceDatas = new tDistanceData[GameScaler._nWidth * GameScaler._nHeight];
         for (int idx = 0; idx < _DistanceDatas.Length; idx++)
             _DistanceDatas[idx]._nIdx = idx;
-
-        int oldNumber = -1;
-        this.UpdateAsObservable()
+        
+        this.ObserveEveryValueChanged(_ => _fieldObjBase.GetDataNumber())
             .Subscribe(_DistanceDatas =>
             {
-                if (oldNumber == _fieldObjBase.GetDataNumber())
-                {
-                    oldNumber = _fieldObjBase.GetDataNumber();
-                    return;
-                }
-
                 CheckDistanceData();
-                oldNumber = _fieldObjBase.GetDataNumber();
             });
     }
 

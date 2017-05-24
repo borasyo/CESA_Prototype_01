@@ -10,6 +10,12 @@ public class InvincibleItem : ItemBase
     [SerializeField] float _fDuration_Sec = 5.0f;
     //Charactor _charactor = null;
 
+    void Start()
+    {
+        _itemType = ItemBase.eItemType.INVINCIBLE;
+        base.Start();
+    }
+
     override public void Run()
     {
         //_charactor = this.GetComponentInParent<Charactor>();

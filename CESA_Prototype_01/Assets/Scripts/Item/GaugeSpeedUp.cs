@@ -12,6 +12,12 @@ public class GaugeSpeedUp : ItemBase
 
     CharactorGauge _charactorGauge = null;
 
+    void Start()
+    {
+        _itemType = ItemBase.eItemType.GAUGEUP;
+        base.Start();
+    }
+
     override public void Run()
     {
         _charactorGauge = this.GetComponentInParent<CharactorGauge>();

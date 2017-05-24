@@ -24,6 +24,7 @@ public class SpecialItem : ItemBase
                 textMesh.color = _MeRend.material.color = Random.ColorHSV();
             });
 
+        _itemType = ItemBase.eItemType.SPECIAL;
         base.Start();
     }
 

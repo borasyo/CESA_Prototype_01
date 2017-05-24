@@ -12,6 +12,12 @@ public class MoveSpeedUp : ItemBase
 
     Charactor _charactor = null;
 
+    void Start()
+    {
+        _itemType = ItemBase.eItemType.MOVEUP;
+        base.Start();
+    }
+
     override public void Run()
     {
         _charactor = this.GetComponentInParent<Charactor>();
