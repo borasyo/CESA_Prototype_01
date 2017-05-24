@@ -6,10 +6,10 @@ public class SpeedType : Charactor
 {
     [SerializeField] bool _IsAuthBlock = false;
 
-    void Start()
+    public override void Init(int level)
     {
         _charaType = eCharaType.SPEED;
-        base.Start();
+        base.Init(level);
     }
 
     override protected bool MoveCheck(eDirection dir)

@@ -91,7 +91,7 @@ public class AStar : MonoBehaviour {
     class ANodeMgr
     {
         /// 自身のポインタ
-        GameObject _me;
+        Charactor _me;
         /// オープンリスト.
         List<ANode> _openList = null;
         /// ノードインスタンス管理.
@@ -100,7 +100,7 @@ public class AStar : MonoBehaviour {
         int _xgoal = 0;
         int _zgoal = 0;
 
-        public ANodeMgr(GameObject me, int xgoal, int zgoal)
+        public ANodeMgr(Charactor me, int xgoal, int zgoal)
         {
             _me = me;
             _openList = new List<ANode>();
@@ -256,7 +256,7 @@ public class AStar : MonoBehaviour {
                 return false;
             }
 
-            var mgr = new ANodeMgr(this.gameObject, pGoal.x, pGoal.z);
+            var mgr = new ANodeMgr(GetComponent<Charactor>(), pGoal.x, pGoal.z);
 
 			// スタート地点のノード取得
 			// スタート地点なのでコストは「0」

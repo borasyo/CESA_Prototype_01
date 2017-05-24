@@ -79,13 +79,13 @@ public class FieldObjectBase : MonoBehaviour
     //  SandItemが上位クラスの場合のみ使用するクラス
     //  TODO : 冗長なので変更したい
 
-    protected SandItem _sandItem = null;
+    protected SandItem _sandItemData = null;
 
     public SandItem.eType GetSandType()
     {
-        if (!_sandItem)
+        if (!_sandItemData)
             return SandItem.eType.MAX;
 
-        return _sandItem.GetType;
+        return _sandItemData.GetType;
     }
 }

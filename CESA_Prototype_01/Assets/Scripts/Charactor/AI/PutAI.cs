@@ -9,25 +9,60 @@ public class PutAI : MonoBehaviour
     MoveAI _moveAI;
     FieldObjectBase _fieldObjBase = null;
 
+    int[] _nActionRatio = null;
+
     public void Init(int level)
     {
         _enemyAI = GetComponent<EnemyAI>();
         _moveAI = GetComponent<MoveAI>();
         _fieldObjBase = GetComponent<FieldObjectBase>();
+
+        _nActionRatio = new int[4];
+        switch (level)
+        {
+            case 0:
+                _nActionRatio[0] = 10;
+                _nActionRatio[1] = 20;
+                _nActionRatio[2] = 30;
+                _nActionRatio[3] = 40;
+                break;
+            case 1:
+                _nActionRatio[0] = 40;
+                _nActionRatio[1] = 10;
+                _nActionRatio[2] = 30;
+                _nActionRatio[3] = 20;
+                break;
+            case 2:
+                _nActionRatio[0] = 70;
+                _nActionRatio[1] = 10;
+                _nActionRatio[2] = 10;
+                _nActionRatio[3] = 10;
+                break;
+        }
     }
 
     public bool OnPut()
     {
-        switch(Random.Range(0,4))
+        int rand = Random.Range(0, _nActionRatio.Sum());
+        for (int action = 0; action < _nActionRatio.Length; action++)
         {
-            case 0:
-                return RandomPut();
-            case 1:
-                return CharaPut();
-            case 2:
-                return HalfSandPut(false);
-            case 3:
-                return HalfSandPut(true);
+            rand -= _nActionRatio[action];
+            if (rand > 0)
+                continue;
+
+            switch (action)
+            {
+                case 0:
+                    return RandomPut();
+                case 1:
+                    return CharaPut();
+                case 2:
+                    return HalfSandPut(false);
+                case 3:
+                    return HalfSandPut(true);
+            }
+
+            break;
         }
         return false;
     }

@@ -10,6 +10,7 @@ public class CharactorSelect : MonoBehaviour
 {
     public static GameObject[] SelectCharas = new GameObject[4];
     [SerializeField] NowSelect[] _nowSelectDatas = null;
+    //  LevelSelect
 
     // Use this for initialization
     void Start()

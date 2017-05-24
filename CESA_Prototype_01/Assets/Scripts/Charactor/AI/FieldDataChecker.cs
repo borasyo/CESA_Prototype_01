@@ -66,25 +66,47 @@ public class FieldDataChecker : MonoBehaviour
         return false;
     }
 
-    public FieldObjectBase CheckObstacleObj(int x, int z, GameObject me)
+    public FieldObjectBase CheckObstacleObj(int x, int z, Charactor me)
     {
         return CheckObstacleObj(ToIdx(x,z), me);
     }
 
     // 障害物をチェック
-    public FieldObjectBase CheckObstacleObj(int idx, GameObject me)
+    public FieldObjectBase CheckObstacleObj(int idx, Charactor me)
     {
-        if (IsOutOfRange(idx)) {
-			return null;
-		}
+        if (IsOutOfRange(idx))
+            return null;
 
         FieldObjectBase obj = FieldData.Instance.GetObjData(idx);
 
-        if (obj && obj.gameObject == me)
+        if (!obj)
+            return null;
+
+        if (obj.gameObject == me.gameObject)
+            return null;
+
+        // TODO : SPEEDの特殊モードのためだけにある判定なので、どうにかして分けたい....
+        if (obj.tag != "Block" && me.GetSpecialModeFlg &&
+           (me._charaType == Charactor.eCharaType.SPEED || me._charaType == Charactor.eCharaType.TECHNICAL))
             return null;
 
         return obj;
-	}
+    }
+    public FieldObjectBase CheckObstacleObj(int idx, GameObject me)
+    {
+        if (IsOutOfRange(idx))
+            return null;
+
+        FieldObjectBase obj = FieldData.Instance.GetObjData(idx);
+
+        if (!obj)
+            return null;
+
+        if (obj.gameObject == me.gameObject)
+            return null;
+
+        return obj;
+    }
 
     public bool SandCheck(int x, int z, string p)
     {

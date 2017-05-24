@@ -52,7 +52,7 @@ public class SandData : MonoBehaviour
         public SandItem.eType _type;
         public Charactor.eDirection _dir; 
     };
-    SandItem.eType[] _SandDataList = null;               //  はさまれている箇所のリスト
+    SandItem.eType[] _SandDataList = null;      //  はさまれている箇所のリスト
     public SandItem.eType[] GetSandDataList { get { return _SandDataList; } }
 
     tHalfSandData[] _HalfSandDataList = null;   //  半分はさまれている箇所のリスト(重複も可)
@@ -121,30 +121,6 @@ public class SandData : MonoBehaviour
             Sand(FindSandObj(objDataArray, number, GameScaler._nWidth + 1), number);   //  右上左下
         }
     }
-   
-    // TODO : 処理効率が懸念材料....
-    /*void OverLapDistinct()
-    {
-        for(int i = 0; i < GameScaler._nWidth * GameScaler._nHeight; i++) {
-            List<tSandData> overLapList = _SandDataList.Where(_ => _._number == i).ToList();
-            if (overLapList.Count <= 1)
-                continue;
-
-            // 全て同じタイプなら削除しない
-            bool isUnique = false;
-            for (int type = 0; type < (int)SandItem.eType.MAX; type++)
-            {
-                if (overLapList.Count != _SandDataList.Where(_ => _._number == i && _._Type == (SandItem.eType)type).Count())
-                    continue;
-
-                isUnique = true;
-            }
-            if(isUnique)
-                continue;
-            
-            _SandDataList.RemoveAll(x => x._number == i);
-        }
-    }*/
 
     //  判定を少し改善した。バグが出る可能性アリ
     tCheckData FindSandObj(FieldObjectBase[] objDataArray, int number, int add)
@@ -215,7 +191,7 @@ public class SandData : MonoBehaviour
         }
 
         //  はさまれているが重複しているので削除
-        if (!_IsOverLapToSafe && _SandDataList[number] != SandItem.eType.MAX)
+        if (!_IsOverLapToSafe && _SandDataList[number] != SandItem.eType.MAX && _SandDataList[number] != type)
         {
             _SandDataList[number] = SandItem.eType.MAX;
             return false;

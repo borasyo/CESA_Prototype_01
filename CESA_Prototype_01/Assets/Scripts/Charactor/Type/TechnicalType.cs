@@ -10,10 +10,10 @@ public class TechnicalType : Charactor
     [SerializeField] float _fKickMoveAmount_Sec = 1.0f;
     [SerializeField] bool _IsAuthBlock = false;
 
-    void Start()
+    public override void Init(int level)
     {
         _charaType = eCharaType.TECHNICAL;
-        base.Start();
+        base.Init(level);
 
         this.UpdateAsObservable()
             .Where(_ => _IsSpecialMode)
@@ -25,7 +25,8 @@ public class TechnicalType : Charactor
     void KickCheck()
     {
         int dirNumber = GetDataNumberForDir();
-        if (dirNumber < 0 || GameScaler._nWidth * GameScaler._nHeight < dirNumber)
+        //Debug.Log("KickCheck : " + dirNumber);
+        if (dirNumber < 0 || GameScaler.GetRange < dirNumber)
             return;
 
         //  キックできないオブジェクトを判定
@@ -44,7 +45,7 @@ public class TechnicalType : Charactor
 
         if (!PushObj())
             return;
-
+     
         obj.gameObject.AddComponent<AutoMoveObj>().Init(_nowDirection, MoveAmount());
     }
 

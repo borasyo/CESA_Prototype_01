@@ -9,23 +9,55 @@ public class BreakAI : MonoBehaviour
     MoveAI _moveAI;
     FieldObjectBase _fieldObjBase = null;
 
+    int[] _nActionRatio = null;
+
     public void Init(int level)
     { 
         _enemyAI = GetComponent<EnemyAI>();
         _moveAI = GetComponent<MoveAI>();
         _fieldObjBase = GetComponent<FieldObjectBase>();
+
+        _nActionRatio = new int[3];
+        switch (level)
+        {
+            case 0:
+                _nActionRatio[0] = 10;
+                _nActionRatio[1] = 20;
+                _nActionRatio[2] = 70;
+                break;
+            case 1:
+                _nActionRatio[0] = 30;
+                _nActionRatio[1] = 30;
+                _nActionRatio[2] = 40;
+                break;
+            case 2:
+                _nActionRatio[0] = 70;
+                _nActionRatio[1] = 20;
+                _nActionRatio[2] = 10;
+                break;
+        }
     }
 
     public bool OnBreak()
     {
-        switch (Random.Range(0, 3))
+        int rand = Random.Range(0, _nActionRatio.Sum());
+        for (int action = 0; action < _nActionRatio.Length; action++)
         {
-            case 0:
-                return RandomBreak();
-            case 1:
-                return CharaBreak("", false);
-            case 2:
-                return CharaBreak("", true);
+            rand -= _nActionRatio[action];
+            if (rand > 0)
+                continue;
+
+            switch (action)
+            {
+                case 0:
+                    return RandomBreak();
+                case 1:
+                    return CharaBreak(GetPlayerString(), false);
+                case 2:
+                    return CharaBreak(GetPlayerString(), true);
+            }
+
+            break;
         }
         return false;
     }
@@ -45,8 +77,6 @@ public class BreakAI : MonoBehaviour
     //  特定のキャラのアイテムを破壊
     bool CharaBreak(string player, bool isNear)
     {
-        player = DebugStringPlayer();
-
         List<FieldObjectBase> dataList =  FieldData.Instance.GetObjDataArray.Where(x => x && x.tag == "SandItem" && x.name.Contains(player) && x.GetSandType() != SandItem.eType.MAX).ToList();
         if (dataList.Count <= 0)
             return false;
@@ -93,7 +123,7 @@ public class BreakAI : MonoBehaviour
         return sandItemList[Random.Range(0, sandItemList.Length)].GetDataNumber();
     }
 
-    string DebugStringPlayer()
+    string GetPlayerString()
     {
         string player = "";
         List<FieldObjectBase> charaList = FieldData.Instance.GetCharactors.Where(x => x && x != _fieldObjBase).ToList();

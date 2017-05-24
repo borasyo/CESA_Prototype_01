@@ -6,10 +6,10 @@ public class BalanceType : Charactor
 {
     [SerializeField] int _nNum = 3;
 
-    void Start()
+    public override void Init(int level)
     {
         _charaType = eCharaType.BALANCE;
-        base.Start();
+        base.Init(level);
     }
 
     override protected void ItemPut()

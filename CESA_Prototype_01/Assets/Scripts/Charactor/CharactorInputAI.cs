@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharactorInputAI : CharactorInput
 {
-    EnemyAI _enemyAI = null;
+    public EnemyAI _enemyAI { get; private set; }
 
     void Awake()
     {
@@ -12,17 +12,12 @@ public class CharactorInputAI : CharactorInput
     }
 
     override protected void InputCheck()
-    {    
-        
-    }
-
-    override public bool GetMoveInput(Charactor.eDirection dir)
     {
-        return _enemyAI.GetMove(dir);
-    }
-
-    override public bool GetActionInput(Charactor.eAction act)
-    {
-        return _enemyAI.GetAction(act);
+        _IsForawrd = _enemyAI.GetMove(Charactor.eDirection.FORWARD);
+        _IsBack = _enemyAI.GetMove(Charactor.eDirection.BACK);
+        _IsRight = _enemyAI.GetMove(Charactor.eDirection.RIGHT);
+        _IsLeft = _enemyAI.GetMove(Charactor.eDirection.LEFT);
+        _IsPut = _enemyAI.GetAction(Charactor.eAction.PUT);
+        _IsBreak = _enemyAI.GetAction(Charactor.eAction.BREAK);
     }
 }

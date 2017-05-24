@@ -29,7 +29,7 @@ public class SandItem : FieldObjectBase
 
     void Start()
     {
-        _sandItem = this;
+        _sandItemData = this;
         transform.SetParent(_SandItemHolder.transform);
     }
 	

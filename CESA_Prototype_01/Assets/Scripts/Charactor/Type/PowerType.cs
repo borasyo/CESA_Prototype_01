@@ -6,10 +6,10 @@ public class PowerType : Charactor
 {
     float _InitBreakGauge;
 
-    void Start()
+    public override void Init(int level)
     {
         _charaType = eCharaType.POWER;
-        base.Start();
+        base.Init(level);
     }
 
     override protected void ItemBreak()

@@ -22,7 +22,7 @@ public class CharactorInput : MonoBehaviour
         //  継承先で記述
     }
 
-    virtual public bool GetMoveInput(Charactor.eDirection dir)
+    public bool GetMoveInput(Charactor.eDirection dir)
     {
         switch(dir)
         {
@@ -41,7 +41,7 @@ public class CharactorInput : MonoBehaviour
         return false;
     }
 
-    virtual public bool GetActionInput(Charactor.eAction act)
+    public bool GetActionInput(Charactor.eAction act)
     {
         switch(act)
         {

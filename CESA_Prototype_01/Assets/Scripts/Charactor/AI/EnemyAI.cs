@@ -57,26 +57,37 @@ public class EnemyAI : MonoBehaviour
     #region Init
 
     //  キャラのタイプ、CPUのレベルによって設定する情報
-    public void Set(int level, int[] actionRatio, int[] specialActionRatio, int maxRisk, int riskRange)
+    public void Set(int level, Charactor.eCharaType type)
     {
         _nLevel = level;
-        _nActionRatio = actionRatio;
-        _nSpecialActionRatio = specialActionRatio;
-        SetRiskData(maxRisk, riskRange);
+        _charactor = GetComponent<Charactor>();
+        _fieldObjBase = GetComponent<FieldObjectBase>();
+
+        _nActionRatio = AIData.Instance.GetRatio(level, type, false);
+        _nSpecialActionRatio = AIData.Instance.GetRatio(level, type, true);
+        AIData.RiskData riskData = AIData.Instance.GetRisk(level, type);
+        SetRiskData(riskData.maxRisk, riskData.riskRange);
+
+        Debug.Log(this.name + "は");
+        Debug.Log("Wait : " + _nActionRatio[0] + ", Walk : " + _nActionRatio[1] + ", Put : " + _nActionRatio[2] + ", Break : " + _nActionRatio[3]);
+        Debug.Log("SpecialWait : " + _nSpecialActionRatio[0] + ", SpecialWalk : " + _nSpecialActionRatio[1] + ", SpecialPut : " + _nSpecialActionRatio[2] + ", SpecialBreak : " + _nSpecialActionRatio[3]);
+        Debug.Log("許容リスク : " + riskData.maxRisk + ", 探索範囲 : " + riskData.riskRange);
+
+        // 各行動AIを生成
+        if(_charactor._charaType != Charactor.eCharaType.TECHNICAL)
+            _moveAI = gameObject.AddComponent<MoveAI>();
+        else
+            _moveAI = gameObject.AddComponent<TechnicalTypeMoveAI>();
+        _moveAI.Init(level, type);
+        _putAI = gameObject.AddComponent<PutAI>();
+        _putAI.Init(level);
+        _breakAI = gameObject.AddComponent<BreakAI>();
+        _breakAI.Init(level);
     }
 
     // Use this for initialization
     void Start()
     {
-        _charactor = GetComponent<Charactor>();
-        _fieldObjBase = GetComponent<FieldObjectBase>();
-        _moveAI = gameObject.AddComponent<MoveAI>();
-        _moveAI.Init(_nLevel);
-        _putAI = gameObject.AddComponent<PutAI>();
-        _putAI.Init(_nLevel);
-        _breakAI = gameObject.AddComponent<BreakAI>();
-        _breakAI.Init(_nLevel);
-
         // State.WAIT
         this.UpdateAsObservable()
             .Where(_ => _state == eState.WAIT && !_IsDanger)
@@ -138,9 +149,6 @@ public class EnemyAI : MonoBehaviour
                 CheckDistanceData();
                 oldNumber = _fieldObjBase.GetDataNumber();
             });
-
-        // Debug
-        SetRiskData(30, 3);
     }
 
     #endregion
@@ -158,15 +166,15 @@ public class EnemyAI : MonoBehaviour
                 break;
             case eState.WALK:
                 isResult = _moveAI.OnMove();
-                Debug.Log("Walk");
+                //Debug.Log("Walk");
                 break;
             case eState.PUT:
                 isResult = _putAI.OnPut();
-                Debug.Log("Put");
+                //Debug.Log("Put");
                 break;
             case eState.BREAK:
                 isResult = _breakAI.OnBreak();
-                Debug.Log("Break");
+                //Debug.Log("Break");
                 break;
         }
 
@@ -182,9 +190,9 @@ public class EnemyAI : MonoBehaviour
 
         // Debug
         if (isDanger)
-            return Random.Range(0, 2) == 0 ? eState.WALK : eState.BREAK;
+            return eState.WALK; // Random.Range(0, 2) == 0 ? eState.WALK : eState.BREAK;
         else
-            return eState.BREAK;// (eState)Random.Range(0, (int)eState.MAX);
+            return eState.WALK; // (eState)Random.Range(0, (int)eState.MAX);
 
         int nRand = 0;
         int[] ratio = _charactor.GetSpecialModeFlg ? _nSpecialActionRatio : _nActionRatio;
@@ -290,16 +298,6 @@ public class EnemyAI : MonoBehaviour
     {
         FieldData.Instance.ExceptionChangeField();  // 開始1F時は計算する
 
-        switch(_nLevel)
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-        }
-
         this.UpdateAsObservable()
             .Where(_ => _IsDanger)
             .Subscribe(_ =>
@@ -320,18 +318,21 @@ public class EnemyAI : MonoBehaviour
 
                 //  周りの状態からリスクを追加
                 List<tDistanceData> distanceList = _DistanceDatas.Where(x => x._nDistance > 0 && x._nDistance <= riskRange).ToList();
+                string debug = " = ";
                 foreach (tDistanceData data in distanceList)
                 {
                     //  マスの状態と近さでリスク計算
-                    risk += RiskCheck(FieldData.Instance.GetObjData(data._nIdx), data._nIdx) / data._nDistance;
+                    int add = RiskCheck(FieldData.Instance.GetObjData(data._nIdx), data._nIdx); // / data._nDistance;
+                    debug += add + " + ";
+                    risk += add;
 
                     if (risk < maxRisk)
                         continue;
 
                     // AI強制切り替え (歩行or破壊のどちらかで)
                     _IsDanger = true;
+                    //Debug.Log("現在リスク : " + risk + debug);
                 }
-                Debug.Log("現在リスク : " + risk);
             });
     }
 

@@ -54,13 +54,19 @@ public class Charactor : FieldObjectBase
     #region Event
 
     // Use this for initialization
-    public void Start()
+    public virtual void Init(int level)
     {
         // Input生成
-        if (this.name.Contains("CPU")) 
-            _charactorInput = this.gameObject.AddComponent<CharactorInputAI>();
+        if (this.name.Contains("CPU"))
+        {
+            CharactorInputAI ai = this.gameObject.AddComponent<CharactorInputAI>();
+            ai._enemyAI.Set(level, _charaType);
+            _charactorInput = ai;
+        }
         else
+        {
             _charactorInput = this.gameObject.AddComponent<CharactorInputUser>();
+        }
         
         _charactorGauge = GetComponent<CharactorGauge>();
 

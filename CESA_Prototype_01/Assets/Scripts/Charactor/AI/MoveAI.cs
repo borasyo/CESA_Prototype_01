@@ -4,8 +4,8 @@ using UnityEngine;
 using System.Linq;
 
 public class MoveAI : MonoBehaviour
-{ 
-    enum eState
+{
+    protected  enum eState
     {
         WAIT = 0,
         WALK,
@@ -14,25 +14,27 @@ public class MoveAI : MonoBehaviour
 
         MAX,
     }
-    [SerializeField] eState _state = eState.WAIT;
+    [SerializeField]
+    protected eState _state = eState.WAIT;
     //  状態を外部から取得
     public bool StateWait { get { return _state == eState.WAIT; } }
     public bool StateWalk { get { return _state == eState.WALK || _state == eState.LAST; } }
     public bool StateStop { get { return _state == eState.STOP; } } //  行きたい箇所への経路が絶たれている
-    bool RouteOver { get { return _nNowRoute >= _astar.GetRoute.Count; } }
+    protected bool RouteOver { get { return _nNowRoute >= _astar.GetRoute.Count; } }
 
-    AStar _astar = null;
-    EnemyAI _enemyAI = null;
+    protected AStar _astar = null;
+    protected EnemyAI _enemyAI = null;
     FieldObjectBase _fieldObjBase = null;
+    protected Charactor _charactor = null;
 
-    int _nNowRoute = 0;
-    int _nNowNumber = 0;
+    protected int _nNowRoute = 0;
+    protected int _nNowNumber = 0;
     int _nNowArrive = 0;
 
     Charactor.eDirection _LastDirection = Charactor.eDirection.MAX; //  移動終了時の向きを指定
     Vector3 _oldNumberPos = Vector3.zero;
 
-    int _nMoveRange = 0;  //  大きいほど遠くでも移動する
+    protected int _nMoveRange = 0;  //  大きいほど遠くでも移動する
 
     public int GetTarget {
         get
@@ -44,14 +46,14 @@ public class MoveAI : MonoBehaviour
         }
     }
     
-    public void Init (int level)
+    public void Init (int level, Charactor.eCharaType type)
     {
         _astar = gameObject.AddComponent<AStar>();
         _enemyAI = GetComponent<EnemyAI>();
         _fieldObjBase = GetComponent<FieldObjectBase>();
+        _charactor = GetComponent<Charactor>();
 
-        Charactor chara = GetComponent<Charactor>();
-        switch (chara._charaType)
+        switch (type)
         {
             case Charactor.eCharaType.BALANCE:
                 _nMoveRange = 4;
@@ -102,7 +104,7 @@ public class MoveAI : MonoBehaviour
         return SearchRoute(RandomNullMass(), 0);
     }
 
-    int RandomNullMass()
+    protected virtual int RandomNullMass()
     {
         List<int> nullMassList = new List<int>();
         FieldObjectBase[] objList = FieldData.Instance.GetObjDataArray;
@@ -150,7 +152,7 @@ public class MoveAI : MonoBehaviour
         }
 
         _state = eState.WALK;
-        Debug.Log("対象マス : " + nTarget);
+        //Debug.Log("対象マス : " + nTarget);
         
         if (nArrive <= 0)
             return true;
@@ -265,15 +267,15 @@ public class MoveAI : MonoBehaviour
 
         return false;
     }
-    
-    bool CheckObstacle()
+
+    protected virtual bool CheckObstacle()
     {
         if (RouteOver)
             return false;
 
         int idx = _astar.GetRoute[_nNowRoute];
 
-        if (!FieldDataChecker.Instance.CheckObstacleObj(idx, this.gameObject) &&
+        if (!FieldDataChecker.Instance.CheckObstacleObj(idx, _charactor) &&
             !FieldDataChecker.Instance.SandCheck(idx, this.name))
             return false;
 

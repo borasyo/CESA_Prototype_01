@@ -87,6 +87,7 @@
     <Compile Include="Assets\Elementals\Demo\Scripts\GE_Elementals_Demo.cs" />
     <Compile Include="Assets\Scripts\Camera\PullsObject.cs" />
     <Compile Include="Assets\Scripts\Camera\SetCameraPos.cs" />
+    <Compile Include="Assets\Scripts\Charactor\AI\AIData.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\AStar.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\BreakAI.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\EnemyAI.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets\Scripts\Charactor\AI\MoveAI.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\PutAI.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\RiskData.cs" />
+    <Compile Include="Assets\Scripts\Charactor\AI\TechnicalTypeMoveAI.cs" />
     <Compile Include="Assets\Scripts\Charactor\CharaMass.cs" />
     <Compile Include="Assets\Scripts\Charactor\Charactor.cs" />
     <Compile Include="Assets\Scripts\Charactor\CharactorGauge.cs" />
