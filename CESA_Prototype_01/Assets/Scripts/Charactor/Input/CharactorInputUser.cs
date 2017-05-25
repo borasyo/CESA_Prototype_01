@@ -14,51 +14,10 @@ public class CharactorInputUser : CharactorInput
 
         Transform Move = InputCanvas.Find("Move");
         _moveButton = Move.GetComponent<MoveButton>();
-        //CreateMoveEvent(Move.Find("Forward").gameObject.GetComponent<EventTrigger>(), Charactor.eDirection.FORWARD);
-        //CreateMoveEvent(Move.Find("Back").gameObject.GetComponent<EventTrigger>(), Charactor.eDirection.BACK);
-        //CreateMoveEvent(Move.Find("Right").gameObject.GetComponent<EventTrigger>(), Charactor.eDirection.RIGHT);
-        //CreateMoveEvent(Move.Find("Left").gameObject.GetComponent<EventTrigger>(), Charactor.eDirection.LEFT);
 
         CreateActionEvent(InputCanvas.Find("Put").gameObject.GetComponent<EventTrigger>(), Charactor.eAction.PUT);
         CreateActionEvent(InputCanvas.Find("Break").gameObject.GetComponent<EventTrigger>(), Charactor.eAction.BREAK);
-
-        //Transform Action = InputCanvas.Find("Action");
     }
-
-   /*void CreateMoveEvent(EventTrigger eventTrigger, Charactor.eDirection dir)
-    {
-        eventTrigger.triggers.Add(CreateMoveEntry(dir, EventTriggerType.PointerEnter, true));
-        eventTrigger.triggers.Add(CreateMoveEntry(dir, EventTriggerType.PointerExit, false));
- //       eventTrigger.triggers.Add(CreateMoveEntry(dir, EventTriggerType.PointerExit, false));
-    }
-
-    EventTrigger.Entry CreateMoveEntry(Charactor.eDirection dir, EventTriggerType type, bool isOn)
-    {
-        EventTrigger.Entry press = new EventTrigger.Entry();
-        press.eventID = type;
-        press.callback.AddListener((data) => { MoveClick(dir, isOn); });
-
-        return press;
-    }
-
-    public void MoveClick(Charactor.eDirection dir, bool isOn)
-    {
-        switch (dir)
-        {
-            case Charactor.eDirection.FORWARD:
-                _IsForawrd = isOn;
-                break;
-            case Charactor.eDirection.BACK:
-                _IsBack = isOn;
-                break;
-            case Charactor.eDirection.RIGHT:
-                _IsRight = isOn;
-                break;
-            case Charactor.eDirection.LEFT:
-                _IsLeft = isOn;
-                break;
-        }
-    }*/
 
     void CreateActionEvent(EventTrigger eventTrigger, Charactor.eAction act)
     {

@@ -42,30 +42,39 @@ public class SandData : MonoBehaviour
         public FieldObjectBase first;
         public FieldObjectBase second;
     };
-    /*public struct tSandData
-    {
-        public int _number;
-        public SandItem.eType _Type;
-    };*/
-    public struct tHalfSandData
-    {
-        public SandItem.eType _type;
-        public Charactor.eDirection _dir; 
-    };
     SandItem.eType[] _SandDataList = null;      //  はさまれている箇所のリスト
     public SandItem.eType[] GetSandDataList { get { return _SandDataList; } }
 
-    tHalfSandData[] _HalfSandDataList = null;   //  半分はさまれている箇所のリスト(重複も可)
-    public tHalfSandData[] GetHalfSandDataList { get { return _HalfSandDataList; } }
-    
+    public struct HalfSandData
+    {
+        // 上下と左右があるため２つずつ用意する
+        public SandItem.eType[] _type;
+        public Charactor.eDirection[] _dir;
 
+        public void Init()
+        {
+            _type = new SandItem.eType[2];
+            _dir = new Charactor.eDirection[2];
+            for (int i = 0; i < 2; i++)
+            {
+                _type[i] = SandItem.eType.MAX;
+                _dir[i]  = Charactor.eDirection.MAX;
+            }
+        }
+    };
+    HalfSandData[] _HalfSandDataList = null;   //  半分はさまれている箇所のリスト(重複も可)
+    public HalfSandData[] GetHalfSandDataList { get { return _HalfSandDataList; } }
+   
     [SerializeField] bool _IsSlope = true;
     [SerializeField] bool _IsOverLapToSafe = true;
 
     void Awake()
     {
         _SandDataList = new SandItem.eType[GameScaler.GetRange];
-        _HalfSandDataList = new tHalfSandData[GameScaler.GetRange];
+
+        _HalfSandDataList = new HalfSandData[GameScaler.GetRange];
+        for (int i = 0; i < _HalfSandDataList.Length; i++)
+            _HalfSandDataList[i].Init();
     }
 
     void Start()
@@ -86,11 +95,6 @@ public class SandData : MonoBehaviour
     {
         SandDataCheck();
         HalfSandDataCheck();
-
-        /*if (!_IsOverLapToSafe)
-            return;
-
-        OverLapDistinct();*/
     }
 
     #region SandCheck
@@ -212,7 +216,8 @@ public class SandData : MonoBehaviour
         FieldObjectBase[] objDataArray = FieldData.Instance.GetObjDataArray;
         for (int number = 0; number < objDataArray.Length; number++)
         {
-            _HalfSandDataList[number]._type = SandItem.eType.MAX;
+            _HalfSandDataList[number]._type[0] = SandItem.eType.MAX;
+            _HalfSandDataList[number]._type[1] = SandItem.eType.MAX;
 
             FieldObjectBase obj = objDataArray[number];
             if (obj && obj.tag != "Charactor")
@@ -226,13 +231,14 @@ public class SandData : MonoBehaviour
             HalfSand(number, GameScaler._nWidth);
         }
 
-/*#if DEBUG
-        Debug.Log("半分はさまれリスト");
+#if DEBUG
+        /*Debug.Log("半分はさまれリスト");
         for(int i = 0; i < _HalfSandDataList.Length; i++)
         {
-            Debug.Log("番号 : " + i + ", タイプ : " + _HalfSandDataList[i]._type + ", 置く所 : " + _HalfSandDataList[i]._dir);
-        }
-#endif*/
+            Debug.Log("番号 : " + i + ", タイプ : " + _HalfSandDataList[i]._type[0] + ", 置く所 : " + _HalfSandDataList[i]._dir[0]);
+            Debug.Log("番号 : " + i + ", タイプ : " + _HalfSandDataList[i]._type[1] + ", 置く所 : " + _HalfSandDataList[i]._dir[1]);
+        }*/
+#endif
     }
 
     bool OnSand(int number)
@@ -246,6 +252,7 @@ public class SandData : MonoBehaviour
     {
         FieldObjectBase first = null;
         FieldObjectBase second = null;
+        int idx = add == 1 ? 0 : 1; 
 
         int nRoopCnt = 0;
         int nRemRange = GameScaler._nSandRange;
@@ -283,28 +290,28 @@ public class SandData : MonoBehaviour
         FieldObjectBase obj = first ? first: second;
         if (obj.tag == "Block")
         {
-            _HalfSandDataList[number]._type = SandItem.eType.BLOCK;
+            _HalfSandDataList[number]._type[idx] = SandItem.eType.BLOCK;
         }
         else
         {
             SandItem item = (SandItem)obj;
-            _HalfSandDataList[number]._type = item.GetType;
+            _HalfSandDataList[number]._type[idx] = item.GetType;
         }
 
         //  はさむ位置をチェック
         if (first)
         {
             if (add == 1)
-                _HalfSandDataList[number]._dir = Charactor.eDirection.LEFT;      //  左に置けばはさめる
+                _HalfSandDataList[number]._dir[idx] = Charactor.eDirection.LEFT;      //  左に置けばはさめる
             else
-                _HalfSandDataList[number]._dir = Charactor.eDirection.BACK;      //  下に置けばはさめる
+                _HalfSandDataList[number]._dir[idx] = Charactor.eDirection.BACK;      //  下に置けばはさめる
         }
         else
         {
             if (add == 1)
-                _HalfSandDataList[number]._dir = Charactor.eDirection.RIGHT;     //  右に置けばはさめる
+                _HalfSandDataList[number]._dir[idx] = Charactor.eDirection.RIGHT;     //  右に置けばはさめる
             else
-                _HalfSandDataList[number]._dir = Charactor.eDirection.FORWARD;   //  上に置けばはさめる
+                _HalfSandDataList[number]._dir[idx] = Charactor.eDirection.FORWARD;   //  上に置けばはさめる
         }
 
         return true;

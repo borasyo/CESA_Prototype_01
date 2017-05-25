@@ -214,9 +214,9 @@ public class EnemyAI : MonoBehaviour
 
         // Debug
         /*if (isDanger)
-            return eState.WALK; // Random.Range(0, 2) == 0 ? eState.WALK : eState.BREAK;
+            return eState.PUT; // Random.Range(0, 2) == 0 ? eState.WALK : eState.BREAK;
         else
-            return eState.WALK; // (eState)Random.Range(0, (int)eState.MAX);*/
+            return eState.PUT; // (eState)Random.Range(0, (int)eState.MAX);*/
 
         int nRand = 0;
         int[] ratio = _charactor.GetSpecialModeFlg ? _nSpecialActionRatio : _nActionRatio;
@@ -255,8 +255,8 @@ public class EnemyAI : MonoBehaviour
 
         _nowInput._direction = _moveAI.GetMoveData();
 
-        if(_nowInput._direction != Charactor.eDirection.MAX)
-            Debug.Log(_nowInput._direction);    //  行動停止バグ監視用
+        //if(_nowInput._direction != Charactor.eDirection.MAX)
+        //    Debug.Log(_nowInput._direction);    //  行動停止バグ監視用
 
         return true;
     }
@@ -395,14 +395,16 @@ public class EnemyAI : MonoBehaviour
                     return RiskData.nEnemySand;
             }
 
-            type = SandData.Instance.GetHalfSandDataList[idx]._type;
-            if (type != SandItem.eType.MAX)
+            foreach (SandItem.eType halfType in SandData.Instance.GetHalfSandDataList[idx]._type)
             {
-                //  Blockによる半はさまれは危険として処理
-                if (FieldDataChecker.Instance.TypeCheck(name, type))
-                    return RiskData.nMyHalfSand;
-                else
-                    return RiskData.nEnemyHalfSand;
+                if (halfType != SandItem.eType.MAX)
+                {
+                    //  Blockによる半はさまれは危険として処理
+                    if (FieldDataChecker.Instance.TypeCheck(name, halfType))
+                        return RiskData.nMyHalfSand;
+                    else
+                        return RiskData.nEnemyHalfSand;
+                }
             }
         }
 

@@ -27,7 +27,7 @@ public class MoveButton : MonoBehaviour
                     return;
 
                 _IsActive = nowActive;
-                SetActive(_IsActive);
+                SetActive(IsActive);
 
                 if(_IsActive)
                 {
@@ -40,14 +40,32 @@ public class MoveButton : MonoBehaviour
                 }
             });
 
+        this.UpdateAsObservable()
+            .Where(_ => _IsActive)
+            .Subscribe(_ =>
+            {
+                SetActive(IsActive);
+            });
+
         SetActive(false);
     }
 
     void SetActive(bool isActive)
     {
-        for(int idx = 0; idx < transform.childCount; idx++)
+        if (isActive)
         {
-            transform.GetChild(idx).gameObject.SetActive(isActive);
+            int angle = (int)GetMoveAngle;
+            transform.GetChild(0).gameObject.SetActive((angle < 135 && angle >= 45));
+            transform.GetChild(1).gameObject.SetActive((angle < -45 && angle >= -135));
+            transform.GetChild(2).gameObject.SetActive((angle < 45 && angle >= -45));
+            transform.GetChild(3).gameObject.SetActive((angle < -135 || angle >= 135));
+        }
+        else
+        {
+            for(int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
     }
 }

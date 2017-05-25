@@ -94,9 +94,13 @@ public class PutAI : MonoBehaviour
 
     bool HalfSandPut(bool isNear)
     {
-        SandData.tHalfSandData[] dataList = SandData.Instance.GetHalfSandDataList; //.Where(_ => TypeCheck(_._type)).ToArray();
-        SandData.tHalfSandData data = new SandData.tHalfSandData();
+        SandData.HalfSandData[] dataList = SandData.Instance.GetHalfSandDataList; //.Where(_ => TypeCheck(_._type)).ToArray();
+        SandData.HalfSandData data = new SandData.HalfSandData();
         int number = 0;
+        int idx = 0;    //  半はさまれが上下か左右かを保存
+
+        //  自分のはさめる位置のみに絞る
+        SandItem.eType myType = GetSandType();
 
         if (isNear)
         {   //  最も近いはさめる箇所を探索
@@ -108,25 +112,40 @@ public class PutAI : MonoBehaviour
             int element = 0;
             dataList = dataList.Where(_ =>
             {
-                int dis = Mathf.Abs(x - element % GameScaler._nWidth) + Mathf.Abs(z - element / GameScaler._nWidth);
+                int nowElement = element;
                 element++;
-                if (SandData.Instance.GetHalfSandDataList[element - 1]._type == SandItem.eType.MAX)
+
+                if (nowElement == nowNumber)
                     return false;
+
+                if (_._type[0] != myType && _._type[0] != SandItem.eType.BLOCK && _._type[1] != myType && _._type[1] != SandItem.eType.BLOCK)
+                    return false;
+
+                int dis = Mathf.Abs(x - (nowElement % GameScaler._nWidth)) + Mathf.Abs(z - (nowElement / GameScaler._nWidth));
                 if(dis >= min)
                     return false;
 
                 min = dis;
-                number = element - 1;
+                number = nowElement;
                 return true;
             }).ToArray();
             data = dataList[dataList.Length - 1];
         }
         else
         {
+            dataList = dataList.Where(_ => _._type[0] == myType || _._type[0] == SandItem.eType.BLOCK || _._type[1] == myType || _._type[1] == SandItem.eType.BLOCK).ToArray();
             data = dataList[Random.Range(0, dataList.Length)];
         }
 
-        switch(data._dir)
+        for (int i = 0; i < data._type.Length; i++)
+        {
+            if (data._type[i] == SandItem.eType.MAX)
+                continue;
+            idx = i;
+            break;
+        }
+
+        switch (data._dir[idx])
         {
             case Charactor.eDirection.FORWARD:
                 number += GameScaler._nWidth;
@@ -191,5 +210,19 @@ public class PutAI : MonoBehaviour
         }
 
         return false;
+    }
+
+    SandItem.eType GetSandType()
+    {
+        if (name.Contains("1P"))
+            return SandItem.eType.ONE_P;
+        else if (name.Contains("2P"))
+            return SandItem.eType.TWO_P;
+        else if (name.Contains("3P"))
+            return SandItem.eType.THREE_P;
+        else if (name.Contains("4P"))
+            return SandItem.eType.FOUR_P;
+
+        return SandItem.eType.MAX;
     }
 }

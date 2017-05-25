@@ -22,14 +22,14 @@ public class PowerTypeSelectMass : SelectMass
                 if ((obj.GetSandType() != SandItem.eType.MAX || (obj.tag == "Block" && !obj.name.Contains("Fence"))) &&
                     _charactorGauge.BreakGaugeCheck())
                 {
-                    setCol = _crashColor;
+                    setCol = _breakColor;
                 }
             }
             else
             {
                 if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck())
                 {
-                    setCol = _crashColor;
+                    setCol = _breakColor;
                 }
             }
         }

@@ -34,6 +34,8 @@ public class NowLevel : MonoBehaviour
 
     public void OnClick()
     {
-        _nNowLevel = (_nNowLevel + 1) % 3;
+        _nNowLevel --;
+        if (_nNowLevel < 0)
+            _nNowLevel += 3;
     }
 }

@@ -188,12 +188,11 @@ public class Charactor : FieldObjectBase
 
     virtual protected void ItemPut()
     {
-        if (!_charactorGauge.PutGaugeCheck() || 
-            !_charactorInput.GetActionInput(eAction.PUT))
+        if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
             return;
 
         int dirNumber = GetDataNumberForDir();
-        if (dirNumber < 0 || GameScaler._nWidth * GameScaler._nHeight < dirNumber)
+        if (dirNumber < 0 || GameScaler.GetRange < dirNumber)
             return;
 
         FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
@@ -276,6 +275,11 @@ public class Charactor : FieldObjectBase
         }
 
         return number;
+    }
+
+    public string GetPlayerNumber()
+    {
+        return name[this.name.IndexOf("Player") - 1].ToString();
     }
 
     #endregion

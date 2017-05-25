@@ -17,9 +17,9 @@ public class SelectMass : FieldObjectBase
 
     [SerializeField] float _fInterval_Sec = 0.5f;
 
-    [SerializeField] protected Color _notColor   = new Color(1,1,1,1);
-    [SerializeField] protected Color _putColor   = new Color(1,1,1,1);
-    [SerializeField] protected Color _crashColor = new Color(1,1,1,1);
+    protected Color _notColor   = new Color(1,1,1,1);
+    protected Color _putColor   = new Color(1,1,1,1);
+    protected Color _breakColor = new Color(1,1,1,1);
 
     void Start()
     {
@@ -27,9 +27,11 @@ public class SelectMass : FieldObjectBase
         _charactor = GetComponentInParent<Charactor>();
         _charactorGauge = GetComponentInParent<CharactorGauge>();
 
+        float interval = _fInterval_Sec / 2.0f;
+
         // テクスチャ点滅処理
         _SpRend = GetComponent<SpriteRenderer>();
-        _triangleWaveFloat = TriangleWaveFactory.Float(1.0f, 0.0f, _fInterval_Sec/2.0f);
+        _triangleWaveFloat = TriangleWaveFactory.Float(1.0f, 0.0f, interval);
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
             .Subscribe(_ => {
@@ -40,13 +42,17 @@ public class SelectMass : FieldObjectBase
             });
 
         //  テクスチャ拡縮処理
-        _triangleWaveVector3 = TriangleWaveFactory.Vector3(Vector3.zero, Vector3.one, _fInterval_Sec/2.0f);
+        _triangleWaveVector3 = TriangleWaveFactory.Vector3(Vector3.zero, Vector3.one * 0.8f, interval);
         this.UpdateAsObservable()
             .Where(_ => this.enabled && _SpRend.sprite.name == "SelectMass")
             .Subscribe(_ => {
                 _triangleWaveVector3.Progress();
                 transform.localScale = _triangleWaveVector3.CurrentValue;
             });
+
+        _notColor = SelectMassColor.Instance.GetNotColor(transform.parent.name);
+        _putColor = SelectMassColor.Instance.GetPutColor(transform.parent.name);
+        _breakColor = SelectMassColor.Instance.GetBreakColor(transform.parent.name);
     }
 
     void Update()
@@ -60,7 +66,7 @@ public class SelectMass : FieldObjectBase
         float alpha = _SpRend.color.a;
         _notColor.a = alpha;
         _putColor.a = alpha;
-        _crashColor.a = alpha;
+        _breakColor.a = alpha;
     }
 
     virtual protected void ColorCheck()
@@ -75,7 +81,7 @@ public class SelectMass : FieldObjectBase
         {
             if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck())
             {
-                setCol = _crashColor;
+                setCol = _breakColor;
             }
         }
         else
