@@ -40,12 +40,13 @@ public class Charactor : FieldObjectBase
     protected CharactorInput _charactorInput = null;
     protected CharactorGauge _charactorGauge = null;
 
-    [SerializeField] float _moveAmount_Sec = 0.5f;
+    [SerializeField] protected float _moveAmount_Sec = 0.5f;
     protected int _nOldNumber = 0;
 
     public eCharaType _charaType { get; protected set; }
     protected eDirection _nowDirection = eDirection.FORWARD;
     protected GameObject _sandItem = null;
+
     protected bool _IsSpecialMode = false;
     public bool GetSpecialModeFlg { get { return _IsSpecialMode; } }
 
@@ -119,7 +120,7 @@ public class Charactor : FieldObjectBase
     {
         if (!_charactorInput.GetMoveInput(dir))
             return false;
-
+        
         _nowDirection = dir;
         int number = GetDataNumber();
 
@@ -140,7 +141,7 @@ public class Charactor : FieldObjectBase
                 break;
         }
 
-        if (check < 0 || GameScaler._nWidth * GameScaler._nHeight <= check)
+        if (check < 0 || GameScaler.GetRange <= check)
             return false;
 
         FieldObjectBase checkData = FieldData.Instance.GetObjData(check);
@@ -162,6 +163,7 @@ public class Charactor : FieldObjectBase
                     distance = transform.position.x - checkData.GetPosForNumber().x;
                     break;
             }
+            //  障害物があって進めない!
             if (distance <= GameScaler._fScale)
                 return false;
         }
@@ -280,9 +282,10 @@ public class Charactor : FieldObjectBase
 
     #region VirtualMethod
 
-    virtual public void RunSpecialMode(bool IsRun)
+    virtual public bool RunSpecialMode(bool IsRun)
     {
         //  継承先で記述
+        return false;
     }
 
     #endregion

@@ -78,13 +78,12 @@ public class BalanceType : Charactor
         return numbers;
     }
 
-    override public void RunSpecialMode(bool IsRun)
+    override public bool RunSpecialMode(bool IsRun)
     {
         if (_IsSpecialMode == IsRun)
-            return;
+            return false;
 
         _IsSpecialMode = IsRun;
-
         //  今のところなし
         if (IsRun)
         {
@@ -94,5 +93,6 @@ public class BalanceType : Charactor
         {
 
         }
+        return true;
     }
 }

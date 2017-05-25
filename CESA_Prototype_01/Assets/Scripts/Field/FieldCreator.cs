@@ -67,6 +67,7 @@ public class FieldCreator : MonoBehaviour
         Vector3 pos = Vector3.zero;
         GameObject obj = null;
         GameObject[] SelectCharas = CharactorSelect.SelectCharas;
+        int[] SelectLevels = LevelSelect.SelectLevel;
 
         // 左下に生成
         if (!SelectCharas[0])
@@ -88,7 +89,7 @@ public class FieldCreator : MonoBehaviour
         obj.name += ",2Player" + ",CPU";
         obj.transform.eulerAngles = new Vector3(0, 270, 0);
         _objBaseArray[_nWidth * (_nHeight - 2) + _nWidth - 2] = obj.GetComponent<FieldObjectBase>();
-        obj.GetComponent<Charactor>().Init(0);
+        obj.GetComponent<Charactor>().Init(SelectLevels[0]);
 
         //  左上に生成
         if (SelectCharas[2])
@@ -98,7 +99,7 @@ public class FieldCreator : MonoBehaviour
             obj.name += ",3Player" + ",CPU";
             obj.transform.eulerAngles = new Vector3(0, 90, 0);
             _objBaseArray[1 + _nWidth * (_nHeight - 2)] = obj.GetComponent<FieldObjectBase>();
-            obj.GetComponent<Charactor>().Init(0);
+            obj.GetComponent<Charactor>().Init(SelectLevels[1]);
         }
 
         //  右上に生成
@@ -109,7 +110,7 @@ public class FieldCreator : MonoBehaviour
             obj.name += ",4Player" + ",CPU";
             obj.transform.eulerAngles = new Vector3(0, 270, 0);
             _objBaseArray[(_nWidth - 2) + _nWidth] = obj.GetComponent<FieldObjectBase>();
-            obj.GetComponent<Charactor>().Init(0);
+            obj.GetComponent<Charactor>().Init(SelectLevels[2]);
         }
 
     }

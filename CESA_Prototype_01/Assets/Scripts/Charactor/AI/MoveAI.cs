@@ -250,11 +250,9 @@ public class MoveAI : MonoBehaviour
     {
         if (!_fieldObjBase)
             return;
-
-        // TODO : ここでAIが移動しなくなる可能性あり
+        
         _oldNumberPos = _fieldObjBase.GetPosForNumber();
         _nNowNumber = _fieldObjBase.GetDataNumber(_oldNumberPos);
-        //transform.position = 
     }
 
     bool DistanceCheck()
@@ -268,6 +266,15 @@ public class MoveAI : MonoBehaviour
         return false;
     }
 
+    /*bool CheckNotMove()
+    {
+        if (!_charactor._IsObstacle)
+            return false;
+
+        OnObstacle();
+        return true;
+    }*/
+
     protected virtual bool CheckObstacle()
     {
         if (RouteOver)
@@ -279,10 +286,15 @@ public class MoveAI : MonoBehaviour
             !FieldDataChecker.Instance.SandCheck(idx, this.name))
             return false;
 
+        OnObstacle();
+        return true;
+    }
+
+    void OnObstacle()
+    {
         _state = eState.STOP;
         _nNowRoute = _astar.GetRoute.Count; //  強制終了
         Debug.Log("障害物を検知！");
-        return true;
     }
 
     #endregion

@@ -145,8 +145,8 @@ public class AIData : MonoBehaviour
 
         _RatioDataNormal[p].SpecialWait = 15;
         _RatioDataNormal[p].SpecialMove = 5;
-        _RatioDataNormal[p].SpecialPut = 40;
-        _RatioDataNormal[p].SpecialBreak = 40;
+        _RatioDataNormal[p].SpecialPut = 20;
+        _RatioDataNormal[p].SpecialBreak = 60;
 
         _RiskDataNormal[p].maxRisk = 40;
         _RiskDataNormal[p].riskRange = 2;
@@ -160,8 +160,8 @@ public class AIData : MonoBehaviour
 
         _RatioDataStrong[p].SpecialWait = 0;
         _RatioDataStrong[p].SpecialMove = 10;
-        _RatioDataStrong[p].SpecialPut = 40;
-        _RatioDataStrong[p].SpecialBreak = 50;
+        _RatioDataStrong[p].SpecialPut = 20;
+        _RatioDataStrong[p].SpecialBreak = 70;
 
         _RiskDataStrong[p].maxRisk = 40;
         _RiskDataStrong[p].riskRange = 3;

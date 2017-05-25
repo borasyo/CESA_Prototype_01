@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Charactor\AI\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\FieldDataChecker.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\MoveAI.cs" />
+    <Compile Include="Assets\Scripts\Charactor\AI\PowerTypeBreakAI.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\PutAI.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\RiskData.cs" />
     <Compile Include="Assets\Scripts\Charactor\AI\TechnicalTypeMoveAI.cs" />
@@ -114,6 +115,8 @@
     <Compile Include="Assets\Scripts\Charactor\Type\SpeedType.cs" />
     <Compile Include="Assets\Scripts\Charactor\Type\TechnicalType.cs" />
     <Compile Include="Assets\Scripts\CharactorSelect\CharactorSelect.cs" />
+    <Compile Include="Assets\Scripts\CharactorSelect\LevelSelect.cs" />
+    <Compile Include="Assets\Scripts\CharactorSelect\NowLevel.cs" />
     <Compile Include="Assets\Scripts\CharactorSelect\NowSelect.cs" />
     <Compile Include="Assets\Scripts\CharactorSelect\SandRangeSelect.cs" />
     <Compile Include="Assets\Scripts\CharactorSelect\StageScaleSelect.cs" />

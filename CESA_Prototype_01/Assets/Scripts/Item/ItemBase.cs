@@ -85,7 +85,7 @@ public class ItemBase : FieldObjectBase
         ItemHolder.Instance.Remove(this);
     }
 
-    void Destroy()
+    protected void Destroy()
     {
         ItemHolder.Instance.Remove(this);
         Destroy(gameObject);

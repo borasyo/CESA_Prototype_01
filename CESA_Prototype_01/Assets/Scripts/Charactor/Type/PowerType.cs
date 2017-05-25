@@ -43,10 +43,10 @@ public class PowerType : Charactor
         _charactorGauge.BreakAction();
     }
 
-    override public void RunSpecialMode(bool IsRun)
+    override public bool RunSpecialMode(bool IsRun)
     {
         if (_IsSpecialMode == IsRun)
-            return;
+            return false;
 
         _IsSpecialMode = IsRun;
         if (IsRun)
@@ -58,5 +58,6 @@ public class PowerType : Charactor
         {
             _charactorGauge.SetBreakGauge(_InitBreakGauge);
         }
+        return true;
     }
 }

@@ -31,7 +31,11 @@ public class SpecialItem : ItemBase
     override public void Run()
     {
         _charactor = this.GetComponentInParent<Charactor>();
-        _charactor.RunSpecialMode(true);
+        if(!_charactor.RunSpecialMode(true))
+        {
+            Destroy();
+            return;
+        }
 
         _charactorGauge = this.GetComponentInParent<CharactorGauge>();
         _charactorGauge.GaugeMax();

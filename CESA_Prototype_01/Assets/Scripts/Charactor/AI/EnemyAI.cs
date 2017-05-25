@@ -68,10 +68,10 @@ public class EnemyAI : MonoBehaviour
         AIData.RiskData riskData = AIData.Instance.GetRisk(level, type);
         SetRiskData(riskData.maxRisk, riskData.riskRange);
 
-        //Debug.Log(this.name + "は");
-        //Debug.Log("Wait : " + _nActionRatio[0] + ", Walk : " + _nActionRatio[1] + ", Put : " + _nActionRatio[2] + ", Break : " + _nActionRatio[3]);
-        //Debug.Log("SpecialWait : " + _nSpecialActionRatio[0] + ", SpecialWalk : " + _nSpecialActionRatio[1] + ", SpecialPut : " + _nSpecialActionRatio[2] + ", SpecialBreak : " + _nSpecialActionRatio[3]);
-        //Debug.Log("許容リスク : " + riskData.maxRisk + ", 探索範囲 : " + riskData.riskRange);
+        Debug.Log(this.name + "はLevel" + level);
+        Debug.Log("Wait : " + _nActionRatio[0] + ", Walk : " + _nActionRatio[1] + ", Put : " + _nActionRatio[2] + ", Break : " + _nActionRatio[3]);
+        Debug.Log("SpecialWait : " + _nSpecialActionRatio[0] + ", SpecialWalk : " + _nSpecialActionRatio[1] + ", SpecialPut : " + _nSpecialActionRatio[2] + ", SpecialBreak : " + _nSpecialActionRatio[3]);
+        Debug.Log("許容リスク : " + riskData.maxRisk + ", 探索範囲 : " + riskData.riskRange);
 
         // 各行動AIを生成
         if(_charactor._charaType != Charactor.eCharaType.TECHNICAL)
@@ -79,9 +79,14 @@ public class EnemyAI : MonoBehaviour
         else
             _moveAI = gameObject.AddComponent<TechnicalTypeMoveAI>();
         _moveAI.Init(level, type);
+
         _putAI = gameObject.AddComponent<PutAI>();
         _putAI.Init(level);
-        _breakAI = gameObject.AddComponent<BreakAI>();
+
+        if (_charactor._charaType != Charactor.eCharaType.POWER)
+            _breakAI = gameObject.AddComponent<BreakAI>();
+        else
+            _breakAI = gameObject.AddComponent<PowerTypeBreakAI>();
         _breakAI.Init(level);
     }
 
@@ -249,6 +254,10 @@ public class EnemyAI : MonoBehaviour
             return false;
 
         _nowInput._direction = _moveAI.GetMoveData();
+
+        if(_nowInput._direction != Charactor.eDirection.MAX)
+            Debug.Log(_nowInput._direction);    //  行動停止バグ監視用
+
         return true;
     }
 

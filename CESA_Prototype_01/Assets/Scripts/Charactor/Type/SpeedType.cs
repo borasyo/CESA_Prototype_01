@@ -5,11 +5,14 @@ using UnityEngine;
 public class SpeedType : Charactor 
 {
     [SerializeField] bool _IsAuthBlock = false;
+    float _fInitSpeed = 0.0f;
 
     public override void Init(int level)
     {
         _charaType = eCharaType.SPEED;
         base.Init(level);
+
+        _fInitSpeed = _moveAmount_Sec;
     }
 
     override protected bool MoveCheck(eDirection dir)
@@ -102,19 +105,20 @@ public class SpeedType : Charactor
         FieldData.Instance.SetObjData(this, nowNumber);
     }
 
-    override public void RunSpecialMode(bool IsRun)
+    override public bool RunSpecialMode(bool IsRun)
     {
         if (_IsSpecialMode == IsRun)
-            return;
+            return false;
 
         _IsSpecialMode = IsRun;
         if (IsRun)
         {
-            ChangeSpeed(2.0f);
+            SetSpeed(_fInitSpeed * 1.5f);
         }
         else
         {
-            ChangeSpeed(0.5f);
+            SetSpeed(_fInitSpeed);
         }
+        return true;
     }
 }

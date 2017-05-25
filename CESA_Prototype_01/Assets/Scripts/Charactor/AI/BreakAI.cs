@@ -6,12 +6,12 @@ using System.Linq;
 public class BreakAI : MonoBehaviour
 {
     EnemyAI _enemyAI;
-    MoveAI _moveAI;
-    FieldObjectBase _fieldObjBase = null;
+    protected MoveAI _moveAI;
+    protected FieldObjectBase _fieldObjBase = null;
 
     int[] _nActionRatio = null;
 
-    public void Init(int level)
+    public virtual void Init(int level)
     { 
         _enemyAI = GetComponent<EnemyAI>();
         _moveAI = GetComponent<MoveAI>();
@@ -75,7 +75,7 @@ public class BreakAI : MonoBehaviour
     }
 
     //  特定のキャラのアイテムを破壊
-    bool CharaBreak(string player, bool isNear)
+    protected virtual bool CharaBreak(string player, bool isNear)
     {
         List<FieldObjectBase> dataList =  FieldData.Instance.GetObjDataArray.Where(x => x && x.tag == "SandItem" && x.name.Contains(player) && x.GetSandType() != SandItem.eType.MAX).ToList();
         if (dataList.Count <= 0)
@@ -84,7 +84,7 @@ public class BreakAI : MonoBehaviour
         FieldObjectBase data = null;
         if (isNear)
         {
-            //  最も近いはさめる箇所を探索
+            //  最も近い壊せる箇所を探索
             int min = 1000;
             int nowNumber = _fieldObjBase.GetDataNumber();
             int x = nowNumber % GameScaler._nWidth;
@@ -113,7 +113,7 @@ public class BreakAI : MonoBehaviour
 
     #endregion
 
-    int RandomBreakMass()
+    protected virtual　int RandomBreakMass()
     {
         FieldObjectBase[] sandItemList = FieldData.Instance.GetObjDataArray.Where(x=> x && x.tag == "SandItem" && x.GetSandType() != SandItem.eType.MAX).ToArray();
 
