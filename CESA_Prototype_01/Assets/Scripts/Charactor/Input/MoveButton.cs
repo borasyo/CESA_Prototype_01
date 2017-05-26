@@ -19,6 +19,11 @@ public class MoveButton : MonoBehaviour
 
     void Start()
     {
+        _moveVecList = new Image[4];
+        for (int i = 0; i < 4; i++)
+            _moveVecList[i] = transform.GetChild(i).GetComponent<Image>();
+        SetActive(false);
+
         RectTransform rectTrans = GetComponent<RectTransform>();
         Vector2 oldTouchPos = Vector2.zero;
         float oldDistance = 0.0f;
@@ -38,13 +43,7 @@ public class MoveButton : MonoBehaviour
                 SetActive(nowActive);
 
                 if(_IsActive)
-                {
-                    Vector3 pos = CenterPosition = Input.GetTouch(0).position;
-                    pos.x -= Screen.width / 2.0f;
-                    pos.y -= Screen.height / 2.0f;
-                    pos.z = 0;
-                    rectTrans.anchoredPosition = pos;
-                }
+                    rectTrans.anchoredPosition = CenterPosition = Input.GetTouch(0).position;
             });
 
         this.UpdateAsObservable()
@@ -80,11 +79,6 @@ public class MoveButton : MonoBehaviour
                 oldTouchPos = nowTouchPos;
                 oldDistance = nowDistance;
             });
-
-        _moveVecList = new Image[4];
-        for(int i = 0; i < 4; i++)
-            _moveVecList[i] = transform.GetChild(i).GetComponent<Image>();
-        SetActive(false);
     }
 
     void ColorChange()
