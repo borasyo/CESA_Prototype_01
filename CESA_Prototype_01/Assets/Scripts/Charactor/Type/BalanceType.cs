@@ -14,7 +14,7 @@ public class BalanceType : Charactor
 
     override protected void ItemPut()
     {
-        if (//!_charactorGauge.PutGaugeCheck() || 
+        if (!_charactorGauge.PutGaugeCheck() || 
             !_charactorInput.GetActionInput(eAction.PUT))
             return;
 
@@ -40,7 +40,7 @@ public class BalanceType : Charactor
         if (!IsPut)
             return;
 
-        //_charactorGauge.PutAction();
+        _charactorGauge.PutAction();
     }
 
     int[] GetNumberList()
