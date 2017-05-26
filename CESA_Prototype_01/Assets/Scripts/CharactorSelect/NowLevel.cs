@@ -9,7 +9,7 @@ using UniRx.Triggers;
 public class NowLevel : MonoBehaviour
 {
     int _nNowLevel = 2;
-    public int nNowLevel { get { return _nNowLevel;  } }
+    public int nNowLevel { get { return _nNowLevel; } set { _nNowLevel = value; } }
 
 	void Start ()
     {

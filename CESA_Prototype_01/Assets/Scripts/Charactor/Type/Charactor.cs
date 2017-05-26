@@ -145,7 +145,7 @@ public class Charactor : FieldObjectBase
             return false;
 
         FieldObjectBase checkData = FieldData.Instance.GetObjData(check);
-        if (checkData && checkData != this)
+        if (checkData && checkData.tag != "Charactor")
         {
             float distance = 0.0f;
             switch (dir)

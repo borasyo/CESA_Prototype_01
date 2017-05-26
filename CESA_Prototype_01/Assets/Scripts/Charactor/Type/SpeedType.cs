@@ -54,7 +54,7 @@ public class SpeedType : Charactor
         }
         else
         {
-            if (checkData && checkData != this)
+            if (checkData && checkData.tag != "Charactor")
             {
                 return DistanceCheck(checkData);
             }

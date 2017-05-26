@@ -102,6 +102,10 @@ public class EnemyAI : MonoBehaviour
                 List<ItemBase> itemList = ItemHolder.Instance.ItemList;
                 foreach (ItemBase item in itemList)
                 {
+                    //  特殊アイテムで、特殊状態なら無駄なので取りにいかない
+                    if (item.GetItemType == ItemBase.eItemType.SPECIAL && _charactor.GetSpecialModeFlg)
+                        continue;
+
                     int number = item.GetDataNumber();
                     int distance = ItemHolder.Instance.GetDistanceForType(item.GetItemType) / (_nLevel + 1);
                     if (_DistanceDatas[number]._nDistance > distance)
@@ -214,9 +218,9 @@ public class EnemyAI : MonoBehaviour
 
         // Debug
         /*if (isDanger)
-            return eState.PUT; // Random.Range(0, 2) == 0 ? eState.WALK : eState.BREAK;
+            return eState.WALK; // Random.Range(0, 2) == 0 ? eState.WALK : eState.BREAK;
         else
-            return eState.PUT; // (eState)Random.Range(0, (int)eState.MAX);*/
+            return eState.WALK; // (eState)Random.Range(0, (int)eState.MAX);*/
 
         int nRand = 0;
         int[] ratio = _charactor.GetSpecialModeFlg ? _nSpecialActionRatio : _nActionRatio;

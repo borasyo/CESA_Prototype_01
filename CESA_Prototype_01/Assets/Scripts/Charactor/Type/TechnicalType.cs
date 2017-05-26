@@ -43,6 +43,9 @@ public class TechnicalType : Charactor
         if (obj.tag == "Block" && (!_IsAuthBlock || obj.name.Contains("Fence")))
             return;
 
+        if (obj.GetSandType() == SandItem.eType.MAX)
+            return;
+
         if (!PushObj())
             return;
      

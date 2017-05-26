@@ -16,7 +16,7 @@ public class AngleDebug : MonoBehaviour
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                if (moveButton.IsActive)
+                if (moveButton.IsActiveAndMove)
                     text.text = "角度" + (int)(moveButton.GetMoveAngle);
                 else
                     text.text = "なし";

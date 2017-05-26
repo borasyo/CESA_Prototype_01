@@ -62,7 +62,7 @@ public class CharactorInputUser : CharactorInput
     {
         if (Application.platform == RuntimePlatform.Android)
         {
-            if (!_moveButton.IsActive)
+            if (!_moveButton.IsActiveAndMove)
             {
                 _IsForawrd = _IsBack = _IsRight = _IsLeft = false;
                 return;

@@ -82,7 +82,7 @@ public class FieldDataChecker : MonoBehaviour
         if (!obj)
             return null;
 
-        if (obj.gameObject == me.gameObject)
+        if (obj.gameObject.tag == "Charactor")
             return null;
 
         // TODO : SPEEDの特殊モードのためだけにある判定なので、どうにかして分けたい....
@@ -102,7 +102,7 @@ public class FieldDataChecker : MonoBehaviour
         if (!obj)
             return null;
 
-        if (obj.gameObject == me.gameObject)
+        if (obj.gameObject.tag == "Charactor")
             return null;
 
         return obj;

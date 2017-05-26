@@ -38,28 +38,6 @@ public class CharactorSelect : MonoBehaviour
                 SetChara();
                 SceneManager.LoadScene("GameMain");
             });
-
-        /*int nSelect = 0;
-        ChangeActive(nSelect);
-        this.UpdateAsObservable()
-            .Where(_ => SceneManager.GetActiveScene().name == "CharactorSelect")
-            .Subscribe(_ =>
-            {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                    nSelect--;
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                    nSelect++;
-                else
-                    return;
-
-                if (nSelect < 0)
-                    nSelect = _nowSelectDatas.Length - 1;
-                else if (nSelect >= _nowSelectDatas.Length)
-                    nSelect = 0;
-
-                ChangeActive(nSelect);
-            });*/
-
     }
 
     public enum eCharaType
