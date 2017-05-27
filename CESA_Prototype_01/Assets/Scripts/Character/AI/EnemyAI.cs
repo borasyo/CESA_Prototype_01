@@ -58,6 +58,10 @@ public class EnemyAI : MonoBehaviour
     PutAI _putAI = null;
     BreakAI _breakAI = null;
 
+#if DEBUG
+    bool _IsAI = true;
+#endif
+
     #region Init
 
     //  キャラのタイプ、CPUのレベルによって設定する情報
@@ -72,10 +76,10 @@ public class EnemyAI : MonoBehaviour
         AIData.RiskData riskData = AIData.Instance.GetRisk(level, type);
         SetRiskData(riskData.maxRisk, riskData.riskRange);
 
-        Debug.Log(this.name + "はLevel" + level);
-        Debug.Log("Wait : " + _nActionRatio[0] + ", Walk : " + _nActionRatio[1] + ", Put : " + _nActionRatio[2] + ", Break : " + _nActionRatio[3]);
-        Debug.Log("SpecialWait : " + _nSpecialActionRatio[0] + ", SpecialWalk : " + _nSpecialActionRatio[1] + ", SpecialPut : " + _nSpecialActionRatio[2] + ", SpecialBreak : " + _nSpecialActionRatio[3]);
-        Debug.Log("許容リスク : " + riskData.maxRisk + ", 探索範囲 : " + riskData.riskRange);
+        //Debug.Log(this.name + "はLevel" + level);
+        //Debug.Log("Wait : " + _nActionRatio[0] + ", Walk : " + _nActionRatio[1] + ", Put : " + _nActionRatio[2] + ", Break : " + _nActionRatio[3]);
+        //Debug.Log("SpecialWait : " + _nSpecialActionRatio[0] + ", SpecialWalk : " + _nSpecialActionRatio[1] + ", SpecialPut : " + _nSpecialActionRatio[2] + ", SpecialBreak : " + _nSpecialActionRatio[3]);
+        //Debug.Log("許容リスク : " + riskData.maxRisk + ", 探索範囲 : " + riskData.riskRange);
 
         // 各行動AIを生成
         if(_character._charaType != Character.eCharaType.TECHNICAL)
@@ -97,6 +101,17 @@ public class EnemyAI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+#if DEBUG
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                if (!Input.GetKeyDown(KeyCode.LeftShift))
+                    return;
+
+                _IsAI = !_IsAI;
+            });
+#endif 
+
         //  ItemCheck
         bool IsGetItem = false;
         this.ObserveEveryValueChanged(_ => _fieldObjBase.GetDataNumber())
@@ -189,6 +204,11 @@ public class EnemyAI : MonoBehaviour
 
     bool AIUpdate(bool isDanger = false)
     {
+#if DEBUG
+        if (!_IsAI)
+            return false;
+#endif
+
         if(isDanger)
             return NormalAI(isDanger);
 
@@ -216,7 +236,7 @@ public class EnemyAI : MonoBehaviour
         {
             _state = eState.WAIT;
         }
-
+        //Debug.Log(name + "のCharaNotMoveAI実行" + isSuccess);
         return isSuccess;
     }
 
@@ -235,7 +255,7 @@ public class EnemyAI : MonoBehaviour
             isSuccess = _breakAI.NearBlockBreak(number);    //  置けないならそのキャラの近くのブロックを壊して置けるように試みる
             _state = isSuccess ? eState.BREAK : eState.WAIT; 
         }
-
+        //Debug.Log(name + "のEnemyStopAI実行" + isSuccess);
         return isSuccess;
     }
 
@@ -243,7 +263,6 @@ public class EnemyAI : MonoBehaviour
     {
         bool isSuccess = false;
         _state = GetNextState(isDanger);
-        //Debug.Log("AI : " + _state);
         switch (_state)
         {
             case eState.WAIT:
@@ -261,6 +280,7 @@ public class EnemyAI : MonoBehaviour
                 //Debug.Log("Break");
                 break;
         }
+        //Debug.Log("AI : " + _state + "," + isSuccess);
 
         if (!isSuccess)
             _state = eState.WAIT;
@@ -312,7 +332,7 @@ public class EnemyAI : MonoBehaviour
             if (!_.NotMove)
                 return false;
 
-            if (_DistanceDatas[_.GetDataNumber()]._nDistance >= 2 * (3 - _nLevel))
+            if (_DistanceDatas[_.GetDataNumber()]._nDistance >= 3 * (3 - _nLevel))
                 return false;
 
             return true;

@@ -5,9 +5,10 @@ using System.Linq;
 
 public class BreakAI : MonoBehaviour
 {
-    protected EnemyAI _enemyAI;
-    protected MoveAI _moveAI;
-    protected FieldObjectBase _fieldObjBase = null;
+    EnemyAI _enemyAI;
+    MoveAI _moveAI;
+    FieldObjectBase _fieldObjBase = null;
+    CharacterGauge _characterGauge = null;
 
     int[] _nActionRatio = null;
 
@@ -16,6 +17,7 @@ public class BreakAI : MonoBehaviour
         _enemyAI = GetComponent<EnemyAI>();
         _moveAI = GetComponent<MoveAI>();
         _fieldObjBase = GetComponent<FieldObjectBase>();
+        _characterGauge = GetComponent<CharacterGauge>();
 
         _nActionRatio = new int[3];
         switch (level)
@@ -67,6 +69,9 @@ public class BreakAI : MonoBehaviour
 
     public bool RandomBreak()
     {
+        if (!_characterGauge.BreakGaugeCheck())
+            return false;
+
         int rand = RandomBreakMass();
         if (rand < 0)
             return false;
@@ -77,6 +82,9 @@ public class BreakAI : MonoBehaviour
     //  特定のキャラのアイテムを破壊
     public bool CharaBreak(bool isNear, int nNumber = -1)
     {
+        if (!_characterGauge.BreakGaugeCheck())
+            return false;
+
         string player = GetPlayerString();
         List<FieldObjectBase> dataList = GetSandItemList(player);
         if (dataList.Count <= 0)
@@ -117,6 +125,9 @@ public class BreakAI : MonoBehaviour
 
     public bool NearBlockBreak(int nNumber = -1)
     {
+        if (!_characterGauge.BreakGaugeCheck())
+            return false;
+
         List<FieldObjectBase> dataList = GetSandItemList();
         if (dataList.Count <= 0)
             return false;

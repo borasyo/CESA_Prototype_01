@@ -90,6 +90,8 @@ public class PutAI : MonoBehaviour
 
         return isSuccess;
     }
+
+    //  指定した場所の目の前に配置する
     public bool PlacePutChara(int place)
     {
         bool isSuccess = _moveAI.SearchRoute(place, 2);
@@ -156,7 +158,13 @@ public class PutAI : MonoBehaviour
         }
         else
         {
-            dataList = dataList.Where(_ => _._type[0] == myType || _._type[0] == SandItem.eType.BLOCK || _._type[1] == myType || _._type[1] == SandItem.eType.BLOCK).ToArray();
+            dataList = dataList.Where(_ => 
+            {
+                if (_._type[0] == myType || _._type[0] == SandItem.eType.BLOCK || _._type[1] == myType || _._type[1] == SandItem.eType.BLOCK)
+                    return true;
+
+                return false;
+            }).ToArray();
             data = dataList[Random.Range(0, dataList.Length)];
         }
 

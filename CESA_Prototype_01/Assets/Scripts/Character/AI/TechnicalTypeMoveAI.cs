@@ -58,20 +58,19 @@ public class TechnicalTypeMoveAI : MoveAI
             return false;
 
         int idx = _astar.GetRoute[_nNowRoute];
+        FieldObjectBase obj = FieldDataChecker.Instance.CheckObstacleObj(idx, gameObject);
 
         //  行先に障害物がないかチェック
-        if (!FieldDataChecker.Instance.CheckObstacleObj(idx, gameObject) &&
-            !FieldDataChecker.Instance.SandCheck(idx, name))
+        if (!obj && !FieldDataChecker.Instance.SandCheck(idx, name))
             return false;
 
-
         //  特殊時はさらに先も検索し、無ければ蹴れるので進む
-        if (_character.GetSpecialModeFlg && !FieldDataChecker.Instance.CheckObstacleObj(idx + (idx - _nNowNumber), gameObject))
+        if (_character.GetSpecialModeFlg && obj.GetSandType() != SandItem.eType.MAX && !FieldDataChecker.Instance.CheckObstacleObj(idx + (idx - _nNowNumber), gameObject))
             return false;
 
         _state = eState.STOP;
         _nNowRoute = _astar.GetRoute.Count; //  強制終了
-        Debug.Log("障害物を検知！");
+        //Debug.Log("障害物を検知！");
         return true;
     }
 }

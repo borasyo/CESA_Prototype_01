@@ -46,7 +46,7 @@ public class SpecialItem : ItemBase
 
                 if(_fDuration_Sec > 0.0f
                     #if DEBUG
-                    && !Input.GetKeyDown(KeyCode.Return)
+                    && !Input.GetKeyDown(KeyCode.RightShift)
                     #endif
                 )
                     return;

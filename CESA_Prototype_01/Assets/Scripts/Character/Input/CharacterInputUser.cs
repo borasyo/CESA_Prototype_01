@@ -76,7 +76,14 @@ public class CharacterInputUser : CharacterInput
         }
         else
         {
-            if (transform.name.Contains("1P"))
+            _IsForawrd = Input.GetKey(KeyCode.W);
+            _IsBack = Input.GetKey(KeyCode.S);
+            _IsRight = Input.GetKey(KeyCode.D);
+            _IsLeft = Input.GetKey(KeyCode.A);
+            _IsPut = Input.GetKeyDown(KeyCode.R);
+            _IsBreak = Input.GetKeyDown(KeyCode.T);
+
+            /*if (transform.name.Contains("1P"))
             {
                 _IsForawrd = Input.GetKey(KeyCode.W);
                 _IsBack = Input.GetKey(KeyCode.S);
@@ -112,7 +119,7 @@ public class CharacterInputUser : CharacterInput
                 _IsLeft = Input.GetKey(KeyCode.Y);
                 _IsPut = Input.GetKeyDown(KeyCode.Alpha9);
                 _IsBreak = Input.GetKeyDown(KeyCode.Alpha0);
-            }
+            }*/
         }
     }
 }

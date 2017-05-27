@@ -60,17 +60,4 @@ public class ItemHolder : MonoBehaviour
         }
         return distance;
     }
-
-    /*void Update()
-    {
-        if (!Input.GetKeyDown(KeyCode.LeftShift))
-            return;
-
-        string debug = "ItemList : ";
-        for(int i = 0; i < _ItemList.Count; i++)
-        {
-            debug += _ItemList[i].name + ", ";
-        }
-        Debug.Log(debug);
-    }*/
 }

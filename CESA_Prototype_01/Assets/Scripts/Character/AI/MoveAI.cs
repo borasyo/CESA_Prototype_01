@@ -88,7 +88,7 @@ public class MoveAI : MonoBehaviour
             if ((_enemyAI.GetState == EnemyAI.eState.BREAK &&  target) ||
                 (_enemyAI.GetState != EnemyAI.eState.BREAK && !target))
             {
-                Debug.Log("再検索");
+                //Debug.Log("再検索");
                 if (SearchRoute(GetTarget, _nNowArrive))
                     return;
             }
@@ -147,7 +147,7 @@ public class MoveAI : MonoBehaviour
         {
             _state = eState.STOP;
             _nNowRoute = _astar.GetRoute.Count;
-            Debug.LogWarning("その場所へのルートはありません");
+            //Debug.Log("その場所へのルートはありません");
             return false;
         }
 
@@ -294,7 +294,7 @@ public class MoveAI : MonoBehaviour
     {
         _state = eState.STOP;
         _nNowRoute = _astar.GetRoute.Count; //  強制終了
-        Debug.Log("障害物を検知！");
+        //Debug.Log("障害物を検知！");
     }
 
     #endregion

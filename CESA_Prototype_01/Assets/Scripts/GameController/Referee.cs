@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if DEBUG
 using UnityEditor;
+#endif
 
 public class Referee : MonoBehaviour
 {
@@ -32,8 +35,10 @@ public class Referee : MonoBehaviour
             FieldObjectBase obj =_charaList[i];
             _charaList.Remove(_charaList[i]);
 
+#if DEBUG
             // 死ぬ判定にバグがある可能性があるのでチェック
             //EditorApplication.isPaused = true;
+#endif
 
             CheckResult(obj, type);
             return;
@@ -46,9 +51,11 @@ public class Referee : MonoBehaviour
         reStart.GetComponentInChildren<TextMesh>().text = obj.GetComponent<Character>().GetPlayerNumber() + "Pは" + obj.GetDataNumber() + "マスで" + type + "に挟まれて死んだ！";
         //ReStart reStart = Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity).GetComponent<ReStart>();
         reStart._IsEnd= false;
+
+        string name = obj.name;
         Destroy(obj.gameObject);
 
-        if (_charaList.Count > 1)
+        if (_charaList.Count > 1 && name.Contains("CPU"))
             return;
 
         reStart._IsEnd = true;

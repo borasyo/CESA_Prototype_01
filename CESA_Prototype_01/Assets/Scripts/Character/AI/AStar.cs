@@ -268,7 +268,7 @@ public class AStar : MonoBehaviour {
 
             if (pStart.x == pGoal.x && pStart.z == pGoal.z)
             {
-                Debug.LogWarning("StartとGoalが同じです！");
+                //Debug.Log("StartとGoalが同じです！");
                 return false;
             }
 

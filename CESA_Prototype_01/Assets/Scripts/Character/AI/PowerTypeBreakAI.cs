@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PowerTypeBreakAI : BreakAI {
-
+public class PowerTypeBreakAI : BreakAI
+{
     Character _character = null;
 
     public override void Init(int level)
