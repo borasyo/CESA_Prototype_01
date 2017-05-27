@@ -8,7 +8,7 @@ using UniRx.Triggers;
 public class InvincibleItem : ItemBase
 {
     [SerializeField] float _fDuration_Sec = 5.0f;
-    //Charactor _charactor = null;
+    //Character _character = null;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class InvincibleItem : ItemBase
 
     override public void Run()
     {
-        //_charactor = this.GetComponentInParent<Charactor>();
+        //_character = this.GetComponentInParent<Character>();
         transform.parent.name += ",Invincible"; //  無敵開始
 
         this.UpdateAsObservable()

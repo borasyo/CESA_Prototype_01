@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.6.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -89,42 +87,42 @@
     <Compile Include="Assets\Elementals\Demo\Scripts\GE_Elementals_Demo.cs" />
     <Compile Include="Assets\Scripts\Camera\PullsObject.cs" />
     <Compile Include="Assets\Scripts\Camera\SetCameraPos.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\AIData.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\AStar.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\BreakAI.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\EnemyAI.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\FieldDataChecker.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\MoveAI.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\PowerTypeBreakAI.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\PutAI.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\RiskData.cs" />
-    <Compile Include="Assets\Scripts\Charactor\AI\TechnicalTypeMoveAI.cs" />
-    <Compile Include="Assets\Scripts\Charactor\CharaMass.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Type\Charactor.cs" />
-    <Compile Include="Assets\Scripts\Charactor\CharactorGauge.cs" />
-    <Compile Include="Assets\Scripts\Charactor\GaugeUI.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Input\AngleDebug.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Input\CharactorInput.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Input\CharactorInputAI.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Input\CharactorInputUser.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Input\MoveButton.cs" />
-    <Compile Include="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMass.cs" />
-    <Compile Include="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMassSprite.cs" />
-    <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMass.cs" />
-    <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMassColor.cs" />
-    <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMassSprite.cs" />
-    <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectSandMass.cs" />
-    <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectSandMassChecker.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Type\BalanceType.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Type\PowerType.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Type\SpeedType.cs" />
-    <Compile Include="Assets\Scripts\Charactor\Type\TechnicalType.cs" />
-    <Compile Include="Assets\Scripts\CharactorSelect\CharactorSelect.cs" />
-    <Compile Include="Assets\Scripts\CharactorSelect\LevelSelect.cs" />
-    <Compile Include="Assets\Scripts\CharactorSelect\NowLevel.cs" />
-    <Compile Include="Assets\Scripts\CharactorSelect\NowSelect.cs" />
-    <Compile Include="Assets\Scripts\CharactorSelect\SandRangeSelect.cs" />
-    <Compile Include="Assets\Scripts\CharactorSelect\StageScaleSelect.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\AIData.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\AStar.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\BreakAI.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\FieldDataChecker.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\MoveAI.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\PowerTypeBreakAI.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\PutAI.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\RiskData.cs" />
+    <Compile Include="Assets\Scripts\Character\AI\TechnicalTypeMoveAI.cs" />
+    <Compile Include="Assets\Scripts\Character\CharaMass.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterGauge.cs" />
+    <Compile Include="Assets\Scripts\Character\GaugeUI.cs" />
+    <Compile Include="Assets\Scripts\Character\Input\AngleDebug.cs" />
+    <Compile Include="Assets\Scripts\Character\Input\CharacterInput.cs" />
+    <Compile Include="Assets\Scripts\Character\Input\CharacterInputAI.cs" />
+    <Compile Include="Assets\Scripts\Character\Input\CharacterInputUser.cs" />
+    <Compile Include="Assets\Scripts\Character\Input\MoveButton.cs" />
+    <Compile Include="Assets\Scripts\Character\SelectMass\PowerTypeSelectMass.cs" />
+    <Compile Include="Assets\Scripts\Character\SelectMass\PowerTypeSelectMassSprite.cs" />
+    <Compile Include="Assets\Scripts\Character\SelectMass\SelectMass.cs" />
+    <Compile Include="Assets\Scripts\Character\SelectMass\SelectMassColor.cs" />
+    <Compile Include="Assets\Scripts\Character\SelectMass\SelectMassSprite.cs" />
+    <Compile Include="Assets\Scripts\Character\SelectMass\SelectSandMass.cs" />
+    <Compile Include="Assets\Scripts\Character\SelectMass\SelectSandMassChecker.cs" />
+    <Compile Include="Assets\Scripts\Character\Type\BalanceType.cs" />
+    <Compile Include="Assets\Scripts\Character\Type\Character.cs" />
+    <Compile Include="Assets\Scripts\Character\Type\PowerType.cs" />
+    <Compile Include="Assets\Scripts\Character\Type\SpeedType.cs" />
+    <Compile Include="Assets\Scripts\Character\Type\TechnicalType.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\CharacterSelect.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\LevelSelect.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\NowLevel.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\NowSelect.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\SandRangeSelect.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\StageScaleSelect.cs" />
     <Compile Include="Assets\Scripts\Field\AutoMoveObj.cs" />
     <Compile Include="Assets\Scripts\Field\Block.cs" />
     <Compile Include="Assets\Scripts\Field\DelayPut.cs" />

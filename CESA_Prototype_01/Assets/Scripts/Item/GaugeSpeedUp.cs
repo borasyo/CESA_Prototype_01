@@ -10,7 +10,7 @@ public class GaugeSpeedUp : ItemBase
     [SerializeField] float _fUpAmountPer = 0.5f;
     [SerializeField] float _fDuration_Sec = 5.0f;
 
-    CharactorGauge _charactorGauge = null;
+    CharacterGauge _charactorGauge = null;
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class GaugeSpeedUp : ItemBase
 
     override public void Run()
     {
-        _charactorGauge = this.GetComponentInParent<CharactorGauge>();
+        _charactorGauge = this.GetComponentInParent<CharacterGauge>();
         _charactorGauge.ChangeChargeSpeed(_fUpAmountPer);
 
         this.UpdateAsObservable()

@@ -11,7 +11,7 @@ public class FixText : MonoBehaviour
 	void Start () 
     {
         this.UpdateAsObservable()
-            .Where(_ => transform.parent.parent && transform.parent.parent.tag == "Charactor")
+            .Where(_ => transform.parent.parent && transform.parent.parent.tag == "Character")
             .Subscribe(_ => {
                 transform.position = transform.parent.parent.position;
                 transform.eulerAngles = new Vector3(90, 0, 0);

@@ -63,8 +63,9 @@ public class FieldData : MonoBehaviour
     bool _IsExceptionChangeField = false; 
     public void ExceptionChangeField() { _IsExceptionChangeField = true; }
 
-    List<FieldObjectBase> _CharaList = new List<FieldObjectBase>();
-    public List<FieldObjectBase> GetCharactors { get { return _CharaList; } } 
+    List<Character> _CharaList = new List<Character>();
+    public List<Character> GetCharactors { get { return _CharaList; } }
+    public List<Character> GetCharactorsNonMe(GameObject obj) { return _CharaList.Where(x => x && x.gameObject != obj).ToList(); }    // 自分を除いたキャラにリストを返す
 
     #region Init
 
@@ -78,7 +79,7 @@ public class FieldData : MonoBehaviour
         FieldCreator creator = new FieldCreator();
         _ObjectDataArray = creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
-        _CharaList = _ObjectDataArray.Where(_ => _ && _.tag == "Charactor").ToList();
+        _CharaList = _ObjectDataArray.Where(_ => _ && _.tag == "Character").Select(_ => _.GetComponent<Character>()).ToList();
     }
 
     #endregion
@@ -107,8 +108,8 @@ public class FieldData : MonoBehaviour
                 _IsChangeFieldWithChara = true;
 
                 if (!_IsChangeField &&
-                   (!obj    || obj.tag    != "Charactor") &&
-                   (!oldObj || oldObj.tag != "Charactor"))    //  キャラの場合は変更しない
+                   (!obj    || obj.tag    != "Character") &&
+                   (!oldObj || oldObj.tag != "Character"))    //  キャラの場合は変更しない
                     _IsChangeField = true;
             }
             _ChangeDataList[i]._IsChange = false;
@@ -134,7 +135,7 @@ public class FieldData : MonoBehaviour
     //  キャラクターを取得する時のみ使用する
     public FieldObjectBase GetCharaData(string name)
     {
-        return _ObjectDataArray.Where(_ => _ && _.tag == "Charactor" && _.name.Contains(name)).First();
+        return _ObjectDataArray.Where(_ => _ && _.tag == "Character" && _.name.Contains(name)).First();
     }
 
     public Vector3 GetNonObjPos()

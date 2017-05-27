@@ -11,11 +11,11 @@ public class ReCharaSelect : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.Backspace))
             return;
 
-        SceneManager.LoadScene("CharactorSelect");
+        SceneManager.LoadScene("CharacterSelect");
 	}
 
     public void ReChara()
     {
-        SceneManager.LoadScene("CharactorSelect");
+        SceneManager.LoadScene("CharacterSelect");
     }
 }

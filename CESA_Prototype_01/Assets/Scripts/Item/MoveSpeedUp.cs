@@ -10,7 +10,7 @@ public class MoveSpeedUp : ItemBase
     [SerializeField] float _fUpAmountPer = 2.0f;
     [SerializeField] float _fDuration_Sec = 5.0f;
 
-    Charactor _charactor = null;
+    Character _character = null;
 
     void Start()
     {
@@ -20,8 +20,8 @@ public class MoveSpeedUp : ItemBase
 
     override public void Run()
     {
-        _charactor = this.GetComponentInParent<Charactor>();
-        _charactor.ChangeSpeed(_fUpAmountPer);
+        _character = this.GetComponentInParent<Character>();
+        _character.ChangeSpeed(_fUpAmountPer);
 
         this.UpdateAsObservable()
             .Subscribe(_ => {
@@ -30,7 +30,7 @@ public class MoveSpeedUp : ItemBase
                 if(_fDuration_Sec > 0.0f)
                     return;
               
-                _charactor.ChangeSpeed(1.0f / _fUpAmountPer);
+                _character.ChangeSpeed(1.0f / _fUpAmountPer);
                 Destroy(this.gameObject);
             });
     }

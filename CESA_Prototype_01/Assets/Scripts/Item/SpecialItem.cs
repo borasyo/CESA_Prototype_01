@@ -9,8 +9,8 @@ using UnityEngine.UI;
 public class SpecialItem : ItemBase
 {
     [SerializeField] float _fDuration_Sec = 0.0f;
-    Charactor _charactor = null;
-    CharactorGauge _charactorGauge = null;
+    Character _character = null;
+    CharacterGauge _charactorGauge = null;
 
     MeshRenderer _MeRend = null;
 
@@ -30,14 +30,14 @@ public class SpecialItem : ItemBase
 
     override public void Run()
     {
-        _charactor = this.GetComponentInParent<Charactor>();
-        if(!_charactor.RunSpecialMode(true))
+        _character = this.GetComponentInParent<Character>();
+        if(!_character.RunSpecialMode(true))
         {
             Destroy();
             return;
         }
 
-        _charactorGauge = this.GetComponentInParent<CharactorGauge>();
+        _charactorGauge = this.GetComponentInParent<CharacterGauge>();
         _charactorGauge.GaugeMax();
 
         this.UpdateAsObservable()
@@ -51,7 +51,7 @@ public class SpecialItem : ItemBase
                 )
                     return;
 
-                _charactor.RunSpecialMode(false);
+                _character.RunSpecialMode(false);
                 Destroy(this.gameObject);
             });
     }

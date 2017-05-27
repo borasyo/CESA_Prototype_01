@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Referee : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Referee : MonoBehaviour
 
     void Start()
     {
-        GameObject[] charaObjects = GameObject.FindGameObjectsWithTag("Charactor");
+        GameObject[] charaObjects = GameObject.FindGameObjectsWithTag("Character");
         for(int i = 0; i < charaObjects.Length; i++) {
             _charaList.Add(charaObjects[i].GetComponent<FieldObjectBase>());
         }
@@ -28,18 +29,24 @@ public class Referee : MonoBehaviour
             if (type == SandItem.eType.MAX || type == charaType)
                 continue;
 
-            GameObject obj =_charaList[i].gameObject;
+            FieldObjectBase obj =_charaList[i];
             _charaList.Remove(_charaList[i]);
-            CheckResult(obj.gameObject);
+
+            // 死ぬ判定にバグがある可能性があるのでチェック
+            //EditorApplication.isPaused = true;
+
+            CheckResult(obj, type);
             return;
         }
     }
 
-    void CheckResult(GameObject obj)
+    void CheckResult(FieldObjectBase obj, SandItem.eType type)
     {
-        ReStart reStart = Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity).GetComponent<ReStart>();
+        ReStart reStart = Instantiate(_explosionPrefab).GetComponent<ReStart>();
+        reStart.GetComponentInChildren<TextMesh>().text = obj.GetComponent<Character>().GetPlayerNumber() + "Pは" + obj.GetDataNumber() + "マスで" + type + "に挟まれて死んだ！";
+        //ReStart reStart = Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity).GetComponent<ReStart>();
         reStart._IsEnd= false;
-        Destroy(obj);
+        Destroy(obj.gameObject);
 
         if (_charaList.Count > 1)
             return;

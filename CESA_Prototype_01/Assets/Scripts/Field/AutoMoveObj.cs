@@ -9,7 +9,7 @@ public class AutoMoveObj : MonoBehaviour
 {
     FieldObjectBase _fieldObjBase = null;
 
-    public void Init (Charactor.eDirection dir, Vector3 move)
+    public void Init (Character.eDirection dir, Vector3 move)
     {
         _fieldObjBase = GetComponent<FieldObjectBase>();
         AutoMoveObj me = GetComponent<AutoMoveObj>(); 
@@ -39,21 +39,21 @@ public class AutoMoveObj : MonoBehaviour
     }
 
     //  向いている方向を元にデータ番号を取得
-    public int GetDataNumberForDir(Charactor.eDirection dir)
+    public int GetDataNumberForDir(Character.eDirection dir)
     {
         int number = _fieldObjBase.GetDataNumber();
         switch(dir)
         {
-            case Charactor.eDirection.FORWARD:
+            case Character.eDirection.FORWARD:
                 number += GameScaler._nWidth;
                 break;
-            case Charactor.eDirection.BACK:
+            case Character.eDirection.BACK:
                 number -= GameScaler._nWidth;
                 break;
-            case Charactor.eDirection.RIGHT:
+            case Character.eDirection.RIGHT:
                 number += 1;
                 break;
-            case Charactor.eDirection.LEFT:
+            case Character.eDirection.LEFT:
                 number -= 1;
                 break;
         }

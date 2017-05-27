@@ -49,16 +49,16 @@ public class SandData : MonoBehaviour
     {
         // 上下と左右があるため２つずつ用意する
         public SandItem.eType[] _type;
-        public Charactor.eDirection[] _dir;
+        public Character.eDirection[] _dir;
 
         public void Init()
         {
             _type = new SandItem.eType[2];
-            _dir = new Charactor.eDirection[2];
+            _dir = new Character.eDirection[2];
             for (int i = 0; i < 2; i++)
             {
                 _type[i] = SandItem.eType.MAX;
-                _dir[i]  = Charactor.eDirection.MAX;
+                _dir[i]  = Character.eDirection.MAX;
             }
         }
     };
@@ -111,7 +111,7 @@ public class SandData : MonoBehaviour
             _SandDataList[number] = SandItem.eType.MAX;
 
             //  既に何か配置されていて、キャラクターではないなら
-            if (objDataArray[number] && objDataArray[number].tag != "Charactor")
+            if (objDataArray[number] && objDataArray[number].tag != "Character")
                 continue;
 
             // はさまれていないかチェック(4パターン)
@@ -140,7 +140,7 @@ public class SandData : MonoBehaviour
             nRemRange--;
             checkData.first = objDataArray[number + (add * nRoopCnt)];
 
-            if (checkData.first && checkData.first.tag != "Charactor")
+            if (checkData.first && checkData.first.tag != "Character")
                 break;
 
             checkData.first = null;
@@ -153,7 +153,7 @@ public class SandData : MonoBehaviour
             nRemRange--;
             checkData.second = objDataArray[number - (add * nRoopCnt)];
 
-            if (checkData.second && checkData.second.tag != "Charactor")
+            if (checkData.second && checkData.second.tag != "Character")
                 break;
 
             checkData.second = null;
@@ -220,7 +220,7 @@ public class SandData : MonoBehaviour
             _HalfSandDataList[number]._type[1] = SandItem.eType.MAX;
 
             FieldObjectBase obj = objDataArray[number];
-            if (obj && obj.tag != "Charactor")
+            if (obj && obj.tag != "Character")
                 continue;
 
             //  すでに挟まれているか
@@ -262,7 +262,7 @@ public class SandData : MonoBehaviour
             nRemRange--;
             first = FieldData.Instance.GetObjDataArray[number + (add * nRoopCnt)];
 
-            if (first && first.tag != "Charactor")
+            if (first && first.tag != "Character")
                 break;
 
             first = null;
@@ -276,7 +276,7 @@ public class SandData : MonoBehaviour
             nRemRange--;
             second = FieldData.Instance.GetObjDataArray[number - (add * nRoopCnt)];
 
-            if (second && second.tag != "Charactor")
+            if (second && second.tag != "Character")
                 break;
 
             second = null;
@@ -302,16 +302,16 @@ public class SandData : MonoBehaviour
         if (first)
         {
             if (add == 1)
-                _HalfSandDataList[number]._dir[idx] = Charactor.eDirection.LEFT;      //  左に置けばはさめる
+                _HalfSandDataList[number]._dir[idx] = Character.eDirection.LEFT;      //  左に置けばはさめる
             else
-                _HalfSandDataList[number]._dir[idx] = Charactor.eDirection.BACK;      //  下に置けばはさめる
+                _HalfSandDataList[number]._dir[idx] = Character.eDirection.BACK;      //  下に置けばはさめる
         }
         else
         {
             if (add == 1)
-                _HalfSandDataList[number]._dir[idx] = Charactor.eDirection.RIGHT;     //  右に置けばはさめる
+                _HalfSandDataList[number]._dir[idx] = Character.eDirection.RIGHT;     //  右に置けばはさめる
             else
-                _HalfSandDataList[number]._dir[idx] = Charactor.eDirection.FORWARD;   //  上に置けばはさめる
+                _HalfSandDataList[number]._dir[idx] = Character.eDirection.FORWARD;   //  上に置けばはさめる
         }
 
         return true;

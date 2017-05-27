@@ -3,22 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
+using UniRx;
+using UniRx.Triggers;
 
 public class ReStart : MonoBehaviour 
 {    
-    ParticleSystem _particle = null;
     public bool _IsEnd { get; set; }
 
     void Start()
     {
-        _particle = GetComponent<ParticleSystem>();
+        ParticleSystem particle = GetComponent<ParticleSystem>();
+        if (particle)
+        {
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    if (particle.isPlaying)
+                        return;
+
+                    DestroyReStart();
+                });
+        }
+        else
+        {
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    StartCoroutine(Text());
+                });
+        }
     }
 
-	void Update () 
+    IEnumerator Text()
     {
-        if (_particle.isPlaying)
-            return;
+        yield return new WaitForSeconds(2.0f);
 
+        DestroyReStart();
+    }
+
+    void DestroyReStart()
+    {
         if (_IsEnd)
         {
             SceneManager.LoadScene("GameMain");
@@ -27,5 +51,5 @@ public class ReStart : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-	}
+    }
 }

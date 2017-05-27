@@ -29,7 +29,7 @@ public class ItemBase : FieldObjectBase
         this.UpdateAsObservable()
             .Where(_ => !_IsCollision)
             .Subscribe(_ => {
-                List<FieldObjectBase> charactors = FieldData.Instance.GetCharactors;
+                List<Character> charactors = FieldData.Instance.GetCharactors;
 
                 foreach (FieldObjectBase chara in charactors)
                 {
@@ -53,7 +53,7 @@ public class ItemBase : FieldObjectBase
 
                 foreach (FieldObjectBase obj in objs)
                 {
-                    if (!obj || obj.tag == "Charactor")
+                    if (!obj || obj.tag == "Character")
                         continue;
 
                     if (obj.GetDataNumber() != GetDataNumber())
