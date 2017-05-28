@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CESA_Prototype_01.CSharp.Pl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CESA_Prototype_01.CSharp", "CESA_Prototype_01.CSharp.csproj", "{77F2C2A6-0D0D-7764-E637-83EBB93814FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CESA_Prototype_01.CSharp.Editor", "CESA_Prototype_01.CSharp.Editor.csproj", "{1E12FAFD-FCDB-4A5A-ACBC-8D1F97C179AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{77F2C2A6-0D0D-7764-E637-83EBB93814FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77F2C2A6-0D0D-7764-E637-83EBB93814FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77F2C2A6-0D0D-7764-E637-83EBB93814FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E12FAFD-FCDB-4A5A-ACBC-8D1F97C179AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E12FAFD-FCDB-4A5A-ACBC-8D1F97C179AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E12FAFD-FCDB-4A5A-ACBC-8D1F97C179AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E12FAFD-FCDB-4A5A-ACBC-8D1F97C179AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

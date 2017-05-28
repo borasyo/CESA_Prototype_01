@@ -91,7 +91,7 @@ public class FieldCreator : MonoBehaviour
         obj.name += ",2Player" + ",CPU";
         obj.transform.eulerAngles = new Vector3(0, 270, 0);
         _objBaseArray[_nWidth * (_nHeight - 2) + _nWidth - 2] = obj.GetComponent<FieldObjectBase>();
-        obj.GetComponent<Character>().Init(SelectLevels[0]);
+        obj.GetComponent<Character>().Init(SelectLevels[1]);
 
         //  左上に生成
         if (SelectCharas[2])
@@ -101,7 +101,7 @@ public class FieldCreator : MonoBehaviour
             obj.name += ",3Player" + ",CPU";
             obj.transform.eulerAngles = new Vector3(0, 90, 0);
             _objBaseArray[1 + _nWidth * (_nHeight - 2)] = obj.GetComponent<FieldObjectBase>();
-            obj.GetComponent<Character>().Init(SelectLevels[1]);
+            obj.GetComponent<Character>().Init(SelectLevels[2]);
         }
 
         //  右上に生成
@@ -112,7 +112,7 @@ public class FieldCreator : MonoBehaviour
             obj.name += ",4Player" + ",CPU";
             obj.transform.eulerAngles = new Vector3(0, 270, 0);
             _objBaseArray[(_nWidth - 2) + _nWidth] = obj.GetComponent<FieldObjectBase>();
-            obj.GetComponent<Character>().Init(SelectLevels[2]);
+            obj.GetComponent<Character>().Init(SelectLevels[3]);
         }
 
     }

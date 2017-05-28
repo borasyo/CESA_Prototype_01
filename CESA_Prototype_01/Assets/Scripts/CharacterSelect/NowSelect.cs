@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NowSelect : MonoBehaviour 
+public class NowSelect : MonoBehaviour
 {
-    CharacterSelect.eCharaType _charaType = CharacterSelect.eCharaType.BALANCE;
+    protected CharacterSelect.eCharaType _charaType = CharacterSelect.eCharaType.BALANCE;
     public CharacterSelect.eCharaType CharaType {  get { return _charaType; } set { _charaType = value; } }
 
     Text _text = null;
 
     [SerializeField] bool _IsOnNone = true;
+    
 
 	// Use this for initialization
-	void Awake () 
+	void Awake ()
     {
         if (!_IsOnNone)
             _charaType = CharacterSelect.eCharaType.BALANCE;
@@ -21,27 +22,13 @@ public class NowSelect : MonoBehaviour
             _charaType = CharacterSelect.eCharaType.NONE;
 
         _text = GetComponent<Text>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () 
     {
         //  テキスト更新
         TextUpdate();
-
-        //  Input
-        /*if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            _charaType++;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            _charaType--;
-        }
-        else
-        {
-            return;
-        }*/
 
         // 範囲外処理
         if (_IsOnNone)
@@ -90,18 +77,8 @@ public class NowSelect : MonoBehaviour
         }
     }
 
-    public void Add()
+    public virtual void Add()
     {
         _charaType ++;
     }
-
-    /*void OnEnable()
-    {
-        _text.color = Color.red;
-    }
-
-    void OnDisable()
-    {
-        _text.color = Color.black;
-    }*/
 }

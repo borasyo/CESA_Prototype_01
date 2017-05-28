@@ -5,15 +5,15 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
-public class CharacterSelect : MonoBehaviour
+public class CharacterSelect : Photon.MonoBehaviour
 {
     public static GameObject[] SelectCharas = new GameObject[4];
-    [SerializeField] NowSelect[] _nowSelectDatas = null;
-    //  LevelSelect
+    [SerializeField] protected NowSelect[] _nowSelectDatas = null;
 
     // Use this for initialization
-    void Start()
+    public void Start()
     {
         for (int i = 0; i < SelectCharas.Length; i++)
         {
@@ -26,18 +26,6 @@ public class CharacterSelect : MonoBehaviour
             _nowSelectDatas[i].CharaType = SearchCharaType(SelectCharas[i]);
             _nowSelectDatas[i].TextUpdate();
         }
-
-        // Scene遷移
-        this.UpdateAsObservable()
-            .Where(_ => SceneManager.GetActiveScene().name == "CharacterSelect")
-            .Subscribe(_ =>
-            {
-                if (!Input.GetKeyDown(KeyCode.Return))
-                    return;
-
-                SetChara();
-                SceneManager.LoadScene("GameMain");
-            });
     }
 
     public enum eCharaType
@@ -50,7 +38,7 @@ public class CharacterSelect : MonoBehaviour
         MAX,
     };
 
-    void SetChara()
+    protected void SetChara()
     {
         GameObject BalanceObj = Resources.Load<GameObject>("Prefabs/Chara/Balance");
         GameObject PowerObj = Resources.Load<GameObject>("Prefabs/Chara/Power");
@@ -117,9 +105,10 @@ public class CharacterSelect : MonoBehaviour
         return type;
     }
 
-    public void GameStart()
+    public virtual void GameStart()
     {
         SetChara();
+
         SceneManager.LoadScene("GameMain");
     }
 }
