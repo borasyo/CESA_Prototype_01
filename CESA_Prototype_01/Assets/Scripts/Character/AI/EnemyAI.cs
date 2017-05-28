@@ -111,7 +111,24 @@ public class EnemyAI : MonoBehaviour
                 _IsAI = !_IsAI;
             });
 #endif 
+        StateInit();
 
+        //  DistanceData
+        _DistanceDatas = new tDistanceData[GameScaler._nWidth * GameScaler._nHeight];
+        for (int idx = 0; idx < _DistanceDatas.Length; idx++)
+            _DistanceDatas[idx]._nIdx = idx;
+        
+        this.ObserveEveryValueChanged(_ => _fieldObjBase.GetDataNumber())
+            .Subscribe(_DistanceDatas =>
+            {
+                CheckDistanceData();
+            });
+
+        CharaInit();
+    }
+
+    void StateInit()
+    {
         //  ItemCheck
         bool IsGetItem = false;
         this.ObserveEveryValueChanged(_ => _fieldObjBase.GetDataNumber())
@@ -186,16 +203,21 @@ public class EnemyAI : MonoBehaviour
                 Reset();
             });
 
-        //  DistanceData
-        _DistanceDatas = new tDistanceData[GameScaler._nWidth * GameScaler._nHeight];
-        for (int idx = 0; idx < _DistanceDatas.Length; idx++)
-            _DistanceDatas[idx]._nIdx = idx;
-        
-        this.ObserveEveryValueChanged(_ => _fieldObjBase.GetDataNumber())
-            .Subscribe(_DistanceDatas =>
-            {
-                CheckDistanceData();
-            });
+    }
+
+    //  キャラごとのAI設定
+    void CharaInit()
+    {
+        //  SpeedTypeは特殊モード中リスク回避しないようにする
+        if (_character._charaType == Character.eCharaType.SPEED)
+        {
+            this.UpdateAsObservable()
+                .Where(_ => _character.GetSpecialModeFlg)
+                .Subscribe(_ =>
+                {
+                    OffRiskCheck();
+                });
+        }
     }
 
     #endregion

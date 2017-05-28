@@ -187,9 +187,7 @@ public class MoveAI : MonoBehaviour
 
         // 最後は削除
         for (int i = 0; i < nArrive; i++)
-        {
             _astar.GetRoute.RemoveAt(_astar.GetRoute.Count - 1);
-        }
 
         return true;
     }
@@ -242,6 +240,8 @@ public class MoveAI : MonoBehaviour
         else if (dis == -1)
             return Character.eDirection.LEFT;
 
+        _state = eState.WAIT;
+        _nNowRoute = _astar.GetRoute.Count; //  強制終了
         Debug.LogError("経路に問題がある恐れがあります。" + " 行先 : " + _astar.GetRoute[_nNowRoute] + ", 現地 : " + _nNowNumber);
         return Character.eDirection.MAX;
     }
@@ -265,15 +265,6 @@ public class MoveAI : MonoBehaviour
 
         return false;
     }
-
-    /*bool CheckNotMove()
-    {
-        if (!_character._IsObstacle)
-            return false;
-
-        OnObstacle();
-        return true;
-    }*/
 
     protected virtual bool CheckObstacle()
     {

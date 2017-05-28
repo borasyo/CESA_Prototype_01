@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameScaler
 {
-    static public float _fScale = 0.2f;
+    static public float _fScale = 1.0f;
 
     static public int _nWidth  = 12;
     static public int _nHeight = 10;

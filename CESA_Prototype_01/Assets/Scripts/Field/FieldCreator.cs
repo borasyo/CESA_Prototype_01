@@ -7,6 +7,7 @@ public class FieldCreator : MonoBehaviour
     int _nWidth, _nHeight;
     FieldObjectBase[] _objBaseArray = null;
     GameObject _fieldHolder = null;
+    GameObject _charaHolder = null;
 
     public FieldObjectBase[] Create (int w, int h)
     {
@@ -27,7 +28,8 @@ public class FieldCreator : MonoBehaviour
     void CreateField()
     {
         //  入れ物生成 (初期生成した消えないオブジェクトのみ格納)
-        _fieldHolder = new GameObject("InitFieldHolder");
+        _fieldHolder = new GameObject("InitFieldObjHolder");
+        _charaHolder = new GameObject("CharaHolder");
 
         //  リソース取得
         GameObject BlockObj = Resources.Load<GameObject> ("Prefabs/Field/Block");
@@ -118,7 +120,11 @@ public class FieldCreator : MonoBehaviour
     GameObject CreateObj(GameObject obj, Vector3 pos)
     {
         GameObject instance = (GameObject)Instantiate(obj, pos, obj.transform.rotation);
-        instance.transform.SetParent(_fieldHolder.transform);
+
+        if(instance.tag == "Character")
+            instance.transform.SetParent(_charaHolder.transform);
+        else
+            instance.transform.SetParent(_fieldHolder.transform);
 
         return instance;
     }
