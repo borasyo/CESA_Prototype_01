@@ -9,12 +9,15 @@ using System.Linq;
 
 public class CharacterSelectOnline : CharacterSelect
 {
-    GameObject _selectCanvas = null;
     public static int _nMyNumber = 0;
 
     // オンライン時のキャラセレクト
-
-    //  どのプレイヤー番号が空いているかを確認
+    void Awake()
+    {
+        _nMyNumber = 0;
+    }
+    
+    //  自身のプレイヤー番号をセット 
     public void SetPlayerNumber()
     {
         if (PhotonNetwork.isMasterClient)
@@ -22,7 +25,7 @@ public class CharacterSelectOnline : CharacterSelect
 
         for (int i = 0; i < _nowSelectDatas.Length; i++)
         {
-            if (_nowSelectDatas[i].transform.parent.childCount < 2)
+            if (!_nowSelectDatas[i] || _nowSelectDatas[i].transform.parent.childCount < 2)
                 continue;
 
             _nMyNumber = i;
@@ -30,38 +33,80 @@ public class CharacterSelectOnline : CharacterSelect
         }
     }
 
+    //  新たに生成したキャラセレパネルはどこに配置すべきかを返す
+    public int GetCreateNumber()
+    {
+        int number = 0;
+        for (int i = 0; i < _nowSelectDatas.Length; i++)
+        {
+            if (!_nowSelectDatas[i] || _nowSelectDatas[i].transform.parent.childCount < 2)
+                continue;
+
+            number = i;
+            break;
+        }
+        return number;
+    }
+    
     public void SetNowSelect(NowSelectOnline nowSelect, int idx)
     {
-        if (!_selectCanvas)
-            _selectCanvas = GameObject.FindWithTag("SelectCanvas");
+        if (idx < 0 || _nowSelectDatas.Length <= idx)
+            return;
 
-        //  元あるものを破壊して自分を入れる
-        nowSelect.transform.parent.SetParent(_selectCanvas.transform);
-        nowSelect.transform.parent.position = _nowSelectDatas[idx].transform.parent.position;
+        //  自分の位置に挿入
+        nowSelect.transform.parent.SetParent(this.transform);
+        nowSelect.transform.parent.GetComponent<RectTransform>().position = _nowSelectDatas[idx].transform.parent.GetComponent<RectTransform>().position;
         _nowSelectDatas[idx] = nowSelect;
     }
 
-    public bool InstanceCheck(GameObject obj)
+    public int InstanceCheck(GameObject obj)
     {
+        int number = 0;
         foreach (NowSelect now in _nowSelectDatas)
         {
-            if (now.gameObject != obj)
+            if (!now || now.gameObject != obj)
+            {
+                number++;
+                continue;
+            }
+
+            //  発見した
+            return number;
+        }
+        //  失敗
+        return -1;
+    }
+
+
+    public bool EndInit()
+    {
+        foreach(NowSelect now in _nowSelectDatas)
+        {
+            if (now.isActiveAndEnabled)
                 continue;
 
-            return true;
+            return false;
         }
-
-        return false;
+        return true;
     }
 
     public override void GameStart()
     {
+        if (!PhotonNetwork.isMasterClient)
+            return;
+
         SetChara();
 
         //  2キャラ以上いない場合は進まない
         if (SelectCharas.Where(_ => _).Count() < 2)
             return;
 
+        photonView.RPC("LoadOnlineGameMain", PhotonTargets.All);
+    }
+
+    [PunRPC]
+    public void LoadOnlineGameMain()
+    {
         SceneManager.LoadScene("OnlineGameMain");
     }
 }

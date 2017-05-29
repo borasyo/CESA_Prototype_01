@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NowSelect : MonoBehaviour
+public class NowSelect : Photon.MonoBehaviour
 {
     protected CharacterSelect.eCharaType _charaType = CharacterSelect.eCharaType.BALANCE;
     public CharacterSelect.eCharaType CharaType {  get { return _charaType; } set { _charaType = value; } }
@@ -57,6 +57,9 @@ public class NowSelect : MonoBehaviour
 
     public void TextUpdate()
     {
+        if (!_text)
+            return;
+
         switch (_charaType)
         {
             case CharacterSelect.eCharaType.NONE:

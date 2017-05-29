@@ -19,7 +19,8 @@ public class CharacterSelect : Photon.MonoBehaviour
         {
             if (!SelectCharas[i])
             {
-                _nowSelectDatas[i].TextUpdate();
+                if(_nowSelectDatas[i])
+                    _nowSelectDatas[i].TextUpdate();
                 continue;
             }
 

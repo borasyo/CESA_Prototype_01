@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StageScaleSelect : MonoBehaviour 
+public class StageScaleSelect : Photon.MonoBehaviour 
 {
-    [SerializeField] bool _IsWidth = true;
-    Text _text = null;
-    int _size = 0;
+    [SerializeField] protected bool _IsWidth = true;
+    protected Text _text = null;
+    protected int _size = 0;
     public int GetSize { get { return _size; } }
 
-    float _fNowInterval = 0.0f;
-    float _fInterval = 0.2f;
+    protected float _fNowInterval = 0.0f;
+    protected float _fInterval = 0.2f;
 
     // Use this for initialization
     void Start () 
@@ -23,10 +23,15 @@ public class StageScaleSelect : MonoBehaviour
         _text = GetComponent<Text>();
         _fNowInterval = _fInterval;
 	}
-	
-	// Update is called once per frame
-	void Update () 
+
+    // Update is called once per frame
+    void Update()
     {
+        UpDown();
+    }
+
+    protected virtual void UpDown()
+    {  
         _fNowInterval += Time.deltaTime;
         if (_fNowInterval < _fInterval)
             return;
@@ -90,7 +95,7 @@ public class StageScaleSelect : MonoBehaviour
         }
     }
 
-    public void UpSize()
+    public virtual void UpSize()
     {
         if (_IsWidth)
         {
@@ -107,7 +112,8 @@ public class StageScaleSelect : MonoBehaviour
                 _size = 25;
         }
     }
-    public void DownSize()
+
+    public virtual void DownSize()
     {
         if (_IsWidth)
         {

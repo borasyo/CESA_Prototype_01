@@ -5,8 +5,7 @@ using UnityEngine;
 public class LevelSelect : MonoBehaviour
 {
     public static int[] SelectLevel = new int[4] {2,2,2,2};
-    [SerializeField]
-    NowLevel[] LevelList = null;
+    [SerializeField] protected NowLevel[] LevelList = null;
 
     void Awake()
     {
@@ -24,7 +23,11 @@ public class LevelSelect : MonoBehaviour
         for(int i = 0; i < SelectLevel.Length; i++)
         {
             if (!LevelList[i])
+            {
+                SelectLevel[i] = -1;    //  ナシ
+                Debug.Log("-1");
                 continue;
+            }
 
             SelectLevel[i] = LevelList[i].nNowLevel;
         }

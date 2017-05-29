@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FieldCreator : MonoBehaviour
 {
-    int _nWidth, _nHeight;
-    FieldObjectBase[] _objBaseArray = null;
+    protected int _nWidth, _nHeight;
+    protected FieldObjectBase[] _objBaseArray = null;
     GameObject _fieldHolder = null;
-    GameObject _charaHolder = null;
+    protected GameObject _charaHolder = null;
 
     public FieldObjectBase[] Create (int w, int h)
     {
@@ -64,7 +64,7 @@ public class FieldCreator : MonoBehaviour
         } 
     }
      
-    void CreateChara()
+    protected virtual void CreateChara()
     {
         Vector3 pos = Vector3.zero;
         GameObject obj = null;
@@ -114,7 +114,6 @@ public class FieldCreator : MonoBehaviour
             _objBaseArray[(_nWidth - 2) + _nWidth] = obj.GetComponent<FieldObjectBase>();
             obj.GetComponent<Character>().Init(SelectLevels[3]);
         }
-
     }
 
     GameObject CreateObj(GameObject obj, Vector3 pos)

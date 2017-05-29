@@ -6,9 +6,9 @@ using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 
-public class NowLevel : MonoBehaviour
+public class NowLevel : Photon.MonoBehaviour
 {
-    int _nNowLevel = 2;
+    protected int _nNowLevel = 2;
     public int nNowLevel { get { return _nNowLevel; } set { _nNowLevel = value; } }
 
 	void Start ()
@@ -32,7 +32,7 @@ public class NowLevel : MonoBehaviour
             });
 	}
 
-    public void OnClick()
+    public virtual void OnClick()
     {
         _nNowLevel --;
         if (_nNowLevel < 0)

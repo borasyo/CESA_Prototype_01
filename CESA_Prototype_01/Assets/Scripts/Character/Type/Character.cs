@@ -79,7 +79,12 @@ public class Character : FieldObjectBase
         _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
         _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
     }
-	
+
+    void Awake()
+    {
+        FieldData.Instance.SetObjData(this, GetDataNumber());
+    }
+
     // Update is called once per frame
     void Update()
     {

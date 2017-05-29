@@ -3,9 +3,35 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class RoomManager : Photon.MonoBehaviour {
+public class RoomManager : Photon.MonoBehaviour
+{
+    #region Singleton
 
-	private static readonly int LimitRoomCount = 10;	// Room上限数
+    private static RoomManager instance;
+
+    public static RoomManager Instance
+    {
+        get
+        {
+            if (instance)
+                return instance;
+
+            instance = (RoomManager)FindObjectOfType(typeof(RoomManager));
+
+            if (instance)
+                return instance;
+
+            GameObject obj = new GameObject();
+            obj.AddComponent<RoomManager>();
+            Debug.Log(typeof(RoomManager) + "が存在していないのに参照されたので生成");
+
+            return instance;
+        }
+    }
+
+    #endregion
+
+    private static readonly int LimitRoomCount = 10;	// Room上限数
 
 	public GameObject lobbyUI;					// lobbyのUI
 
@@ -23,8 +49,8 @@ public class RoomManager : Photon.MonoBehaviour {
 
 	private GameObject charaSelectObj;			
 
-	void Start () {
-		
+	void Start ()
+    { 	
 		// サーバー接続
 		// 接続成功時に自動的にlobbyに参加する
 		PhotonNetwork.ConnectUsingSettings ("0.1");
@@ -43,10 +69,12 @@ public class RoomManager : Photon.MonoBehaviour {
 			roomButtonObj.GetComponent<RoomButton> ().roomMgr = this;
 			roomButtonPool.Add(roomButtonObj);
 		}
+
+        DontDestroyOnLoad(gameObject);
 	}
 
-	void Update(){
-
+	void Update()
+    {
 		// Escキーが押されたとき、アプリケーションを終了(とりあえずここに記述)
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			
@@ -111,8 +139,8 @@ public class RoomManager : Photon.MonoBehaviour {
 	}
 
 	// PlayerName決定buttonが押されたときの処理
-	public void OnPressDecidePlayerNameButton(){
-
+	public void OnPressDecidePlayerNameButton()
+    {
 		// 何も入力されていないとき、処理しない
 		if (playerNameInputField.text == "") {
 			Debug.Log ("Player's Name has not been entered.");
@@ -126,8 +154,8 @@ public class RoomManager : Photon.MonoBehaviour {
 	}
 
 	// room作成buttonが押されたときの処理
-	public void OnPressCreateRoomButton(){
-
+	public void OnPressCreateRoomButton()
+    {
 		// 何も入力がされていないとき、処理しない
 		if (roomNameInputField.text == "") {
 			Debug.Log ("Failed to create the room. : Room's Name has not been entered.");
@@ -157,8 +185,8 @@ public class RoomManager : Photon.MonoBehaviour {
 	// roombuttonを押したときの処理
 	// RoomButtonから呼ばれる
 	// int index : roomInfo配列のindex
-	public void OnPressRoomButton(int index){
-
+	public void OnPressRoomButton(int index)
+    {
 		RoomInfo room = PhotonNetwork.GetRoomList () [index];	// 指定room情報の取得
 
 		// 部屋が満員であるとき、処理しない
@@ -173,39 +201,62 @@ public class RoomManager : Photon.MonoBehaviour {
 	}
 
 	// 退室buttonが押されたときの処理
-	public void OnPressLeaveRoomButton(){
+	public void OnPressLeaveRoomButton()
+    {
+        //PhotonNetwork.Destroy (charaSelectObj);	// playerの削除
+        //  マスターが退室したら強制解散
+        if (PhotonNetwork.isMasterClient)
+        {
+            photonView.RPC("LeaveRoom", PhotonTargets.All);
+        }
+        else
+        {
+            LeaveRoom();
+        }
+    }
 
-		PhotonNetwork.Destroy (charaSelectObj);	// playerの削除
+    //  Masterが退室した時
+    void OnMasterClientSwitched()
+    {
+        LeaveRoom();
+    }
 
-		PhotonNetwork.LeaveRoom ();		// 退室
+    [PunRPC]
+    void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();      // 退室
 
-		lobbyUI.SetActive (true); 	// lobbyのUIを表示
-		playerNameInputPanel.SetActive (true);	// playername入力panelを表示
-		roomSelectPanel.SetActive (false);		// room選択panelの非表示
+        lobbyUI.SetActive(true);    // lobbyのUIを表示
+        playerNameInputPanel.SetActive(true);   // playername入力panelを表示
+        roomSelectPanel.SetActive(false);       // room選択panelの非表示
 
-		playerNameInputField.text = "PlayerName";	// player名入力領域の初期化
-		roomNameInputField.text = "RoomName";		// room名入力領域の初期化
-	}
+        playerNameInputField.text = "PlayerName";   // player名入力領域の初期化
+        roomNameInputField.text = "RoomName";		// room名入力領域の初期化
+    }
 
 	// Lobbyに参加した時に呼ばれる
-	void OnJoinedLobby(){
+	void OnJoinedLobby()
+    {
 		Debug.Log ("Joined lobby");
 	}
 
 	// Lobbyに参加した時、Roomが作成されていなかった時に呼ばれる
-	void OnPhotonRandomJoinFailed(){
+	void OnPhotonRandomJoinFailed()
+    {
 		Debug.Log ("Joined Failed");
 	}
 
 	// Room参加成功時に呼ばれる
-	void OnJoinedRoom(){
+	void OnJoinedRoom()
+    {
 		Debug.Log ("Joined Room");
 
 		PlayerMake ();	// Player作成
 	}
 
 	// Player作成
-	void PlayerMake(){
+	void PlayerMake()
+    {
 		Debug.Log("PlayerMake");
 
         // Resourceフォルダの"Player"オブジェクトを生成する
@@ -214,7 +265,15 @@ public class RoomManager : Photon.MonoBehaviour {
         // 自分がMasterCliantであれば、Sceneに属するBossの生成
         if (PhotonNetwork.isMasterClient)
         {
-            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/SelectCanvas", Vector3.zero, Quaternion.identity, 0);
+            CharacterSelectOnline charaSele = PhotonNetwork.Instantiate("Prefabs/CharacterSelect/SelectCanvas", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<CharacterSelectOnline>();
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/1P", Vector3.zero, Quaternion.identity, 0);//.GetComponentInChildren<NowSelectOnline>().GetComponent<PhotonView>().RPC("SetNumber", PhotonTargets.All, 0);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/2P", Vector3.zero, Quaternion.identity, 0);//.GetComponentInChildren<NowSelectOnline>().GetComponent<PhotonView>().RPC("SetNumber", PhotonTargets.All, 1);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/3P", Vector3.zero, Quaternion.identity, 0);//.GetComponentInChildren<NowSelectOnline>().GetComponent<PhotonView>().RPC("SetNumber", PhotonTargets.All, 2);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/4P", Vector3.zero, Quaternion.identity, 0);//.GetComponentInChildren<NowSelectOnline>().GetComponent<PhotonView>().RPC("SetNumber", PhotonTargets.All, 3);
+//            charaSele.SetNowSelect(PhotonNetwork.Instantiate("Prefabs/CharacterSelect/1P", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<NowSelectOnline>(), 0);
+//            charaSele.SetNowSelect(PhotonNetwork.Instantiate("Prefabs/CharacterSelect/2P", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<NowSelectOnline>(), 1);
+//            charaSele.SetNowSelect(PhotonNetwork.Instantiate("Prefabs/CharacterSelect/3P", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<NowSelectOnline>(), 2);
+//            charaSele.SetNowSelect(PhotonNetwork.Instantiate("Prefabs/CharacterSelect/4P", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<NowSelectOnline>(), 3);
         }
         else
         {
@@ -222,7 +281,8 @@ public class RoomManager : Photon.MonoBehaviour {
         }
 	}
 		
-	void OnGUI(){
+	void OnGUI()
+    {
 		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
 	}
 }

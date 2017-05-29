@@ -1,4 +1,4 @@
-Initialize engine version: 5.5.0f3 (38b4efef76f0)
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
@@ -17,195 +17,164 @@ Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototyp
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.029 seconds
+Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.065 seconds
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.375998 ms
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 439c -> priority: 1 
-  Thread -> id: 4308 -> priority: 1 
+UnloadTime: 2.061434 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 2fb0 -> priority: 1 
+  Thread -> id: 2294 -> priority: 1 
+  Thread -> id: cc8 -> priority: 1 
+  Thread -> id: 1ab4 -> priority: 1 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.493033 ms
+UnloadTime: 7.179070 ms
 
-Unloading 62 unused Assets to reduce memory usage. Loaded Objects now: 2398.
-Total: 0.699653 ms (FindLiveObjects: 0.111802 ms CreateObjectMapping: 0.042666 ms MarkObjects: 0.493431 ms  DeleteObjects: 0.050962 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 823.
+Total: 0.459852 ms (FindLiveObjects: 0.060839 ms CreateObjectMapping: 0.029234 ms MarkObjects: 0.364247 ms  DeleteObjects: 0.005135 ms)
 
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.862515 ms
-
-Unloading 71 unused Assets to reduce memory usage. Loaded Objects now: 644.
-Total: 0.415209 ms (FindLiveObjects: 0.081777 ms CreateObjectMapping: 0.024888 ms MarkObjects: 0.214518 ms  DeleteObjects: 0.092839 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.SetChara () [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__0 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
  
-(Filename:  Line: -1)
+(Filename:  Line: 462)
 
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.375308 ms
-
-Unloading 81 unused Assets to reduce memory usage. Loaded Objects now: 1995.
-Total: 0.623406 ms (FindLiveObjects: 0.133530 ms CreateObjectMapping: 0.042271 ms MarkObjects: 0.380444 ms  DeleteObjects: 0.048197 ms)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.138072 ms
-
-Unloading 71 unused Assets to reduce memory usage. Loaded Objects now: 627.
-Total: 0.371752 ms (FindLiveObjects: 0.031999 ms CreateObjectMapping: 0.025678 ms MarkObjects: 0.237036 ms  DeleteObjects: 0.076641 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+Joined lobby
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+Joined Room
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+PlayerMake
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+c : -1
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+c : 1
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+c : 2
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+c : 3
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+Had to lookup view that wasn't in photonViewList: View (0)1016 on TypeText 
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+d : 1
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.ChangeActive (Int32 nSelect) [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__1 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+d : 2
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.SetChara () [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__0 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+d : 3
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at CharactorSelect.SetChara () [0x00000] in <filename unknown>:0 
-  at CharactorSelect+<Start>c__AnonStorey0.<>m__0 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.InternalUtil.ListObserver`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
+Had to lookup view that wasn't in photonViewList: View (0)1014 on 1P_1 
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.474073 ms
+c : 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 2106.
-Total: 0.619061 ms (FindLiveObjects: 0.134715 ms CreateObjectMapping: 0.043061 ms MarkObjects: 0.422320 ms  DeleteObjects: 0.018567 ms)
+asd
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.207208 ms
+d : -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Unloading 72 unused Assets to reduce memory usage. Loaded Objects now: 712.
-Total: 0.427456 ms (FindLiveObjects: 0.035555 ms CreateObjectMapping: 0.026074 ms MarkObjects: 0.269036 ms  DeleteObjects: 0.096394 ms)
+Had to lookup view that wasn't in photonViewList: View (0)1028 on TypeText 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+-1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Joined lobby
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Joined Room
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PlayerMake
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+c : -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+c : 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+c : 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+c : 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Had to lookup view that wasn't in photonViewList: View (0)1016 on TypeText 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+d : 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+d : 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+d : 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Had to lookup view that wasn't in photonViewList: View (0)1014 on 1P_1 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+c : 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+asd
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+d : -1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Had to lookup view that wasn't in photonViewList: View (0)1028 on TypeText 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+-1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 

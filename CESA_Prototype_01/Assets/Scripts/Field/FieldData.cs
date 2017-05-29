@@ -38,11 +38,11 @@ public class FieldData : MonoBehaviour
 
     #endregion
 
-    FieldObjectBase[] _ObjectDataArray = null;
+    protected FieldObjectBase[] _ObjectDataArray = null;
     public FieldObjectBase[] GetObjDataArray { get { return _ObjectDataArray; } }
 
     #region ChangeData
-    struct tChangeData
+    protected struct tChangeData
     {
         public bool _IsChange;
         public FieldObjectBase _obj;
@@ -53,7 +53,7 @@ public class FieldData : MonoBehaviour
             _obj = obj;
         }
     };
-    tChangeData[] _ChangeDataList = null;  //  Field情報に変更があった場合、その情報を一時保存する
+    protected tChangeData[] _ChangeDataList = null;  //  Field情報に変更があった場合、その情報を一時保存する
     #endregion
 
     bool _IsChangeField = false;            //  Fieldに変更があったか
@@ -63,7 +63,7 @@ public class FieldData : MonoBehaviour
     bool _IsExceptionChangeField = false; 
     public void ExceptionChangeField() { _IsExceptionChangeField = true; }
 
-    List<Character> _CharaList = new List<Character>();
+    protected List<Character> _CharaList = new List<Character>();
     public List<Character> GetCharactors { get { return _CharaList; } }
     public List<Character> GetCharactorsNonMe(GameObject obj) { return _CharaList.Where(x => x && x.gameObject != obj).ToList(); }    // 自分を除いたキャラにリストを返す
 
@@ -71,13 +71,19 @@ public class FieldData : MonoBehaviour
 
     void Awake()
     {
+        Init();
+    }
+
+    protected virtual void Init()
+    {
         //  データ配列生成
         _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
         _ChangeDataList = new tChangeData[GameScaler._nWidth * GameScaler._nHeight];
 
         //  フィールドにオブジェクトを生成し、データを格納
         FieldCreator creator = new FieldCreator();
-        _ObjectDataArray = creator.Create(GameScaler._nWidth, GameScaler._nHeight);
+        //_ObjectDataArray = 
+        creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
         _CharaList = _ObjectDataArray.Where(_ => _ && _.tag == "Character").Select(_ => _.GetComponent<Character>()).ToList();
     }
