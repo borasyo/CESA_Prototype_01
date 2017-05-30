@@ -15,7 +15,6 @@ public class NowSelectOnline : NowSelect
 
     [SerializeField] bool _IsInit = false;
     [SerializeField] int _nInitNumber = -1; 
-    int _nInstanceNumber = 0;
 
     void Start()
     {
@@ -27,7 +26,7 @@ public class NowSelectOnline : NowSelect
         GameObject selectCanvas = null;
         yield return new WaitWhile(() => (selectCanvas = GameObject.FindWithTag("SelectCanvas")) == null);
         
-        _charaSele = selectCanvas.GetComponent<CharacterSelectOnline>();
+        _charaSele = selectCanvas.GetComponent<CharacterSelectOnline>();    //  Missingバグ発生
         _rectTrans = transform.parent.GetComponent<RectTransform>();
         _photonView = GetComponent<PhotonView>();
 
@@ -36,6 +35,11 @@ public class NowSelectOnline : NowSelect
             StartCoroutine(Set());
         else
         {
+            if (_nInitNumber < 0)
+            {
+                _nInitNumber = _charaSele.GetNullIdx();
+            }
+
             _charaSele.SetNowSelect(this, _nInitNumber);
             SetDestroyCheck();
         }
@@ -46,9 +50,6 @@ public class NowSelectOnline : NowSelect
             StartCoroutine(SetLevel());
         }
 
-        //StartCoroutine(SetDestroyCheck());
-        //SetDestroyCheck();
-
         this.UpdateAsObservable()
             .Where(_ => !transform.parent.parent)
             .Subscribe(_ =>
@@ -57,18 +58,32 @@ public class NowSelectOnline : NowSelect
             });
 
         this.UpdateAsObservable()
-            .Where(_ => _photonView.isMine)
+            .Where(_ => _rectTrans)
             .Subscribe(_ =>
             {
-                _photonView.RPC("SetPosition", PhotonTargets.All, _rectTrans.localPosition.x, _rectTrans.localPosition.y);
+                _rectTrans.localPosition = _charaSele.GetLocalPos(gameObject);
             });
+    }
+
+    IEnumerator Set()
+    //void Set()
+    {
+        if(_photonView.isMine)  //  準備のため、他より1F遅らせる
+            yield return null;
+
+        if (!_charaSele)
+            _charaSele = GameObject.FindWithTag("SelectCanvas").GetComponent<CharacterSelectOnline>();
+        _charaSele.SetPlayerNumber();
+
+        _nInitNumber = _charaSele.GetCreateNumber();
+        _charaSele.SetNowSelect(this, _nInitNumber);
+
+        SetDestroyCheck();
     }
 
     IEnumerator SetLevel()
     {
-        Debug.Log("c : " + _charaSele.InstanceCheck(gameObject));
         yield return new WaitWhile(() => _charaSele.InstanceCheck(gameObject) <= -1);
-        Debug.Log("d : " + _charaSele.InstanceCheck(gameObject));
         transform.parent.GetComponentInChildren<NowLevelOnline>().SetLevel(_charaSele.InstanceCheck(gameObject));
     }
 
@@ -77,65 +92,32 @@ public class NowSelectOnline : NowSelect
     {
         //yield return null;
 
-        _nInstanceNumber = _charaSele.InstanceCheck(gameObject);
         this.UpdateAsObservable()
-            .Where(_ => !_IsInit && _photonView.isMine && _charaSele.InstanceCheck(gameObject) < 0)
+            .Where(_ => _photonView.isMine && _charaSele.InstanceCheck(gameObject) < 0)
             .Subscribe(_ =>
             {
                 PhotonNetwork.Destroy(transform.parent.gameObject);
             });
     }
 
-    [PunRPC]
-    public void SetPosition(float x, float y)
+    //  プレイヤーが退室し、変更がある場合実行
+    public void PlayerChange(int idx)
     {
-        if (!_rectTrans)
+        _nInitNumber = idx;
+
+        if (PhotonNetwork.isMasterClient)
             return;
 
-        //Debug.Log("SetPosition");
-        _rectTrans.localPosition = new Vector2(x,y);
+        CharacterSelectOnline._nMyNumber = idx;
     }
-
-    [PunRPC]
-    public void CPUInit(int idx)
-    {
-        if (!_charaSele)
-        {
-            GameObject obj = GameObject.FindWithTag("SelectCanvas");
-            if (!obj)
-                return;
-            _charaSele = obj.GetComponent<CharacterSelectOnline>();
-        }
-
-        _charaSele.SetNowSelect(this, idx);
-    }
-
-    IEnumerator Set()
-    //void Set()
-    {
-        yield return new WaitWhile(() => _charaSele.EndInit() == false);
-
-        Debug.LogError("asd");
-        if (!_charaSele)
-            _charaSele = GameObject.FindWithTag("SelectCanvas").GetComponent<CharacterSelectOnline>();
-        _charaSele.SetPlayerNumber();
-        
-        _charaSele.SetNowSelect(this, _charaSele.GetCreateNumber());
-
-        _IsInit = false;
-
-        SetDestroyCheck();
-    }
-
 
     public override void Add()
     {
         if (transform.parent.childCount >= 2)
         {
-            if (CharacterSelectOnline._nMyNumber == 0)
-            {
+            if (PhotonNetwork.isMasterClient)
                 _charaType++;
-            }
+
             return;
         }
 
@@ -174,20 +156,18 @@ public class NowSelectOnline : NowSelect
         }
     }
 
-    void OnEnable()
+    void OnDestroy()
     {
-        if (!PhotonNetwork.isMasterClient)
-            return;
-
         if (transform.parent.childCount >= 2)
             return;
 
-        //  CPUを作成する
-        GameObject obj = PhotonNetwork.Instantiate("Prefabs/CharacterSelect/CPUSelect", Vector3.zero, Quaternion.identity, 0);
-        if (!obj || !obj.transform.Find("TypeText"))
+        _charaSele.PlayerChange(_nInitNumber);
+
+        if (!PhotonNetwork.isMasterClient)
             return;
 
-        PhotonView nowSelect = obj.transform.Find("TypeText").GetComponent<PhotonView>();
-        nowSelect.RPC("CPUInit", PhotonTargets.All, _nInstanceNumber);
+        //  空いた箇所にCPUを作成する
+        string player = (_charaSele.GetNullIdx() + 1).ToString();
+        GameObject obj = PhotonNetwork.Instantiate("Prefabs/CharacterSelect/" + player + "P_CPU", Vector3.zero, Quaternion.identity, 0);
     }
 }

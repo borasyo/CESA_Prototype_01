@@ -10,11 +10,19 @@ using System.Linq;
 public class CharacterSelectOnline : CharacterSelect
 {
     public static int _nMyNumber = 0;
+    [SerializeField] Vector3[] _nowSelectPos = new Vector3[4];
+    bool _IsChange = true;
 
     // オンライン時のキャラセレクト
     void Awake()
     {
         _nMyNumber = 0;
+        for(int idx = 0; idx < 4; idx++)
+        {
+            _nowSelectPos[idx] = _nowSelectDatas[idx].transform.parent.GetComponent<RectTransform>().localPosition;
+            _nowSelectDatas[idx].transform.parent.gameObject.SetActive(false);
+            _nowSelectDatas[idx] = null;
+        }
     }
     
     //  自身のプレイヤー番号をセット 
@@ -25,7 +33,7 @@ public class CharacterSelectOnline : CharacterSelect
 
         for (int i = 0; i < _nowSelectDatas.Length; i++)
         {
-            if (!_nowSelectDatas[i] || _nowSelectDatas[i].transform.parent.childCount < 2)
+            if (_nowSelectDatas[i] && _nowSelectDatas[i].transform.parent.childCount < 2)
                 continue;
 
             _nMyNumber = i;
@@ -39,7 +47,7 @@ public class CharacterSelectOnline : CharacterSelect
         int number = 0;
         for (int i = 0; i < _nowSelectDatas.Length; i++)
         {
-            if (!_nowSelectDatas[i] || _nowSelectDatas[i].transform.parent.childCount < 2)
+            if (_nowSelectDatas[i] && _nowSelectDatas[i].transform.parent.childCount < 2)
                 continue;
 
             number = i;
@@ -55,7 +63,9 @@ public class CharacterSelectOnline : CharacterSelect
 
         //  自分の位置に挿入
         nowSelect.transform.parent.SetParent(this.transform);
-        nowSelect.transform.parent.GetComponent<RectTransform>().position = _nowSelectDatas[idx].transform.parent.GetComponent<RectTransform>().position;
+        RectTransform rectTrans = nowSelect.transform.parent.GetComponent<RectTransform>();
+        rectTrans.localPosition = _nowSelectPos[idx];
+
         _nowSelectDatas[idx] = nowSelect;
     }
 
@@ -65,7 +75,7 @@ public class CharacterSelectOnline : CharacterSelect
         foreach (NowSelect now in _nowSelectDatas)
         {
             if (!now || now.gameObject != obj)
-            {
+            {                
                 number++;
                 continue;
             }
@@ -73,21 +83,85 @@ public class CharacterSelectOnline : CharacterSelect
             //  発見した
             return number;
         }
+
+        string debug = gameObject.name + "は";
+        foreach (NowSelect now in _nowSelectDatas)
+        {
+            if(now)
+            {
+                debug += now.name + ", ";
+            }
+            else
+            {
+                debug += "null, ";
+            }
+        }
+        Debug.Log(debug);
         //  失敗
         return -1;
     }
 
-
-    public bool EndInit()
+    public int GetNullIdx()
     {
-        foreach(NowSelect now in _nowSelectDatas)
+        for(int idx = 0; idx < _nowSelectDatas.Length; idx++)
         {
-            if (now.isActiveAndEnabled)
+            if (_nowSelectDatas[idx])
                 continue;
 
-            return false;
+            return idx;
         }
-        return true;
+        //  空きはない
+        return -1;
+    }
+
+    public Vector3 GetLocalPos(GameObject obj)
+    {
+        for(int i = 0; i < _nowSelectDatas.Length; i++)
+        {
+            NowSelect now = _nowSelectDatas[i];
+            if (!now || now.gameObject != obj)
+                continue;
+
+            return _nowSelectPos[i];
+        }
+
+        return Vector3.zero;
+    }
+
+    //public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
+    public void PlayerChange(int number)
+    { 
+        if(number <= 0 || !_IsChange)
+            return;
+
+        //  詰める
+        int idx = 0;
+        for (idx = number; idx < _nowSelectDatas.Length - 1; idx++)
+        {
+            NowSelectOnline nowSelect = null;
+            if (_nowSelectDatas[idx + 1])
+            {
+                nowSelect = _nowSelectDatas[idx + 1].GetComponent<NowSelectOnline>();
+
+                if (nowSelect.tag != "CPU")
+                {
+                    //  1つ前へ
+                    nowSelect.PlayerChange(idx);
+                    _nowSelectDatas[idx] = _nowSelectDatas[idx + 1];
+                    continue;
+                }
+
+                //  CPUが見つかったので終了
+                break;
+            }
+            else
+            {
+                //  Nullのオブジェクトがあれば重複実行なので無視
+                return;
+            }
+        }        
+        //  最後にキャラを発見した箇所をNullにする
+        _nowSelectDatas[idx] = null;
     }
 
     public override void GameStart()
@@ -101,12 +175,15 @@ public class CharacterSelectOnline : CharacterSelect
         if (SelectCharas.Where(_ => _).Count() < 2)
             return;
 
+        
         photonView.RPC("LoadOnlineGameMain", PhotonTargets.All);
     }
 
     [PunRPC]
     public void LoadOnlineGameMain()
     {
+        _IsChange = false;
+        SetChara();
         SceneManager.LoadScene("OnlineGameMain");
     }
 }

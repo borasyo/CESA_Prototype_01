@@ -272,6 +272,7 @@
     <Compile Include="Assets\Scripts\Character\SelectMass\SelectSandMassChecker.cs" />
     <Compile Include="Assets\Scripts\Character\Type\BalanceType.cs" />
     <Compile Include="Assets\Scripts\Character\Type\Character.cs" />
+    <Compile Include="Assets\Scripts\Character\Type\CharacterOnline.cs" />
     <Compile Include="Assets\Scripts\Character\Type\PowerType.cs" />
     <Compile Include="Assets\Scripts\Character\Type\SpeedType.cs" />
     <Compile Include="Assets\Scripts\Character\Type\TechnicalType.cs" />

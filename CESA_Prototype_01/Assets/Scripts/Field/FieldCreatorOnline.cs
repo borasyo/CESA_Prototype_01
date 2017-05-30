@@ -61,13 +61,13 @@ public class FieldCreatorOnline : FieldCreator
             switch(number)
             {
                 case 1:
-                    Debug.Log("b");
                     pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
                     obj = CreateCharaObj(SelectCharas[1], pos);
                     obj.name += ",2Player";
                     obj.transform.eulerAngles = new Vector3(0, 270, 0);
                     _objBaseArray[_nWidth * (_nHeight - 2) + _nWidth - 2] = obj.GetComponent<FieldObjectBase>();
                     obj.GetComponent<Character>().Init(0);
+                    Debug.Log("b");
                     break;
                 case 2:
                     pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
@@ -91,6 +91,7 @@ public class FieldCreatorOnline : FieldCreator
 
     GameObject CreateCharaObj(GameObject obj, Vector3 pos)
     {
+        Debug.Log(obj.name);
         GameObject instance = PhotonNetwork.Instantiate("Prefabs/Chara/" + obj.name + "_Online", pos, obj.transform.rotation, 0);
         instance.transform.SetParent(_charaHolder.transform);   //  各自で親にする
         return instance;

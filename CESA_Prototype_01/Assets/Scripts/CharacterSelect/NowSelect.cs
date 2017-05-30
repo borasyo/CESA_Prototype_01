@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NowSelect : Photon.MonoBehaviour
+public class NowSelect : Photon.PunBehaviour
 {
     protected CharacterSelect.eCharaType _charaType = CharacterSelect.eCharaType.BALANCE;
     public CharacterSelect.eCharaType CharaType {  get { return _charaType; } set { _charaType = value; } }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FieldObjectBase : MonoBehaviour
+public class FieldObjectBase : Photon.MonoBehaviour
 {
     //  データ配列の自分の情報を手動で更新する
     protected void DataUpdate()

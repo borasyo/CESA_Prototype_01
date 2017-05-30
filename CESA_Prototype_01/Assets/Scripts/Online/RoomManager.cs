@@ -31,7 +31,7 @@ public class RoomManager : Photon.MonoBehaviour
 
     #endregion
 
-    private static readonly int LimitRoomCount = 10;	// Room上限数
+    private static readonly int LimitRoomCount = 5;	// Room上限数
 
 	public GameObject lobbyUI;					// lobbyのUI
 
@@ -117,8 +117,8 @@ public class RoomManager : Photon.MonoBehaviour
 
 				// buttonの文字列を更新
 				Text buttonText = roomButtonPool[index].transform.GetChild(0).GetComponent<Text> ();
-				buttonText.text = room.name + " player("+room.playerCount+"/"+room.maxPlayers+")";
-			}
+				buttonText.text = room.name + " player(" + room.playerCount + "/" + 4 + ")";// room.maxPlayers+")";
+            }
 		} 
 
 		// room数の更新がないとき、
@@ -131,7 +131,7 @@ public class RoomManager : Photon.MonoBehaviour
 
 				// buttonの文字列を更新
 				Text buttonText = roomButtonPool[index].transform.GetChild(0).GetComponent<Text> ();
-				buttonText.text = room.name + " player("+room.playerCount+"/"+room.maxPlayers+")";
+                buttonText.text = room.name + " player(" + room.playerCount + "/" + 4 + ")";// room.maxPlayers+")";
 			}
 		}
 
@@ -190,7 +190,7 @@ public class RoomManager : Photon.MonoBehaviour
 		RoomInfo room = PhotonNetwork.GetRoomList () [index];	// 指定room情報の取得
 
 		// 部屋が満員であるとき、処理しない
-		if (room.playerCount + 1 > room.maxPlayers) {
+		if (room.playerCount >= 4) { // room.maxPlayers) {
 			Debug.Log ("The room is packed.");
 			return;
 		}
@@ -251,29 +251,22 @@ public class RoomManager : Photon.MonoBehaviour
     {
 		Debug.Log ("Joined Room");
 
-		PlayerMake ();	// Player作成
+		RoomInit ();	// Player作成
 	}
 
 	// Player作成
-	void PlayerMake()
+	void RoomInit()
     {
-		Debug.Log("PlayerMake");
-
-        // Resourceフォルダの"Player"オブジェクトを生成する
-//        charaSelectObj = PhotonNetwork.Instantiate ("Prefabs/CharacterSelect/SelectCanvas", Vector3.up * 0.5f, Quaternion.identity, 0);
+		Debug.Log("RoomInit");
 
         // 自分がMasterCliantであれば、Sceneに属するBossの生成
         if (PhotonNetwork.isMasterClient)
         {
             CharacterSelectOnline charaSele = PhotonNetwork.Instantiate("Prefabs/CharacterSelect/SelectCanvas", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<CharacterSelectOnline>();
-            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/1P", Vector3.zero, Quaternion.identity, 0);//.GetComponentInChildren<NowSelectOnline>().GetComponent<PhotonView>().RPC("SetNumber", PhotonTargets.All, 0);
-            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/2P", Vector3.zero, Quaternion.identity, 0);//.GetComponentInChildren<NowSelectOnline>().GetComponent<PhotonView>().RPC("SetNumber", PhotonTargets.All, 1);
-            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/3P", Vector3.zero, Quaternion.identity, 0);//.GetComponentInChildren<NowSelectOnline>().GetComponent<PhotonView>().RPC("SetNumber", PhotonTargets.All, 2);
-            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/4P", Vector3.zero, Quaternion.identity, 0);//.GetComponentInChildren<NowSelectOnline>().GetComponent<PhotonView>().RPC("SetNumber", PhotonTargets.All, 3);
-//            charaSele.SetNowSelect(PhotonNetwork.Instantiate("Prefabs/CharacterSelect/1P", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<NowSelectOnline>(), 0);
-//            charaSele.SetNowSelect(PhotonNetwork.Instantiate("Prefabs/CharacterSelect/2P", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<NowSelectOnline>(), 1);
-//            charaSele.SetNowSelect(PhotonNetwork.Instantiate("Prefabs/CharacterSelect/3P", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<NowSelectOnline>(), 2);
-//            charaSele.SetNowSelect(PhotonNetwork.Instantiate("Prefabs/CharacterSelect/4P", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<NowSelectOnline>(), 3);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/1P"    , Vector3.zero, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/2P_CPU", Vector3.zero, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/3P_CPU", Vector3.zero, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/4P_CPU", Vector3.zero, Quaternion.identity, 0);
         }
         else
         {

@@ -7,7 +7,7 @@ using UniRx.Triggers;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
-public class CharacterSelect : Photon.MonoBehaviour
+public class CharacterSelect : Photon.PunBehaviour
 {
     public static GameObject[] SelectCharas = new GameObject[4];
     [SerializeField] protected NowSelect[] _nowSelectDatas = null;
