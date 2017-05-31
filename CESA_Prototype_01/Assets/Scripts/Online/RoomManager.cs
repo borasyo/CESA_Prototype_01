@@ -69,8 +69,6 @@ public class RoomManager : Photon.MonoBehaviour
 			roomButtonObj.GetComponent<RoomButton> ().roomMgr = this;
 			roomButtonPool.Add(roomButtonObj);
 		}
-
-        DontDestroyOnLoad(gameObject);
 	}
 
 	void Update()
@@ -222,7 +220,7 @@ public class RoomManager : Photon.MonoBehaviour
     }
 
     [PunRPC]
-    void LeaveRoom()
+    public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();      // 退室
 

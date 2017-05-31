@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
+using UniRx;
+using UniRx.Triggers;
+
 public class GaugeUI : MonoBehaviour {
     
     [SerializeField] SandItem.eType _type = SandItem.eType.MAX;
@@ -16,10 +19,33 @@ public class GaugeUI : MonoBehaviour {
     {
 		_image = GetComponent<Image> ();
 
-        FindCharaGauge();
+        int number = 0;
+        switch (_type)
+        {
+            case SandItem.eType.ONE_P:
+                number = 0;
+                break;
+            case SandItem.eType.TWO_P:
+                number = 1;
+                break;
+            case SandItem.eType.THREE_P:
+                number = 2;
+                break;
+            case SandItem.eType.FOUR_P:
+                number = 3;
+                break;
+        }
+
+        if (!CharacterSelect.SelectCharas[number])
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        StartCoroutine(FindCharaGauge());
 	}
 
-    void FindCharaGauge ()
+    IEnumerator FindCharaGauge ()
     {
         string typeName = "";
         switch(_type)
@@ -38,39 +64,36 @@ public class GaugeUI : MonoBehaviour {
                 break;
         }
 
+        yield return new WaitWhile(() => {
+            GameObject[] objs = GameObject.FindGameObjectsWithTag("Character");
+            for (int i = 0; i < objs.Length; i++)
+            {
+                if (!objs[i].name.Contains(typeName))
+                    continue;
 
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Character");
-        for (int i = 0; i < objs.Length; i++)
-        {
-            if (!objs[i].name.Contains(typeName))
-                continue;
+                _charaGauge = objs[i].GetComponent<CharacterGauge>();
+                return false;
+            }
+            return true;
+        });
 
-            _charaGauge = objs[i].GetComponent<CharacterGauge>();
-            break;
-        }
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                transform.localScale = new Vector3(_charaGauge.GaugePercent, transform.localScale.y, transform.localScale.z);
 
-        if (!_charaGauge)
-        {
-            Destroy(this.gameObject);
-        }
+                if (_charaGauge.GaugePercent < 0.2f)
+                {
+                    _image.color = _NonGaugeColor;
+                }
+                else if (_charaGauge.GaugePercent < 1.0f)
+                {
+                    _image.color = _OnGaugeColor;
+                }
+                else
+                {
+                    _image.color = _MaxGaugeColor;
+                }
+            });
     }
-	
-	// Update is called once per frame
-	void Update () 
-    {
-        transform.localScale = new Vector3 (_charaGauge.GaugePercent, transform.localScale.y, transform.localScale.z);
-
-        if (_charaGauge.GaugePercent < 0.2f)
-        {
-            _image.color = _NonGaugeColor;
-        }
-        else if(_charaGauge.GaugePercent < 1.0f)
-        {
-            _image.color = _OnGaugeColor;
-        }
-        else
-        {
-            _image.color = _MaxGaugeColor;
-        }
-	}
 }

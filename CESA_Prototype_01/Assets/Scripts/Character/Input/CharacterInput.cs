@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterInput : MonoBehaviour
+public class CharacterInput : Photon.MonoBehaviour
 {
     protected bool _IsForawrd = false;
     protected bool _IsBack = false;
@@ -14,6 +14,9 @@ public class CharacterInput : MonoBehaviour
 	
     void Update()
     {
+        if (!photonView.isMine)
+            return;
+
         InputCheck();
     }
 

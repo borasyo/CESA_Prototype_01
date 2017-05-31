@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedType : Character 
+public class SpeedType : CharacterOnline
 {
     [SerializeField] bool _IsAuthBlock = false;
     float _fInitSpeed = 0.0f;

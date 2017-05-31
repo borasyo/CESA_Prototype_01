@@ -261,7 +261,9 @@
     <Compile Include="Assets\Scripts\Character\Input\AngleDebug.cs" />
     <Compile Include="Assets\Scripts\Character\Input\CharacterInput.cs" />
     <Compile Include="Assets\Scripts\Character\Input\CharacterInputAI.cs" />
+    <Compile Include="Assets\Scripts\Character\Input\CharacterInputAIOnline.cs" />
     <Compile Include="Assets\Scripts\Character\Input\CharacterInputUser.cs" />
+    <Compile Include="Assets\Scripts\Character\Input\CharacterInputUserOnline.cs" />
     <Compile Include="Assets\Scripts\Character\Input\MoveButton.cs" />
     <Compile Include="Assets\Scripts\Character\SelectMass\PowerTypeSelectMass.cs" />
     <Compile Include="Assets\Scripts\Character\SelectMass\PowerTypeSelectMassSprite.cs" />
@@ -311,10 +313,12 @@
     <Compile Include="Assets\Scripts\Item\InvincibleItem.cs" />
     <Compile Include="Assets\Scripts\Item\ItemBase.cs" />
     <Compile Include="Assets\Scripts\Item\ItemCreator.cs" />
+    <Compile Include="Assets\Scripts\Item\ItemCreatorOnline.cs" />
     <Compile Include="Assets\Scripts\Item\ItemHolder.cs" />
     <Compile Include="Assets\Scripts\Item\MoveSpeedUp.cs" />
     <Compile Include="Assets\Scripts\Item\SpecialItem.cs" />
     <Compile Include="Assets\Scripts\ModeSelect\ModeSelect.cs" />
+    <Compile Include="Assets\Scripts\Online\OnlineGameMainManager.cs" />
     <Compile Include="Assets\Scripts\Online\RoomButton.cs" />
     <Compile Include="Assets\Scripts\Online\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Online\UIScript.cs" />

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BalanceType : Character 
+public class BalanceType : CharacterOnline
 {
     [SerializeField] int _nNum = 3;
 

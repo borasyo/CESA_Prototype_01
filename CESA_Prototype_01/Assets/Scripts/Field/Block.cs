@@ -13,4 +13,9 @@ public class Block : FieldObjectBase
     {
         DataUpdate();
     }
+
+    public void Init()
+    {
+        transform.SetParent(GameObject.Find("InitFieldObjHolder").transform);
+    }
 }

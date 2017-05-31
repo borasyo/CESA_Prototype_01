@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UniRx;
 using UniRx.Triggers;
 
-public class ReStart : MonoBehaviour 
+public class ReStart : Photon.MonoBehaviour 
 {    
     public bool _IsEnd { get; set; }
 
@@ -45,7 +45,10 @@ public class ReStart : MonoBehaviour
     {
         if (_IsEnd)
         {
-            SceneManager.LoadScene("GameMain");
+            if(PhotonNetwork.inRoom)
+                SceneManager.LoadScene("OnlineGameMain");
+            else
+                SceneManager.LoadScene("GameMain");
         }
         else
         {

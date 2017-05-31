@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class FieldData : MonoBehaviour
+public class FieldData : Photon.MonoBehaviour
 {
     ///<summary>
     /// 
@@ -85,7 +85,7 @@ public class FieldData : MonoBehaviour
         //_ObjectDataArray = 
         creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
-        _CharaList = _ObjectDataArray.Where(_ => _ && _.tag == "Character").Select(_ => _.GetComponent<Character>()).ToList();
+        //_CharaList = _ObjectDataArray.Where(_ => _ && _.tag == "Character").Select(_ => _.GetComponent<Character>()).ToList();
     }
 
     #endregion
@@ -169,6 +169,16 @@ public class FieldData : MonoBehaviour
         z = (float)((number / GameScaler._nWidth) * GameScaler._fScale);
 
         return new Vector3(x,0,z);
+    }
+
+    public bool GetIsMine()
+    {
+        return photonView.isMine;
+    }
+
+    public void CharaSet(Character chara)
+    {
+        _CharaList.Add(chara);
     }
 
     #if DEBUG

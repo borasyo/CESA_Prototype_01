@@ -61,6 +61,17 @@ public class Character : FieldObjectBase
     // Use this for initialization
     public virtual void Init(int level)
     {
+        SetInput(level);
+
+        _charactorGauge = GetComponent<CharacterGauge>();
+
+        string charaName = this.name[this.name.IndexOf("Player") - 1].ToString();
+        _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
+        _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
+    }
+
+    protected virtual void SetInput(int level)
+    {    
         // Input生成
         if (this.name.Contains("CPU"))
         {
@@ -72,12 +83,6 @@ public class Character : FieldObjectBase
         {
             _charactorInput = this.gameObject.AddComponent<CharacterInputUser>();
         }
-        
-        _charactorGauge = GetComponent<CharacterGauge>();
-
-        string charaName = this.name[this.name.IndexOf("Player") - 1].ToString();
-        _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
-        _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
     }
 
     void Awake()

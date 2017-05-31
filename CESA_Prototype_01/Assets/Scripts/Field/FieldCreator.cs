@@ -49,8 +49,7 @@ public class FieldCreator : MonoBehaviour
                 }
                 else if (RandomBlock(x, z))
                 {
-                    GameObject block = CreateObj(BlockObj, createPos);
-                    _objBaseArray[x + (z * _nWidth)] = block.GetComponent<FieldObjectBase>();
+                    CreateRandomBlock(BlockObj, createPos, x + (z * _nWidth));
                 }
 
                 GameObject tile = CreateObj(TileObj, createPos);
@@ -128,8 +127,14 @@ public class FieldCreator : MonoBehaviour
         return instance;
     }
 
+    protected virtual void CreateRandomBlock(GameObject obj ,Vector3 pos, int idx)
+    {
+        GameObject block = CreateObj(obj, pos);
+        _objBaseArray[idx] = block.GetComponent<FieldObjectBase>();
+    }
+
     //  フィールドの外周かどうかをチェックする
-    bool FenceCheck(float x, float z)
+    protected bool FenceCheck(float x, float z)
     {
         if (x % _nWidth == 0)
             return true;
@@ -146,7 +151,7 @@ public class FieldCreator : MonoBehaviour
         return false;
     }
 
-    bool RandomBlock(float x, float z)
+    protected bool RandomBlock(float x, float z)
     {
         if (Random.Range(0, 10) != 0)
             return false;

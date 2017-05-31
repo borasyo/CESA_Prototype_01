@@ -5,9 +5,9 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 
-public class ItemCreator : MonoBehaviour 
+public class ItemCreator : Photon.MonoBehaviour 
 {
-    [SerializeField] GameObject[] _ItemPrefabs = null;
+    [SerializeField] protected GameObject[] _ItemPrefabs = null;
 
     float _fNowInteval = 0.0f;
     [SerializeField] float _fInterval = 15.0f;
@@ -27,11 +27,8 @@ public class ItemCreator : MonoBehaviour
                     #endif               
                 )
                     return;
-                
-                int number = Random.Range(0,_ItemPrefabs.Length);
-                Vector3 pos = FieldData.Instance.GetNonObjPos();
-                GameObject item = Instantiate(_ItemPrefabs[number]);
-                item.transform.position = pos;
+
+                CreateItem();
                 ResetInterval();
             });
 	}
@@ -39,5 +36,13 @@ public class ItemCreator : MonoBehaviour
     void ResetInterval()
     {
         _fNowInteval = Random.Range(0.0f, _fInterval / 2.0f);
+    }
+
+    protected virtual void CreateItem()
+    {
+        int number = Random.Range(0, _ItemPrefabs.Length);
+        Vector3 pos = FieldData.Instance.GetNonObjPos();
+        GameObject item = Instantiate(_ItemPrefabs[number]);
+        item.transform.position = pos;
     }
 }

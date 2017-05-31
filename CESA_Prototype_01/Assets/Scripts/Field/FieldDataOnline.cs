@@ -6,6 +6,8 @@ using System.Linq;
 
 public class FieldDataOnline : FieldData
 {
+    GameObject _BlockObj = null;
+
     protected override void Init()
     {
         //  データ配列生成
@@ -18,5 +20,14 @@ public class FieldDataOnline : FieldData
         creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
         _CharaList = _ObjectDataArray.Where(_ => _ && _.tag == "Character").Select(_ => _.GetComponent<Character>()).ToList();
+    }
+
+    [PunRPC]
+    public void CreateBlock(Vector3 pos)
+    {
+        if(!_BlockObj)
+            _BlockObj = Resources.Load<GameObject>("Prefabs/Field/Block");
+
+        GameObject obj = (GameObject)Instantiate(_BlockObj, pos, _BlockObj.transform.rotation);
     }
 }

@@ -40,7 +40,7 @@ public class ItemBase : FieldObjectBase
                         continue;
 
                     _IsCollision = true;
-                    OnCollsion();
+                    OnCollsion(chara.gameObject);
                     Run();
                 }
             });
@@ -77,9 +77,9 @@ public class ItemBase : FieldObjectBase
             });
     }
 
-    void OnCollsion()
+    void OnCollsion(GameObject obj)
     {
-        FieldObjectBase obj = FieldData.Instance.GetObjData(GetDataNumber());
+        //FieldObjectBase obj = FieldData.Instance.GetObjData(GetDataNumber());
         transform.SetParent(obj.transform);
         transform.GetComponentInChildren<MeshRenderer>().enabled = false;
         ItemHolder.Instance.Remove(this);

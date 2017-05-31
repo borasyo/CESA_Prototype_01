@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerType : Character
+public class PowerType : CharacterOnline
 {
     float _InitBreakGauge;
 
