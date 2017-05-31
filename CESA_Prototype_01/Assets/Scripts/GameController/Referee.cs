@@ -12,9 +12,15 @@ public class Referee : MonoBehaviour
 
     void LateUpdate()
     {
+        if (!FieldData.Instance.IsStart)
+            return;
+
         List<Character> charaList = FieldData.Instance.GetCharactors;
         for (int i = 0; i < charaList.Count; i++)
         {
+            if (!charaList[i])
+                continue;
+
             if (charaList[i].name.Contains("Invincible"))
                 continue;
 

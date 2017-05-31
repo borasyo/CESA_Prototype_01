@@ -3,13 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System.Linq;
+using UniRx;
+using UniRx.Triggers;
 
 public class FieldDataOnline : FieldData
 {
     GameObject _BlockObj = null;
-
-    protected override void Init()
+    private bool _isInitialized = false;
+    private readonly string ReadyStateKey = "SceneReady";
+    
+    /// <param name="data"></param>
+    private void OnPhotonPlayerPropertiesChanged(object[] data)
     {
+        //誰かのカスタムプロパティが書き換わるたびに確認
+        CheckAllPlayerState();
+    }
+    
+    private void CheckAllPlayerState()
+    {
+        if (_isInitialized) return;
+
+        //全員のフラグが設定されているか？
+        var isAllPlayerLoaded = PhotonNetwork.playerList
+            .Select(x => x.customProperties)
+            .All(x => x.ContainsKey(ReadyStateKey) && (bool)x[ReadyStateKey]);
+
+        if (isAllPlayerLoaded)
+        {
+            //全員のフラグが設定されていたら初期化開始
+            _isInitialized = true;
+            ClearReadyStatus();
+            Initialize();
+        }
+    }
+    
+    private void Ready()
+    {
+        var cp = PhotonNetwork.player.customProperties;
+        cp[ReadyStateKey] = true;
+        PhotonNetwork.player.SetCustomProperties(cp);
+    }
+    
+    private void ClearReadyStatus()
+    {
+        var cp = PhotonNetwork.player.customProperties;
+        cp[ReadyStateKey] = null;
+        PhotonNetwork.player.SetCustomProperties(cp);
+    }
+
+    void Start()
+    {
+        Ready();
+        CheckAllPlayerState();
+    }
+
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
+    void Initialize()
+    {
+        //ここにPhotonNetwork.Instantiateとか書く
         //  データ配列生成
         _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
         _ChangeDataList = new tChangeData[GameScaler._nWidth * GameScaler._nHeight];
@@ -19,7 +72,12 @@ public class FieldDataOnline : FieldData
         //_ObjectDataArray = 
         creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
-        _CharaList = _ObjectDataArray.Where(_ => _ && _.tag == "Character").Select(_ => _.GetComponent<Character>()).ToList();
+        UpdateStart();
+    }
+
+    protected override void Init()
+    {
+        return; // 無効化
     }
 
     [PunRPC]

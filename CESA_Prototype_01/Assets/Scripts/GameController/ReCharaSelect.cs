@@ -16,6 +16,11 @@ public class ReCharaSelect : MonoBehaviour
 
     public void ReChara()
     {
+        if(PhotonNetwork.inRoom)
+        {
+            PhotonNetwork.LeaveRoom();      // 退室
+        }
+
         SceneManager.LoadScene("ModeSelect");
     }
 }

@@ -12,11 +12,8 @@ public class CharacterInput : Photon.MonoBehaviour
     protected bool _IsPut = false;
     protected bool _IsBreak = false;
 	
-    void Update()
+    protected void Update()
     {
-        if (!photonView.isMine)
-            return;
-
         InputCheck();
     }
 

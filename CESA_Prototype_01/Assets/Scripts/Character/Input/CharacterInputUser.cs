@@ -8,7 +8,7 @@ public class CharacterInputUser : CharacterInput
 {
     protected MoveButton _moveButton = null;
 
-    void Start()
+    protected void Start()
     {
         Transform InputCanvas = GameObject.Find("InputCanvas").transform;
 
@@ -69,10 +69,10 @@ public class CharacterInputUser : CharacterInput
             }
 
             int angle = (int)(_moveButton.GetMoveAngle);
-            _IsForawrd = (angle <  135 && angle >=   45);
-            _IsBack    = (angle <  -45 && angle >= -135);
-            _IsRight   = (angle <   45 && angle >=  -45);
-            _IsLeft    = (angle < -135 || angle >=  135);
+            _IsForawrd = (angle < 135 && angle >= 45);
+            _IsBack = (angle < -45 && angle >= -135);
+            _IsRight = (angle < 45 && angle >= -45);
+            _IsLeft = (angle < -135 || angle >= 135);
         }
         else
         {
@@ -83,9 +83,5 @@ public class CharacterInputUser : CharacterInput
             _IsPut = Input.GetKeyDown(KeyCode.R);
             _IsBreak = Input.GetKeyDown(KeyCode.T);
         }
-
-        //  同期する
-        //photonView.RPC("SetMove", PhotonTargets.All, _IsForawrd, _IsBack, _IsRight, _IsLeft);
-        //photonView.RPC("SetAction", PhotonTargets.All, _IsPut, _IsBreak);
     }
 }

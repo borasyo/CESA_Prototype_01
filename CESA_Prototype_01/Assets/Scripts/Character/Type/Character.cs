@@ -68,6 +68,7 @@ public class Character : FieldObjectBase
         string charaName = this.name[this.name.IndexOf("Player") - 1].ToString();
         _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
         _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
+        FieldData.Instance.CharaSet(this);
     }
 
     protected virtual void SetInput(int level)
@@ -91,14 +92,14 @@ public class Character : FieldObjectBase
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         _nOldNumber = GetDataNumber();
 
         MoveUpdate();
 
         DirUpdate();
-        DataUpdate();
+        NumberUpdate();
 
         //  アクション
         ItemPut();
@@ -109,7 +110,7 @@ public class Character : FieldObjectBase
 
     #region Move
 
-    void MoveUpdate()
+    protected void MoveUpdate()
     {
         //  移動
         if (MoveCheck(eDirection.FORWARD))
@@ -252,7 +253,7 @@ public class Character : FieldObjectBase
 
     #region Other
 
-    void DirUpdate()
+    protected void DirUpdate()
     {
         switch (_nowDirection)
         {
@@ -271,7 +272,7 @@ public class Character : FieldObjectBase
         }
     }
 
-    protected virtual void DataUpdate()
+    protected virtual void NumberUpdate()
     {
         int nowNumber = GetDataNumber();
         if (_nOldNumber == nowNumber)

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+using UniRx;
+using UniRx.Triggers;
+
 public class SandData : MonoBehaviour
 {    
     ///<summary>
@@ -75,21 +78,34 @@ public class SandData : MonoBehaviour
         _HalfSandDataList = new HalfSandData[GameScaler.GetRange];
         for (int i = 0; i < _HalfSandDataList.Length; i++)
             _HalfSandDataList[i].Init();
+
+        StartCoroutine(StartUpdate());
     }
 
-    void Start()
+    /*void Start()
     {
         SandUpdate();
-    }
+    }*/
 
-    void Update()
+    IEnumerator StartUpdate()
     {
-        //  Fieldに変化があったかを確認
-        if (!FieldData.Instance.ChangeField)
-            return;
+        //  Fieldの生成が終わるまで待つ
+        yield return new WaitWhile(() => FieldData.Instance.IsStart == false);
 
         SandUpdate();
+
+        this.UpdateAsObservable()
+            .Where(_ => FieldData.Instance.ChangeField)
+            .Subscribe(_ =>
+            {
+                SandUpdate();
+            });
     }
+
+    /*void Update()
+    {
+        SandUpdate();
+    }*/
 
     void SandUpdate()
     {
@@ -106,6 +122,7 @@ public class SandData : MonoBehaviour
 
         //  チェックする
         FieldObjectBase[] objDataArray = FieldData.Instance.GetObjDataArray;
+
         for (int number = 0; number < objDataArray.Length; number++)
         {
             _SandDataList[number] = SandItem.eType.MAX;

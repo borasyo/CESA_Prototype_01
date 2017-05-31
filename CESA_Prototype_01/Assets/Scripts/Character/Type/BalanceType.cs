@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BalanceType : CharacterOnline
+public class BalanceType : Character
 {
     [SerializeField] int _nNum = 3;
 
@@ -13,14 +13,14 @@ public class BalanceType : CharacterOnline
     }
 
     override protected void ItemPut()
-    {
-        if (!_charactorGauge.PutGaugeCheck() || 
-            !_charactorInput.GetActionInput(eAction.PUT))
+    { 
+        if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
             return;
 
         bool IsPut = false;
         int[] dirNumbers = GetNumberList();
-        for(int i = 0; i < dirNumbers.Length; i++) {
+        for(int i = 0; i < dirNumbers.Length; i++)
+        {
             if (dirNumbers[i] < 0 || GameScaler.GetRange < dirNumbers[i])
                 continue;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedType : CharacterOnline
+public class SpeedType : Character
 {
     [SerializeField] bool _IsAuthBlock = false;
     float _fInitSpeed = 0.0f;
@@ -87,7 +87,7 @@ public class SpeedType : CharacterOnline
 
         return true;
     }
-    protected override void DataUpdate()
+    protected override void NumberUpdate()
     {
         int nowNumber = GetDataNumber();
 

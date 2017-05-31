@@ -23,43 +23,46 @@ public class SandMass : FieldObjectBase
             .Subscribe(_ => {
                 _triangleScaler.Progress();
                 transform.localScale = _triangleScaler.CurrentValue;
-//                transform.eulerAngles += new Vector3(0, 360 * Time.deltaTime ,0);
             });
 
-        /*_triangleAlpha = TriangleWaveFactory.Float(0.5f, 1.0f, halfPeriod);
-        this.UpdateAsObservable()
-            .Where(_ => this.enabled)
-            .Subscribe(_ => {
-                _triangleAlpha.Progress();
-                Color setCol = _SpRend.color;
-                setCol.a = _triangleAlpha.CurrentValue;
-                _SpRend.color = setCol;
-            });*/
+        StartCoroutine(StartUpdate());
     }
 
-	void Update () 
+    IEnumerator StartUpdate()
+    {
+        //  Fieldの生成が終わるまで待つ
+        yield return new WaitWhile(() => FieldData.Instance.IsStart == false);
+
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                ColorUpdate();
+            });
+    }
+
+    void ColorUpdate()
     {
         _SpRend.enabled = false;
-        _SpRend.color = new Color(0,0,0,0);
+        _SpRend.color = new Color(0, 0, 0, 0);
         SandItem.eType type = SandData.Instance.GetSandDataList[GetDataNumber()];
         switch (type)
         {
             case SandItem.eType.ONE_P:
-                AddColor(new Color(255,0,0,255));
+                AddColor(new Color(255, 0, 0, 255));
                 break;
             case SandItem.eType.TWO_P:
-                AddColor(new Color(0,0,255,255));
+                AddColor(new Color(0, 0, 255, 255));
                 break;
             case SandItem.eType.THREE_P:
-                AddColor(new Color(0,255,0,255));
+                AddColor(new Color(0, 255, 0, 255));
                 break;
             case SandItem.eType.FOUR_P:
-                AddColor(new Color(255,255,0,255));
+                AddColor(new Color(255, 255, 0, 255));
                 break;
             default:
                 break;
         }
-	}
+    }
 
     void AddColor(Color col) 
     {

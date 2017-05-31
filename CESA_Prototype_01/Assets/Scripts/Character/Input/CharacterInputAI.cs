@@ -8,7 +8,7 @@ public class CharacterInputAI : CharacterInput
 
     void Awake()
     {
-        if (!photonView.isMine)
+        if (PhotonNetwork.inRoom && !photonView.isMine)
             return;
 
         _enemyAI = this.gameObject.AddComponent<EnemyAI>();

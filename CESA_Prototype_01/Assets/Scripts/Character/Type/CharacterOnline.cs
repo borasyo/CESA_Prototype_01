@@ -21,7 +21,6 @@ public class CharacterOnline : Character
         {
             _charactorInput = this.gameObject.GetComponent<CharacterInputUserOnline>();
         }
-        FieldData.Instance.CharaSet(this);
     }
 
     [PunRPC]
@@ -31,5 +30,33 @@ public class CharacterOnline : Character
         name += player;
         transform.eulerAngles = new Vector3(0, angle, 0);
         GetComponent<Character>().Init(level);
+    }
+
+    void Update()
+    {
+        if (!photonView.isMine)
+            return;
+
+        base.Update();
+    }
+
+    public void OnlineUpdate()
+    {
+        Debug.Log("OnlineUpdate : " + transform.name);
+
+        _nOldNumber = GetDataNumber();
+
+        //MoveUpdate(); //  移動は座標同期
+        MoveCheck(eDirection.FORWARD);
+        MoveCheck(eDirection.BACK);
+        MoveCheck(eDirection.RIGHT);
+        MoveCheck(eDirection.LEFT);
+
+        DirUpdate();
+        NumberUpdate();
+
+        //  アクション
+        ItemPut();
+        ItemBreak();
     }
 }

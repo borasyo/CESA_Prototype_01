@@ -5,7 +5,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 
-public class TechnicalType : CharacterOnline
+public class TechnicalType : Character
 {
     [SerializeField] float _fKickMoveAmount_Sec = 1.0f;
     [SerializeField] bool _IsAuthBlock = false;

@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using System.Linq;
+using UniRx;
+using UniRx.Triggers;
 
 public class FieldData : Photon.MonoBehaviour
 {
@@ -37,6 +40,9 @@ public class FieldData : Photon.MonoBehaviour
     }
 
     #endregion
+
+    protected bool _IsStart = false;
+    public bool IsStart { get { return _IsStart; } private set { _IsStart = value; } }     //  FIeldを生成し終わっているかの判定  
 
     protected FieldObjectBase[] _ObjectDataArray = null;
     public FieldObjectBase[] GetObjDataArray { get { return _ObjectDataArray; } }
@@ -85,42 +91,48 @@ public class FieldData : Photon.MonoBehaviour
         //_ObjectDataArray = 
         creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
-        //_CharaList = _ObjectDataArray.Where(_ => _ && _.tag == "Character").Select(_ => _.GetComponent<Character>()).ToList();
+        UpdateStart();
+    }
+
+    protected void UpdateStart()
+    {
+        _IsStart = true;    //  生成終了
+
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                //  Field情報に変更があったかをチェック
+                _IsChangeField = _IsChangeFieldWithChara = false;
+
+                if (_IsExceptionChangeField)
+                {
+                    _IsExceptionChangeField = false;
+                    _IsChangeField = _IsChangeFieldWithChara = true;
+                    return;
+                }
+
+                for (int i = 0; i < _ChangeDataList.Length; i++)
+                {
+                    if (!_ChangeDataList[i]._IsChange)
+                        continue;
+
+                    FieldObjectBase obj = _ObjectDataArray[i];
+                    FieldObjectBase oldObj = _ChangeDataList[i]._obj;
+                    if (obj != oldObj)
+                    {
+                        _IsChangeFieldWithChara = true;
+
+                        if (!_IsChangeField &&
+                           (!obj || obj.tag != "Character") &&
+                           (!oldObj || oldObj.tag != "Character"))    //  キャラの場合は変更しない
+                            _IsChangeField = true;
+                    }
+                    _ChangeDataList[i]._IsChange = false;
+                }
+            });
     }
 
     #endregion
-
-    void Update()
-    {
-        //  Field情報に変更があったかをチェック
-        _IsChangeField = _IsChangeFieldWithChara = false;
-
-        if(_IsExceptionChangeField)
-        {
-            _IsExceptionChangeField = false;
-            _IsChangeField = _IsChangeFieldWithChara = true;
-            return;
-        }
-
-        for (int i = 0; i < _ChangeDataList.Length; i++)
-        {
-            if (!_ChangeDataList[i]._IsChange)
-                continue;
-
-            FieldObjectBase obj = _ObjectDataArray[i];
-            FieldObjectBase oldObj = _ChangeDataList[i]._obj;
-            if (obj != oldObj)
-            {
-                _IsChangeFieldWithChara = true;
-
-                if (!_IsChangeField &&
-                   (!obj    || obj.tag    != "Character") &&
-                   (!oldObj || oldObj.tag != "Character"))    //  キャラの場合は変更しない
-                    _IsChangeField = true;
-            }
-            _ChangeDataList[i]._IsChange = false;
-        }
-    }
 
     //  データを格納
     public void SetObjData(FieldObjectBase setObj, int number)
