@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 #if DEBUG
 using UnityEditor;
 #endif
 
-public class Referee : MonoBehaviour
+public class Referee : Photon.MonoBehaviour
 {
-    [SerializeField] GameObject _explosionPrefab = null;
+    [SerializeField] protected GameObject _explosionPrefab = null;
 
     void LateUpdate()
     {
@@ -30,38 +31,37 @@ public class Referee : MonoBehaviour
             if (type == SandItem.eType.MAX || type == charaType)
                 continue;
 
-            FieldObjectBase obj = charaList[i];
-            charaList.Remove(charaList[i]);
+            Character obj = charaList[i];
+            charaList.Remove(obj);
 
 #if DEBUG
             // 死ぬ判定にバグがある可能性があるのでチェック
             //EditorApplication.isPaused = true;
 #endif
 
-            CheckResult(obj, type, charaList.Count);
+            CheckResult(obj, GetTypeText(type), charaList);
             return;
         }
     }
 
-    void CheckResult(FieldObjectBase obj, SandItem.eType type, int length)
+    protected void CheckResult(FieldObjectBase obj, string type, List<Character> charaList)
     {
         ReStart reStart = Instantiate(_explosionPrefab).GetComponent<ReStart>();
         reStart.GetComponentInChildren<TextMesh>().text = obj.GetComponent<Character>().GetPlayerNumber() + "Pは" + obj.GetDataNumber() + "マスで" + type + "に挟まれて死んだ！";
-        //ReStart reStart = Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity).GetComponent<ReStart>();
         reStart._IsEnd= false;
 
         string name = obj.name;
         Destroy(obj.gameObject);
 
-        if (length > 1 && name.Contains("CPU"))
+        //  キャラが1人になるか、CPUだけになったら終了
+        if (charaList.Count > 1 && charaList.Where(_ => !_.name.Contains("CPU")).ToList().Count() == 1)
             return;
 
         reStart._IsEnd = true;
-        //Camera.main.gameObject.AddComponent<PullsObject>();
         this.enabled = false;
     }
 
-    SandItem.eType CheckType(string name)
+    protected SandItem.eType CheckType(string name)
     {
         SandItem.eType type = SandItem.eType.MAX;
         if (name.Contains("1P"))
@@ -82,5 +82,26 @@ public class Referee : MonoBehaviour
         }
 
         return type;
+    }
+
+    protected string GetTypeText(SandItem.eType type)
+    {
+        string text = "";
+        switch(type)
+        {
+            case SandItem.eType.ONE_P:
+                text = "1P";
+                break;
+            case SandItem.eType.TWO_P:
+                text = "2P";
+                break;
+            case SandItem.eType.THREE_P:
+                text = "3P";
+                break;
+            case SandItem.eType.FOUR_P:
+                text = "4P";
+                break;
+        }
+        return text;
     }
 }

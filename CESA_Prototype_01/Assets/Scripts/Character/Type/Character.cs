@@ -207,7 +207,6 @@ public class Character : FieldObjectBase
         _moveAmount_Sec = speed;
     }
 
-
     #endregion
 
     #region Action

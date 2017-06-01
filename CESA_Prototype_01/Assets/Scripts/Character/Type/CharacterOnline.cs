@@ -21,6 +21,9 @@ public class CharacterOnline : Character
         {
             _charactorInput = this.gameObject.GetComponent<CharacterInputUserOnline>();
         }
+
+        //  Synchronizeを設定
+        GetComponent<PhotonTransformView>().SetSynchronizedValues(new Vector3(_moveAmount_Sec, 0.0f, _moveAmount_Sec), 0);
     }
 
     [PunRPC]

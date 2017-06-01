@@ -39,7 +39,7 @@ public class CharacterInputUserOnline : CharacterInputUser
             _IsBack = Input.GetKey(KeyCode.S);
             _IsRight = Input.GetKey(KeyCode.D);
             _IsLeft = Input.GetKey(KeyCode.A);
-            _IsPut = Input.GetKeyDown(KeyCode.R);
+            _IsPut = Input.GetKeyDown(KeyCode.T);
             _IsBreak = Input.GetKeyDown(KeyCode.T);
         }
 

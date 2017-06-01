@@ -15,47 +15,32 @@ public class CharacterInputUser : CharacterInput
         Transform Move = InputCanvas.Find("Move");
         _moveButton = Move.GetComponent<MoveButton>();
 
-        CreateActionEvent(InputCanvas.Find("Put").gameObject.GetComponent<EventTrigger>(), Character.eAction.PUT);
-        CreateActionEvent(InputCanvas.Find("Break").gameObject.GetComponent<EventTrigger>(), Character.eAction.BREAK);
+        CreateActionEvent(InputCanvas.Find("Action").gameObject.GetComponent<EventTrigger>());
     }
 
-    void CreateActionEvent(EventTrigger eventTrigger, Character.eAction act)
+    void CreateActionEvent(EventTrigger eventTrigger)
     {
-        eventTrigger.triggers.Add(CreateActionEntry(act));
+        eventTrigger.triggers.Add(CreateActionEntry());
     }
 
-    EventTrigger.Entry CreateActionEntry(Character.eAction act)
+    EventTrigger.Entry CreateActionEntry()
     {
         EventTrigger.Entry press = new EventTrigger.Entry();
         press.eventID = EventTriggerType.PointerDown;
-        press.callback.AddListener((data) => { StartCoroutine(ActionClick(act)); });
+        press.callback.AddListener((data) => { StartCoroutine(ActionClick()); });
 
         return press;
     }
 
-    public IEnumerator ActionClick(Character.eAction act)
+    public IEnumerator ActionClick()
     {
-        switch(act)
-        {
-            case Character.eAction.PUT:
-                _IsPut = true;
-                break;
-            case Character.eAction.BREAK:
-                _IsBreak = true;
-                break;
-        }
+        _IsPut = true;
+        _IsBreak = true;
 
         yield return null;
 
-        switch (act)
-        {
-            case Character.eAction.PUT:
-                _IsPut = false;
-                break;
-            case Character.eAction.BREAK:
-                _IsBreak = false;
-                break;
-        }
+        _IsPut = false;
+        _IsBreak = false;
     }
 
     override protected void InputCheck()

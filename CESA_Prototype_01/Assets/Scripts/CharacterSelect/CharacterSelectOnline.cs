@@ -184,6 +184,7 @@ public class CharacterSelectOnline : CharacterSelect
     {
         _IsChange = false;
         SetChara();
+        GetComponent<LevelSelect>().SetLevel();
         SceneManager.LoadScene("OnlineGameMain");
     }
 }

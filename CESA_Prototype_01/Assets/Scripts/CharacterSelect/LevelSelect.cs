@@ -18,17 +18,19 @@ public class LevelSelect : MonoBehaviour
         }
     }
 
-    void OnDisable()
+    public void SetLevel()
     {
         for(int i = 0; i < SelectLevel.Length; i++)
         {
             if (!LevelList[i])
             {
                 SelectLevel[i] = -1;    //  ナシ
+                Debug.Log(SelectLevel[i]);
                 continue;
             }
 
             SelectLevel[i] = LevelList[i].nNowLevel;
+            Debug.Log(SelectLevel[i]);
         }
     }
 }

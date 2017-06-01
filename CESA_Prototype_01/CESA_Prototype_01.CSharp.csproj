@@ -312,6 +312,7 @@
     <Compile Include="Assets\Scripts\GameController\ReCharaSelect.cs" />
     <Compile Include="Assets\Scripts\GameController\ReStart.cs" />
     <Compile Include="Assets\Scripts\GameController\Referee.cs" />
+    <Compile Include="Assets\Scripts\GameController\RefereeOnline.cs" />
     <Compile Include="Assets\Scripts\Item\FixText.cs" />
     <Compile Include="Assets\Scripts\Item\GaugeSpeedUp.cs" />
     <Compile Include="Assets\Scripts\Item\InvincibleItem.cs" />
