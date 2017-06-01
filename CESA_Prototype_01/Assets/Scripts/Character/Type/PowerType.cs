@@ -41,6 +41,7 @@ public class PowerType : Character
         FieldData.Instance.ExceptionChangeField();
         Destroy(obj.gameObject);
         _charactorGauge.BreakAction();
+        _fNotMoveTime = 0.0f;
     }
 
     override public bool RunSpecialMode(bool IsRun)

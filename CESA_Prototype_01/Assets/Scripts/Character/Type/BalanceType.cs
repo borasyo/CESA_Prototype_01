@@ -16,31 +16,27 @@ public class BalanceType : Character
     { 
         if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
             return;
-
-        bool IsPut = false;
+        
         int[] dirNumbers = GetNumberList();
         for(int i = 0; i < dirNumbers.Length; i++)
         {
-            if (dirNumbers[i] < 0 || GameScaler.GetRange < dirNumbers[i])
+            if (dirNumbers[i] < 0 || GameScaler.GetRange <= dirNumbers[i])
                 continue;
 
             FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumbers[i]);
             if (obj)
             {
                 if(i == 0)  //  目の前に置けない場合は置けない
-                    break;
+                    return;
                 continue;
             }
 
             GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumbers[i]), Quaternion.identity);
             FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumbers[i]);
-            IsPut = true;
         }
 
-        if (!IsPut)
-            return;
-
         _charactorGauge.PutAction();
+        _fNotMoveTime = 0.0f;
     }
 
     int[] GetNumberList()

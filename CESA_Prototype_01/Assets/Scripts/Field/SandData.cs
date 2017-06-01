@@ -85,10 +85,18 @@ public class SandData : MonoBehaviour
     /*void Start()
     {
         SandUpdate();
+    }
+
+    void Update()
+    {
+        SandUpdate();
     }*/
 
     IEnumerator StartUpdate()
     {
+        Referee referee = GameObject.FindWithTag("Referee").GetComponent<Referee>();
+        referee.enabled = false;
+
         //  Fieldの生成が終わるまで待つ
         yield return new WaitWhile(() => FieldData.Instance.IsStart == false);
 
@@ -100,12 +108,9 @@ public class SandData : MonoBehaviour
             {
                 SandUpdate();
             });
-    }
 
-    /*void Update()
-    {
-        SandUpdate();
-    }*/
+        referee.enabled = true;
+    }
 
     void SandUpdate()
     {

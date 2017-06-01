@@ -47,7 +47,34 @@ public class CharacterInputUserOnline : CharacterInputUser
         //photonView.RPC("Set", PhotonTargets.All, _IsForawrd, _IsBack, _IsRight, _IsLeft, _IsPut, _IsBreak);
     }
 
-    [PunRPC]
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.SendNext(_IsForawrd);
+            stream.SendNext(_IsBack);
+            stream.SendNext(_IsRight);
+            stream.SendNext(_IsLeft);
+            //stream.SendNext(_IsPut);
+            //stream.SendNext(_IsBreak);
+        }
+        else
+        {
+            this._IsForawrd = (bool)stream.ReceiveNext();
+            this._IsBack = (bool)stream.ReceiveNext();
+            this._IsRight = (bool)stream.ReceiveNext();
+            this._IsLeft = (bool)stream.ReceiveNext();
+            //this._IsPut = (bool)stream.ReceiveNext();
+            //this._IsBreak = (bool)stream.ReceiveNext();
+
+            if (!_characterOnline)
+                _characterOnline = GetComponent<CharacterOnline>();
+
+            _characterOnline.OnlineUpdate();
+        }
+    }
+
+    /*[PunRPC]
     public void Set(bool isForward, bool isBack, bool isRight, bool isLeft, bool isPut, bool isBreak)
     {
         if (photonView.isMine)
@@ -67,32 +94,5 @@ public class CharacterInputUserOnline : CharacterInputUser
         //  更新
         _characterOnline.OnlineUpdate();
        // Debug.Log("Forward : " + _IsForawrd + ", Back : " + _IsBack + ", Right : " + _IsRight + ", Left : " + _IsLeft);
-    }
-
-    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.isWriting)
-        {
-            stream.SendNext(_IsForawrd);
-            stream.SendNext(_IsBack);
-            stream.SendNext(_IsRight);
-            stream.SendNext(_IsLeft);
-            stream.SendNext(_IsPut);
-            stream.SendNext(_IsBreak);
-        }
-        else
-        {
-            this._IsForawrd = (bool)stream.ReceiveNext();
-            this._IsBack = (bool)stream.ReceiveNext();
-            this._IsRight = (bool)stream.ReceiveNext();
-            this._IsLeft = (bool)stream.ReceiveNext();
-            this._IsPut = (bool)stream.ReceiveNext();
-            this._IsBreak = (bool)stream.ReceiveNext();
-
-            if (!_characterOnline)
-                _characterOnline = GetComponent<CharacterOnline>();
-
-            _characterOnline.OnlineUpdate();
-        }
-    }
+    }*/
 }

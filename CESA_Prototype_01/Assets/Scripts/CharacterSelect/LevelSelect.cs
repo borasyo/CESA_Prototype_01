@@ -25,7 +25,6 @@ public class LevelSelect : MonoBehaviour
             if (!LevelList[i])
             {
                 SelectLevel[i] = -1;    //  ナシ
-                Debug.Log("-1");
                 continue;
             }
 

@@ -30,7 +30,7 @@ public class Referee : MonoBehaviour
             if (type == SandItem.eType.MAX || type == charaType)
                 continue;
 
-            FieldObjectBase obj =charaList[i];
+            FieldObjectBase obj = charaList[i];
             charaList.Remove(charaList[i]);
 
 #if DEBUG

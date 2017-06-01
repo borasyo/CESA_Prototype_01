@@ -43,16 +43,21 @@ public class CharacterInput : Photon.MonoBehaviour
 
     public bool GetActionInput(Character.eAction act)
     {
+        bool IsAction = false;
         switch(act)
         {
             case Character.eAction.PUT:
-                return _IsPut;
+                IsAction = _IsPut;
+                _IsPut = false;
+                break;
             case Character.eAction.BREAK:
-                return _IsBreak;
+                IsAction = _IsBreak;
+                _IsBreak = false;
+                break;
             default:
                 break;
         }
 
-        return false;
+        return IsAction;
     }
 }

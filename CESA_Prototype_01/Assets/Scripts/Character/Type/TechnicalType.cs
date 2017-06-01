@@ -113,6 +113,7 @@ public class TechnicalType : Character
         GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumber), Quaternion.identity);
         item.AddComponent<DelayPut>().Init(dirNumber);
         _charactorGauge.PutAction();
+        _fNotMoveTime = 0.0f;
     }
 
     override public bool RunSpecialMode(bool IsRun)

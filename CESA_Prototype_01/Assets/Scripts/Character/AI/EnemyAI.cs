@@ -469,9 +469,10 @@ public class EnemyAI : MonoBehaviour
             .Subscribe(_ =>
             {
                 int risk = 0;
+                bool isChara = false;
 
                 //  自分の位置のリスク計算
-                risk += RiskCheck(null, _fieldObjBase.GetDataNumber());
+                risk += RiskCheck(null, _fieldObjBase.GetDataNumber(), ref isChara);
 
                 //  周りの状態からリスクを追加
                 List<tDistanceData> distanceList = _DistanceDatas.Where(x => x._nDistance > 0 && x._nDistance <= riskRange).ToList();
@@ -479,7 +480,7 @@ public class EnemyAI : MonoBehaviour
                 foreach (tDistanceData data in distanceList)
                 {
                     //  マスの状態と近さでリスク計算
-                    int add = RiskCheck(FieldData.Instance.GetObjData(data._nIdx), data._nIdx); // / data._nDistance;
+                    int add = RiskCheck(FieldData.Instance.GetObjData(data._nIdx), data._nIdx, ref isChara);
                     debug += add + " + ";
                     risk += add;
 
@@ -493,13 +494,18 @@ public class EnemyAI : MonoBehaviour
             });
     }
 
-    protected virtual int RiskCheck(FieldObjectBase obj, int idx)
+    //  キャラのリスクは大きいので、2体以上被っていたら追加しない
+    protected virtual int RiskCheck(FieldObjectBase obj, int idx, ref bool isChara)
     {
         if (obj)
         {
             switch (obj.tag)
             {
                 case "Character":
+                    if (isChara)
+                        return 0;
+
+                    isChara = true;
                     return RiskData.nChara;
 
                 case "SandItem":

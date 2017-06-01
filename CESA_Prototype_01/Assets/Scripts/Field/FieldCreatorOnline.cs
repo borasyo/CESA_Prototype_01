@@ -76,13 +76,11 @@ public class FieldCreatorOnline : FieldCreator
 
     GameObject CreateCharaObj(GameObject obj, Vector3 pos)
     {
-        Debug.Log(obj.name);
         GameObject instance = PhotonNetwork.Instantiate("Prefabs/Chara/" + obj.name + "_Online", pos, obj.transform.rotation, 0);
         return instance;
     }
     GameObject CreateCPUCharaObj(GameObject obj, Vector3 pos)
     {
-        Debug.Log(obj.name);
         GameObject instance = PhotonNetwork.Instantiate("Prefabs/Chara/" + obj.name + "_Online,CPU", pos, obj.transform.rotation, 0);
         return instance;
     }

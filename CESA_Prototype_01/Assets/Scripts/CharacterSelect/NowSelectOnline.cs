@@ -168,6 +168,10 @@ public class NowSelectOnline : NowSelect
 
         //  空いた箇所にCPUを作成する
         string player = (_charaSele.GetNullIdx() + 1).ToString();
+
+        if (player == "0")
+            return;
+
         GameObject obj = PhotonNetwork.Instantiate("Prefabs/CharacterSelect/" + player + "P_CPU", Vector3.zero, Quaternion.identity, 0);
     }
 }

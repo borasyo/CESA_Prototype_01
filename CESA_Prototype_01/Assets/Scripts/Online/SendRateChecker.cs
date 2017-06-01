@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class SendRateChecker : MonoBehaviour
 {
-	// Update is called once per frame
-	void Update ()
+    void Start()
+    {
+        PhotonNetwork.sendRateOnSerialize = PhotonNetwork.sendRate = 60;
+    }
+
+    /*void Update()
     {
         PhotonNetwork.sendRateOnSerialize = PhotonNetwork.sendRate = (int)(1.0f / Time.deltaTime);
-    }
+    }*/
 }

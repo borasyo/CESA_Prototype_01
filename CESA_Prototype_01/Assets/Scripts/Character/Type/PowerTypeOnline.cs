@@ -14,11 +14,11 @@ public class PowerTypeOnline : CharacterOnline
 
     override protected void ItemBreak()
     {
-        if (!_charactorGauge.BreakGaugeCheck() ||
-            !_charactorInput.GetActionInput(eAction.BREAK))
+        if (!_charactorGauge.BreakGaugeCheck() || !_charactorInput.GetActionInput(eAction.BREAK))
             return;
 
-        FieldObjectBase obj = FieldData.Instance.GetObjData(GetDataNumberForDir());
+        int dirNumber = GetDataNumberForDir();
+        FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
 
         if (_IsSpecialMode)
         {
@@ -37,10 +37,7 @@ public class PowerTypeOnline : CharacterOnline
                 return;
         }
 
-        FieldData.Instance.SetObjData(null, GetDataNumberForDir());
-        FieldData.Instance.ExceptionChangeField();
-        Destroy(obj.gameObject);
-        _charactorGauge.BreakAction();
+        photonView.RPC("OnlineItemBreak", PhotonTargets.All, dirNumber);
     }
 
     override public bool RunSpecialMode(bool IsRun)

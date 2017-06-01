@@ -56,7 +56,64 @@ public class CharacterOnline : Character
         NumberUpdate();
 
         //  アクション
-        ItemPut();
-        ItemBreak();
+        //ItemPut();
+        //ItemBreak();
     }
+
+    override protected void ItemPut()
+    {
+        if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
+            return;
+
+        int dirNumber = GetDataNumberForDir();
+        if (dirNumber < 0 || GameScaler.GetRange < dirNumber)
+            return;
+
+        FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
+        if (obj)
+            return;
+
+        Vector3 pos = GetPosForNumber(dirNumber);
+        photonView.RPC("OnlineItemPut", PhotonTargets.All, pos, dirNumber, true);
+    }
+   
+    override protected void ItemBreak()
+    {
+        if (!_charactorGauge.BreakGaugeCheck() || !_charactorInput.GetActionInput(eAction.BREAK))
+            return;
+
+        int dirNumber = GetDataNumberForDir();
+        FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
+
+        if (!obj || obj.GetSandType() == SandItem.eType.MAX)
+            return;
+
+        photonView.RPC("OnlineItemBreak", PhotonTargets.All, dirNumber);
+    }
+
+    [PunRPC]
+    public virtual void OnlineItemPut(Vector3 pos, int dirNumber, bool isPostProcess)
+    {   
+        GameObject item = (GameObject)Instantiate(_sandItem, pos, Quaternion.identity);
+        FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumber);
+
+        if (!isPostProcess)
+            return;
+
+        _charactorGauge.PutAction();
+        _fNotMoveTime = 0.0f;
+    } 
+
+    [PunRPC]
+    public virtual void OnlineItemBreak(int dirNumber)
+    { 
+        FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
+
+        FieldData.Instance.SetObjData(null,dirNumber);
+        FieldData.Instance.ExceptionChangeField();
+        Destroy(obj.gameObject);
+        _charactorGauge.BreakAction();
+        _fNotMoveTime = 0.0f;
+    }
+
 }

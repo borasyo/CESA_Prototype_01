@@ -51,7 +51,7 @@ public class Character : FieldObjectBase
     public bool GetSpecialModeFlg { get { return _IsSpecialMode; } }
 
     bool _IsNotMove = false;
-    float _fNotMoveTime = 0.0f;
+    protected float _fNotMoveTime = 0.0f;
     public bool NotMove { get { return _IsNotMove; } }
 
     # endregion
@@ -233,8 +233,7 @@ public class Character : FieldObjectBase
 
     virtual protected void ItemBreak()
     {
-        if (!_charactorGauge.BreakGaugeCheck() || 
-            !_charactorInput.GetActionInput(eAction.BREAK))
+        if (!_charactorGauge.BreakGaugeCheck() || !_charactorInput.GetActionInput(eAction.BREAK))
             return;
 
         FieldObjectBase obj = FieldData.Instance.GetObjData(GetDataNumberForDir());
