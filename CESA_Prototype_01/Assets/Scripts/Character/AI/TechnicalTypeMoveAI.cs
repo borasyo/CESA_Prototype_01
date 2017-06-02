@@ -64,13 +64,31 @@ public class TechnicalTypeMoveAI : MoveAI
         if (!obj && !FieldDataChecker.Instance.SandCheck(idx, name))
             return false;
 
-        //  特殊時はさらに先も検索し、無ければ蹴れるので進む
-        if (_character.GetSpecialModeFlg && obj.GetSandType() != SandItem.eType.MAX && !FieldDataChecker.Instance.CheckObstacleObj(idx + (idx - _nNowNumber), gameObject))
+        //  特殊時はさらに先も検索し、蹴れるなら蹴る
+        if (_character.GetSpecialModeFlg && KickCheck(obj, idx))
             return false;
 
         _state = eState.STOP;
         _nNowRoute = _astar.GetRoute.Count; //  強制終了
         //Debug.Log("障害物を検知！");
+        return true;
+    }
+
+    //  目の前の障害物はキックできるかをチェック
+    bool KickCheck(FieldObjectBase obj, int idx)
+    {
+        //  ブロックorキャラなら蹴れない
+        if (obj.tag == "Block" || obj.tag == "Character")
+            return false;
+
+        //  蹴れるオブジェクトなので、その先を検索
+        FieldObjectBase next = FieldData.Instance.GetObjData(idx + (idx - _nNowNumber));
+
+        //  何かあるなら蹴っても動かないので停止
+        if (next)
+            return false;
+
+        //  蹴って動かせるので蹴る
         return true;
     }
 }

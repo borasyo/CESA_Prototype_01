@@ -82,8 +82,8 @@ public class AIData : MonoBehaviour
         _RatioDataWeak[b].SpecialPut     = 40;
         _RatioDataWeak[b].SpecialBreak   = 10;
 
-        _RiskDataWeak[b].maxRisk = 20;
-        _RiskDataWeak[b].riskRange = 1;
+        _RiskDataWeak[b].maxRisk = 30;
+        _RiskDataWeak[b].riskRange = 2;
         #endregion
 
         #region Normal
@@ -97,7 +97,7 @@ public class AIData : MonoBehaviour
         _RatioDataNormal[b].SpecialPut   = 60;
         _RatioDataNormal[b].SpecialBreak = 10;
 
-        _RiskDataNormal[b].maxRisk = 30;
+        _RiskDataNormal[b].maxRisk = 20;
         _RiskDataNormal[b].riskRange = 2;
         #endregion
 
@@ -133,8 +133,8 @@ public class AIData : MonoBehaviour
         _RatioDataWeak[p].SpecialPut = 10;
         _RatioDataWeak[p].SpecialBreak = 30;
 
-        _RiskDataWeak[p].maxRisk = 20;
-        _RiskDataWeak[p].riskRange = 1;
+        _RiskDataWeak[p].maxRisk = 30;
+        _RiskDataWeak[p].riskRange = 2;
         #endregion
 
         #region Normal
@@ -148,7 +148,7 @@ public class AIData : MonoBehaviour
         _RatioDataNormal[p].SpecialPut = 20;
         _RatioDataNormal[p].SpecialBreak = 60;
 
-        _RiskDataNormal[p].maxRisk = 40;
+        _RiskDataNormal[p].maxRisk = 20;
         _RiskDataNormal[p].riskRange = 2;
         #endregion
 
@@ -163,7 +163,7 @@ public class AIData : MonoBehaviour
         _RatioDataStrong[p].SpecialPut = 20;
         _RatioDataStrong[p].SpecialBreak = 70;
 
-        _RiskDataStrong[p].maxRisk = 40;
+        _RiskDataStrong[p].maxRisk = 30;
         _RiskDataStrong[p].riskRange = 3;
         #endregion
 
@@ -184,8 +184,8 @@ public class AIData : MonoBehaviour
         _RatioDataWeak[s].SpecialPut = 30;
         _RatioDataWeak[s].SpecialBreak = 10;
 
-        _RiskDataWeak[s].maxRisk = 100;
-        _RiskDataWeak[s].riskRange = 1;
+        _RiskDataWeak[s].maxRisk = 40;
+        _RiskDataWeak[s].riskRange = 2;
         #endregion
 
         #region Normal
@@ -199,7 +199,7 @@ public class AIData : MonoBehaviour
         _RatioDataNormal[s].SpecialPut = 50;
         _RatioDataNormal[s].SpecialBreak = 20;
 
-        _RiskDataNormal[s].maxRisk = 50;
+        _RiskDataNormal[s].maxRisk = 30;
         _RiskDataNormal[s].riskRange = 2;
         #endregion
 
@@ -215,7 +215,7 @@ public class AIData : MonoBehaviour
         _RatioDataStrong[s].SpecialBreak = 5;
 
         _RiskDataStrong[s].maxRisk = 35;
-        _RiskDataStrong[s].riskRange = 2;
+        _RiskDataStrong[s].riskRange = 3;
         #endregion
 
         #endregion
@@ -235,8 +235,8 @@ public class AIData : MonoBehaviour
         _RatioDataWeak[t].SpecialPut = 10;
         _RatioDataWeak[t].SpecialBreak = 10;
 
-        _RiskDataWeak[t].maxRisk = 20;
-        _RiskDataWeak[t].riskRange = 1;
+        _RiskDataWeak[t].maxRisk = 35;
+        _RiskDataWeak[t].riskRange = 2;
         #endregion
 
         #region Normal
@@ -250,8 +250,8 @@ public class AIData : MonoBehaviour
         _RatioDataNormal[t].SpecialPut = 10;
         _RatioDataNormal[t].SpecialBreak = 10;
 
-        _RiskDataNormal[t].maxRisk = 30;
-        _RiskDataNormal[t].riskRange = 2;
+        _RiskDataNormal[t].maxRisk = 40;
+        _RiskDataNormal[t].riskRange = 3;
         #endregion
 
         #region Strong
@@ -265,7 +265,7 @@ public class AIData : MonoBehaviour
         _RatioDataStrong[t].SpecialPut = 10;
         _RatioDataStrong[t].SpecialBreak = 10;
 
-        _RiskDataStrong[t].maxRisk = 30;
+        _RiskDataStrong[t].maxRisk = 35;
         _RiskDataStrong[t].riskRange = 3;
         #endregion
 

@@ -38,16 +38,20 @@ public class CharacterOnline : Character
     void Update()
     {
         if (!photonView.isMine)
+        {
+            NumberUpdate();
+            _nOldNumber = GetDataNumber();
             return;
+        }
 
         base.Update();
     }
 
     public void OnlineUpdate()
     {
-        Debug.Log("OnlineUpdate : " + transform.name);
+        //Debug.Log("OnlineUpdate : " + transform.name);
 
-        _nOldNumber = GetDataNumber();
+        //_nOldNumber = GetDataNumber();
 
         //MoveUpdate(); //  移動は座標同期
         MoveCheck(eDirection.FORWARD);
@@ -56,14 +60,27 @@ public class CharacterOnline : Character
         MoveCheck(eDirection.LEFT);
 
         DirUpdate();
-        NumberUpdate();
+        //NumberUpdate();
 
+        /*if (!photonView.isMine)
+            return;
+        
         //  アクション
-        //ItemPut();
-        //ItemBreak();
+        ItemPut();
+        ItemBreak();*/
     }
 
-    override protected void ItemPut()
+    /*protected override void NumberUpdate()
+    {
+        int nowNumber = GetDataNumber();
+        if (_nOldNumber == nowNumber)
+            return;
+
+        FieldData.Instance.SetObjData(null, _nOldNumber);
+        FieldData.Instance.SetObjData(this, nowNumber);
+    }*/
+
+    protected override void ItemPut()
     {
         if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
             return;
@@ -80,7 +97,7 @@ public class CharacterOnline : Character
         photonView.RPC("OnlineItemPut", PhotonTargets.All, pos, dirNumber, true);
     }
    
-    override protected void ItemBreak()
+    protected override void ItemBreak()
     {
         if (!_charactorGauge.BreakGaugeCheck() || !_charactorInput.GetActionInput(eAction.BREAK))
             return;

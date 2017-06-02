@@ -14,6 +14,7 @@ public class SandMass : FieldObjectBase
     void Start()
     {
         _SpRend = GetComponent<SpriteRenderer>();
+        _SpRend.enabled = false;
 
         float halfPeriod = 0.25f;
 

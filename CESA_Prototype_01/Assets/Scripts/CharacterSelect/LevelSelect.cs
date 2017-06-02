@@ -25,12 +25,12 @@ public class LevelSelect : MonoBehaviour
             if (!LevelList[i])
             {
                 SelectLevel[i] = -1;    //  ナシ
-                Debug.Log(SelectLevel[i]);
+                //Debug.Log(SelectLevel[i]);
                 continue;
             }
 
             SelectLevel[i] = LevelList[i].nNowLevel;
-            Debug.Log(SelectLevel[i]);
+            //Debug.Log(SelectLevel[i]);
         }
     }
 }

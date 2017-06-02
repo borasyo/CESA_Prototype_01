@@ -21,13 +21,13 @@ public class CharaMass : FieldObjectBase {
             .Where(_ => this.enabled)
             .Subscribe(_ =>
                 {
-                    int number = GetDataNumber(transform.parent.position);
+                    int number = GetDataNumber(transform.parent.position); // FieldData.Instance.GetObjIdx(transform.parent.gameObject);
                     transform.position = GetPosForNumber(number);
                 });
 
         //  点滅運動
         _SpRend = GetComponent<SpriteRenderer>();
-        Color defaultColor = _SpRend.color =  ColorChange();
+        Color defaultColor = _SpRend.color = SelectMassColor.Instance.GetBreakColor(transform.parent.name);
         defaultColor.a = 0.25f;  //  min
         _triangleWaveColor = TriangleWaveFactory.Color(defaultColor, _SpRend.color, _fPeriod_Sec / 2.0f);
         this.UpdateAsObservable()
@@ -39,11 +39,23 @@ public class CharaMass : FieldObjectBase {
                 });
 
         // 拡大縮小処理
-       /*_triangleWaveScaler = TriangleWaveFactory.Vector3(Vector3.zero, transform.localScale, _fPeriod_Sec / 4.0f);
+       /*_triangleWaveScaler = TriangleWaveFactory.Vector3(transform.localScale / 2.0f, transform.localScale, _fPeriod_Sec / 6.0f);
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
             .Subscribe(_ =>
                 {
+                    bool bHalfSand = false;
+                    foreach(SandItem.eType type in SandData.Instance.GetHalfSandDataList[GetDataNumber()]._type)
+                    {
+                        if (type == GetSandType())
+                            continue;
+
+                        bHalfSand = true;
+                    }
+
+                    if (!bHalfSand)
+                        return;
+
                     _triangleWaveScaler.Progress();
                     transform.localScale = _triangleWaveScaler.CurrentValue;
                 });*/

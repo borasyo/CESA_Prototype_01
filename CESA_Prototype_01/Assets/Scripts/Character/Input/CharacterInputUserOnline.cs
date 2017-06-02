@@ -42,9 +42,6 @@ public class CharacterInputUserOnline : CharacterInputUser
             _IsPut = Input.GetKeyDown(KeyCode.T);
             _IsBreak = Input.GetKeyDown(KeyCode.T);
         }
-
-        //  同期する
-        //photonView.RPC("Set", PhotonTargets.All, _IsForawrd, _IsBack, _IsRight, _IsLeft, _IsPut, _IsBreak);
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -73,26 +70,4 @@ public class CharacterInputUserOnline : CharacterInputUser
             _characterOnline.OnlineUpdate();
         }
     }
-
-    /*[PunRPC]
-    public void Set(bool isForward, bool isBack, bool isRight, bool isLeft, bool isPut, bool isBreak)
-    {
-        if (photonView.isMine)
-            return;
-
-        _IsForawrd = isForward;
-        _IsBack = isBack;
-        _IsRight = isRight;
-        _IsLeft = isLeft;
-        _IsPut = isPut;
-        _IsBreak = isBreak;
-        Debug.Log("Set : " + transform.name);
-
-        if(!_characterOnline)
-            _characterOnline = GetComponent<CharacterOnline>();
-
-        //  更新
-        _characterOnline.OnlineUpdate();
-       // Debug.Log("Forward : " + _IsForawrd + ", Back : " + _IsBack + ", Right : " + _IsRight + ", Left : " + _IsLeft);
-    }*/
 }

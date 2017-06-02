@@ -49,12 +49,11 @@ public class Referee : Photon.MonoBehaviour
         ReStart reStart = Instantiate(_explosionPrefab).GetComponent<ReStart>();
         reStart.GetComponentInChildren<TextMesh>().text = obj.GetComponent<Character>().GetPlayerNumber() + "Pは" + obj.GetDataNumber() + "マスで" + type + "に挟まれて死んだ！";
         reStart._IsEnd= false;
-
-        string name = obj.name;
+        
         Destroy(obj.gameObject);
 
-        //  キャラが1人になるか、CPUだけになったら終了
-        if (charaList.Count > 1 && charaList.Where(_ => !_.name.Contains("CPU")).ToList().Count() == 1)
+        //  キャラが2人以上いて、Userもまだ居たら終了じゃない
+        if (charaList.Count > 1 && charaList.Where(x => !x.name.Contains("CPU")).ToList().Count() > 0)
             return;
 
         reStart._IsEnd = true;

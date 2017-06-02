@@ -69,6 +69,7 @@ public class Character : FieldObjectBase
         _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
         _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
         FieldData.Instance.CharaSet(this);
+        FieldData.Instance.SetObjData(this, GetDataNumber());
     }
 
     protected virtual void SetInput(int level)
@@ -84,11 +85,6 @@ public class Character : FieldObjectBase
         {
             _charactorInput = this.gameObject.AddComponent<CharacterInputUser>();
         }
-    }
-
-    void Awake()
-    {
-        FieldData.Instance.SetObjData(this, GetDataNumber());
     }
 
     // Update is called once per frame
@@ -211,7 +207,7 @@ public class Character : FieldObjectBase
 
     #region Action
 
-    virtual protected void ItemPut()
+    protected virtual void ItemPut()
     {
         if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
             return;
@@ -230,7 +226,7 @@ public class Character : FieldObjectBase
         _fNotMoveTime = 0.0f;
     }
 
-    virtual protected void ItemBreak()
+    protected virtual void ItemBreak()
     {
         if (!_charactorGauge.BreakGaugeCheck() || !_charactorInput.GetActionInput(eAction.BREAK))
             return;
@@ -312,7 +308,7 @@ public class Character : FieldObjectBase
 
     #region VirtualMethod
 
-    virtual public bool RunSpecialMode(bool IsRun)
+    public virtual bool RunSpecialMode(bool IsRun)
     {
         //  継承先で記述
         return false;

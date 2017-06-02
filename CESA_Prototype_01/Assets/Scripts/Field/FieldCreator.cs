@@ -54,11 +54,11 @@ public class FieldCreator : MonoBehaviour
 
                 GameObject tile = CreateObj(TileObj, createPos);
                 tile.transform.eulerAngles = new Vector3(90,0,0);
-#if DEBUG
+/*#if DEBUG
                 tile.GetComponentInChildren<TextMesh>().text = (z * GameScaler._nWidth + x).ToString();
 #else
                 Destroy(tile.transform.GetChild(0).gameObject);
-#endif
+#endif*/
             }
         } 
     }

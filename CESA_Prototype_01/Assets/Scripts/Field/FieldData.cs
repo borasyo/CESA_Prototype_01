@@ -66,7 +66,7 @@ public class FieldData : Photon.MonoBehaviour
     public bool ChangeField { get { return _IsChangeField; } }
     bool _IsChangeFieldWithChara = false;   //  キャラを含めたFieldに変更があったか
     public bool ChangeFieldWithChara { get { return _IsChangeFieldWithChara; } }
-    bool _IsExceptionChangeField = false; 
+    bool _IsExceptionChangeField = false;
     public void ExceptionChangeField() { _IsExceptionChangeField = true; }
 
     protected List<Character> _CharaList = new List<Character>();
@@ -191,6 +191,23 @@ public class FieldData : Photon.MonoBehaviour
     public void CharaSet(Character chara)
     {
         _CharaList.Add(chara);
+    }
+
+    public int GetObjIdx(GameObject obj)
+    {
+        int idx = 0;
+        for(int i = 0; i < _ObjectDataArray.Length; i++)
+        {
+            if (!_ObjectDataArray[i])
+                continue;
+
+            if (obj != _ObjectDataArray[i].gameObject)
+                continue;
+
+            idx = i;
+            break;
+        }
+        return idx;
     }
 
     #if DEBUG

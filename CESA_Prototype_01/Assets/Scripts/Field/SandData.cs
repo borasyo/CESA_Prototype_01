@@ -158,6 +158,10 @@ public class SandData : MonoBehaviour
         int nRoopCnt = 0;
         while (nRemRange > 0)
         {
+            int idx = number + (add * nRoopCnt);
+            if (idx < 0 || GameScaler.GetRange <= idx)
+                break;
+
             nRoopCnt++; 
             nRemRange--;
             checkData.first = objDataArray[number + (add * nRoopCnt)];
@@ -171,6 +175,10 @@ public class SandData : MonoBehaviour
         nRoopCnt = 0;
         while (nRemRange > 0)
         {
+            int idx = number - (add * nRoopCnt);
+            if (idx < 0 || GameScaler.GetRange <= idx)
+                break;
+
             nRoopCnt++; 
             nRemRange--;
             checkData.second = objDataArray[number - (add * nRoopCnt)];

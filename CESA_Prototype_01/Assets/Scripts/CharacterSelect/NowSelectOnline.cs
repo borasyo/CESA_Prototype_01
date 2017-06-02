@@ -73,7 +73,6 @@ public class NowSelectOnline : NowSelect
 
         if (!_charaSele)
             _charaSele = GameObject.FindWithTag("SelectCanvas").GetComponent<CharacterSelectOnline>();
-        _charaSele.SetPlayerNumber();
 
         _nInitNumber = _charaSele.GetCreateNumber();
         _charaSele.SetNowSelect(this, _nInitNumber);
@@ -158,6 +157,9 @@ public class NowSelectOnline : NowSelect
 
     void OnDestroy()
     {
+        if(photonView.isMine)
+            _charaSele.SetPlayerNumber(_nInitNumber);
+
         if (transform.parent.childCount >= 2)
             return;
 

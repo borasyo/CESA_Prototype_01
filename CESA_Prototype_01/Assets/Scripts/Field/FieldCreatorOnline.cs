@@ -53,6 +53,7 @@ public class FieldCreatorOnline : FieldCreator
         else
         {
             int number = CharacterSelectOnline._nMyNumber;
+            //Debug.Log(number);
             switch(number)
             {
                 case 1:

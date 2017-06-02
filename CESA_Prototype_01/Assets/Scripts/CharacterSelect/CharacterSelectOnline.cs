@@ -26,19 +26,10 @@ public class CharacterSelectOnline : CharacterSelect
     }
     
     //  自身のプレイヤー番号をセット 
-    public void SetPlayerNumber()
+    public void SetPlayerNumber(int number)
     {
-        if (PhotonNetwork.isMasterClient)
-            return;
-
-        for (int i = 0; i < _nowSelectDatas.Length; i++)
-        {
-            if (_nowSelectDatas[i] && _nowSelectDatas[i].transform.parent.childCount < 2)
-                continue;
-
-            _nMyNumber = i;
-            break;
-        }
+        _nMyNumber = number;
+        //Debug.Log(_nMyNumber);
     }
 
     //  新たに生成したキャラセレパネルはどこに配置すべきかを返す
@@ -84,7 +75,7 @@ public class CharacterSelectOnline : CharacterSelect
             return number;
         }
 
-        string debug = gameObject.name + "は";
+        /*string debug = gameObject.name + "は";
         foreach (NowSelect now in _nowSelectDatas)
         {
             if(now)
@@ -96,7 +87,7 @@ public class CharacterSelectOnline : CharacterSelect
                 debug += "null, ";
             }
         }
-        Debug.Log(debug);
+        Debug.Log(debug);*/
         //  失敗
         return -1;
     }
