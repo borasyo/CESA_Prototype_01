@@ -23,6 +23,7 @@ public class CharacterSelectOnline : CharacterSelect
             _nowSelectDatas[idx].transform.parent.gameObject.SetActive(false);
             _nowSelectDatas[idx] = null;
         }
+        PhotonNetwork.room.open = true;
     }
     
     //  自身のプレイヤー番号をセット 
@@ -176,6 +177,7 @@ public class CharacterSelectOnline : CharacterSelect
         _IsChange = false;
         SetChara();
         GetComponent<LevelSelect>().SetLevel();
+        PhotonNetwork.room.open = false;
         SceneManager.LoadScene("OnlineGameMain");
     }
 }

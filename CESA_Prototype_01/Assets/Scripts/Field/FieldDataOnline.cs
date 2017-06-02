@@ -73,11 +73,32 @@ public class FieldDataOnline : FieldData
         creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
         UpdateStart();
+        StartCoroutine(CharaSet());
     }
 
     protected override void Init()
     {
         return; // 無効化
+    }
+
+    protected override IEnumerator CharaSet()
+    {
+        GameObject[] charas = null;
+        yield return new WaitWhile(() =>
+        {
+            charas = GameObject.FindGameObjectsWithTag("Character");
+
+            //   プレイヤーの数と、生成されたUserキャラが等しくなるまで待つ
+            if (charas.Where(x => !x.name.Contains("CPU")).ToArray().Length != PhotonNetwork.playerList.Length)
+                return true;
+
+            return false;
+        });
+
+        foreach(GameObject obj in charas)
+        {
+            _CharaList.Add(obj.GetComponent<Character>());
+        }
     }
 
     [PunRPC]

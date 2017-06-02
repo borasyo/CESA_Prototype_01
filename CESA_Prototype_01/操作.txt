@@ -1,9 +1,3 @@
-   移動　置く　壊す
+   移動　置く、壊す
 
-1P WASD　R　T 
-2P アローキー　O　P
-3P FCVB　H　J
-4P 7UIY　9　0
-
-ステセレは書いてある通り。Enterでゲームメインに移動
-ゲームメインでBackSpaceでステセレに戻る
+1P WASD　Tキー 

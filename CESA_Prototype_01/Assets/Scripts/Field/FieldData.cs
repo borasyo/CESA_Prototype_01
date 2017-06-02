@@ -92,6 +92,7 @@ public class FieldData : Photon.MonoBehaviour
         creator.Create(GameScaler._nWidth, GameScaler._nHeight);
 
         UpdateStart();
+        StartCoroutine(CharaSet());
     }
 
     protected void UpdateStart()
@@ -148,6 +149,15 @@ public class FieldData : Photon.MonoBehaviour
             return null;
 
         return _ObjectDataArray[number];
+    }
+    protected virtual IEnumerator CharaSet()
+    {
+        GameObject[] charas = GameObject.FindGameObjectsWithTag("Character");
+
+        foreach (GameObject obj in charas)
+            _CharaList.Add(obj.GetComponent<Character>());
+
+        yield return null;
     }
 
     //  キャラクターを取得する時のみ使用する
