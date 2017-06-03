@@ -154,6 +154,10 @@ public class PutAI : MonoBehaviour
                 number = nowElement;
                 return true;
             }).ToArray();
+
+            if (dataList.Length <= 0)
+                return false;
+
             data = dataList[dataList.Length - 1];
         }
         else
@@ -165,6 +169,10 @@ public class PutAI : MonoBehaviour
 
                 return false;
             }).ToArray();
+
+            if (dataList.Length <= 0)
+                return false;
+
             data = dataList[Random.Range(0, dataList.Length)];
         }
 

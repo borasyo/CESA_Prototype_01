@@ -116,7 +116,7 @@ public class MoveAI : MonoBehaviour
             if (objList[i])
                 continue;
 
-            SandItem.eType type = SandData.Instance.GetSandDataList[i];
+            SandItem.eType type = SandData.Instance.GetSandDataList[i]._type;
             if (type != SandItem.eType.MAX && !FieldDataChecker.Instance.TypeCheck(name, type))
                 continue;
 

@@ -26,7 +26,7 @@ public class Referee : Photon.MonoBehaviour
                 continue;
 
             SandItem.eType charaType = CheckType(charaList[i].name);
-            SandItem.eType type = SandData.Instance.GetSandDataList[charaList[i].GetDataNumber()];
+            SandItem.eType type = SandData.Instance.GetSandDataList[charaList[i].GetDataNumber()]._type;
 
             if (type == SandItem.eType.MAX || type == charaType)
                 continue;

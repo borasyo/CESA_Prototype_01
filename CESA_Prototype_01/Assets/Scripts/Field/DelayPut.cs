@@ -24,6 +24,12 @@ public class DelayPut : MonoBehaviour
         _MeRend = GetComponentInChildren<MeshRenderer>();
         _MeRend.enabled = false;
 
+        //  子も隠す
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+
         _InitScale = transform.localScale;
         transform.localScale = Vector3.zero;
 
@@ -37,7 +43,13 @@ public class DelayPut : MonoBehaviour
 
                 if(_fDelayTime_Sec > 0.0f)
                     return;
-                    
+
+                //  子も表示
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    transform.GetChild(i).gameObject.SetActive(true);
+                }
+
                 GetComponent<SandItem>().GetType = SetType;
                 FieldData.Instance.ExceptionChangeField();
                 Destroy(me);

@@ -521,7 +521,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            SandItem.eType type = SandData.Instance.GetSandDataList[idx];
+            SandItem.eType type = SandData.Instance.GetSandDataList[idx]._type;
             if (type != SandItem.eType.MAX)
             {
                 if (FieldDataChecker.Instance.TypeCheck(name, type))

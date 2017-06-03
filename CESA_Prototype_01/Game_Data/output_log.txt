@@ -1,0 +1,147 @@
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 960M (ID=0x139b)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   21.21.13.7619
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.045 seconds
+Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 1.435258 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 878 -> priority: 1 
+  Thread -> id: 1e3c -> priority: 1 
+  Thread -> id: 1e44 -> priority: 1 
+  Thread -> id: 7dc -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 177.641815 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 863.
+Total: 0.574814 ms (FindLiveObjects: 0.047802 ms CreateObjectMapping: 0.051753 ms MarkObjects: 0.465777 ms  DeleteObjects: 0.008691 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.645826 ms
+
+Unloading 139 unused Assets to reduce memory usage. Loaded Objects now: 2824.
+Total: 1.334517 ms (FindLiveObjects: 0.245333 ms CreateObjectMapping: 0.161185 ms MarkObjects: 0.757728 ms  DeleteObjects: 0.169086 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.952392 ms
+
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 846.
+Total: 0.965925 ms (FindLiveObjects: 0.072691 ms CreateObjectMapping: 0.035555 ms MarkObjects: 0.770370 ms  DeleteObjects: 0.085728 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.724937 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 928.
+Total: 0.577580 ms (FindLiveObjects: 0.084938 ms CreateObjectMapping: 0.036345 ms MarkObjects: 0.450370 ms  DeleteObjects: 0.005530 ms)
+
+Joined lobby
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Joined Room
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+RoomInit
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterSelect.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.837925 ms
+
+Unloading 81 unused Assets to reduce memory usage. Loaded Objects now: 1617.
+Total: 1.051653 ms (FindLiveObjects: 0.114172 ms CreateObjectMapping: 0.074666 ms MarkObjects: 0.763654 ms  DeleteObjects: 0.098765 ms)
+
+Received OnSerialization for view ID 3003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 3003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 3003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 3003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 3003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 3003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 3003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.399701 ms
+
+Unloading 69 unused Assets to reduce memory usage. Loaded Objects now: 1750.
+Total: 1.565629 ms (FindLiveObjects: 0.071111 ms CreateObjectMapping: 0.053333 ms MarkObjects: 1.339258 ms  DeleteObjects: 0.086913 ms)
+
+Received OnSerialization for view ID 2003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 2003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 2003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 2003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 2003. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.235159 ms
+
+Unloading 61 unused Assets to reduce memory usage. Loaded Objects now: 1750.
+Total: 1.001876 ms (FindLiveObjects: 0.115357 ms CreateObjectMapping: 0.055308 ms MarkObjects: 0.774715 ms  DeleteObjects: 0.056098 ms)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.178467 ms
+
+Unloading 121 unused Assets to reduce memory usage. Loaded Objects now: 1750.
+Total: 1.165826 ms (FindLiveObjects: 0.127999 ms CreateObjectMapping: 0.059654 ms MarkObjects: 0.865974 ms  DeleteObjects: 0.111407 ms)
+

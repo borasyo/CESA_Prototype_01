@@ -117,7 +117,7 @@ public class FieldDataChecker : MonoBehaviour
         //  変換
         string player = name[name.IndexOf("Player") - 1].ToString();
 
-        SandItem.eType type = SandData.Instance.GetSandDataList[idx];
+        SandItem.eType type = SandData.Instance.GetSandDataList[idx]._type;
         if (type == SandItem.eType.MAX)
             return false;
         

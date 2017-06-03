@@ -53,7 +53,8 @@ public class FieldCreator : MonoBehaviour
                 }
 
                 GameObject tile = CreateObj(TileObj, createPos);
-                tile.transform.eulerAngles = new Vector3(90,0,0);
+                //tile.transform.eulerAngles = new Vector3(90,0,0);
+                tile.transform.localPosition += new Vector3(-0.48f, -0.06f, 0.46f); //  モデルの原点がズレているため一旦補正　(リテイク後消す)
 /*#if DEBUG
                 tile.GetComponentInChildren<TextMesh>().text = (z * GameScaler._nWidth + x).ToString();
 #else
