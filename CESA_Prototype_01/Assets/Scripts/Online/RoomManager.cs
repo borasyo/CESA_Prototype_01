@@ -50,7 +50,7 @@ public class RoomManager : Photon.MonoBehaviour
 	private List<GameObject> roomButtonPool;	// roomButtonのPool
 
 	private GameObject charaSelectObj;
-    private static bool isJoinLobby = false;
+    //private static bool isJoinLobby = false;
 
     public int nMyPlayerCount = 0;
 
@@ -103,7 +103,7 @@ public class RoomManager : Photon.MonoBehaviour
     {
         if (PhotonNetwork.inRoom)
         {
-            roomSelectPanel.SetActive(false);
+            roomSelectPanel.transform.parent.gameObject.SetActive(false);
             roomButtonPrefab = Resources.Load("Prefabs/Online/roomButton") as GameObject;	// Resourceからprefabを取得
 
             // roomButtonの作成
@@ -199,7 +199,7 @@ public class RoomManager : Photon.MonoBehaviour
 	// room作成buttonが押されたときの処理
 	public void OnPressCreateRoomButton()
     {
-        if (!isJoinLobby)
+        if (!PhotonNetwork.insideLobby)
             return;
 
 		// 何も入力がされていないとき、処理しない
@@ -286,7 +286,7 @@ public class RoomManager : Photon.MonoBehaviour
 	void OnJoinedLobby()
     {
 		Debug.Log ("Joined lobby");
-        isJoinLobby = true;
+        //isJoinLobby = true;
     }
 
 	// Lobbyに参加した時、Roomが作成されていなかった時に呼ばれる

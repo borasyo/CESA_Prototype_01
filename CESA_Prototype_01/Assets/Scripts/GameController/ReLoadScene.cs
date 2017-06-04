@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ReLoadScene : Photon.MonoBehaviour 
 {
@@ -23,6 +24,10 @@ public class ReLoadScene : Photon.MonoBehaviour
         }
         else
         {
+            if (!PhotonNetwork.isMasterClient)
+                return;
+
+            PhotonNetwork.DestroyAll();
             photonView.RPC("LoadOnlineRoom", PhotonTargets.All);
         }
     }

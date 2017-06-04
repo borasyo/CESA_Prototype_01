@@ -35,12 +35,11 @@ public class CharacterInputUserOnline : CharacterInputUser
         }
         else
         {
-            _IsForawrd = Input.GetKey(KeyCode.W);
-            _IsBack = Input.GetKey(KeyCode.S);
-            _IsRight = Input.GetKey(KeyCode.D);
-            _IsLeft = Input.GetKey(KeyCode.A);
-            _IsPut = Input.GetKeyDown(KeyCode.T);
-            _IsBreak = Input.GetKeyDown(KeyCode.T);
+            _IsForawrd = (Input.GetAxisRaw("Vertical") >= 1.0f);// Input.GetKey(KeyCode.W);
+            _IsBack = (Input.GetAxisRaw("Vertical") <= -1.0f);  //Input.GetKey(KeyCode.S);
+            _IsRight = (Input.GetAxisRaw("Horizontal") >= 1.0f); //Input.GetKey(KeyCode.D);
+            _IsLeft = (Input.GetAxisRaw("Horizontal") <= -1.0f); //Input.GetKey(KeyCode.A);
+            _IsPut = _IsBreak = Input.GetButtonDown("Action"); // Input.GetKeyDown(KeyCode.T);
         }
     }
 

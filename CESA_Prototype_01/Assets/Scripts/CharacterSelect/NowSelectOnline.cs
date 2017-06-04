@@ -69,6 +69,17 @@ public class NowSelectOnline : NowSelect
                 _rectTrans.localPosition = _charaSele.GetLocalPos(gameObject);
                 transform.parent.localScale = Vector3.one;
             });
+
+        PlayerNumber playerNumber = transform.parent.GetComponentInChildren<PlayerNumber>();
+        if (playerNumber)
+        {
+            playerNumber.Set(_nInitNumber);
+            this.ObserveEveryValueChanged(_ => _nInitNumber)
+                .Subscribe(_ =>
+                {
+                    transform.parent.GetComponentInChildren<PlayerNumber>().Set(_nInitNumber);
+                });
+        }
     }
 
     IEnumerator Set()
@@ -85,12 +96,12 @@ public class NowSelectOnline : NowSelect
             if (CharacterSelectOnline._nMyNumber <= 0)
             {
                 idx = RoomManager.Instance.nMyPlayerCount;
-                Debug.Log("Start : " + idx);
+                //Debug.Log("Start : " + idx);
             }
             else
             {
                 idx = CharacterSelectOnline._nMyNumber;
-                Debug.Log("Already : " + idx);
+                //Debug.Log("Already : " + idx);
             }
             _photonView.RPC("AllSet", PhotonTargets.All, idx);
         }
@@ -116,7 +127,6 @@ public class NowSelectOnline : NowSelect
         yield return new WaitWhile(() => _charaSele == null);
 
         _nInitNumber = idx; // _charaSele.GetCreateNumber();
-        transform.parent.GetComponentInChildren<PlayerNumber>().Set(_nInitNumber);
 
         _charaSele.SetNowSelect(this, _nInitNumber);
         SetDestroyCheck();
@@ -158,7 +168,6 @@ public class NowSelectOnline : NowSelect
             return;
 
         CharacterSelectOnline._nMyNumber = idx;
-        transform.parent.GetComponentInChildren<PlayerNumber>().Set(_nInitNumber);
     }
 
     public override void Add()

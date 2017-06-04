@@ -137,7 +137,7 @@ public class Character : FieldObjectBase
         }
 
         _fNotMoveTime += Time.deltaTime;
-        _IsNotMove = _fNotMoveTime >= 0.5f;
+        _IsNotMove = _fNotMoveTime >= 1.0f;
     }
 
     virtual protected bool MoveCheck(eDirection dir)

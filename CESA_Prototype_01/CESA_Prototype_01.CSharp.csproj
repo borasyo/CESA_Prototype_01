@@ -359,6 +359,17 @@
     <Compile Include="Assets\Scripts\Online\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Online\SendRateChecker.cs" />
     <Compile Include="Assets\Scripts\Online\UIScript.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\GoGame.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\ItemAmount.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\ItemAmountOnline.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\RoundAmount.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\RoundAmountOnline.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\SelectStage.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\SelectStageOnline.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\StageScaler.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\StageScalerOnline.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\TimeAmount.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\TimeAmountOnline.cs" />
     <Compile Include="Assets\Scripts\System\IEnumerableExtensions.cs" />
     <Compile Include="Assets\Scripts\Title\TouchStart.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\ICalculator.cs" />

@@ -107,7 +107,7 @@ public class EnemyAI : MonoBehaviour
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                Debug.Log(_state);
+                //Debug.Log(_state);
                 if (!Input.GetKeyDown(KeyCode.LeftShift))
                     return;
 
@@ -233,8 +233,13 @@ public class EnemyAI : MonoBehaviour
         if (!_IsAI)
             return false;
 #endif
-        if(isDanger)
-            return DangerAI();
+
+        if (isDanger)
+        {
+            bool isSuccess = DangerAI();
+            if (isSuccess)
+                return isSuccess;
+        }
 
         if (_character.NotMove)
             return CharaNotMoveAI();
@@ -244,6 +249,28 @@ public class EnemyAI : MonoBehaviour
             return EnemyStopAI(number);
 
         return NormalAI();
+    }
+
+    bool DangerAI()
+    {
+        bool isSuccess = false;
+        if (_characterGauge.PutGaugeCheck() && Random.Range(0, (_nLevel + 1 * 3)) == 0)
+        {
+            isSuccess = _putAI.HalfSandPut(true);
+            if (isSuccess)
+                _state = eState.PUT;
+        }
+        else
+        {
+            isSuccess = _moveAI.SearchRoute(_moveAI.RandomNullMass(2 * (_nLevel + 1)), 0);
+            if (isSuccess)
+                _state = eState.MOVE;
+        }
+        //Debug.Log(name + "のDangerAI実行" + isSuccess);
+        if (isSuccess)
+            OffRiskCheck(); //  リスクAIに成功したらその行動はリスクチェックしない
+
+        return isSuccess;
     }
 
     bool CharaNotMoveAI()
@@ -258,7 +285,18 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            _state = eState.WAIT;
+            if (Random.Range(0, 60 * (_nLevel + 1)) == 0)
+            {
+                isSuccess = _moveAI.SearchRoute(_moveAI.RandomNullMass(2), 0);
+                if (isSuccess)
+                    _state = eState.MOVE;
+                else
+                    _state = eState.WAIT;
+            }
+            else
+            {
+                _state = eState.WAIT;
+            }
         }
         //Debug.Log(name + "のCharaNotMoveAI実行" + isSuccess);
         return isSuccess;
@@ -280,25 +318,6 @@ public class EnemyAI : MonoBehaviour
             _state = isSuccess ? eState.BREAK : eState.WAIT; 
         }
         //Debug.Log(name + "のEnemyStopAI実行" + isSuccess);
-        return isSuccess;
-    }
-
-    bool DangerAI()
-    {
-        bool isSuccess = false;
-        if (_characterGauge.PutGaugeCheck())
-        {
-            isSuccess = _putAI.HalfSandPut(true);
-            if (isSuccess)
-                _state = eState.PUT;
-        }
-        else
-        {
-            isSuccess = _moveAI.SearchRoute(_moveAI.RandomNullMass(5), 0);
-            if (isSuccess)
-                _state = eState.MOVE;
-        }
-
         return isSuccess;
     }
 

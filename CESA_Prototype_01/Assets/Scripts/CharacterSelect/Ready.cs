@@ -48,7 +48,6 @@ public class Ready : Photon.MonoBehaviour {
         if (_isReady)
         {
             _isReady = false;
-            nReadyCnt--;
             _text.text = "Ready?";
             _CharaChangeButton.enabled = true;
         }

@@ -26,17 +26,10 @@ public class CharacterSelectOnline : CharacterSelect
         PhotonNetwork.room.open = true;
     }
 
-    /*void Start()
+    void Start()
     {
-        StartCoroutine(InitCharaData());    
+        // baseのStartを呼ばせないため
     }
-
-    IEnumerator InitCharaData()
-    {
-        // TODO : 保存データの挿入タイミングがズレている？
-        yield return new WaitWhile(() => _nowSelectDatas.Where(x => x && !x.name.Contains("CPU")).ToArray().Length != PhotonNetwork.playerList.Length);
-        base.Start();
-    }*/
     
     //  自身のプレイヤー番号をセット 
     public void SetPlayerNumber(int number)
@@ -205,6 +198,6 @@ public class CharacterSelectOnline : CharacterSelect
     IEnumerator GameLoad()
     {
         yield return null;
-        SceneManager.LoadScene("OnlineGameMain");
+        SceneManager.LoadScene("OnlineStageSelect");
     }
 }

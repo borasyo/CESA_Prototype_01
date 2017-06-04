@@ -125,6 +125,6 @@ public class CharacterSelect : Photon.PunBehaviour
         SetChara();
         GetComponent<LevelSelect>().SetLevel();
 
-        SceneManager.LoadScene("GameMain");
+        SceneManager.LoadScene("StageSelect");
     }
 }

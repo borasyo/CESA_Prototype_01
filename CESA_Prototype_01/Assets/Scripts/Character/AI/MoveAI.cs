@@ -165,7 +165,7 @@ public class MoveAI : MonoBehaviour
             return false;
 
         // 目の前の場合は向いて終了
-        if (_nNowRoute == _astar.GetRoute.Count)
+        if (_astar.GetRoute.Count <= 1)
             _state = eState.LAST;
 
         return true;
@@ -247,7 +247,7 @@ public class MoveAI : MonoBehaviour
         _nNowRoute = _astar.GetRoute.Count; //  強制終了
  
         //  Error表示
-        if(_astar.GetRoute.Count > 0)
+        if(_astar.GetRoute.Count > _nNowRoute)
             Debug.LogError("経路に問題がある恐れがあります。" + " 行先 : " + _astar.GetRoute[_nNowRoute] + ", 現地 : " + _nNowNumber);
 
         return Character.eDirection.MAX;

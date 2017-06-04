@@ -77,6 +77,7 @@ public class PutAI : MonoBehaviour
         if (rand < 0)
             return false;
 
+        //Debug.Log(rand);
         return _moveAI.SearchRoute(rand, 1);
     }
 
@@ -84,6 +85,7 @@ public class PutAI : MonoBehaviour
     public bool PlacePut(int place)
     {
         bool isSuccess = _moveAI.SearchRoute(place, 1);
+       // Debug.Log(place);
 
         if (isSuccess)
             _enemyAI.OffRiskCheck();
@@ -95,6 +97,7 @@ public class PutAI : MonoBehaviour
     public bool PlacePutChara(int place)
     {
         bool isSuccess = _moveAI.SearchRoute(place, 2);
+        //Debug.Log(place);
 
         if (isSuccess)
             _enemyAI.OffRiskCheck();
@@ -119,7 +122,7 @@ public class PutAI : MonoBehaviour
 
     public bool HalfSandPut(bool isNear, int nNumber = -1)
     {
-        SandData.HalfSandData[] dataList = SandData.Instance.GetHalfSandDataList; //.Where(_ => TypeCheck(_._type)).ToArray();
+        List<SandData.HalfSandData> dataList = SandData.Instance.GetHalfSandDataList.ToList(); //.Where(_ => TypeCheck(_._type)).ToArray();
         SandData.HalfSandData data = new SandData.HalfSandData();
         int number = 0;
         int idx = 0;    //  半はさまれが上下か左右かを保存
@@ -140,40 +143,49 @@ public class PutAI : MonoBehaviour
                 int nowElement = element;
                 element++;
 
-                if (nowElement == nowNumber)
-                    return false;
-
                 if (_._type[0] != myType && _._type[0] != SandItem.eType.BLOCK && _._type[1] != myType && _._type[1] != SandItem.eType.BLOCK)
                     return false;
 
                 int dis = Mathf.Abs(x - (nowElement % GameScaler._nWidth)) + Mathf.Abs(z - (nowElement / GameScaler._nWidth));
+
+                if (dis <= 1)
+                    return false;
+
                 if(dis >= min)
                     return false;
 
                 min = dis;
                 number = nowElement;
                 return true;
-            }).ToArray();
+            }).ToList();
 
-            if (dataList.Length <= 0)
+            if (dataList.Count <= 0)
                 return false;
 
-            data = dataList[dataList.Length - 1];
+            data = dataList[dataList.Count - 1];
         }
         else
         {
+            int element = 0;
+            int nowNumber = _fieldObjBase.GetDataNumber();
             dataList = dataList.Where(_ => 
             {
+                element++;
+                //  自分の周りは削除
+                if (Mathf.Abs(element - 1 - nowNumber) == 1 || Mathf.Abs(element - 1 - nowNumber) == GameScaler._nWidth)
+                    return false;
+
                 if (_._type[0] == myType || _._type[0] == SandItem.eType.BLOCK || _._type[1] == myType || _._type[1] == SandItem.eType.BLOCK)
                     return true;
 
                 return false;
-            }).ToArray();
+            }).ToList();
 
-            if (dataList.Length <= 0)
+            if (dataList.Count <= 0)
                 return false;
 
-            data = dataList[Random.Range(0, dataList.Length)];
+            data = dataList[Random.Range(0, dataList.Count)];
+            number = SandData.Instance.GetHalfSandDataList.ToList().IndexOf(data);
         }
 
         for (int i = 0; i < data._type.Length; i++)
@@ -201,6 +213,7 @@ public class PutAI : MonoBehaviour
         }
 
         bool isSuccess = _moveAI.SearchRoute(number, 1);
+        //Debug.Log(_fieldObjBase.GetDataNumber() + "," + number);
 
         if (isNear && isSuccess)
             _enemyAI.OffRiskCheck();

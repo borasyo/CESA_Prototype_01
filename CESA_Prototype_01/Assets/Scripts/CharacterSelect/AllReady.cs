@@ -9,6 +9,11 @@ using UnityEngine.SceneManagement;
 
 public class AllReady : Photon.MonoBehaviour
 {
+    void Awake()
+    {
+        transform.localPosition = new Vector3(0, 0, 0);
+    }
+
 	void Start()
     {
         Ready.nReadyCnt = 0;
@@ -57,7 +62,7 @@ public class AllReady : Photon.MonoBehaviour
         transform.localPosition = new Vector3(0,0,0);
     }
 
-    public void OnClick()
+    /*public void OnClick()
     {
         if (!photonView.isMine)
             return;
@@ -68,6 +73,11 @@ public class AllReady : Photon.MonoBehaviour
     [PunRPC]
     public void SceneNext()
     {
-        SceneManager.LoadScene("OnlineGameMain");   //  ステージセレクトはさむ
+        SceneManager.LoadScene("OnlineStageSelect");   //  ステージセレクトはさむ
+    }*/
+
+    void OnPhotonPlayerConnected()
+    {
+        Ready.nReadyCnt = 0;
     }
 }
