@@ -81,6 +81,9 @@ public class NowSelect : Photon.PunBehaviour
 
     public virtual void None()
     {
+        if (Ready.nReadyCnt == PhotonNetwork.playerList.Length)
+            return;
+
         if (_charaType == CharacterSelect.eCharaType.NONE)
         {
             _charaType = _oldCharaType;

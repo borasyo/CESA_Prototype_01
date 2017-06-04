@@ -13,6 +13,7 @@ public class MoveButton : MonoBehaviour
     Vector3 CenterPosition = Vector3.zero;
     public float GetMoveAngle { get { return Mathf.Atan2(Input.GetTouch(0).position.y - CenterPosition.y, Input.GetTouch(0).position.x - CenterPosition.x) * Mathf.Rad2Deg; } }
 
+    int _fingerID = 0;
     Image[] _moveVecList = null;
     [SerializeField] Color  _onVecColor = Color.white;
     [SerializeField] Color _offVecColor = Color.white;
@@ -33,6 +34,10 @@ public class MoveButton : MonoBehaviour
             .Subscribe(_ =>
             {
                 bool nowActive = (Input.touchCount == 1);
+
+                if (nowActive && _IsActive && Input.GetTouch(0).fingerId != _fingerID)
+                    nowActive = false;
+
                 if (nowActive == _IsActive)
                     return;
 
@@ -42,8 +47,11 @@ public class MoveButton : MonoBehaviour
                 _IsActive = nowActive;
                 SetActive(nowActive);
 
-                if(_IsActive)
+                if (_IsActive)
+                {
+                    _fingerID = Input.GetTouch(0).fingerId;
                     rectTrans.anchoredPosition = CenterPosition = Input.GetTouch(0).position;
+                }
             });
 
         this.UpdateAsObservable()

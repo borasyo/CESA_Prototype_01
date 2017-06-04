@@ -11,7 +11,6 @@ public class FieldDataOnline : FieldData
     GameObject _BlockObj = null;
     private bool _isInitialized = false;
     private readonly string ReadyStateKey = "SceneReady";
-    
     /// <param name="data"></param>
     private void OnPhotonPlayerPropertiesChanged(object[] data)
     {
@@ -49,7 +48,8 @@ public class FieldDataOnline : FieldData
         var cp = PhotonNetwork.player.customProperties;
         cp[ReadyStateKey] = null;
         PhotonNetwork.player.SetCustomProperties(cp);
-    }
+    }    
+
 
     void Start()
     {

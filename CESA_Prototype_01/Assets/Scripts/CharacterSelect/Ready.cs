@@ -42,4 +42,15 @@ public class Ready : Photon.MonoBehaviour {
             _CharaChangeButton.enabled = false;
         }
     }
+
+    void OnPhotonPlayerConnected()
+    {
+        if (_isReady)
+        {
+            _isReady = false;
+            nReadyCnt--;
+            _text.text = "Ready?";
+            _CharaChangeButton.enabled = true;
+        }
+    }
 }

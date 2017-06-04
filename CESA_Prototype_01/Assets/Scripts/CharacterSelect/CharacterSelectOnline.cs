@@ -16,8 +16,8 @@ public class CharacterSelectOnline : CharacterSelect
     // オンライン時のキャラセレクト
     void Awake()
     {
-        _nMyNumber = 0;
-        for(int idx = 0; idx < 4; idx++)
+        //_nMyNumber = 0;
+        for (int idx = 0; idx < 4; idx++)
         {
             _nowSelectPos[idx] = _nowSelectDatas[idx].transform.parent.GetComponent<RectTransform>().localPosition;
             _nowSelectDatas[idx].transform.parent.gameObject.SetActive(false);
@@ -25,10 +25,25 @@ public class CharacterSelectOnline : CharacterSelect
         }
         PhotonNetwork.room.open = true;
     }
+
+    void Start()
+    {
+        StartCoroutine(InitCharaData());
+    }
+
+    IEnumerator InitCharaData()
+    {
+        // TODO : 保存データの挿入タイミングがズレている？
+        yield return new WaitWhile(() => _nowSelectDatas.Where(x => x && !x.name.Contains("CPU")).ToArray().Length != PhotonNetwork.playerList.Length);
+        base.Start();
+    }
     
     //  自身のプレイヤー番号をセット 
     public void SetPlayerNumber(int number)
     {
+        if (!PhotonNetwork.inRoom)
+            return;
+
         _nMyNumber = number;
         //Debug.Log(_nMyNumber);
     }
@@ -166,7 +181,6 @@ public class CharacterSelectOnline : CharacterSelect
         //  2キャラ以上いない場合は進まない
         if (SelectCharas.Where(_ => _).Count() < 2)
             return;
-
         
         photonView.RPC("LoadOnlineGameMain", PhotonTargets.All);
     }
@@ -178,6 +192,12 @@ public class CharacterSelectOnline : CharacterSelect
         SetChara();
         GetComponent<LevelSelect>().SetLevel();
         PhotonNetwork.room.open = false;
+        StartCoroutine(GameLoad());
+    }
+
+    IEnumerator GameLoad()
+    {
+        yield return null;
         SceneManager.LoadScene("OnlineGameMain");
     }
 }

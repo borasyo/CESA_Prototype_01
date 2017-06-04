@@ -34,6 +34,9 @@ public class NowLevel : Photon.MonoBehaviour
 
     public virtual void OnClick()
     {
+        if (Ready.nReadyCnt == PhotonNetwork.playerList.Length)
+            return;
+
         _nNowLevel --;
         if (_nNowLevel < 0)
             _nNowLevel += 3;

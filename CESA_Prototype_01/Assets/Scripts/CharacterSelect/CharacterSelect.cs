@@ -11,7 +11,7 @@ public class CharacterSelect : Photon.PunBehaviour
 {
     public static GameObject[] SelectCharas = new GameObject[4];
     public static bool[] IsRandom = new bool[4];
-    [SerializeField] protected NowSelect[] _nowSelectDatas = null;
+    [SerializeField] protected NowSelect[] _nowSelectDatas = new NowSelect[4];
 
     // Use this for initialization
     public void Start()

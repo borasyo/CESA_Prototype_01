@@ -62,19 +62,55 @@ public class NowSelectOnline : NowSelect
             .Subscribe(_ =>
             {
                 _rectTrans.localPosition = _charaSele.GetLocalPos(gameObject);
+                transform.parent.localScale = Vector3.one;
             });
     }
 
     IEnumerator Set()
     //void Set()
     {
-        if(_photonView.isMine)  //  準備のため、他より1F遅らせる
+        if (_photonView.isMine)
+        {
             yield return null;
 
-        if (!_charaSele)
-            _charaSele = GameObject.FindWithTag("SelectCanvas").GetComponent<CharacterSelectOnline>();
+            if (!_charaSele)
+                _charaSele = GameObject.FindWithTag("SelectCanvas").GetComponent<CharacterSelectOnline>();
 
-        _nInitNumber = _charaSele.GetCreateNumber();
+            int idx = 0;
+            if (CharacterSelectOnline._nMyNumber <= 0)
+            {
+                idx = RoomManager.Instance.nMyPlayerCount;
+                Debug.Log("Start : " + idx);
+            }
+            else
+            {
+                idx = CharacterSelectOnline._nMyNumber;
+                Debug.Log("Already : " + idx);
+            }
+            _photonView.RPC("AllSet", PhotonTargets.All, idx);
+        }
+    }
+
+    void OnPhotonPlayerConnected()
+    {
+        if (!_photonView.isMine || transform.parent.name.Contains("CPU") || PhotonNetwork.isMasterClient)
+            return;
+
+        _photonView.RPC("AllSet", PhotonTargets.All, _nInitNumber);
+    }
+
+
+    [PunRPC]
+    public void AllSet(int idx)
+    {
+        StartCoroutine(WaitSet(idx));
+    }
+
+    IEnumerator WaitSet(int idx)
+    {
+        yield return new WaitWhile(() => _charaSele == null);
+
+        _nInitNumber = idx; // _charaSele.GetCreateNumber();
         _charaSele.SetNowSelect(this, _nInitNumber);
 
         transform.parent.GetComponentInChildren<PlayerNumber>().Set(_nInitNumber);
@@ -109,11 +145,18 @@ public class NowSelectOnline : NowSelect
         if (PhotonNetwork.isMasterClient)
             return;
 
+        if (!PhotonNetwork.inRoom)
+            return;
+
         CharacterSelectOnline._nMyNumber = idx;
+        transform.parent.GetComponentInChildren<PlayerNumber>().Set(_nInitNumber);
     }
 
     public override void Add()
     {
+        if (Ready.nReadyCnt == PhotonNetwork.playerList.Length)
+            return;
+
         if (transform.parent.name.Contains("CPU"))
         {
             if (PhotonNetwork.isMasterClient)
@@ -130,15 +173,7 @@ public class NowSelectOnline : NowSelect
         if (!photonView.isMine)
             return;
 
-        if (_charaType == CharacterSelect.eCharaType.NONE)
-        {
-            _charaType = _oldCharaType;
-        }
-        else
-        {
-            _oldCharaType = _charaType;
-            _charaType = CharacterSelect.eCharaType.NONE;
-        }
+        base.None();
     }
 
     // データの送受信

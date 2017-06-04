@@ -12,6 +12,9 @@ public class NowLevelOnline : NowLevel
 
     public override void OnClick()
     {
+        if (Ready.nReadyCnt == PhotonNetwork.playerList.Length)
+            return;
+
         if (!photonView.isMine)
             return;
 

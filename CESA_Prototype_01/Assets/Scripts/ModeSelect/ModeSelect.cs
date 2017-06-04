@@ -13,6 +13,6 @@ public class ModeSelect : MonoBehaviour
 
     public void Online()
     {
-        SceneManager.LoadScene("OnlineCharaSelectRoom");
+        SceneManager.LoadScene("OnlineRoom");
     }
 }

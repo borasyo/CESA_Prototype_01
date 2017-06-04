@@ -4,18 +4,46 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+using UniRx;
+using UniRx.Triggers;
+
 public class CharacterInputUser : CharacterInput
 {
     protected MoveButton _moveButton = null;
 
     protected void Start()
     {
+        if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+            return;
+
         Transform InputCanvas = GameObject.Find("InputCanvas").transform;
 
         Transform Move = InputCanvas.Find("Move");
         _moveButton = Move.GetComponent<MoveButton>();
 
-        CreateActionEvent(InputCanvas.Find("Action").gameObject.GetComponent<EventTrigger>());
+        this.ObserveEveryValueChanged(_ => Input.touchCount)
+            .Where(_ => Input.touchCount > 0)
+            .Subscribe(_ =>
+            {
+                if (Input.touchCount >= 1)
+                {
+                    if (Input.GetTouch(0).phase == TouchPhase.Began && Input.GetTouch(0).position.x >= Screen.width / 2.0f)
+                    {
+                        StartCoroutine(ActionClick());
+                        return;
+                    }
+                }
+                if (Input.touchCount >= 2)
+                {
+                    if (Input.GetTouch(1).phase == TouchPhase.Began && Input.GetTouch(1).position.x >= Screen.width / 2.0f)
+                    {
+                        StartCoroutine(ActionClick());
+                        return;
+                    }
+                }
+
+            });
+        //CreateActionEvent(InputCanvas.Find("Action").gameObject.GetComponent<EventTrigger>());
     }
 
     void CreateActionEvent(EventTrigger eventTrigger)

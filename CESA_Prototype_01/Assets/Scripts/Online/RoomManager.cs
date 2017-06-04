@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class RoomManager : Photon.MonoBehaviour
 {
@@ -50,27 +52,98 @@ public class RoomManager : Photon.MonoBehaviour
 	private GameObject charaSelectObj;
     private bool isJoinLobby = false;
 
-	void Start ()
-    { 	
-		// サーバー接続
-		// 接続成功時に自動的にlobbyに参加する
-		PhotonNetwork.ConnectUsingSettings ("0.1");
+    public int nMyPlayerCount = 0;
 
-		roomSelectPanel.SetActive (true);	// room選択panelの非表示
+    #region SceneLoadInit
 
-		roomButtonPrefab = Resources.Load ("Prefabs/Online/roomButton") as GameObject;	// Resourceからprefabを取得
-        PhotonNetwork.playerName = "User";
+    private bool _isInitialized = false;
+    private readonly string ReadyStateKey = "Room";
+    /// <param name="data"></param>
+    private void OnPhotonPlayerPropertiesChanged(object[] data)
+    {
+        //誰かのカスタムプロパティが書き換わるたびに確認
+        CheckAllPlayerState();
+    }
 
-        // roomButtonの作成
-        roomButtonPool = new List<GameObject> ();
-		for (int loopCnt = 0; loopCnt < LimitRoomCount; ++loopCnt) {
-			GameObject roomButtonObj = (GameObject)Instantiate (roomButtonPrefab);
-			roomButtonObj.transform.SetParent (roomButtonParent, false);
-			roomButtonObj.name = "roomButton_" + loopCnt.ToString ("d2");
-			roomButtonObj.SetActive (false);
-			roomButtonObj.GetComponent<RoomButton> ().roomMgr = this;
-			roomButtonPool.Add(roomButtonObj);
-		}
+    private void CheckAllPlayerState()
+    {
+        if (_isInitialized) return;
+
+        //全員のフラグが設定されているか？
+        var isAllPlayerLoaded = PhotonNetwork.playerList
+            .Select(x => x.customProperties)
+            .All(x => x.ContainsKey(ReadyStateKey) && (bool)x[ReadyStateKey]);
+
+        if (isAllPlayerLoaded)
+        {
+            //全員のフラグが設定されていたら初期化開始
+            _isInitialized = true;
+            ClearReadyStatus();
+            RoomInit();
+        }
+    }
+
+    private void Ready()
+    {
+        var cp = PhotonNetwork.player.customProperties;
+        cp[ReadyStateKey] = true;
+        PhotonNetwork.player.SetCustomProperties(cp);
+    }
+
+    private void ClearReadyStatus()
+    {
+        var cp = PhotonNetwork.player.customProperties;
+        cp[ReadyStateKey] = null;
+        PhotonNetwork.player.SetCustomProperties(cp);
+    }
+
+    #endregion
+
+    void Start ()
+    {
+        if (PhotonNetwork.inRoom)
+        {
+            roomSelectPanel.SetActive(false);
+            roomButtonPrefab = Resources.Load("Prefabs/Online/roomButton") as GameObject;	// Resourceからprefabを取得
+
+            // roomButtonの作成
+            roomButtonPool = new List<GameObject>();
+            for (int loopCnt = 0; loopCnt < LimitRoomCount; ++loopCnt)
+            {
+                GameObject roomButtonObj = (GameObject)Instantiate(roomButtonPrefab);
+                roomButtonObj.transform.SetParent(roomButtonParent, false);
+                roomButtonObj.name = "roomButton_" + loopCnt.ToString("d2");
+                roomButtonObj.SetActive(false);
+                roomButtonObj.GetComponent<RoomButton>().roomMgr = this;
+                roomButtonPool.Add(roomButtonObj);
+            }
+
+            Ready();
+            CheckAllPlayerState();
+        }
+        else
+        { 
+            // サーバー接続
+            // 接続成功時に自動的にlobbyに参加する
+            PhotonNetwork.ConnectUsingSettings("0.1");
+
+            roomSelectPanel.SetActive(true);    // room選択panelの非表示
+
+            roomButtonPrefab = Resources.Load("Prefabs/Online/roomButton") as GameObject;	// Resourceからprefabを取得
+            PhotonNetwork.playerName = "User";
+
+            // roomButtonの作成
+            roomButtonPool = new List<GameObject>();
+            for (int loopCnt = 0; loopCnt < LimitRoomCount; ++loopCnt)
+            {
+                GameObject roomButtonObj = (GameObject)Instantiate(roomButtonPrefab);
+                roomButtonObj.transform.SetParent(roomButtonParent, false);
+                roomButtonObj.name = "roomButton_" + loopCnt.ToString("d2");
+                roomButtonObj.SetActive(false);
+                roomButtonObj.GetComponent<RoomButton>().roomMgr = this;
+                roomButtonPool.Add(roomButtonObj);
+            }
+        }
 	}
 
 	void Update()
@@ -150,9 +223,9 @@ public class RoomManager : Photon.MonoBehaviour
 		roomOpt.IsOpen = true;		// roomへの入室が可能
 		roomOpt.IsVisible = true;	// lobby内のroom一覧に表示される
 
-		PhotonNetwork.CreateRoom(roomNameInputField.text, roomOpt, null);	// Roomを自分で作って参加する
+		PhotonNetwork.CreateRoom(roomNameInputField.text, roomOpt, null);   // Roomを自分で作って参加する
 
-		lobbyUI.SetActive (false);		// lobbyUIの非表示
+        lobbyUI.SetActive (false);		// lobbyUIの非表示
 	}
 
 	// roombuttonを押したときの処理
@@ -169,8 +242,9 @@ public class RoomManager : Photon.MonoBehaviour
 		}
         
         PhotonNetwork.JoinRoom (room.name);	// roomに参加
+        nMyPlayerCount = room.playerCount;
 
-		lobbyUI.SetActive (false);		// lobbyUIの非表示
+        lobbyUI.SetActive (false);		// lobbyUIの非表示
 	}
 
 	// 退室buttonが押されたときの処理
@@ -186,6 +260,7 @@ public class RoomManager : Photon.MonoBehaviour
         {
             LeaveRoom();
         }
+        CharacterSelectOnline._nMyNumber = 0;
     }
 
     //  Masterが退室した時
@@ -204,7 +279,7 @@ public class RoomManager : Photon.MonoBehaviour
         roomSelectPanel.SetActive(true);       // room選択panelの非表示
 
         //playerNameInputField.text = "PlayerName";   // player名入力領域の初期化
-        roomNameInputField.text = "RoomName";		// room名入力領域の初期化
+        roomNameInputField.text = "RoomName";		// room名入力領域の初期
     }
 
 	// Lobbyに参加した時に呼ばれる
@@ -237,7 +312,7 @@ public class RoomManager : Photon.MonoBehaviour
         if (PhotonNetwork.isMasterClient)
         {
             CharacterSelectOnline charaSele = PhotonNetwork.Instantiate("Prefabs/CharacterSelect/SelectCanvas", Vector3.zero, Quaternion.identity, 0).GetComponentInChildren<CharacterSelectOnline>();
-            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/1P"    , Vector3.zero, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/1P", Vector3.zero, Quaternion.identity, 0);
             PhotonNetwork.Instantiate("Prefabs/CharacterSelect/2P_CPU", Vector3.zero, Quaternion.identity, 0);
             PhotonNetwork.Instantiate("Prefabs/CharacterSelect/3P_CPU", Vector3.zero, Quaternion.identity, 0);
             PhotonNetwork.Instantiate("Prefabs/CharacterSelect/4P_CPU", Vector3.zero, Quaternion.identity, 0);
@@ -246,7 +321,7 @@ public class RoomManager : Photon.MonoBehaviour
         {
             PhotonNetwork.Instantiate("Prefabs/CharacterSelect/CharaSelect", Vector3.zero, Quaternion.identity, 0);
         }
-	}
+    }
 		
 	void OnGUI()
     {
