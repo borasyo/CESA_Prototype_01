@@ -42,6 +42,11 @@ public class NowSelectOnline : NowSelect
 
             _charaSele.SetNowSelect(this, _nInitNumber);
             SetDestroyCheck();
+            _charaType = _charaSele.GetCharaType(_nInitNumber);
+            if (_charaType == CharacterSelect.eCharaType.NONE && !_IsOnNone)
+            {
+                _charaType = CharacterSelect.eCharaType.BALANCE;
+            }
         }
 
         //  CPUなら
@@ -111,11 +116,15 @@ public class NowSelectOnline : NowSelect
         yield return new WaitWhile(() => _charaSele == null);
 
         _nInitNumber = idx; // _charaSele.GetCreateNumber();
-        _charaSele.SetNowSelect(this, _nInitNumber);
-
         transform.parent.GetComponentInChildren<PlayerNumber>().Set(_nInitNumber);
 
+        _charaSele.SetNowSelect(this, _nInitNumber);
         SetDestroyCheck();
+        _charaType = _charaSele.GetCharaType(_nInitNumber);
+        if(_charaType == CharacterSelect.eCharaType.NONE && !_IsOnNone)
+        {
+            _charaType = CharacterSelect.eCharaType.BALANCE;
+        }
     }
 
     IEnumerator SetLevel()

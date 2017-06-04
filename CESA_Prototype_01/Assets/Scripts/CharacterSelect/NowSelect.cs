@@ -11,7 +11,7 @@ public class NowSelect : Photon.PunBehaviour
 
     Text _text = null;
 
-    [SerializeField] bool _IsOnNone = true;
+    [SerializeField] protected bool _IsOnNone = true;
     
 
 	// Use this for initialization

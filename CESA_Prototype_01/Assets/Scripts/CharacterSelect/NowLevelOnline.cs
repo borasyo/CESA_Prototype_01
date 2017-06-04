@@ -8,6 +8,7 @@ public class NowLevelOnline : NowLevel
     {
         GameObject selectCanvas = GameObject.FindWithTag("SelectCanvas");
         selectCanvas.GetComponent<LevelSelectOnline>().SetLevel(this, number);
+        _nNowLevel = LevelSelectOnline.SelectLevel[number];
     }
 
     public override void OnClick()

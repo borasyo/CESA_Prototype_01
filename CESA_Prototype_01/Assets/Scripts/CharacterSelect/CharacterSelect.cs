@@ -92,7 +92,7 @@ public class CharacterSelect : Photon.PunBehaviour
         _nowSelectDatas[nSelect].enabled = true;
     }
 
-    eCharaType SearchCharaType(GameObject charaData, bool IsRandom)
+    protected eCharaType SearchCharaType(GameObject charaData, bool IsRandom)
     {
         eCharaType type = eCharaType.NONE;
 

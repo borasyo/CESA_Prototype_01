@@ -26,9 +26,9 @@ public class CharacterSelectOnline : CharacterSelect
         PhotonNetwork.room.open = true;
     }
 
-    void Start()
+    /*void Start()
     {
-        StartCoroutine(InitCharaData());
+        StartCoroutine(InitCharaData());    
     }
 
     IEnumerator InitCharaData()
@@ -36,7 +36,7 @@ public class CharacterSelectOnline : CharacterSelect
         // TODO : 保存データの挿入タイミングがズレている？
         yield return new WaitWhile(() => _nowSelectDatas.Where(x => x && !x.name.Contains("CPU")).ToArray().Length != PhotonNetwork.playerList.Length);
         base.Start();
-    }
+    }*/
     
     //  自身のプレイヤー番号をセット 
     public void SetPlayerNumber(int number)
@@ -133,6 +133,13 @@ public class CharacterSelectOnline : CharacterSelect
         }
 
         return Vector3.zero;
+    }
+    public eCharaType GetCharaType(int idx)
+    {
+        if (!SelectCharas[idx])
+            return eCharaType.NONE;
+
+        return SearchCharaType(SelectCharas[idx], IsRandom[idx]);
     }
 
     //public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)

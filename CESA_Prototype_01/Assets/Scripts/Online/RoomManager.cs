@@ -50,7 +50,7 @@ public class RoomManager : Photon.MonoBehaviour
 	private List<GameObject> roomButtonPool;	// roomButtonのPool
 
 	private GameObject charaSelectObj;
-    private bool isJoinLobby = false;
+    private static bool isJoinLobby = false;
 
     public int nMyPlayerCount = 0;
 
@@ -122,7 +122,7 @@ public class RoomManager : Photon.MonoBehaviour
             CheckAllPlayerState();
         }
         else
-        { 
+        {
             // サーバー接続
             // 接続成功時に自動的にlobbyに参加する
             PhotonNetwork.ConnectUsingSettings("0.1");
