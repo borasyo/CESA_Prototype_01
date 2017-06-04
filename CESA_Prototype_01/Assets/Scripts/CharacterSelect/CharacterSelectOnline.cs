@@ -39,7 +39,7 @@ public class CharacterSelectOnline : CharacterSelect
         int number = 0;
         for (int i = 0; i < _nowSelectDatas.Length; i++)
         {
-            if (_nowSelectDatas[i] && _nowSelectDatas[i].transform.parent.childCount < 2)
+            if (_nowSelectDatas[i] && !_nowSelectDatas[i].transform.parent.name.Contains("CPU"))
                 continue;
 
             number = i;

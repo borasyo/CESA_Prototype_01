@@ -14,12 +14,25 @@ public class CharacterGauge : MonoBehaviour
     [SerializeField] float _fBreakGauge = 2.0f;
     public float GetBreakGauge { get { return _fBreakGauge; } }
 
+#if DEBUG
+    bool isDebug = false;
+#endif
+
     void Update()
     {
-        _fGauge += Time.deltaTime / _fChargeSpeed;
+        _fGauge += Time.deltaTime * _fChargeSpeed;
         if (_fGauge > _fMaxGauge)
             _fGauge = _fMaxGauge;
         //Debug.Log(_fGauge);
+
+#if DEBUG
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            isDebug = !isDebug;
+            if (isDebug)
+                GaugeMax();
+        }
+#endif
     }
 
     #region Gauge
@@ -50,6 +63,10 @@ public class CharacterGauge : MonoBehaviour
 
     public void PutAction()
     {
+#if DEBUG
+        if (isDebug)
+            return;
+#endif
         _fGauge -= _fPutGauge;
     }
 
@@ -74,6 +91,10 @@ public class CharacterGauge : MonoBehaviour
 
     public void BreakAction()
     {
+#if DEBUG
+        if (isDebug)
+            return;
+#endif
         _fGauge -= _fBreakGauge;
     }
 

@@ -7,6 +7,7 @@ public class NowSelect : Photon.PunBehaviour
 {
     protected CharacterSelect.eCharaType _charaType = CharacterSelect.eCharaType.BALANCE;
     public CharacterSelect.eCharaType CharaType {  get { return _charaType; } set { _charaType = value; } }
+    protected CharacterSelect.eCharaType _oldCharaType = CharacterSelect.eCharaType.BALANCE;
 
     Text _text = null;
 
@@ -31,27 +32,16 @@ public class NowSelect : Photon.PunBehaviour
         TextUpdate();
 
         // 範囲外処理
-        if (_IsOnNone)
+        if (_charaType == CharacterSelect.eCharaType.NONE)
+            return;
+
+        if (_charaType > CharacterSelect.eCharaType.MAX)
         {
-            if (_charaType >= CharacterSelect.eCharaType.MAX)
-            {
-                _charaType = (CharacterSelect.eCharaType)0;
-            }
-            else if (_charaType < (CharacterSelect.eCharaType)0)
-            {
-                _charaType = (CharacterSelect.eCharaType)(CharacterSelect.eCharaType.MAX - 1);
-            }
+            _charaType = (CharacterSelect.eCharaType)1;
         }
-        else
+        else if (_charaType < (CharacterSelect.eCharaType)1)
         {
-            if (_charaType >= CharacterSelect.eCharaType.MAX)
-            {
-                _charaType = (CharacterSelect.eCharaType)1;
-            }
-            else if (_charaType < (CharacterSelect.eCharaType)1)
-            {
-                _charaType = (CharacterSelect.eCharaType)(CharacterSelect.eCharaType.MAX - 1);
-            }
+            _charaType = CharacterSelect.eCharaType.MAX;
         }
 	}
 
@@ -77,11 +67,28 @@ public class NowSelect : Photon.PunBehaviour
             case CharacterSelect.eCharaType.TECHNICAL:
                 _text.text = "Technical";
                 break;
+            case CharacterSelect.eCharaType.MAX:
+                _text.text = "???";
+                break;
         }
     }
 
     public virtual void Add()
     {
+        _oldCharaType = _charaType;
         _charaType ++;
+    }
+
+    public virtual void None()
+    {
+        if (_charaType == CharacterSelect.eCharaType.NONE)
+        {
+            _charaType = _oldCharaType;
+        }
+        else
+        {
+            _oldCharaType = _charaType;
+            _charaType = CharacterSelect.eCharaType.NONE;
+        }
     }
 }

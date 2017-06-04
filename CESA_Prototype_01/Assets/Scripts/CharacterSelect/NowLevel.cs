@@ -20,13 +20,13 @@ public class NowLevel : Photon.MonoBehaviour
                 switch(_nNowLevel)
                 {
                     case 0:
-                        text.text = "強";
+                        text.text = "つよい";
                         break;
                     case 1:
-                        text.text = "普";
+                        text.text = "ふつう";
                         break;
                     case 2:
-                        text.text = "弱";
+                        text.text = "よわい";
                         break;
                 }
             });

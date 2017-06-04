@@ -12,37 +12,22 @@ public class ReStart : Photon.MonoBehaviour
 
     void Start()
     {
-        ParticleSystem particle = GetComponent<ParticleSystem>();
-        if (particle)
-        {
-            this.UpdateAsObservable()
-                .Subscribe(_ =>
-                {
-                    if (particle.isPlaying)
-                        return;
+        ParticleSystem particle = GetComponentInChildren<ParticleSystem>();
 
-                    DestroyReStart();
-                });
-        }
-        else
-        {
-            this.UpdateAsObservable()
-                .Subscribe(_ =>
-                {
-                    StartCoroutine(Text());
-                });
-        }
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                if (particle.isPlaying)
+                    return;
+
+                StartCoroutine(DestroyReStart());
+            });
     }
 
-    IEnumerator Text()
+    IEnumerator DestroyReStart()
     {
         yield return new WaitForSeconds(2.0f);
 
-        DestroyReStart();
-    }
-
-    void DestroyReStart()
-    {
         if (_IsEnd)
         {
             if(PhotonNetwork.inRoom)

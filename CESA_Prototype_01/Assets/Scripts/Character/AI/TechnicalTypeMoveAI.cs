@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class TechnicalTypeMoveAI : MoveAI
 {
-    protected override int RandomNullMass()
+    public override int RandomNullMass(int moveRange = 0)
     {
+        if (moveRange == 0)
+            moveRange = _nMoveRange;
+
         List<int> nullMassList = new List<int>();
         FieldObjectBase[] objList = FieldData.Instance.GetObjDataArray;
         if (!_character.GetSpecialModeFlg)
         {
             for (int i = 0; i < objList.Length; i++)
             {
-                if (_enemyAI._DistanceDatas[i]._nDistance > _nMoveRange)
+                if (_enemyAI._DistanceDatas[i]._nDistance > moveRange)
                     continue;
 
                 if (objList[i])
@@ -29,7 +32,7 @@ public class TechnicalTypeMoveAI : MoveAI
         {
             for (int i = 0; i < objList.Length; i++)
             {
-                if (_enemyAI._DistanceDatas[i]._nDistance > _nMoveRange)
+                if (_enemyAI._DistanceDatas[i]._nDistance > moveRange)
                     continue;
 
                 //if (!objList[i] || objList[i].tag != "SandItem")

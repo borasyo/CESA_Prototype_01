@@ -19,7 +19,7 @@ public class SelectMassSprite : MonoBehaviour
         _charactorGauge = GetComponentInParent<CharacterGauge>();
 
         _defaultSprite = _SpRend.sprite;
-        _notSprite = Resources.Load<Sprite>("Texture/Not");
+        _notSprite = Resources.Load<Sprite>("Texture/GameMain/Not");
 	}
 	
 	// Update is called once per frame

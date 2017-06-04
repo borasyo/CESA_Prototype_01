@@ -12,8 +12,6 @@ public class SelectMass : FieldObjectBase
     protected CharacterGauge _charactorGauge = null;
 
     protected SpriteRenderer _SpRend = null;
-    TriangleWave<float> _triangleWaveFloat = null;
-    TriangleWave<Vector3> _triangleWaveVector3 = null;
 
     [SerializeField] float _fInterval_Sec = 0.5f;
 
@@ -31,24 +29,24 @@ public class SelectMass : FieldObjectBase
 
         // テクスチャ点滅処理
         _SpRend = GetComponent<SpriteRenderer>();
-        _triangleWaveFloat = TriangleWaveFactory.Float(1.0f, 0.0f, interval);
+        TriangleWave<float> triangleWaveFloat = TriangleWaveFactory.Float(1.0f, 0.0f, interval);
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
             .Subscribe(_ => {
-                _triangleWaveFloat.Progress();
+                triangleWaveFloat.Progress();
                 Color setCol = _SpRend.color;
-                setCol.a = _triangleWaveFloat.CurrentValue;
+                setCol.a = triangleWaveFloat.CurrentValue;
                 _SpRend.color = setCol;
             });
 
         //  テクスチャ拡縮処理
-        _triangleWaveVector3 = TriangleWaveFactory.Vector3(Vector3.zero, Vector3.one * 0.8f, interval);
+        /*TriangleWave<Vector3> triangleWaveVector3 = TriangleWaveFactory.Vector3(Vector3.zero, Vector3.one * 0.8f, interval);
         this.UpdateAsObservable()
             .Where(_ => this.enabled && _SpRend.sprite.name == "SelectMass")
             .Subscribe(_ => {
-                _triangleWaveVector3.Progress();
-                transform.localScale = _triangleWaveVector3.CurrentValue;
-            });
+                triangleWaveVector3.Progress();
+                transform.localScale = triangleWaveVector3.CurrentValue;
+            });*/
 
         _notColor = SelectMassColor.Instance.GetNotColor(transform.parent.name);
         _putColor = SelectMassColor.Instance.GetPutColor(transform.parent.name);

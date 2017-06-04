@@ -49,36 +49,13 @@ public class CharacterOnline : Character
 
     public void OnlineUpdate()
     {
-        //Debug.Log("OnlineUpdate : " + transform.name);
-
-        //_nOldNumber = GetDataNumber();
-
-        //MoveUpdate(); //  移動は座標同期
         MoveCheck(eDirection.FORWARD);
         MoveCheck(eDirection.BACK);
         MoveCheck(eDirection.RIGHT);
         MoveCheck(eDirection.LEFT);
 
         DirUpdate();
-        //NumberUpdate();
-
-        /*if (!photonView.isMine)
-            return;
-        
-        //  アクション
-        ItemPut();
-        ItemBreak();*/
     }
-
-    /*protected override void NumberUpdate()
-    {
-        int nowNumber = GetDataNumber();
-        if (_nOldNumber == nowNumber)
-            return;
-
-        FieldData.Instance.SetObjData(null, _nOldNumber);
-        FieldData.Instance.SetObjData(this, nowNumber);
-    }*/
 
     protected override void ItemPut()
     {
@@ -129,9 +106,11 @@ public class CharacterOnline : Character
     { 
         FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
 
-        FieldData.Instance.SetObjData(null,dirNumber);
-        FieldData.Instance.ExceptionChangeField();
-        Destroy(obj.gameObject);
+        if(obj.tag == "SandItem")
+            obj.GetComponent<SandItem>().Break();
+        else
+            obj.GetComponent<Block>().Break();
+
         _charactorGauge.BreakAction();
         _fNotMoveTime = 0.0f;
     }

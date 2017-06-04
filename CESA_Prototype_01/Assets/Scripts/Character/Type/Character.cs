@@ -67,6 +67,8 @@ public class Character : FieldObjectBase
 
         string charaName = this.name[this.name.IndexOf("Player") - 1].ToString();
         _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
+
+
         _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
         //FieldData.Instance.CharaSet(this);
         FieldData.Instance.SetObjData(this, GetDataNumber());
@@ -236,9 +238,7 @@ public class Character : FieldObjectBase
         if (!obj || obj.GetSandType() == SandItem.eType.MAX)
             return;
 
-        FieldData.Instance.SetObjData(null, GetDataNumberForDir());
-        FieldData.Instance.ExceptionChangeField();
-        Destroy(obj.gameObject);
+        obj.GetComponent<SandItem>().Break();
         _charactorGauge.BreakAction();
         _fNotMoveTime = 0.0f;
     }

@@ -15,7 +15,7 @@
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.6.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
@@ -27,7 +27,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_1;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_1;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_HAS_GOOGLEVR</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -37,7 +37,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_1;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_1;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_HAS_GOOGLEVR</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -96,33 +96,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Character Controllers\Sources\Scripts\MouseLook.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\SampleStage\GetUI.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\AutoDestroy.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\BM_WaveEffect.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\BasicBullet.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\BeamCollision.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\BeamLine.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\BeamParam.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\BeamWave.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\BillBoard.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\Create_MyLineMesh.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\Flash.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\GeroBeam.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\GeroBeamHit.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\GetColor_BeamLine.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\GetColor_Flash.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\GetColor_Particle.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\JumpScene.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\MouseTgt.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\MultiShooter.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\RandomRotate.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\ScaleWiggle.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\SceneMaster.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\ShooterRotate.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\ShotBase.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\ShotParticleEmitter.cs" />
-    <Compile Include="Assets\AssetStore\BasicBeamShot\Script\ShotParticle_Scale.cs" />
     <Compile Include="Assets\AssetStore\Elementals\Demo\Scripts\GE_Elementals_Demo.cs" />
     <Compile Include="Assets\AssetStore\GE Common Assets\GE Orbit Camera\Scripts\GE_OrbitCamera.cs" />
     <Compile Include="Assets\AssetStore\GE Common Assets\GE Orbit Camera\Scripts\GE_OrbitCameraUI.cs" />
@@ -140,6 +113,7 @@
     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_DemoPlaySound.cs" />
     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_OpenOtherScene.cs" />
     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo Basic (CSharp)\Scripts\GUIAnimatorFREEDemo.cs" />
+    <Compile Include="Assets\AssetStore\LightningBolt\LightningBoltScript.cs" />
     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
@@ -292,7 +266,6 @@
     <Compile Include="Assets\AssetStore\Sample\Scripts\BossScript.cs" />
     <Compile Include="Assets\AssetStore\Sample\Scripts\BulletScript.cs" />
     <Compile Include="Assets\AssetStore\Sample\Scripts\PlayerScript.cs" />
-    <Compile Include="Assets\LightningBolt\LightningBoltScript.cs" />
     <Compile Include="Assets\Scripts\Camera\PullsObject.cs" />
     <Compile Include="Assets\Scripts\Camera\SetCameraPos.cs" />
     <Compile Include="Assets\Scripts\Character\AI\AIData.cs" />
@@ -308,6 +281,7 @@
     <Compile Include="Assets\Scripts\Character\CharaMass.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterGauge.cs" />
     <Compile Include="Assets\Scripts\Character\GaugeUI.cs" />
+    <Compile Include="Assets\Scripts\Character\Input\ActionButton.cs" />
     <Compile Include="Assets\Scripts\Character\Input\AngleDebug.cs" />
     <Compile Include="Assets\Scripts\Character\Input\CharacterInput.cs" />
     <Compile Include="Assets\Scripts\Character\Input\CharacterInputAI.cs" />
@@ -332,6 +306,8 @@
     <Compile Include="Assets\Scripts\Character\Type\SpeedTypeOnline.cs" />
     <Compile Include="Assets\Scripts\Character\Type\TechnicalType.cs" />
     <Compile Include="Assets\Scripts\Character\Type\TechnicalTypeOnline.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\AllReady.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\CPUArriveCheck.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\CharacterSelect.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\CharacterSelectOnline.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\LevelSelect.cs" />
@@ -340,10 +316,14 @@
     <Compile Include="Assets\Scripts\CharacterSelect\NowLevelOnline.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\NowSelect.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\NowSelectOnline.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\PlayerNumber.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\Ready.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\RoomLeaveButton.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\SandRangeSelect.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\StageScaleSelect.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\StageScaleSelectOnline.cs" />
+    <Compile Include="Assets\Scripts\Effect\AutoParticleDestroyer.cs" />
+    <Compile Include="Assets\Scripts\Effect\PlayerDeathEffect.cs" />
     <Compile Include="Assets\Scripts\Field\AutoMoveObj.cs" />
     <Compile Include="Assets\Scripts\Field\Block.cs" />
     <Compile Include="Assets\Scripts\Field\DelayPut.cs" />
@@ -379,23 +359,18 @@
     <Compile Include="Assets\Scripts\Online\SendRateChecker.cs" />
     <Compile Include="Assets\Scripts\Online\UIScript.cs" />
     <Compile Include="Assets\Scripts\System\IEnumerableExtensions.cs" />
+    <Compile Include="Assets\Scripts\Title\TouchStart.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\ICalculator.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveOscillator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\AssetStore\BasicBeamShot\HowToUse_EN.txt" />
-    <None Include="Assets\AssetStore\BasicBeamShot\HowToUse_JP.txt" />
-    <None Include="Assets\AssetStore\BasicBeamShot\sh\AddColor_sh.shader" />
-    <None Include="Assets\AssetStore\BasicBeamShot\sh\Add_UVScroll_sh.shader" />
-    <None Include="Assets\AssetStore\BasicBeamShot\sh\BeamLine_sh.shader" />
-    <None Include="Assets\AssetStore\BasicBeamShot\sh\GeroBeam_sh.shader" />
-    <None Include="Assets\AssetStore\BasicBeamShot\sh\Sprite_Add_sh.shader" />
     <None Include="Assets\AssetStore\Elementals\Readme.txt" />
     <None Include="Assets\AssetStore\GE Common Assets\Readme.txt" />
     <None Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\!How to.txt" />
     <None Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Readme.txt" />
+    <None Include="Assets\AssetStore\LightningBolt\Readme.txt" />
     <None Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />
     <None Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoRockPaperScissors\Assets\OpenSans\Apache License.txt" />
     <None Include="Assets\AssetStore\Photon Unity Networking\Demos\MarcoPolo-Tutorial\marcopolo-readme.txt" />
@@ -403,7 +378,6 @@
     <None Include="Assets\AssetStore\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\AssetStore\Photon Unity Networking\link.xml" />
     <None Include="Assets\AssetStore\Photon Unity Networking\readme.txt" />
-    <None Include="Assets\LightningBolt\Readme.txt" />
     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
     <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
     <None Include="Assets\Plugins\release_history.txt" />

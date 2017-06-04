@@ -37,9 +37,11 @@ public class PowerType : Character
                 return;
         }
 
-        FieldData.Instance.SetObjData(null, GetDataNumberForDir());
-        FieldData.Instance.ExceptionChangeField();
-        Destroy(obj.gameObject);
+        if(obj.tag == "SandItem")
+            obj.GetComponent<SandItem>().Break();
+        else
+            obj.GetComponent<Block>().Break();
+
         _charactorGauge.BreakAction();
         _fNotMoveTime = 0.0f;
     }

@@ -35,8 +35,8 @@ public class RoomManager : Photon.MonoBehaviour
 
 	public GameObject lobbyUI;					// lobbyのUI
 
-	public GameObject playerNameInputPanel;		// player名入力panel
-	public InputField playerNameInputField;		// player名入力領域
+	//public GameObject playerNameInputPanel;		// player名入力panel
+	//public InputField playerNameInputField;		// player名入力領域
 
 	public GameObject roomSelectPanel;			// room選択panel
 	public InputField roomNameInputField;		// room名入力領域
@@ -47,7 +47,8 @@ public class RoomManager : Photon.MonoBehaviour
 	private int preRoomCount = 0;				// 直前のroom数
 	private List<GameObject> roomButtonPool;	// roomButtonのPool
 
-	private GameObject charaSelectObj;			
+	private GameObject charaSelectObj;
+    private bool isJoinLobby = false;
 
 	void Start ()
     { 	
@@ -55,12 +56,13 @@ public class RoomManager : Photon.MonoBehaviour
 		// 接続成功時に自動的にlobbyに参加する
 		PhotonNetwork.ConnectUsingSettings ("0.1");
 
-		roomSelectPanel.SetActive (false);	// room選択panelの非表示
+		roomSelectPanel.SetActive (true);	// room選択panelの非表示
 
-		roomButtonPrefab = Resources.Load ("roomButton")as GameObject;	// Resourceからprefabを取得
+		roomButtonPrefab = Resources.Load ("Prefabs/Online/roomButton") as GameObject;	// Resourceからprefabを取得
+        PhotonNetwork.playerName = "User";
 
-		// roomButtonの作成
-		roomButtonPool = new List<GameObject> ();
+        // roomButtonの作成
+        roomButtonPool = new List<GameObject> ();
 		for (int loopCnt = 0; loopCnt < LimitRoomCount; ++loopCnt) {
 			GameObject roomButtonObj = (GameObject)Instantiate (roomButtonPrefab);
 			roomButtonObj.transform.SetParent (roomButtonParent, false);
@@ -73,21 +75,6 @@ public class RoomManager : Photon.MonoBehaviour
 
 	void Update()
     {
-		// Escキーが押されたとき、アプリケーションを終了(とりあえずここに記述)
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			
-			if (PhotonNetwork.inRoom) {	// room内にいるとき、playerを削除し退室
-				if (charaSelectObj != null)
-					PhotonNetwork.Destroy (charaSelectObj);
-				PhotonNetwork.LeaveRoom ();
-			}
-
-			if (PhotonNetwork.insideLobby)	// lobby内にいるとき、lobbyから出る
-				PhotonNetwork.LeaveLobby ();
-			
-			Application.Quit ();	// アプリケーションの終了
-		}
-
 		// lobby内にいないとき、処理しない
 		if (!PhotonNetwork.insideLobby)
 			return;
@@ -136,24 +123,12 @@ public class RoomManager : Photon.MonoBehaviour
 		preRoomCount = roomInfo.Length;	// room数の取得
 	}
 
-	// PlayerName決定buttonが押されたときの処理
-	public void OnPressDecidePlayerNameButton()
-    {
-		// 何も入力されていないとき、処理しない
-		if (playerNameInputField.text == "") {
-			Debug.Log ("Player's Name has not been entered.");
-			return;
-		}
-
-		PhotonNetwork.playerName = playerNameInputField.text;	// playerNameの設定
-
-		playerNameInputPanel.SetActive (false);	// 名前入力panelを非表示
-		roomSelectPanel.SetActive (true);	// room選択panelを表示
-	}
-
 	// room作成buttonが押されたときの処理
 	public void OnPressCreateRoomButton()
     {
+        if (!isJoinLobby)
+            return;
+
 		// 何も入力がされていないとき、処理しない
 		if (roomNameInputField.text == "") {
 			Debug.Log ("Failed to create the room. : Room's Name has not been entered.");
@@ -171,7 +146,7 @@ public class RoomManager : Photon.MonoBehaviour
 		RoomOptions roomOpt = new RoomOptions();	// roomoption(roomの詳細設定)の作成
 
 		// 詳細設定
-		roomOpt.MaxPlayers = 10;	// 最大プレイヤー数 10
+		roomOpt.MaxPlayers = 4;	// 最大プレイヤー数 10
 		roomOpt.IsOpen = true;		// roomへの入室が可能
 		roomOpt.IsVisible = true;	// lobby内のroom一覧に表示される
 
@@ -225,10 +200,10 @@ public class RoomManager : Photon.MonoBehaviour
         PhotonNetwork.LeaveRoom();      // 退室
 
         lobbyUI.SetActive(true);    // lobbyのUIを表示
-        playerNameInputPanel.SetActive(true);   // playername入力panelを表示
-        roomSelectPanel.SetActive(false);       // room選択panelの非表示
+        //playerNameInputPanel.SetActive(true);   // playername入力panelを表示
+        roomSelectPanel.SetActive(true);       // room選択panelの非表示
 
-        playerNameInputField.text = "PlayerName";   // player名入力領域の初期化
+        //playerNameInputField.text = "PlayerName";   // player名入力領域の初期化
         roomNameInputField.text = "RoomName";		// room名入力領域の初期化
     }
 
@@ -236,7 +211,8 @@ public class RoomManager : Photon.MonoBehaviour
 	void OnJoinedLobby()
     {
 		Debug.Log ("Joined lobby");
-	}
+        isJoinLobby = true;
+    }
 
 	// Lobbyに参加した時、Roomが作成されていなかった時に呼ばれる
 	void OnPhotonRandomJoinFailed()

@@ -9,7 +9,7 @@ using UnityEditor;
 
 public class Referee : Photon.MonoBehaviour
 {
-    [SerializeField] protected GameObject _explosionPrefab = null;
+    [SerializeField] protected GameObject _deathEffectPrefab = null;
 
     void LateUpdate()
     {
@@ -46,8 +46,10 @@ public class Referee : Photon.MonoBehaviour
 
     protected void CheckResult(FieldObjectBase obj, string type, List<Character> charaList)
     {
-        ReStart reStart = Instantiate(_explosionPrefab).GetComponent<ReStart>();
-        reStart.GetComponentInChildren<TextMesh>().text = obj.GetComponent<Character>().GetPlayerNumber() + "Pは" + obj.GetDataNumber() + "マスで" + type + "に挟まれて死んだ！";
+        GameObject effect = (GameObject)Instantiate(_deathEffectPrefab, obj.transform.position + new Vector3(0.0f, GameScaler._fScale * 0.5f, 0.0f), Quaternion.identity);
+        effect.GetComponent<PlayerDeathEffect>().Init(type);
+        ReStart reStart = effect.GetComponent<ReStart>();
+        //reStart.GetComponentInChildren<TextMesh>().text = obj.GetComponent<Character>().GetPlayerNumber() + "Pは" + obj.GetDataNumber() + "マスで" + type + "に挟まれて死んだ！";
         reStart._IsEnd= false;
         
         Destroy(obj.gameObject);

@@ -104,13 +104,16 @@ public class MoveAI : MonoBehaviour
         return SearchRoute(RandomNullMass(), 0);
     }
 
-    protected virtual int RandomNullMass()
+    public virtual int RandomNullMass(int moveRange = 0)
     {
+        if (moveRange == 0)
+            moveRange = _nMoveRange;
+
         List<int> nullMassList = new List<int>();
         FieldObjectBase[] objList = FieldData.Instance.GetObjDataArray;
         for (int i = 0; i < objList.Length; i++)
         {
-            if (_enemyAI._DistanceDatas[i]._nDistance > _nMoveRange)
+            if (_enemyAI._DistanceDatas[i]._nDistance > moveRange)
                 continue;
 
             if (objList[i])
@@ -242,7 +245,11 @@ public class MoveAI : MonoBehaviour
 
         _state = eState.WAIT;
         _nNowRoute = _astar.GetRoute.Count; //  強制終了
-        Debug.LogError("経路に問題がある恐れがあります。" + " 行先 : " + _astar.GetRoute[_nNowRoute] + ", 現地 : " + _nNowNumber);
+ 
+        //  Error表示
+        if(_astar.GetRoute.Count > 0)
+            Debug.LogError("経路に問題がある恐れがあります。" + " 行先 : " + _astar.GetRoute[_nNowRoute] + ", 現地 : " + _nNowNumber);
+
         return Character.eDirection.MAX;
     }
 

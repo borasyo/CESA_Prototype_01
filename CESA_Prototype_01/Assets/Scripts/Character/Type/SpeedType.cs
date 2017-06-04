@@ -113,7 +113,7 @@ public class SpeedType : Character
         _IsSpecialMode = IsRun;
         if (IsRun)
         {
-            SetSpeed(_fInitSpeed * 1.5f);
+            SetSpeed(_fInitSpeed * 2.0f);
         }
         else
         {

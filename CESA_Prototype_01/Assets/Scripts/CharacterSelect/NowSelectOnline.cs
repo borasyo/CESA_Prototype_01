@@ -45,7 +45,7 @@ public class NowSelectOnline : NowSelect
         }
 
         //  CPUなら
-        if (transform.parent.childCount >= 2)
+        if (transform.parent.name.Contains("CPU"))
         {
             StartCoroutine(SetLevel());
         }
@@ -76,6 +76,8 @@ public class NowSelectOnline : NowSelect
 
         _nInitNumber = _charaSele.GetCreateNumber();
         _charaSele.SetNowSelect(this, _nInitNumber);
+
+        transform.parent.GetComponentInChildren<PlayerNumber>().Set(_nInitNumber);
 
         SetDestroyCheck();
     }
@@ -112,7 +114,7 @@ public class NowSelectOnline : NowSelect
 
     public override void Add()
     {
-        if (transform.parent.childCount >= 2)
+        if (transform.parent.name.Contains("CPU"))
         {
             if (PhotonNetwork.isMasterClient)
                 _charaType++;
@@ -123,11 +125,26 @@ public class NowSelectOnline : NowSelect
         if (_photonView.isMine)
             _charaType++;
     }
+    public override void None()
+    {
+        if (!photonView.isMine)
+            return;
+
+        if (_charaType == CharacterSelect.eCharaType.NONE)
+        {
+            _charaType = _oldCharaType;
+        }
+        else
+        {
+            _oldCharaType = _charaType;
+            _charaType = CharacterSelect.eCharaType.NONE;
+        }
+    }
 
     // データの送受信
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (transform.parent.childCount < 2)
+        if (!transform.parent.name.Contains("CPU"))
         {
             if (stream.isWriting)
             {
@@ -160,7 +177,7 @@ public class NowSelectOnline : NowSelect
         if(photonView.isMine)
             _charaSele.SetPlayerNumber(_nInitNumber);
 
-        if (transform.parent.childCount >= 2)
+        if (transform.parent.name.Contains("CPU"))
             return;
 
         _charaSele.PlayerChange(_nInitNumber);

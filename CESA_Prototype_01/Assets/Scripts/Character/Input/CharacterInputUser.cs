@@ -65,8 +65,7 @@ public class CharacterInputUser : CharacterInput
             _IsBack = Input.GetKey(KeyCode.S);
             _IsRight = Input.GetKey(KeyCode.D);
             _IsLeft = Input.GetKey(KeyCode.A);
-            _IsPut = Input.GetKeyDown(KeyCode.R);
-            _IsBreak = Input.GetKeyDown(KeyCode.T);
+            _IsPut = _IsBreak = Input.GetKeyDown(KeyCode.T);
         }
     }
 }

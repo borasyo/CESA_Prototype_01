@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     };
     public tDistanceData[] _DistanceDatas { get; private set; }    //  各マスの自分から見た移動距離を保持する
     Character _character = null;
+    CharacterGauge _characterGauge = null;
     FieldObjectBase _fieldObjBase = null;
 
     public enum eState
@@ -69,6 +70,7 @@ public class EnemyAI : MonoBehaviour
     {
         _nLevel = level;
         _character = GetComponent<Character>();
+        _characterGauge = GetComponent<CharacterGauge>();
         _fieldObjBase = GetComponent<FieldObjectBase>();
 
         _nActionRatio = AIData.Instance.GetRatio(level, type, false);
@@ -105,6 +107,7 @@ public class EnemyAI : MonoBehaviour
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
+                Debug.Log(_state);
                 if (!Input.GetKeyDown(KeyCode.LeftShift))
                     return;
 
@@ -230,9 +233,8 @@ public class EnemyAI : MonoBehaviour
         if (!_IsAI)
             return false;
 #endif
-
         if(isDanger)
-            return NormalAI(isDanger);
+            return DangerAI();
 
         if (_character.NotMove)
             return CharaNotMoveAI();
@@ -241,7 +243,7 @@ public class EnemyAI : MonoBehaviour
         if(number >= 0)
             return EnemyStopAI(number);
 
-        return NormalAI(isDanger);
+        return NormalAI();
     }
 
     bool CharaNotMoveAI()
@@ -281,10 +283,29 @@ public class EnemyAI : MonoBehaviour
         return isSuccess;
     }
 
-    bool NormalAI(bool isDanger)
+    bool DangerAI()
     {
         bool isSuccess = false;
-        _state = GetNextState(isDanger);
+        if (_characterGauge.PutGaugeCheck())
+        {
+            isSuccess = _putAI.HalfSandPut(true);
+            if (isSuccess)
+                _state = eState.PUT;
+        }
+        else
+        {
+            isSuccess = _moveAI.SearchRoute(_moveAI.RandomNullMass(5), 0);
+            if (isSuccess)
+                _state = eState.MOVE;
+        }
+
+        return isSuccess;
+    }
+
+    bool NormalAI()
+    {
+        bool isSuccess = false;
+        _state = GetNextState();
         switch (_state)
         {
             case eState.WAIT:
@@ -310,7 +331,7 @@ public class EnemyAI : MonoBehaviour
         return isSuccess;
     }
 
-    eState GetNextState(bool isDanger)
+    eState GetNextState()
     {
         eState next = eState.WAIT;
 
@@ -322,25 +343,14 @@ public class EnemyAI : MonoBehaviour
 
         int nRand = 0;
         int[] ratio = _character.GetSpecialModeFlg ? _nSpecialActionRatio : _nActionRatio;
-        if (isDanger)
+        nRand = Random.Range(0, ratio.Sum());
+        for (int i = 0; i < ratio.Length; i++)
         {
-            nRand = Random.Range(0, ratio[(int)eState.MOVE] + ratio[(int)eState.BREAK]);
-            if (nRand <= ratio[(int)eState.MOVE])
-                next = eState.MOVE;
-            else
-                next = eState.BREAK;
-        }
-        else
-        {
-            nRand = Random.Range(0, ratio.Sum());
-            for (int i = 0; i < ratio.Length; i++)
-            {
-                nRand -= ratio[i];
-                if (nRand > 0)
-                    continue;
-                next = (eState)i;
-                break;
-            }
+            nRand -= ratio[i];
+            if (nRand > 0)
+                continue;
+            next = (eState)i;
+            break;
         }
         return next;
     }

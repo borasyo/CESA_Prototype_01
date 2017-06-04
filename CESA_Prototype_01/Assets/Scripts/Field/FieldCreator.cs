@@ -32,7 +32,9 @@ public class FieldCreator : MonoBehaviour
         _charaHolder = new GameObject("CharaHolder");
 
         //  リソース取得
-        GameObject BlockObj = Resources.Load<GameObject> ("Prefabs/Field/Block");
+        GameObject BlockObj = Resources.Load<GameObject>("Prefabs/Field/Block");
+        GameObject WallObj = Resources.Load<GameObject>("Prefabs/Field/Wall");       
+        GameObject CornerWallObj = Resources.Load<GameObject>("Prefabs/Field/Corner");
         GameObject TileObj  = Resources.Load<GameObject> ("Prefabs/Field/Tile");
 
         for (int x = 0; x < _nWidth; x ++)
@@ -43,9 +45,22 @@ public class FieldCreator : MonoBehaviour
 
                 if (FenceCheck(x, z))
                 {
-                    GameObject block = CreateObj(BlockObj, createPos);
-                    block.name += ",Fence";
-                    _objBaseArray[x + (z * _nWidth)] = block.GetComponent<FieldObjectBase>();
+                    GameObject wall = null;
+                    
+                    //  角かチェック
+                    if ((x == 0 || x == GameScaler._nWidth - 1) && (z == 0 || z == GameScaler._nHeight - 1))
+                    {
+                        wall = CreateObj(CornerWallObj, createPos);
+                        SetCornerWallRot(wall, x, z);
+                    }
+                    else
+                    {
+                        wall = CreateObj(WallObj, createPos);
+                        SetWallRot(wall, x, z);
+                    }
+                    wall.name += ",Fence";
+
+                    _objBaseArray[x + (z * _nWidth)] = wall.GetComponent<FieldObjectBase>();
                 }
                 else if (RandomBlock(x, z))
                 {
@@ -132,6 +147,52 @@ public class FieldCreator : MonoBehaviour
     {
         GameObject block = CreateObj(obj, pos);
         _objBaseArray[idx] = block.GetComponent<FieldObjectBase>();
+    }
+
+    void SetCornerWallRot(GameObject wall, int x, int z)
+    {
+        if (x == 0)  //  右向き
+        {
+            if (z == 0)  //  上向き
+            {
+                wall.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else if (z == GameScaler._nHeight - 1)  //  下向き
+            {
+                wall.transform.eulerAngles = new Vector3(0, 90, 0);
+            }
+        }
+        else if (x == GameScaler._nWidth - 1)  //  左向き
+        {
+            if (z == 0)  //  上向き
+            {
+                wall.transform.eulerAngles = new Vector3(0, 270, 0);
+            }
+            else if (z == GameScaler._nHeight - 1)  //  下向き
+            {
+                wall.transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+        }
+
+    }
+    void SetWallRot(GameObject wall, int x, int z)
+    {
+        if (x == 0)  //  右向き
+        {
+            wall.transform.eulerAngles = new Vector3(0, 90, 0);
+        }
+        else if (x == GameScaler._nWidth - 1)  //  左向き
+        {
+            wall.transform.eulerAngles = new Vector3(0, 270, 0);
+        }
+        else if (z == 0)  //  上向き
+        {
+            wall.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (z == GameScaler._nHeight - 1)  //  下向き
+        {
+            wall.transform.eulerAngles = new Vector3(0, 180, 0);
+        }
     }
 
     //  フィールドの外周かどうかをチェックする

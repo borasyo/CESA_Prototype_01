@@ -10,6 +10,7 @@ using System.Linq;
 public class CharacterSelect : Photon.PunBehaviour
 {
     public static GameObject[] SelectCharas = new GameObject[4];
+    public static bool[] IsRandom = new bool[4];
     [SerializeField] protected NowSelect[] _nowSelectDatas = null;
 
     // Use this for initialization
@@ -24,7 +25,7 @@ public class CharacterSelect : Photon.PunBehaviour
                 continue;
             }
 
-            _nowSelectDatas[i].CharaType = SearchCharaType(SelectCharas[i]);
+            _nowSelectDatas[i].CharaType = SearchCharaType(SelectCharas[i], IsRandom[i]);
             _nowSelectDatas[i].TextUpdate();
         }
     }
@@ -45,6 +46,7 @@ public class CharacterSelect : Photon.PunBehaviour
         GameObject PowerObj = Resources.Load<GameObject>("Prefabs/Chara/Power");
         GameObject SpeedObj = Resources.Load<GameObject>("Prefabs/Chara/Speed");
         GameObject TechnicalObj = Resources.Load<GameObject>("Prefabs/Chara/Technical");
+        GameObject[] RandomObj = new GameObject[4] { BalanceObj, PowerObj, SpeedObj, TechnicalObj }; 
 
         for (int i = 0; i < _nowSelectDatas.Length; i++)
         {
@@ -55,15 +57,23 @@ public class CharacterSelect : Photon.PunBehaviour
                     break;
                 case eCharaType.BALANCE:
                     SelectCharas[i] = BalanceObj;
+                    IsRandom[i] = false;
                     break;
                 case eCharaType.POWER:
                     SelectCharas[i] = PowerObj;
+                    IsRandom[i] = false;
                     break;
                 case eCharaType.SPEED:
                     SelectCharas[i] = SpeedObj;
+                    IsRandom[i] = false;
                     break;
                 case eCharaType.TECHNICAL:
                     SelectCharas[i] = TechnicalObj;
+                    IsRandom[i] = false;
+                    break;
+                case eCharaType.MAX:
+                    SelectCharas[i] = RandomObj[Random.Range(0, RandomObj.Length)];
+                    IsRandom[i] = true;
                     break;
             }
         }
@@ -82,12 +92,16 @@ public class CharacterSelect : Photon.PunBehaviour
         _nowSelectDatas[nSelect].enabled = true;
     }
 
-    eCharaType SearchCharaType(GameObject charaData)
+    eCharaType SearchCharaType(GameObject charaData, bool IsRandom)
     {
         eCharaType type = eCharaType.NONE;
 
-        if (charaData.name.Contains("Balance"))
+        if (IsRandom)
         {
+            type = eCharaType.MAX;
+        }
+        else if (charaData.name.Contains("Balance"))
+        { 
             type = eCharaType.BALANCE;
         }
         else if (charaData.name.Contains("Power"))

@@ -8,8 +8,10 @@ public class SetCameraPos : MonoBehaviour
 	void Start () 
     {
         float x = (float)(GameScaler._nWidth - 1) / 2.0f * GameScaler._fScale;
-        float z = -((float)(GameScaler._nWidth - GameScaler._nHeight) / 5.0f * GameScaler._fScale);
-        float y = (GameScaler._nWidth + GameScaler._nHeight) / 10.0f * (GameScaler._fScale * 5.0f);
+        float z = ((float)(GameScaler._nWidth - GameScaler._nHeight) * 0.1f * GameScaler._fScale);
+        float y = (GameScaler._nWidth + GameScaler._nHeight) / 10.0f * (GameScaler._fScale * 4.0f);
         Camera.main.transform.position = new Vector3(x,y,z);
+
+        Camera.main.transform.eulerAngles = new Vector3(70, 0, 0);
    	}
 }
