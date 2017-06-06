@@ -77,6 +77,13 @@ public class FieldData : Photon.MonoBehaviour
 
     void Awake()
     {
+        //  スケールに合わせて拡大
+        if (RoundCounter.nRoundCounter.Where(count => count == 0).ToList().Count == 4)
+        {
+            GameScaler._nWidth = (int)(GameScaler._nBaseWidth * StageScaler.GetMagni());
+            GameScaler._nHeight = (int)(GameScaler._nBaseHeight * StageScaler.GetMagni());
+        }
+
         Init();
     }
 
@@ -87,12 +94,14 @@ public class FieldData : Photon.MonoBehaviour
         _ChangeDataList = new tChangeData[GameScaler._nWidth * GameScaler._nHeight];
 
         //  フィールドにオブジェクトを生成し、データを格納
-        FieldCreator creator = new FieldCreator();
-        //_ObjectDataArray = 
-        creator.Create(GameScaler._nWidth, GameScaler._nHeight);
+        FieldCreator creator = new FieldCreator(); 
+        creator.Create();
 
         UpdateStart();
         StartCoroutine(CharaSet());
+
+        GameObject readyGo = Resources.Load<GameObject>("Prefabs/GameMain/ReadyGo");
+        Instantiate(readyGo, readyGo.transform.position, Quaternion.identity);
     }
 
     protected void UpdateStart()
@@ -150,6 +159,7 @@ public class FieldData : Photon.MonoBehaviour
 
         return _ObjectDataArray[number];
     }
+
     protected virtual IEnumerator CharaSet()
     {
         GameObject[] charas = GameObject.FindGameObjectsWithTag("Character");
@@ -191,33 +201,6 @@ public class FieldData : Photon.MonoBehaviour
         z = (float)((number / GameScaler._nWidth) * GameScaler._fScale);
 
         return new Vector3(x,0,z);
-    }
-
-    public bool GetIsMine()
-    {
-        return photonView.isMine;
-    }
-
-    public void CharaSet(Character chara)
-    {
-        _CharaList.Add(chara);
-    }
-
-    public int GetObjIdx(GameObject obj)
-    {
-        int idx = 0;
-        for(int i = 0; i < _ObjectDataArray.Length; i++)
-        {
-            if (!_ObjectDataArray[i])
-                continue;
-
-            if (obj != _ObjectDataArray[i].gameObject)
-                continue;
-
-            idx = i;
-            break;
-        }
-        return idx;
     }
 
     #if DEBUG

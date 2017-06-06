@@ -50,7 +50,6 @@ public class Referee : Photon.MonoBehaviour
         effect.GetComponent<PlayerDeathEffect>().Init(type);
         ReStart reStart = effect.GetComponent<ReStart>();
         //reStart.GetComponentInChildren<TextMesh>().text = obj.GetComponent<Character>().GetPlayerNumber() + "Pは" + obj.GetDataNumber() + "マスで" + type + "に挟まれて死んだ！";
-        reStart._IsEnd= false;
         
         Destroy(obj.gameObject);
 
@@ -58,7 +57,7 @@ public class Referee : Photon.MonoBehaviour
         if (charaList.Count > 1 && charaList.Where(x => !x.name.Contains("CPU")).ToList().Count() > 0)
             return;
 
-        reStart._IsEnd = true;
+        reStart._winer = charaList[0];
         this.enabled = false;
     }
 

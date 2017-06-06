@@ -31,7 +31,9 @@ public class AutoMoveObj : MonoBehaviour
                 }
                 else
                 {
-                    transform.position = _fieldObjBase.GetPosForNumber();
+                    Vector3 pos = _fieldObjBase.GetPosForNumber();
+                    pos.y = transform.position.y;
+                    transform.position = pos;
                     transform.name = transform.name.Replace("Move", "");
                     Destroy(me);
                 }

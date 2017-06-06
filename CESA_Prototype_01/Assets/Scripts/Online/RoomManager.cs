@@ -240,6 +240,12 @@ public class RoomManager : Photon.MonoBehaviour
 			Debug.Log ("The room is packed.");
 			return;
 		}
+
+        if(!room.open)
+        {
+            Debug.Log("NotRoomOpen");
+            return;
+        }
         
         PhotonNetwork.JoinRoom (room.name);	// roomに参加
         nMyPlayerCount = room.playerCount;

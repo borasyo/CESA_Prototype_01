@@ -62,18 +62,19 @@ public class FieldDataOnline : FieldData
     /// </summary>
     void Initialize()
     {
-        //ここにPhotonNetwork.Instantiateとか書く
         //  データ配列生成
         _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
         _ChangeDataList = new tChangeData[GameScaler._nWidth * GameScaler._nHeight];
 
         //  フィールドにオブジェクトを生成し、データを格納
         FieldCreatorOnline creator = new FieldCreatorOnline();
-        //_ObjectDataArray = 
-        creator.Create(GameScaler._nWidth, GameScaler._nHeight);
+        creator.Create();
 
         UpdateStart();
         StartCoroutine(CharaSet());
+
+        GameObject readyGo = Resources.Load<GameObject>("Prefabs/GameMain/ReadyGoOnline");
+        Instantiate(readyGo, readyGo.transform.position, Quaternion.identity);
     }
 
     protected override void Init()

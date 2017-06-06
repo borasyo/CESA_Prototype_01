@@ -65,12 +65,15 @@ public class ItemBase : FieldObjectBase
             });
 
         // LifeCheck
+        MeshRenderer meRend = GetComponent<MeshRenderer>();
+        float fMaxLife = _fLife;
         this.UpdateAsObservable()
             .Where(_ => this.enabled && !_IsCollision)
             .Subscribe(_ => {
                 _fLife -= Time.deltaTime;
+                meRend.material.color -= new Color(0, 0, 0, Time.deltaTime / fMaxLife);
 
-                if(_fLife > 0.0f)
+                if (_fLife > 0.0f)
                     return;
 
                 Destroy ();

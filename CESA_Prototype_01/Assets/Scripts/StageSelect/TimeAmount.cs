@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class TimeAmount : Photon.MonoBehaviour
 {
-    public static int nTime_Sec = 2;
+    static protected int nTime_Sec = 2;
+    static protected int nRand = 0;
 
     // Use this for initialization
     void Start()
@@ -34,6 +35,8 @@ public class TimeAmount : Photon.MonoBehaviour
 
                 buttonList[nTime_Sec].color = onColor;
             });
+
+        nRand = Random.Range(0, 4);
     }
 
     public virtual void None()
@@ -51,5 +54,19 @@ public class TimeAmount : Photon.MonoBehaviour
     public virtual void Many()
     {
         nTime_Sec = 3;
+    }
+    public virtual void Rand()
+    {
+        nTime_Sec = 4;
+        nRand = Random.Range(0,4);
+    }
+
+    static public int GetTime()
+    {
+        if (nTime_Sec == 4)
+        {
+            return (nRand + 1) * 60;
+        }
+        return (nTime_Sec + 1) * 60;
     }
 }

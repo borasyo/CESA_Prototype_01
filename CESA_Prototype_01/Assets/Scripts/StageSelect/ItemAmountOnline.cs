@@ -36,15 +36,25 @@ public class ItemAmountOnline : ItemAmount
         base.Many();
     }
 
+    public override void Rand()
+    {
+        if (!PhotonNetwork.isMasterClient)
+            return;
+
+        base.Rand();
+    }
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (PhotonNetwork.isMasterClient)
         {
             stream.SendNext(nItemAmount);
+            stream.SendNext(nRand);
         }
         else
         {
             nItemAmount = (int)stream.ReceiveNext();
+            nRand = (int)stream.ReceiveNext();
         }
     }
 }

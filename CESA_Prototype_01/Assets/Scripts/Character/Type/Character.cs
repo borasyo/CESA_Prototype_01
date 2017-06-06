@@ -54,6 +54,8 @@ public class Character : FieldObjectBase
     protected float _fNotMoveTime = 0.0f;
     public bool NotMove { get { return _IsNotMove; } }
 
+    public int Level { get; private set; }
+
     # endregion
 
     #region Event
@@ -62,6 +64,7 @@ public class Character : FieldObjectBase
     public virtual void Init(int level)
     {
         SetInput(level);
+        Level = level;
 
         _charactorGauge = GetComponent<CharacterGauge>();
 
@@ -302,6 +305,27 @@ public class Character : FieldObjectBase
     public string GetPlayerNumber()
     {
         return name[this.name.IndexOf("Player") - 1].ToString();
+    }
+
+    public int GetPlayerNumberToInt()
+    {
+        int number = 0;
+        switch(name[this.name.IndexOf("Player") - 1].ToString())
+        {
+            case "1":
+                number = 1;
+                break;
+            case "2":
+                number = 2;
+                break;
+            case "3":
+                number = 3;
+                break;
+            case "4":
+                number = 4;
+                break;
+        }
+        return number;
     }
 
     #endregion

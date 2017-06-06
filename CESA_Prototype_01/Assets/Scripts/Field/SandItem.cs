@@ -28,6 +28,8 @@ public class SandItem : FieldObjectBase
 
     void Awake()
     {
+        transform.position += new Vector3(0, 0.516f, 0);
+
         if (_SandItemHolder)
             return;
         

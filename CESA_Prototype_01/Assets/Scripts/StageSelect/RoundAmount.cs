@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class RoundAmount : Photon.MonoBehaviour
 {
-    public static int nRound = 3;
+    static protected int nRound = 3;
+    static protected int nRand = 0;
 
     // Use this for initialization
     void Start()
@@ -34,6 +35,8 @@ public class RoundAmount : Photon.MonoBehaviour
 
                 buttonList[nRound - 1].color = onColor;
             });
+
+        nRand = Random.Range(0, 5);
     }
 
     public virtual void None()
@@ -51,5 +54,19 @@ public class RoundAmount : Photon.MonoBehaviour
     public virtual void Many()
     {
         nRound = 4;
+    }
+    public virtual void Rand()
+    {
+        nRound = 5;
+        nRand = Random.Range(1, 5);
+    }
+
+    static public int GetRound()
+    {
+        if (nRound == 5)
+        {
+            return nRand;
+        }
+        return nRound;
     }
 }

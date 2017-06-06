@@ -36,15 +36,25 @@ public class RoundAmountOnline : RoundAmount
         base.Many();
     }
 
+    public override void Rand()
+    {
+        if (!PhotonNetwork.isMasterClient)
+            return;
+
+        base.Rand();
+    }
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (PhotonNetwork.isMasterClient)
         {
             stream.SendNext(nRound);
+            stream.SendNext(nRand);
         }
         else
         {
             nRound = (int)stream.ReceiveNext();
+            nRand = (int)stream.ReceiveNext();
         }
     }
 }

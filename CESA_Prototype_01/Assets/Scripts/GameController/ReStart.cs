@@ -8,7 +8,7 @@ using UniRx.Triggers;
 
 public class ReStart : Photon.MonoBehaviour 
 {    
-    public bool _IsEnd { get; set; }
+    public FieldObjectBase _winer { get; set; }
 
     void Start()
     {
@@ -28,16 +28,11 @@ public class ReStart : Photon.MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
 
-        if (_IsEnd)
+        if (_winer)
         {
-            if(PhotonNetwork.inRoom)
-                SceneManager.LoadScene("OnlineGameMain");
-            else
-                SceneManager.LoadScene("GameMain");
+            RoundCounter.Instance.WinCharacter(_winer);
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+
+        Destroy(this.gameObject);
     }
 }

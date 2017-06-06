@@ -8,8 +8,9 @@ using UnityEngine.UI;
 
 public class SelectStage : Photon.MonoBehaviour
 {
-    public static int StageNumber = 0;
-    int nMaxStage = 3;
+    static protected int StageNumber = 0;
+    static protected int nRand = 0; 
+    static int nMaxStage = 4;
     [SerializeField] List<Sprite> stageSpriteList = new List<Sprite>();
 
     void Start()
@@ -22,6 +23,8 @@ public class SelectStage : Photon.MonoBehaviour
             {
                 myImage.sprite = stageSpriteList[StageNumber];
             });
+
+        nRand = Random.Range(0, 3);
     }
 
 
@@ -30,12 +33,31 @@ public class SelectStage : Photon.MonoBehaviour
         StageNumber++;
         if (StageNumber >= nMaxStage)
             StageNumber -= nMaxStage;
+
+        if(StageNumber == nMaxStage - 1)
+        {
+            nRand = Random.Range(0,3);
+        }
     }
 
     public virtual void Sub()
     {
         StageNumber--;
         if (StageNumber < 0)
-            StageNumber += nMaxStage; 
+            StageNumber += nMaxStage;
+
+        if (StageNumber == nMaxStage - 1)
+        {
+            nRand = Random.Range(0, 3);
+        }
+    }
+
+    static public int GetStageNumber()
+    {
+        if (StageNumber == nMaxStage - 1)
+        {
+            return nRand;
+        }
+        return StageNumber;
     }
 }

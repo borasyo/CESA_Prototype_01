@@ -62,21 +62,12 @@ public class AllReady : Photon.MonoBehaviour
         transform.localPosition = new Vector3(0,0,0);
     }
 
-    /*public void OnClick()
+    void OnPhotonPlayerConnected()
     {
-        if (!photonView.isMine)
-            return;
-
-        photonView.RPC("SceneNext", PhotonTargets.All);
+        Ready.nReadyCnt = 0;
     }
 
-    [PunRPC]
-    public void SceneNext()
-    {
-        SceneManager.LoadScene("OnlineStageSelect");   //  ステージセレクトはさむ
-    }*/
-
-    void OnPhotonPlayerConnected()
+    void OnPhotonPlayerDisconnecte()
     {
         Ready.nReadyCnt = 0;
     }

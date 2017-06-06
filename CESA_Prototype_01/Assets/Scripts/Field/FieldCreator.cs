@@ -9,11 +9,11 @@ public class FieldCreator : MonoBehaviour
     GameObject _fieldHolder = null;
     protected GameObject _charaHolder = null;
 
-    public FieldObjectBase[] Create (int w, int h)
+    public FieldObjectBase[] Create ()
     {
-        _nWidth  = w;
-        _nHeight = h;
-        _objBaseArray = new FieldObjectBase[w * h];
+        _nWidth  = GameScaler._nWidth;
+        _nHeight = GameScaler._nHeight;
+        _objBaseArray = new FieldObjectBase[_nWidth * _nHeight];
 
         //  地形生成
         CreateField();
@@ -27,6 +27,15 @@ public class FieldCreator : MonoBehaviour
 
     void CreateField()
     {
+        //  ステージ番号取得
+        int nStageNumber = SelectStage.GetStageNumber();
+
+        //  TODO : それに応じた地形生成
+
+        //  外回りのステージ生成
+        GameObject stage = Resources.Load<GameObject>("Prefabs/Field/Stage");
+        Instantiate(stage, new Vector3((float)GameScaler._nWidth / 2.0f - 0.5f, -1.25f, (float)GameScaler._nHeight / 2.0f - 0.5f), stage.transform.rotation);
+
         //  入れ物生成 (初期生成した消えないオブジェクトのみ格納)
         _fieldHolder = new GameObject("InitFieldObjHolder");
         _charaHolder = new GameObject("CharaHolder");
@@ -41,7 +50,7 @@ public class FieldCreator : MonoBehaviour
         {
             for (int z = 0; z < _nHeight; z ++)
             {
-                Vector3 createPos = new Vector3(x * GameScaler._fScale, 0.0f, z * GameScaler._fScale);
+                Vector3 createPos = new Vector3(x * GameScaler._fScale, 0.65f, z * GameScaler._fScale);
 
                 if (FenceCheck(x, z))
                 {
@@ -68,13 +77,7 @@ public class FieldCreator : MonoBehaviour
                 }
 
                 GameObject tile = CreateObj(TileObj, createPos);
-                //tile.transform.eulerAngles = new Vector3(90,0,0);
-                tile.transform.localPosition += new Vector3(-0.48f, -0.06f, 0.46f); //  モデルの原点がズレているため一旦補正　(リテイク後消す)
-/*#if DEBUG
-                tile.GetComponentInChildren<TextMesh>().text = (z * GameScaler._nWidth + x).ToString();
-#else
-                Destroy(tile.transform.GetChild(0).gameObject);
-#endif*/
+                tile.transform.localPosition += new Vector3(0.0f, -1.35f, 0.0f); //  モデルの原点がズレているため一旦補正　(リテイク後消す)
             }
         } 
     }
@@ -179,19 +182,19 @@ public class FieldCreator : MonoBehaviour
     {
         if (x == 0)  //  右向き
         {
-            wall.transform.eulerAngles = new Vector3(0, 90, 0);
+            wall.transform.eulerAngles = new Vector3(0, 270, 0);
         }
         else if (x == GameScaler._nWidth - 1)  //  左向き
         {
-            wall.transform.eulerAngles = new Vector3(0, 270, 0);
+            wall.transform.eulerAngles = new Vector3(0, 90, 0);
         }
         else if (z == 0)  //  上向き
         {
-            wall.transform.eulerAngles = new Vector3(0, 0, 0);
+            wall.transform.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (z == GameScaler._nHeight - 1)  //  下向き
         {
-            wall.transform.eulerAngles = new Vector3(0, 180, 0);
+            wall.transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
 

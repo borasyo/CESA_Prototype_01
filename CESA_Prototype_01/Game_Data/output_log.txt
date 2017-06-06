@@ -25,36 +25,30 @@ Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototyp
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\GUIAnimatorFREE.dll into Unity Child Domain
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.111 seconds
+- Completed reload, in  0.041 seconds
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
-<RI.Hid> Failed to create device file:
- 2 指定されたファイルが見つかりません。
-
- 
-(Filename:  Line: 54)
-
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 2.081184 ms
+UnloadTime: 2.577381 ms
 Setting up 4 worker threads for Enlighten.
-  Thread -> id: 3628 -> priority: 1 
-  Thread -> id: 14a8 -> priority: 1 
-  Thread -> id: 4af4 -> priority: 1 
-  Thread -> id: 348c -> priority: 1 
+  Thread -> id: b70 -> priority: 1 
+  Thread -> id: 2cc8 -> priority: 1 
+  Thread -> id: 148c -> priority: 1 
+  Thread -> id: 4360 -> priority: 1 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 6.651651 ms
+UnloadTime: 4.574813 ms
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 839.
-Total: 0.359506 ms (FindLiveObjects: 0.060839 ms CreateObjectMapping: 0.030024 ms MarkObjects: 0.251654 ms  DeleteObjects: 0.015407 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 845.
+Total: 0.542814 ms (FindLiveObjects: 0.109827 ms CreateObjectMapping: 0.060839 ms MarkObjects: 0.356345 ms  DeleteObjects: 0.014617 ms)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.259752 ms
+UnloadTime: 3.256097 ms
 
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 902.
-Total: 0.434567 ms (FindLiveObjects: 0.040691 ms CreateObjectMapping: 0.033580 ms MarkObjects: 0.296691 ms  DeleteObjects: 0.063209 ms)
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 908.
+Total: 0.470123 ms (FindLiveObjects: 0.084148 ms CreateObjectMapping: 0.078222 ms MarkObjects: 0.258765 ms  DeleteObjects: 0.048592 ms)
 
 Joined lobby
  
@@ -93,196 +87,14 @@ Parent of RectTransform is being set with parent property. Consider using the Se
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.565233 ms
+UnloadTime: 1.168197 ms
 
-Unloading 111 unused Assets to reduce memory usage. Loaded Objects now: 1494.
-Total: 1.495703 ms (FindLiveObjects: 0.120098 ms CreateObjectMapping: 0.114962 ms MarkObjects: 1.187555 ms  DeleteObjects: 0.072296 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.036641 ms
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1376.
-Total: 0.843456 ms (FindLiveObjects: 0.077432 ms CreateObjectMapping: 0.052543 ms MarkObjects: 0.694518 ms  DeleteObjects: 0.017777 ms)
-
-RoomInit
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.133431 ms
-
-Unloading 56 unused Assets to reduce memory usage. Loaded Objects now: 1549.
-Total: 1.197036 ms (FindLiveObjects: 0.133925 ms CreateObjectMapping: 0.090469 ms MarkObjects: 0.910616 ms  DeleteObjects: 0.061234 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.636839 ms
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1431.
-Total: 0.861629 ms (FindLiveObjects: 0.083753 ms CreateObjectMapping: 0.077037 ms MarkObjects: 0.681086 ms  DeleteObjects: 0.018962 ms)
-
-RoomInit
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.335208 ms
-
-Unloading 56 unused Assets to reduce memory usage. Loaded Objects now: 1549.
-Total: 1.576690 ms (FindLiveObjects: 0.144987 ms CreateObjectMapping: 0.139456 ms MarkObjects: 1.240098 ms  DeleteObjects: 0.050962 ms)
+Unloading 134 unused Assets to reduce memory usage. Loaded Objects now: 1515.
+Total: 1.182024 ms (FindLiveObjects: 0.080197 ms CreateObjectMapping: 0.062814 ms MarkObjects: 0.938271 ms  DeleteObjects: 0.100345 ms)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.922073 ms
+UnloadTime: 1.060345 ms
 
-Unloading 36 unused Assets to reduce memory usage. Loaded Objects now: 3738.
-Total: 1.853233 ms (FindLiveObjects: 0.255209 ms CreateObjectMapping: 0.109827 ms MarkObjects: 1.451851 ms  DeleteObjects: 0.035950 ms)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SandData.FindSandObj (.FieldObjectBase[] objDataArray, Int32 number, Int32 add) [0x00000] in <filename unknown>:0 
-  at SandData.SandDataCheck () [0x00000] in <filename unknown>:0 
-  at SandData.SandUpdate () [0x00000] in <filename unknown>:0 
-  at SandData+<StartUpdate>c__Iterator0.<>m__2 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 8.549132 ms
-
-Unloading 137 unused Assets to reduce memory usage. Loaded Objects now: 3873.
-Total: 2.208789 ms (FindLiveObjects: 0.348839 ms CreateObjectMapping: 0.141036 ms MarkObjects: 1.596838 ms  DeleteObjects: 0.121283 ms)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SandData.FindSandObj (.FieldObjectBase[] objDataArray, Int32 number, Int32 add) [0x00000] in <filename unknown>:0 
-  at SandData.SandDataCheck () [0x00000] in <filename unknown>:0 
-  at SandData.SandUpdate () [0x00000] in <filename unknown>:0 
-  at SandData+<StartUpdate>c__Iterator0.<>m__2 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.605528 ms
-
-Unloading 89 unused Assets to reduce memory usage. Loaded Objects now: 1651.
-Total: 2.057085 ms (FindLiveObjects: 0.115753 ms CreateObjectMapping: 0.188444 ms MarkObjects: 1.536394 ms  DeleteObjects: 0.214913 ms)
-
-RoomInit
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.751012 ms
-
-Unloading 64 unused Assets to reduce memory usage. Loaded Objects now: 1758.
-Total: 2.487702 ms (FindLiveObjects: 0.431012 ms CreateObjectMapping: 0.233086 ms MarkObjects: 1.729184 ms  DeleteObjects: 0.092444 ms)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.939456 ms
-
-Unloading 104 unused Assets to reduce memory usage. Loaded Objects now: 3873.
-Total: 2.672986 ms (FindLiveObjects: 0.573234 ms CreateObjectMapping: 0.107456 ms MarkObjects: 1.922369 ms  DeleteObjects: 0.066370 ms)
-
-IndexOutOfRangeException: Array index is out of range.
-  at SandData.FindSandObj (.FieldObjectBase[] objDataArray, Int32 number, Int32 add) [0x00000] in <filename unknown>:0 
-  at SandData.SandDataCheck () [0x00000] in <filename unknown>:0 
-  at SandData.SandUpdate () [0x00000] in <filename unknown>:0 
-  at SandData+<StartUpdate>c__Iterator0.<>m__2 (Unit _) [0x00000] in <filename unknown>:0 
-  at UniRx.Observer+Subscribe`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Operators.WhereObservable`1+Where[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Subject`1[UniRx.Unit].OnNext (Unit value) [0x00000] in <filename unknown>:0 
-  at UniRx.Triggers.ObservableUpdateTrigger.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.552195 ms
-
-Unloading 89 unused Assets to reduce memory usage. Loaded Objects now: 1651.
-Total: 2.438715 ms (FindLiveObjects: 0.090469 ms CreateObjectMapping: 0.063209 ms MarkObjects: 1.754468 ms  DeleteObjects: 0.528592 ms)
-
-RoomInit
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Failed to Instantiate prefab: Prefabs/CharacterSelect/2P_CPU. Client should be in a room. Current connectionStateDetailed: Disconnecting
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 3591.
+Total: 2.484542 ms (FindLiveObjects: 0.300641 ms CreateObjectMapping: 0.133530 ms MarkObjects: 2.005727 ms  DeleteObjects: 0.044641 ms)
 

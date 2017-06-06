@@ -6,7 +6,7 @@ public class SelectStageOnline : SelectStage
 {
     void Awake()
     {
-        PhotonNetwork.sendRateOnSerialize = PhotonNetwork.sendRate = 60; 
+        PhotonNetwork.sendRateOnSerialize = PhotonNetwork.sendRate = 65; 
     }
 
     public override void Add()
@@ -30,10 +30,12 @@ public class SelectStageOnline : SelectStage
         if (PhotonNetwork.isMasterClient)
         {
             stream.SendNext(StageNumber);
+            stream.SendNext(nRand);
         }
         else
         {
             StageNumber = (int)stream.ReceiveNext();
+            nRand = (int)stream.ReceiveNext();
         }
     }
 }

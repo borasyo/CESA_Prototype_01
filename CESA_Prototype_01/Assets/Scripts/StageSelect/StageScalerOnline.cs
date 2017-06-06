@@ -25,16 +25,26 @@ public class StageScalerOnline : StageScaler
 
         base.Big();
     }
-    
+
+    public override void Rand()
+    {
+        if (!PhotonNetwork.isMasterClient)
+            return;
+
+        base.Rand();
+    }
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (PhotonNetwork.isMasterClient)
         {
             stream.SendNext(StageScale);
+            stream.SendNext(nRand);
         }
         else
         {
             StageScale = (int)stream.ReceiveNext();
+            nRand = (int)stream.ReceiveNext();
         }
     }
 }

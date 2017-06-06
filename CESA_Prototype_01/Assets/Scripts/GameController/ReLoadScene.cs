@@ -10,6 +10,9 @@ public class ReLoadScene : Photon.MonoBehaviour
     {
         if (PhotonNetwork.inRoom)
         {
+            if(PhotonNetwork.isMasterClient)
+                PhotonNetwork.DestroyAll();
+
             PhotonNetwork.LeaveRoom();      // 退室
             CharacterSelectOnline._nMyNumber = 0;
         }

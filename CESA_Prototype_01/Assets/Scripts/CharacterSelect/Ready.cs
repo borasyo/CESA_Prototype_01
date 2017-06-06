@@ -43,13 +43,20 @@ public class Ready : Photon.MonoBehaviour {
         }
     }
 
+    void Reset()
+    {
+        _isReady = false;
+        _text.text = "Ready?";
+        _CharaChangeButton.enabled = true;
+    }
+
     void OnPhotonPlayerConnected()
     {
-        if (_isReady)
-        {
-            _isReady = false;
-            _text.text = "Ready?";
-            _CharaChangeButton.enabled = true;
-        }
+        Reset();
+    }
+
+    void OnPhotonPlayerDisconnecte()
+    {
+        Reset();
     }
 }

@@ -15,6 +15,23 @@ public class ItemCreator : Photon.MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        //  ステセレで指定した量に変更
+        if (ItemAmount.GetAmount() == 0)
+            return;
+        
+        switch(ItemAmount.GetAmount())
+        {
+            case 1:
+                _fInterval *= 1.5f;
+                break;
+            case 2:
+                //  変更なし
+                break;
+            case 3:
+                _fInterval *= 0.5f;
+                break;
+        }
+
         ResetInterval();
 
         this.UpdateAsObservable()
@@ -43,6 +60,6 @@ public class ItemCreator : Photon.MonoBehaviour
         int number = Random.Range(0, _ItemPrefabs.Length);
         Vector3 pos = FieldData.Instance.GetNonObjPos();
         GameObject item = Instantiate(_ItemPrefabs[number]);
-        item.transform.position = pos;
+        item.transform.position = pos + new Vector3(0.0f, 0.25f, 0.0f);
     }
 }
