@@ -226,7 +226,6 @@ public class Character : FieldObjectBase
             return;
 
         GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumber), Quaternion.identity);
-        FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumber);
         _charactorGauge.PutAction();
         _fNotMoveTime = 0.0f;
     }

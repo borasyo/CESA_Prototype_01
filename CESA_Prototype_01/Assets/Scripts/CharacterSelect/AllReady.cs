@@ -67,7 +67,7 @@ public class AllReady : Photon.MonoBehaviour
         Ready.nReadyCnt = 0;
     }
 
-    void OnPhotonPlayerDisconnecte()
+    void OnPhotonPlayerDisconnected()
     {
         Ready.nReadyCnt = 0;
     }

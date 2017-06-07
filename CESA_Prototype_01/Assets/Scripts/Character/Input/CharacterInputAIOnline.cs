@@ -18,13 +18,40 @@ public class CharacterInputAIOnline : CharacterInputAI
         _IsPut = _enemyAI.GetAction(Character.eAction.PUT);
         _IsBreak = _enemyAI.GetAction(Character.eAction.BREAK);
 
-        //  同期する
-        //photonView.RPC("Set", PhotonTargets.All, _IsForawrd, _IsBack, _IsRight, _IsLeft, _IsPut, _IsBreak);
+        photonView.RPC("SetMove", PhotonTargets.All, _IsForawrd, _IsBack, _IsRight, _IsLeft);
+        photonView.RPC("SetAction", PhotonTargets.MasterClient, _IsPut, _IsBreak);
+    }
+
+    [PunRPC]
+    public void SetMove(bool isForward, bool isBack, bool isRight, bool isLeft)
+    {
+        _IsForawrd = isForward;
+        _IsBack = isBack;
+        _IsRight = isRight;
+        _IsLeft = isLeft;
+
+        if (!_characterOnline)
+            _characterOnline = GetComponent<CharacterOnline>();
+
+        _characterOnline.OnlineMoveUpdate();
+    }
+
+    //  Masterに情報を送信
+    [PunRPC]
+    public void SetAction(bool isPut, bool isBreak)
+    {
+        _IsPut = isPut;
+        _IsBreak = isBreak;
+
+        if (!_characterOnline)
+            _characterOnline = GetComponent<CharacterOnline>();
+
+        _characterOnline.OnlineActionUpdate();
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.isWriting)
+        /*if (stream.isWriting)
         {
             stream.SendNext(_IsForawrd);
             stream.SendNext(_IsBack);
@@ -45,29 +72,7 @@ public class CharacterInputAIOnline : CharacterInputAI
             if (!_characterOnline)
                 _characterOnline = GetComponent<CharacterOnline>();
 
-            _characterOnline.OnlineUpdate();
-        }
+            ///_characterOnline.OnlineUpdate();
+        }*/
     }
-
-    /*[PunRPC]
-    public void Set(bool isForward, bool isBack, bool isRight, bool isLeft, bool isPut, bool isBreak)
-    {
-        if (photonView.isMine)
-            return;
-
-        _IsForawrd = isForward;
-        _IsBack = isBack;
-        _IsRight = isRight;
-        _IsLeft = isLeft;
-        _IsPut = isPut;
-        _IsBreak = isBreak;
-        Debug.Log("Set");
-
-        if (!_characterOnline)
-            _characterOnline = GetComponent<CharacterOnline>();
-
-        //  更新
-        _characterOnline.OnlineUpdate();
-        // Debug.Log("Forward : " + _IsForawrd + ", Back : " + _IsBack + ", Right : " + _IsRight + ", Left : " + _IsLeft);
-    }*/
 }

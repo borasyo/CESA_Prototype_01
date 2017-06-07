@@ -60,7 +60,7 @@ public class CharacterInputUser : CharacterInput
         return press;
     }
 
-    public IEnumerator ActionClick()
+    public virtual IEnumerator ActionClick()
     {
         _IsPut = true;
         _IsBreak = true;

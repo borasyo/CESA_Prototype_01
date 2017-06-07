@@ -55,7 +55,7 @@ public class Ready : Photon.MonoBehaviour {
         Reset();
     }
 
-    void OnPhotonPlayerDisconnecte()
+    void OnPhotonPlayerDisconnected()
     {
         Reset();
     }

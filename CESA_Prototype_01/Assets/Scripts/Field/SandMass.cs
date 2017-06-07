@@ -25,12 +25,13 @@ public class SandMass : FieldObjectBase
     {
         //  Fieldの生成が終わるまで待つ
         yield return new WaitWhile(() => FieldData.Instance.IsStart == false);
-
+        
         SandData.tData data = new SandData.tData();
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
                 data = SandData.Instance.GetSandDataList[GetDataNumber()];
+                //Debug.Log("data" + data._type);
             });
 
         this.ObserveEveryValueChanged(_ => data._type)
@@ -38,18 +39,20 @@ public class SandMass : FieldObjectBase
             {
                 if(data._type != SandItem.eType.MAX)
                 {
-                    for (int i = 0; i < transform.childCount; i++)
+                    foreach (LineRenderer thunder in _ThunderList)
                     {
-                        transform.GetChild(i).gameObject.SetActive(true);
-                        ThunderUpdate(data);
+                        thunder.gameObject.SetActive(true);
                     }
+                    ThunderUpdate(data);
+                    //Debug.Log("true");
                 }
                 else
                 {
-                    for (int i = 0; i < transform.childCount; i++)
+                    foreach (LineRenderer thunder in _ThunderList)
                     {
-                        transform.GetChild(i).gameObject.SetActive(false);
+                        thunder.gameObject.SetActive(false);
                     }
+                    //Debug.Log("false");
                 }
             });
     }

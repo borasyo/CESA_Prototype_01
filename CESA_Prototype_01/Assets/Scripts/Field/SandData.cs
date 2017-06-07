@@ -141,7 +141,7 @@ public class SandData : MonoBehaviour
 
         //  チェックする
         FieldObjectBase[] objDataArray = FieldData.Instance.GetObjDataArray;
-
+        
         for (int number = 0; number < objDataArray.Length; number++)
         {
             _SandDataList[number]._type = SandItem.eType.MAX;
@@ -169,7 +169,7 @@ public class SandData : MonoBehaviour
         checkData.first = checkData.second = null;
         int nRemRange = GameScaler._nSandRange + 1;
 
-        int nRoopCnt = 0;
+        int nRoopCnt = 1;
         while (nRemRange > 0)
         {
             int idx = number + (add * nRoopCnt);
@@ -178,7 +178,7 @@ public class SandData : MonoBehaviour
 
             nRoopCnt++; 
             nRemRange--;
-            checkData.first = objDataArray[number + (add * nRoopCnt)];
+            checkData.first = objDataArray[idx];
 
             if (checkData.first && checkData.first.tag != "Character")
                 break;
@@ -186,7 +186,7 @@ public class SandData : MonoBehaviour
             checkData.first = null;
         }
 
-        nRoopCnt = 0;
+        nRoopCnt = 1;
         while (nRemRange > 0)
         {
             int idx = number - (add * nRoopCnt);
@@ -195,14 +195,13 @@ public class SandData : MonoBehaviour
 
             nRoopCnt++; 
             nRemRange--;
-            checkData.second = objDataArray[number - (add * nRoopCnt)];
+            checkData.second = objDataArray[idx];
 
             if (checkData.second && checkData.second.tag != "Character")
                 break;
 
             checkData.second = null;
         }
-
         return checkData;
     }
      
@@ -303,9 +302,13 @@ public class SandData : MonoBehaviour
         int nRemRange = GameScaler._nSandRange;
         while (nRemRange > 0)
         {
+            int seacrhNumber = number + (add * nRoopCnt);
+            if (seacrhNumber < 0 || GameScaler.GetRange <= seacrhNumber)
+                break;
+
             nRoopCnt++;
             nRemRange--;
-            first = FieldData.Instance.GetObjDataArray[number + (add * nRoopCnt)];
+            first = FieldData.Instance.GetObjDataArray[seacrhNumber];
 
             if (first && first.tag != "Character")
                 break;
@@ -317,9 +320,13 @@ public class SandData : MonoBehaviour
         nRemRange = GameScaler._nSandRange;
         while (nRemRange > 0)
         {
+            int seacrhNumber = number - (add * nRoopCnt);
+            if (seacrhNumber < 0 || GameScaler.GetRange <= seacrhNumber)
+                break;
+
             nRoopCnt++;
             nRemRange--;
-            second = FieldData.Instance.GetObjDataArray[number - (add * nRoopCnt)];
+            second = FieldData.Instance.GetObjDataArray[seacrhNumber];
 
             if (second && second.tag != "Character")
                 break;

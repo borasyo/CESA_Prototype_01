@@ -25,30 +25,30 @@ Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototyp
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\GUIAnimatorFREE.dll into Unity Child Domain
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.041 seconds
+- Completed reload, in  0.023 seconds
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 2.577381 ms
+UnloadTime: 1.782124 ms
 Setting up 4 worker threads for Enlighten.
-  Thread -> id: b70 -> priority: 1 
-  Thread -> id: 2cc8 -> priority: 1 
-  Thread -> id: 148c -> priority: 1 
-  Thread -> id: 4360 -> priority: 1 
+  Thread -> id: 3920 -> priority: 1 
+  Thread -> id: 3b9c -> priority: 1 
+  Thread -> id: 1cac -> priority: 1 
+  Thread -> id: 36e8 -> priority: 1 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.574813 ms
+UnloadTime: 5.397732 ms
 
 Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 845.
-Total: 0.542814 ms (FindLiveObjects: 0.109827 ms CreateObjectMapping: 0.060839 ms MarkObjects: 0.356345 ms  DeleteObjects: 0.014617 ms)
+Total: 0.485136 ms (FindLiveObjects: 0.068345 ms CreateObjectMapping: 0.067555 ms MarkObjects: 0.332247 ms  DeleteObjects: 0.016197 ms)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.256097 ms
+UnloadTime: 2.944002 ms
 
 Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 908.
-Total: 0.470123 ms (FindLiveObjects: 0.084148 ms CreateObjectMapping: 0.078222 ms MarkObjects: 0.258765 ms  DeleteObjects: 0.048592 ms)
+Total: 0.442864 ms (FindLiveObjects: 0.074271 ms CreateObjectMapping: 0.029629 ms MarkObjects: 0.291160 ms  DeleteObjects: 0.047012 ms)
 
 Joined lobby
  
@@ -86,15 +86,125 @@ Parent of RectTransform is being set with parent property. Consider using the Se
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.168197 ms
+UnloadTime: 1.349136 ms
 
 Unloading 134 unused Assets to reduce memory usage. Loaded Objects now: 1515.
-Total: 1.182024 ms (FindLiveObjects: 0.080197 ms CreateObjectMapping: 0.062814 ms MarkObjects: 0.938271 ms  DeleteObjects: 0.100345 ms)
+Total: 1.653334 ms (FindLiveObjects: 0.138271 ms CreateObjectMapping: 0.101135 ms MarkObjects: 1.318717 ms  DeleteObjects: 0.094419 ms)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.060345 ms
+UnloadTime: 1.347951 ms
 
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 3591.
-Total: 2.484542 ms (FindLiveObjects: 0.300641 ms CreateObjectMapping: 0.133530 ms MarkObjects: 2.005727 ms  DeleteObjects: 0.044641 ms)
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 4104.
+Total: 1.670717 ms (FindLiveObjects: 0.243358 ms CreateObjectMapping: 0.104691 ms MarkObjects: 1.282766 ms  DeleteObjects: 0.039111 ms)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetAction" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetMove" for viewID 2004 but this PhotonView does not exist! Was remote PV. Owner called. By: 2 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Win
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.284940 ms
+
+Unloading 185 unused Assets to reduce memory usage. Loaded Objects now: 1386.
+Total: 1.340840 ms (FindLiveObjects: 0.139456 ms CreateObjectMapping: 0.061234 ms MarkObjects: 0.987655 ms  DeleteObjects: 0.152098 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.357433 ms
+
+Unloading 96 unused Assets to reduce memory usage. Loaded Objects now: 4160.
+Total: 1.566025 ms (FindLiveObjects: 0.195950 ms CreateObjectMapping: 0.097185 ms MarkObjects: 1.226272 ms  DeleteObjects: 0.046222 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.369190 ms
+
+Unloading 187 unused Assets to reduce memory usage. Loaded Objects now: 1442.
+Total: 2.804150 ms (FindLiveObjects: 0.365037 ms CreateObjectMapping: 0.258370 ms MarkObjects: 1.925532 ms  DeleteObjects: 0.252839 ms)
 

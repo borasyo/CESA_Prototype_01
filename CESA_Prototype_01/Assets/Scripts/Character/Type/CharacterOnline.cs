@@ -44,17 +44,43 @@ public class CharacterOnline : Character
             return;
         }
 
-        base.Update();
+        /*if(photonView.isMine)
+        {
+
+        }
+
+        if (PhotonNetwork.isMasterClient)
+        {
+            base.Update();
+        }
+        else
+        {
+            MoveUpdate();
+            DirUpdate();
+        }*/
     }
 
-    public void OnlineUpdate()
+    public void OnlineMoveUpdate()
     {
-        MoveCheck(eDirection.FORWARD);
-        MoveCheck(eDirection.BACK);
-        MoveCheck(eDirection.RIGHT);
-        MoveCheck(eDirection.LEFT);
-
+        if (photonView.isMine)
+        {
+            MoveUpdate();
+        }
+        else
+        {
+            MoveCheck(eDirection.FORWARD);
+            MoveCheck(eDirection.BACK);
+            MoveCheck(eDirection.RIGHT);
+            MoveCheck(eDirection.LEFT);
+        }
         DirUpdate();
+    }
+
+    public void OnlineActionUpdate()
+    {
+        //  アクション
+        ItemPut();
+        ItemBreak();
     }
 
     protected override void ItemPut()
@@ -90,9 +116,12 @@ public class CharacterOnline : Character
 
     [PunRPC]
     public virtual void OnlineItemPut(Vector3 pos, int dirNumber, bool isPostProcess)
-    {   
-        GameObject item = (GameObject)Instantiate(_sandItem, pos, Quaternion.identity);
-        FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumber);
+    {
+        FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
+        if (obj)
+            return;
+
+        Instantiate(_sandItem, pos, Quaternion.identity);
 
         if (!isPostProcess)
             return;
@@ -106,6 +135,9 @@ public class CharacterOnline : Character
     { 
         FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
 
+        if (!obj)
+            return;
+
         if(obj.tag == "SandItem")
             obj.GetComponent<SandItem>().Break();
         else
@@ -114,5 +146,4 @@ public class CharacterOnline : Character
         _charactorGauge.BreakAction();
         _fNotMoveTime = 0.0f;
     }
-
 }

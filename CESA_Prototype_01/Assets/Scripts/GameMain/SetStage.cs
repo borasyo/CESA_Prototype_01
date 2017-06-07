@@ -6,7 +6,7 @@ public class SetStage : MonoBehaviour
 {
     void Start()
     {
-        float fScale = StageScaler.GetMagni(true);
+        float fScale = StageScaler.GetMagni(); // (true);
         fScale *= fScale;
 
         //  スケールに合わせて拡大

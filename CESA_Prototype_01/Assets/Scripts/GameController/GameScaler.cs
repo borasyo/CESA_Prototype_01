@@ -8,8 +8,8 @@ public class GameScaler
 
     static public int _nWidth = 12;
     static public int _nHeight = 10;
-    static public int _nBaseWidth = 12;
-    static public int _nBaseHeight = 10;
+    //static public int _nBaseWidth = 12;
+    //static public int _nBaseHeight = 10;
     static public int GetRange { get { return _nHeight * _nWidth; } }
 
     static public int _nSandRange = 1;  

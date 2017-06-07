@@ -80,8 +80,8 @@ public class FieldData : Photon.MonoBehaviour
         //  スケールに合わせて拡大
         if (RoundCounter.nRoundCounter.Where(count => count == 0).ToList().Count == 4)
         {
-            GameScaler._nWidth = (int)(GameScaler._nBaseWidth * StageScaler.GetMagni());
-            GameScaler._nHeight = (int)(GameScaler._nBaseHeight * StageScaler.GetMagni());
+            GameScaler._nWidth = StageScaler.GetWidth(); // (int)(GameScaler._nBaseWidth * StageScaler.GetMagni());
+            GameScaler._nHeight = StageScaler.GetHeight(); // (int)(GameScaler._nBaseHeight * StageScaler.GetMagni());
         }
 
         Init();

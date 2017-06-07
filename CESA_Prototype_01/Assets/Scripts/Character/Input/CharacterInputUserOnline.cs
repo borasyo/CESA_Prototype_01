@@ -40,12 +40,55 @@ public class CharacterInputUserOnline : CharacterInputUser
             _IsRight = (Input.GetAxisRaw("Horizontal") >= 1.0f); //Input.GetKey(KeyCode.D);
             _IsLeft = (Input.GetAxisRaw("Horizontal") <= -1.0f); //Input.GetKey(KeyCode.A);
             _IsPut = _IsBreak = Input.GetButtonDown("Action"); // Input.GetKeyDown(KeyCode.T);
+            photonView.RPC("SetAction", PhotonTargets.MasterClient, _IsPut, _IsBreak);
         }
+        
+        photonView.RPC("SetMove", PhotonTargets.All, _IsForawrd, _IsBack, _IsRight, _IsLeft);
+    }
+
+    public override IEnumerator ActionClick()
+    {
+        _IsPut = true;
+        _IsBreak = true;
+
+        photonView.RPC("SetAction", PhotonTargets.MasterClient, _IsPut, _IsBreak);
+
+        yield return null;
+
+        _IsPut = false;
+        _IsBreak = false;
+    }
+
+    [PunRPC]
+    public void SetMove(bool isForward, bool isBack, bool isRight, bool isLeft)
+    {
+        _IsForawrd = isForward;
+        _IsBack = isBack;
+        _IsRight = isRight;
+        _IsLeft = isLeft;
+
+        if (!_characterOnline)
+            _characterOnline = GetComponent<CharacterOnline>();
+
+        _characterOnline.OnlineMoveUpdate();
+    }
+
+    //  Masterに情報を送信
+    [PunRPC]
+    public void SetAction(bool isPut, bool isBreak)
+    {
+        _IsPut = isPut;
+        _IsBreak = isBreak;
+
+        if (!_characterOnline)
+            _characterOnline = GetComponent<CharacterOnline>();
+
+        _characterOnline.OnlineActionUpdate();
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.isWriting)
+        /*if (stream.isWriting)
         {
             stream.SendNext(_IsForawrd);
             stream.SendNext(_IsBack);
@@ -67,6 +110,6 @@ public class CharacterInputUserOnline : CharacterInputUser
                 _characterOnline = GetComponent<CharacterOnline>();
 
             _characterOnline.OnlineUpdate();
-        }
+        }*/
     }
 }

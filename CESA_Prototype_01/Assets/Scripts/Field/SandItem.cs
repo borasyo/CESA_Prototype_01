@@ -29,6 +29,8 @@ public class SandItem : FieldObjectBase
     void Awake()
     {
         transform.position += new Vector3(0, 0.516f, 0);
+        FieldData.Instance.SetObjData(this, GetDataNumber());
+        FieldData.Instance.ExceptionChangeField();
 
         if (_SandItemHolder)
             return;

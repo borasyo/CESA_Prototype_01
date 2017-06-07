@@ -23,6 +23,9 @@ public class ReLoadScene : Photon.MonoBehaviour
     {
         if (!PhotonNetwork.inRoom)
         {
+            for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
+                RoundCounter.nRoundCounter[i] = 0;
+
             SceneManager.LoadScene("CharacterSelect");
         }
         else
@@ -38,6 +41,9 @@ public class ReLoadScene : Photon.MonoBehaviour
     [PunRPC]
     public void LoadOnlineRoom()
     {
+        for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
+            RoundCounter.nRoundCounter[i] = 0;
+        
         SceneManager.LoadScene("OnlineRoom");
     }
 }
