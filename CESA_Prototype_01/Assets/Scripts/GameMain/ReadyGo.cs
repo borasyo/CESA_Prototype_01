@@ -34,6 +34,7 @@ public class ReadyGo : MonoBehaviour
             });
 
         yield return new WaitWhile(() => ready.transform.localScale.x <= 1.0f);
+        ready.transform.localScale = Vector3.one;
 
         float time = 0.0f;
         yield return new WaitWhile(() =>
@@ -56,14 +57,15 @@ public class ReadyGo : MonoBehaviour
             }); 
 
         yield return new WaitWhile(() => go.transform.localScale.x <= 1.0f);
+        go.transform.localScale = Vector3.one;
 
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                go.color -= new Color(0, 0, 0, 1) * (Time.unscaledDeltaTime / 0.5f);
+                go.color -= new Color(0, 0, 0, 1) * (Time.unscaledDeltaTime / 0.25f);
             });
 
-        yield return new WaitWhile(() => go.color.a < 1.0f);
+        yield return new WaitWhile(() => go.color.a > 0.0f);
 
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);

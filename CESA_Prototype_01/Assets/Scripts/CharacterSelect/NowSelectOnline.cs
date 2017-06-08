@@ -31,8 +31,10 @@ public class NowSelectOnline : NowSelect
         _photonView = GetComponent<PhotonView>();
 
         if (_IsInit)
+        {
             //Set();
             StartCoroutine(Set());
+        }
         else
         {
             if (_nInitNumber < 0)
@@ -186,6 +188,7 @@ public class NowSelectOnline : NowSelect
         if (_photonView.isMine)
             _charaType++;
     }
+
     public override void None()
     {
         if (!photonView.isMine)
@@ -227,11 +230,11 @@ public class NowSelectOnline : NowSelect
 
     void OnDestroy()
     {
-        if(photonView.isMine)
-            _charaSele.SetPlayerNumber(_nInitNumber);
-
         if (transform.parent.name.Contains("CPU"))
             return;
+
+        if (photonView.isMine)
+            _charaSele.SetPlayerNumber(_nInitNumber);
 
         _charaSele.PlayerChange(_nInitNumber);
 
@@ -241,7 +244,7 @@ public class NowSelectOnline : NowSelect
         //  空いた箇所にCPUを作成する
         string player = (_charaSele.GetNullIdx() + 1).ToString();
 
-        if (player == "0")
+        if (player == "0" || player == "1")
             return;
 
         GameObject obj = PhotonNetwork.Instantiate("Prefabs/CharacterSelect/" + player + "P_CPU", Vector3.zero, Quaternion.identity, 0);

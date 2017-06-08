@@ -266,7 +266,6 @@ public class RoomManager : Photon.MonoBehaviour
         {
             LeaveRoom();
         }
-        CharacterSelectOnline._nMyNumber = 0;
     }
 
     //  Masterが退室した時
@@ -285,7 +284,10 @@ public class RoomManager : Photon.MonoBehaviour
         roomSelectPanel.SetActive(true);       // room選択panelの非表示
 
         //playerNameInputField.text = "PlayerName";   // player名入力領域の初期化
-        roomNameInputField.text = "RoomName";		// room名入力領域の初期
+        roomNameInputField.text = "RoomName";       // room名入力領域の初期
+
+        CharacterSelectOnline._nMyNumber = 0;
+        Debug.Log("LeaveRoom");
     }
 
 	// Lobbyに参加した時に呼ばれる

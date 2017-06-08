@@ -127,4 +127,12 @@ public class CharacterSelect : Photon.PunBehaviour
 
         SceneManager.LoadScene("StageSelect");
     }
+
+    public static void Reset()
+    {
+        for(int i = 0; i< SelectCharas.Length; i++)
+        {
+            SelectCharas[i] = null;
+        }
+    }
 }

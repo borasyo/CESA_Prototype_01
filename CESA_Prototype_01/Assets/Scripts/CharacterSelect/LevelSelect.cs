@@ -33,4 +33,12 @@ public class LevelSelect : MonoBehaviour
             //Debug.Log(SelectLevel[i]);
         }
     }
+
+    public static void Reset()
+    {
+        for (int i = 0; i < SelectLevel.Length; i++)
+        {
+            SelectLevel[i] = 2;
+        }
+    }
 }

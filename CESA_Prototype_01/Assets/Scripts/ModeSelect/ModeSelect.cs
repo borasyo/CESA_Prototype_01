@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class ModeSelect : MonoBehaviour
 {
+    void Awake()
+    {
+        LevelSelect.Reset();
+        CharacterSelect.Reset();
+    }
+
     public void Offline()
     {
         SceneManager.LoadScene("CharacterSelect");

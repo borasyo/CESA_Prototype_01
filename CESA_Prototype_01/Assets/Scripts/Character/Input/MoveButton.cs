@@ -58,10 +58,10 @@ public class MoveButton : MonoBehaviour
                 {
                     _fingerID = Input.GetTouch(0).fingerId;
                     CenterPosition = Input.GetTouch(0).position;
-                    rectTrans.anchoredPosition = Input.GetTouch(0).position;
-                    float x = 1920.0f / (float)Screen.width;
-                    float y = 1080.0f / (float)Screen.height;
-                    rectTrans.anchoredPosition -= new Vector2(Screen.width / 2.0f * x, Screen.height / 2.0f * y);
+                    rectTrans.anchoredPosition = Input.GetTouch(0).position - new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+                    //float x = (float)Screen.width / 1920.0f;
+                    //float y = (float)Screen.height / 1080.0f;
+                    //rectTrans.anchoredPosition -= new Vector2(Screen.width * 0.5f * x, Screen.height * 0.5f * y);
                 }
             });
 

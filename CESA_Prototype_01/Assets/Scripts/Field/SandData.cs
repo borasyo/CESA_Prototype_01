@@ -292,6 +292,7 @@ public class SandData : MonoBehaviour
 
         return true;
     }
+
     bool HalfSand(int number, int add)
     {
         FieldObjectBase first = null;

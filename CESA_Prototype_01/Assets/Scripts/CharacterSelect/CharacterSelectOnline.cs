@@ -38,7 +38,7 @@ public class CharacterSelectOnline : CharacterSelect
             return;
 
         _nMyNumber = number;
-        //Debug.Log(_nMyNumber);
+        //Debug.Log("SetPlayerNumber" + _nMyNumber);
     }
 
     //  新たに生成したキャラセレパネルはどこに配置すべきかを返す
