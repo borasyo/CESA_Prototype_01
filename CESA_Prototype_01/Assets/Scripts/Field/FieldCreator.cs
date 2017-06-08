@@ -27,11 +27,6 @@ public class FieldCreator : MonoBehaviour
 
     void CreateField()
     {
-        //  ステージ番号取得
-        int nStageNumber = SelectStage.GetStageNumber();
-
-        //  TODO : それに応じた地形生成
-
         //  外回りのステージ生成
         GameObject stage = Resources.Load<GameObject>("Prefabs/Field/Stage");
         Instantiate(stage, new Vector3((float)GameScaler._nWidth / 2.0f - 0.5f, -1.25f, (float)GameScaler._nHeight / 2.0f - 0.5f), stage.transform.rotation);
@@ -71,7 +66,7 @@ public class FieldCreator : MonoBehaviour
 
                     _objBaseArray[x + (z * _nWidth)] = wall.GetComponent<FieldObjectBase>();
                 }
-                else if (RandomBlock(x, z))
+                else if (StageBlock(x, z))
                 {
                     CreateRandomBlock(BlockObj, createPos, x + (z * _nWidth));
                 }
@@ -216,24 +211,53 @@ public class FieldCreator : MonoBehaviour
         return false;
     }
 
-    protected bool RandomBlock(float x, float z)
+    bool StageBlock(int x, int z)
     {
-        if (Random.Range(0, 10) != 0)
+        //  ステージ番号取得
+        int nStageNumber = SelectStage.GetStageNumber();
+
+        switch (nStageNumber)
+        {
+            case 0:
+                return StageOne(x, z);
+            case 1:
+                return StageTwo(x, z);
+            case 2:
+                return false;   //  まっさらステージ
+        }
+
+        return false;
+    }
+
+    bool StageOne(int x, int z)
+    {
+        int min = StageScaler.GetScale() == 0 ? 2 : 3;
+        int max = StageScaler.GetScale() == 0 ? 3 : 4;
+
+        if (x == GameScaler._nWidth  / 2 && z >= min && z <= GameScaler._nHeight - max)
+            return true;
+
+        if (z == GameScaler._nHeight / 2 && x >= 3 && x <= GameScaler._nWidth  - 4)
+            return true;
+
+        return false;
+    }
+
+    // TODO : returnの統一する
+    bool StageTwo(int x, int z)
+    {
+        int min = StageScaler.GetScale() == 0 ? 2 : 3;
+        int max = StageScaler.GetScale() == 0 ? 3 : 4;
+
+        if ((x == min || x == GameScaler._nWidth - max) && (z == min || z == GameScaler._nHeight - max))
             return false;
 
-        //  詰み状態回避処理
-        if (z < 2)
-            return false;
-        
-        if (z >= _nHeight - 2)
-            return false;
-        
-        if (x % _nWidth < 2)
-            return false;
+        if ((x == GameScaler._nWidth - max || x == min) && (z <= GameScaler._nHeight - max && z >= min) && z != GameScaler._nHeight / 2)
+            return true;
 
-        if (x % _nWidth >= _nWidth - 2)
-            return false;
+        if ((z == GameScaler._nHeight - max || z == min) && (x <= GameScaler._nWidth - max && x >= min) && x != GameScaler._nWidth  / 2)
+            return true;
 
-        return true;
+        return false;
     }
 }

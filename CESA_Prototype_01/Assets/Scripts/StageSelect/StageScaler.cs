@@ -57,6 +57,11 @@ public class StageScaler : Photon.MonoBehaviour
         nRand = Random.Range(0, 3);
     }
 
+    static public int GetScale()
+    {
+        return StageScale != 3 ? StageScale : nRand;
+    }
+
     static public int GetWidth()
     {
         int width = 0;

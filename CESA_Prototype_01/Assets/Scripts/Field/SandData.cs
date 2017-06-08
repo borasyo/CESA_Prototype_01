@@ -300,7 +300,7 @@ public class SandData : MonoBehaviour
         int idx = add == 1 ? 0 : 1; 
 
         int nRoopCnt = 0;
-        int nRemRange = GameScaler._nSandRange;
+        int nRemRange = GameScaler._nSandRange + 1;
         while (nRemRange > 0)
         {
             int seacrhNumber = number + (add * nRoopCnt);
