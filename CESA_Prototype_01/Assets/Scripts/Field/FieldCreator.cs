@@ -223,6 +223,8 @@ public class FieldCreator : MonoBehaviour
             case 1:
                 return StageTwo(x, z);
             case 2:
+                return StageThree(x,z);
+            case 3:
                 return false;   //  まっさらステージ
         }
 
@@ -255,9 +257,20 @@ public class FieldCreator : MonoBehaviour
         if ((x == GameScaler._nWidth - max || x == min) && (z <= GameScaler._nHeight - max && z >= min) && z != GameScaler._nHeight / 2)
             return true;
 
-        if ((z == GameScaler._nHeight - max || z == min) && (x <= GameScaler._nWidth - max && x >= min) && x != GameScaler._nWidth  / 2)
+        if ((z == GameScaler._nHeight - max || z == min) && (x <= GameScaler._nWidth - max && x >= min) && x != GameScaler._nWidth / 2)
             return true;
 
         return false;
+    }
+    
+    bool StageThree(int x, int z)
+    {
+        if (x % 2 == 1)
+            return false;
+
+        if (z % 2 == 1)
+            return false;
+
+        return true;
     }
 }

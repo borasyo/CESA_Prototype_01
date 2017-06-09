@@ -10,7 +10,7 @@ public class SelectStage : Photon.MonoBehaviour
 {
     static protected int StageNumber = 0;
     static protected int nRand = 0; 
-    static int nMaxStage = 4;
+    const int nMaxStage = 5;
     [SerializeField] List<Sprite> stageSpriteList = new List<Sprite>();
 
     void Start()
@@ -24,9 +24,8 @@ public class SelectStage : Photon.MonoBehaviour
                 myImage.sprite = stageSpriteList[StageNumber];
             });
 
-        nRand = Random.Range(0, 3);
+        nRand = Random.Range(0, nMaxStage - 1);
     }
-
 
     public virtual void Add()
     {
@@ -36,7 +35,7 @@ public class SelectStage : Photon.MonoBehaviour
 
         if(StageNumber == nMaxStage - 1)
         {
-            nRand = Random.Range(0,3);
+            nRand = Random.Range(0, nMaxStage - 1);
         }
     }
 
@@ -48,7 +47,7 @@ public class SelectStage : Photon.MonoBehaviour
 
         if (StageNumber == nMaxStage - 1)
         {
-            nRand = Random.Range(0, 3);
+            nRand = Random.Range(0, nMaxStage - 1);
         }
     }
 
