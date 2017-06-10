@@ -75,6 +75,8 @@ public class Character : FieldObjectBase
         _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
         //FieldData.Instance.CharaSet(this);
         FieldData.Instance.SetObjData(this, GetDataNumber());
+
+        SetMaterial();
     }
 
     protected virtual void SetInput(int level)
@@ -90,6 +92,31 @@ public class Character : FieldObjectBase
         {
             _charactorInput = this.gameObject.AddComponent<CharacterInputUser>();
         }
+    }
+
+    void SetMaterial()
+    {
+        string materialName = "Materials/Chara/";
+        switch(_charaType)
+        {
+            case eCharaType.BALANCE:
+                materialName += "Balance_";
+                break;
+            case eCharaType.POWER:
+                materialName += "Power_";
+                break;
+            case eCharaType.SPEED:
+                materialName += "Speed_";
+                break;
+            case eCharaType.TECHNICAL:
+                materialName += "Technique_";
+                break;
+        }
+        materialName += GetPlayerNumber();
+
+        MeshRenderer[] all = GetComponentsInChildren<MeshRenderer>();
+        foreach(MeshRenderer meRend in all)
+            meRend.material = Resources.Load(materialName) as Material;
     }
 
     // Update is called once per frame

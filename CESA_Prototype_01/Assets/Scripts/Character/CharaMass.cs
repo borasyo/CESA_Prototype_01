@@ -16,6 +16,8 @@ public class CharaMass : FieldObjectBase {
 	// Use this for initialization
 	void Start ()
     {
+        transform.localScale *= 0.2f;
+
         //  座標更新処理
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
@@ -28,7 +30,7 @@ public class CharaMass : FieldObjectBase {
         //  点滅運動
         _SpRend = GetComponent<SpriteRenderer>();
         Color defaultColor = _SpRend.color = SelectMassColor.Instance.GetBreakColor(transform.parent.name);
-        defaultColor.a = 0.25f;  //  min
+        /*defaultColor.a = 0.25f;  //  min
         _triangleWaveColor = TriangleWaveFactory.Color(defaultColor, _SpRend.color, _fPeriod_Sec / 2.0f);
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
@@ -36,29 +38,25 @@ public class CharaMass : FieldObjectBase {
                 {
                     _triangleWaveColor.Progress();
                     _SpRend.color = _triangleWaveColor.CurrentValue;
-                });
+                });*/
 
-        // 拡大縮小処理
-       /*_triangleWaveScaler = TriangleWaveFactory.Vector3(transform.localScale / 2.0f, transform.localScale, _fPeriod_Sec / 6.0f);
+        //  回転処理
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
             .Subscribe(_ =>
-                {
-                    bool bHalfSand = false;
-                    foreach(SandItem.eType type in SandData.Instance.GetHalfSandDataList[GetDataNumber()]._type)
-                    {
-                        if (type == GetSandType())
-                            continue;
+            {
+                transform.eulerAngles += new Vector3(0, 0, 360) * (Time.deltaTime / 1.0f);
+            });
 
-                        bHalfSand = true;
-                    }
-
-                    if (!bHalfSand)
-                        return;
-
-                    _triangleWaveScaler.Progress();
-                    transform.localScale = _triangleWaveScaler.CurrentValue;
-                });*/
+        // 拡大縮小処理
+        _triangleWaveScaler = TriangleWaveFactory.Vector3(transform.localScale / 2.0f, transform.localScale, _fPeriod_Sec / 2.0f);
+         this.UpdateAsObservable()
+             .Where(_ => this.enabled)
+             .Subscribe(_ =>
+                 {
+                     _triangleWaveScaler.Progress();
+                     transform.localScale = _triangleWaveScaler.CurrentValue;
+                 });
     }
 
     Color ColorChange()

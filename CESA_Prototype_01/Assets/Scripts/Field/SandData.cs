@@ -96,16 +96,6 @@ public class SandData : MonoBehaviour
         StartCoroutine(StartUpdate());
     }
 
-    /*void Start()
-    {
-        SandUpdate();
-    }
-
-    void Update()
-    {
-        SandUpdate();
-    }*/
-
     IEnumerator StartUpdate()
     {
         Referee referee = GameObject.FindWithTag("Referee").GetComponent<Referee>();
@@ -318,7 +308,7 @@ public class SandData : MonoBehaviour
         }
 
         nRoopCnt = 0;
-        nRemRange = GameScaler._nSandRange;
+        nRemRange = GameScaler._nSandRange + 1;
         while (nRemRange > 0)
         {
             int seacrhNumber = number - (add * nRoopCnt);

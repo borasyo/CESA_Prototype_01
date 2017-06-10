@@ -8,10 +8,10 @@ using UniRx.Triggers;
 public class SandMass : FieldObjectBase
 {
     List<LineRenderer> _ThunderList = new List<LineRenderer>();
-	
+
     void Start()
     {
-        for(int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             Transform child = transform.GetChild(i);
             _ThunderList.Add(child.GetComponent<LineRenderer>());
@@ -25,7 +25,7 @@ public class SandMass : FieldObjectBase
     {
         //  Fieldの生成が終わるまで待つ
         yield return new WaitWhile(() => FieldData.Instance.IsStart == false);
-        
+
         SandData.tData data = new SandData.tData();
         this.UpdateAsObservable()
             .Subscribe(_ =>
@@ -37,7 +37,7 @@ public class SandMass : FieldObjectBase
         this.ObserveEveryValueChanged(_ => data._type)
             .Subscribe(_ =>
             {
-                if(data._type != SandItem.eType.MAX)
+                if (data._type != SandItem.eType.MAX)
                 {
                     foreach (LineRenderer thunder in _ThunderList)
                     {
@@ -54,6 +54,12 @@ public class SandMass : FieldObjectBase
                     }
                     //Debug.Log("false");
                 }
+            });
+
+        this.ObserveEveryValueChanged(_ => data._isVertical)
+            .Subscribe(_ =>
+            {
+                DirUpdate(data._isVertical);
             });
     }
 
@@ -85,10 +91,16 @@ public class SandMass : FieldObjectBase
             thunder.endColor = setColor;
         }
 
+        DirUpdate(data._isVertical);
+    }
+
+    void DirUpdate(bool isVertical)
+    {
         //  向きを更新
-        if (data._isVertical)
+        if (isVertical)
             transform.eulerAngles = new Vector3(0, 90, 0);
         else
             transform.eulerAngles = new Vector3(0, 0, 0);
+
     }
 }

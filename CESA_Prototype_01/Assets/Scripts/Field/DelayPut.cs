@@ -13,6 +13,8 @@ public class DelayPut : MonoBehaviour
     MeshRenderer _MeRend = null;
     Vector3 _InitScale = Vector3.zero;
 
+    static GameObject effectPrefab = null;
+
     public void Init (int number)
     {
         DelayPut me = GetComponent<DelayPut>();
@@ -60,6 +62,12 @@ public class DelayPut : MonoBehaviour
             .Subscribe(_ => {
                 _MeRend.enabled = true;
             });
+
+        if (!effectPrefab)
+            effectPrefab = Resources.Load("Prefabs/Effect/DelayPutEffect") as GameObject;
+
+        GameObject effect = Instantiate(effectPrefab, transform.position, transform.rotation);
+        effect.GetComponent<ParticleSystem>().startColor = GetColor();
     }
 
     void Update ()
@@ -68,5 +76,28 @@ public class DelayPut : MonoBehaviour
             return;
 
         transform.localScale += _InitScale * (Time.deltaTime / DangerTime);
+    }
+
+    Color GetColor()
+    {
+        Color col = Color.black;
+
+        switch(name[name.IndexOf("(") - 1].ToString())
+        {
+            case "1":
+                col = Color.red;
+                break;
+            case "2":
+                col = Color.blue;
+                break;
+            case "3":
+                col = Color.green;
+                break;
+            case "4":
+                col = Color.yellow;
+                break;
+        }
+
+        return col;
     }
 }

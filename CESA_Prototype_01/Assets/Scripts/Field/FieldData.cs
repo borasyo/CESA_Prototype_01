@@ -83,7 +83,6 @@ public class FieldData : Photon.MonoBehaviour
             GameScaler._nWidth = StageScaler.GetWidth(); // (int)(GameScaler._nBaseWidth * StageScaler.GetMagni());
             GameScaler._nHeight = StageScaler.GetHeight(); // (int)(GameScaler._nBaseHeight * StageScaler.GetMagni());
         }
-
         Init();
     }
 

@@ -43,7 +43,7 @@ public class SpecialItem : ItemBase
         ParticleSystem particle = transform.GetComponentInChildren<ParticleSystem>();
         particle.startColor = GetColor(_character.GetPlayerNumber());
         particle.startSize *= 2.0f;
-        transform.localPosition = Vector3.zero + new Vector3(0.0f, 0.1f, 0.0f);
+        transform.localPosition = Vector3.zero + new Vector3(0.0f, 0.12f, 0.0f);
 
         _charactorGauge = this.GetComponentInParent<CharacterGauge>();
         _charactorGauge.GaugeMax();
