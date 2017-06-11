@@ -265,10 +265,14 @@ public class FieldCreator : MonoBehaviour
     
     bool StageThree(int x, int z)
     {
-        if (x % 2 == 1)
+        if (x < 2 || x <= GameScaler._nWidth - 2)
             return false;
 
-        if (z % 2 == 1)
+
+        if (z < 2 || z <= GameScaler._nHeight - 2)
+            return false;
+
+        if (Random.Range(0, 10) != 0)
             return false;
 
         return true;

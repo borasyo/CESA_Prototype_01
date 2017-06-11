@@ -122,6 +122,8 @@ public class Character : FieldObjectBase
     // Update is called once per frame
     protected void Update()
     {
+        // Walk or Waitじゃなければreturn
+
         _nOldNumber = GetDataNumber();
 
         MoveUpdate();
@@ -144,30 +146,37 @@ public class Character : FieldObjectBase
         if (MoveCheck(eDirection.FORWARD))
         {
             transform.position += new Vector3(0,0, _moveAmount_Sec) * Time.deltaTime;
-            _fNotMoveTime = 0.0f;
+            OnMove();
             return;
         }
         else if(MoveCheck(eDirection.BACK)) 
         {
             transform.position -= new Vector3(0,0, _moveAmount_Sec) * Time.deltaTime;
-            _fNotMoveTime = 0.0f;
+            OnMove();
             return;
         }
         else if(MoveCheck(eDirection.RIGHT)) 
         {
             transform.position += new Vector3(_moveAmount_Sec, 0,0) * Time.deltaTime;
-            _fNotMoveTime = 0.0f;
+            OnMove();
             return;
         }
         else if(MoveCheck(eDirection.LEFT)) 
         {
             transform.position -= new Vector3(_moveAmount_Sec, 0,0) * Time.deltaTime;
-            _fNotMoveTime = 0.0f;
+            OnMove();
             return;
         }
 
         _fNotMoveTime += Time.deltaTime;
         _IsNotMove = _fNotMoveTime >= 1.0f;
+        // アニメーションをWaitに
+    }
+
+    void OnMove()
+    {
+        _fNotMoveTime = 0.0f;
+        //  アニメーションをWalkに
     }
 
     virtual protected bool MoveCheck(eDirection dir)
@@ -281,16 +290,16 @@ public class Character : FieldObjectBase
         switch (_nowDirection)
         {
             case eDirection.FORWARD:
-                transform.eulerAngles = new Vector3(0,0,0);
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 break;
             case eDirection.BACK:
-                transform.eulerAngles = new Vector3(0,180,0);
+                transform.eulerAngles = new Vector3(0, 180, 0);
                 break;
             case eDirection.RIGHT:
-                transform.eulerAngles = new Vector3(0,90,0);
+                transform.eulerAngles = new Vector3(0, 90, 0);
                 break;
             case eDirection.LEFT:
-                transform.eulerAngles = new Vector3(0,270,0);
+                transform.eulerAngles = new Vector3(0, 270, 0);
                 break;
         }
     }

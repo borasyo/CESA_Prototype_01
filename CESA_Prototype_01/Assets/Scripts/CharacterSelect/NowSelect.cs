@@ -12,8 +12,7 @@ public class NowSelect : Photon.PunBehaviour
     Text _text = null;
 
     [SerializeField] protected bool _IsOnNone = true;
-    
-
+   
 	// Use this for initialization
 	void Awake ()
     {
@@ -23,13 +22,14 @@ public class NowSelect : Photon.PunBehaviour
             _charaType = CharacterSelect.eCharaType.NONE;
 
         _text = GetComponent<Text>();
+        GetComponentInParent<Image>().color = Color.clear;
     }
 	
 	// Update is called once per frame
 	void Update () 
     {
         //  テキスト更新
-        TextUpdate();
+        CharaUpdate();
 
         // 範囲外処理
         if (_charaType == CharacterSelect.eCharaType.NONE)
@@ -45,30 +45,41 @@ public class NowSelect : Photon.PunBehaviour
         }
 	}
 
-    public void TextUpdate()
+    public void CharaUpdate()
     {
         if (!_text)
             return;
 
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+
         switch (_charaType)
         {
             case CharacterSelect.eCharaType.NONE:
-                _text.text = "None";
+                _text.text = "";
+                transform.GetChild(0).gameObject.SetActive(true);
                 break;
             case CharacterSelect.eCharaType.BALANCE:
                 _text.text = "Balance";
+                transform.GetChild(1).gameObject.SetActive(true);
                 break;
             case CharacterSelect.eCharaType.POWER:
                 _text.text = "Power";
+                transform.GetChild(2).gameObject.SetActive(true);
                 break;
             case CharacterSelect.eCharaType.SPEED:
                 _text.text = "Speed";
+                transform.GetChild(3).gameObject.SetActive(true);
                 break;
             case CharacterSelect.eCharaType.TECHNICAL:
                 _text.text = "Technical";
+                transform.GetChild(4).gameObject.SetActive(true);
                 break;
             case CharacterSelect.eCharaType.MAX:
                 _text.text = "???";
+                transform.GetChild(5).gameObject.SetActive(true);
                 break;
         }
     }

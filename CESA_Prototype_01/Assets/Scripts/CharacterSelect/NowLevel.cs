@@ -11,13 +11,24 @@ public class NowLevel : Photon.MonoBehaviour
     protected int _nNowLevel = 2;
     public int nNowLevel { get { return _nNowLevel; } set { _nNowLevel = value; } }
 
+    static List<Sprite> cpuSpriteList = new List<Sprite>();
+
 	void Start ()
     {
-        Text text = GetComponentInChildren<Text>();
+        if(cpuSpriteList.Count == 0)
+        {
+            cpuSpriteList.Add(Resources.Load<Sprite>("Texture/CharaSelect/CPULevel/CPU_hard"));
+            cpuSpriteList.Add(Resources.Load<Sprite>("Texture/CharaSelect/CPULevel/CPU_normal"));
+            cpuSpriteList.Add(Resources.Load<Sprite>("Texture/CharaSelect/CPULevel/CPU_easy"));
+        }
+
+        Image image = GetComponent<Image>();
+        //Text text = GetComponentInChildren<Text>();
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                switch(_nNowLevel)
+                image.sprite = cpuSpriteList[_nNowLevel];
+                /*switch(_nNowLevel)
                 {
                     case 0:
                         text.text = "つよい";
@@ -28,8 +39,10 @@ public class NowLevel : Photon.MonoBehaviour
                     case 2:
                         text.text = "よわい";
                         break;
-                }
+                }*/
             });
+
+        Destroy(transform.GetChild(0).gameObject);
 	}
 
     public virtual void OnClick()

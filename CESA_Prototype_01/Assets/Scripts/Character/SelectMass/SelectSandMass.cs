@@ -23,5 +23,13 @@ public class SelectSandMass : MonoBehaviour
                 _triangleAlpha.Progress();
                 spRend.color = _triangleAlpha.CurrentValue;
             });
-	}
+
+        TriangleWave<Vector3> triangleScaler = TriangleWaveFactory.Vector3(Vector3.zero, transform.localScale, 0.5f);
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                triangleScaler.Progress();
+                transform.localScale = triangleScaler.CurrentValue;
+            });
+    }
 }

@@ -14,7 +14,7 @@ public class CPUArriveCheck : MonoBehaviour
 
         // 取得したくないボタンもあるので明示的に取得
         List<Button> buttonList = new List<Button>();
-        buttonList.Add(GetComponent<Button>());
+        //buttonList.Add(GetComponent<Button>());
         for (int i = 0; i < transform.childCount; i++)
         {
             if (transform.GetChild(i).tag != "Level")
@@ -23,11 +23,14 @@ public class CPUArriveCheck : MonoBehaviour
             buttonList.Add(transform.GetChild(i).GetComponent<Button>());
         }
 
+        Button myButton = GetComponent<Button>();
+        //GameObject chara = transform.Find("Chara").gameObject;
         this.ObserveEveryValueChanged(_ => nowSelect.CharaType)
             .Subscribe(_ =>
             {
                 bool enabled = nowSelect.CharaType != CharacterSelect.eCharaType.NONE;
 
+                myButton.enabled = enabled;
                 foreach (Button button in buttonList)
                 {
                     button.enabled = enabled;

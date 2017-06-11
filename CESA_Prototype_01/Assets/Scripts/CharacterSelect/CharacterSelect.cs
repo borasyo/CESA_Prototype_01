@@ -21,12 +21,12 @@ public class CharacterSelect : Photon.PunBehaviour
             if (!SelectCharas[i])
             {
                 if(_nowSelectDatas[i])
-                    _nowSelectDatas[i].TextUpdate();
+                    _nowSelectDatas[i].CharaUpdate();
                 continue;
             }
 
             _nowSelectDatas[i].CharaType = SearchCharaType(SelectCharas[i], IsRandom[i]);
-            _nowSelectDatas[i].TextUpdate();
+            _nowSelectDatas[i].CharaUpdate();
         }
     }
 

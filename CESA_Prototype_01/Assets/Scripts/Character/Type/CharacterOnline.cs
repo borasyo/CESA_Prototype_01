@@ -37,31 +37,20 @@ public class CharacterOnline : Character
 
     void Update()
     {
+        // Walk or Waitじゃなければreturn
+
         if (!photonView.isMine)
         {
             NumberUpdate();
             _nOldNumber = GetDataNumber();
             return;
         }
-
-        /*if(photonView.isMine)
-        {
-
-        }
-
-        if (PhotonNetwork.isMasterClient)
-        {
-            base.Update();
-        }
-        else
-        {
-            MoveUpdate();
-            DirUpdate();
-        }*/
     }
 
     public void OnlineMoveUpdate()
     {
+        // Walk or Waitじゃなければreturn
+
         if (photonView.isMine)
         {
             MoveUpdate();
@@ -78,6 +67,8 @@ public class CharacterOnline : Character
 
     public void OnlineActionUpdate()
     {
+        // Walk or Waitじゃなければreturn
+
         //  アクション
         ItemPut();
         ItemBreak();
