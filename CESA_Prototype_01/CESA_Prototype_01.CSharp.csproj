@@ -314,6 +314,7 @@
     <Compile Include="Assets\Scripts\Character\Type\TechnicalTypeOnline.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\AllReady.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\CPUArriveCheck.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\CharaMaterial.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\CharacterSelect.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\CharacterSelectOnline.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\LevelSelect.cs" />

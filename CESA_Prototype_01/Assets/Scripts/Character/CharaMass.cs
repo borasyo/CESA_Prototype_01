@@ -23,7 +23,7 @@ public class CharaMass : FieldObjectBase {
             .Where(_ => this.enabled)
             .Subscribe(_ =>
                 {
-                    int number = GetDataNumber(transform.parent.position); // FieldData.Instance.GetObjIdx(transform.parent.gameObject);
+                    int number = GetDataNumber(transform.parent.position); //FieldData.Instance.GetObjIdx(transform.parent.gameObject);
                     transform.position = GetPosForNumber(number);
                 });
 

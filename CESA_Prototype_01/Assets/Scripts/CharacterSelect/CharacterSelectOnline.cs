@@ -69,38 +69,6 @@ public class CharacterSelectOnline : CharacterSelect
         _nowSelectDatas[idx] = nowSelect;
     }
 
-    public int InstanceCheck(GameObject obj)
-    {
-        int number = 0;
-        foreach (NowSelect now in _nowSelectDatas)
-        {
-            if (!now || now.gameObject != obj)
-            {                
-                number++;
-                continue;
-            }
-
-            //  発見した
-            return number;
-        }
-
-        /*string debug = gameObject.name + "は";
-        foreach (NowSelect now in _nowSelectDatas)
-        {
-            if(now)
-            {
-                debug += now.name + ", ";
-            }
-            else
-            {
-                debug += "null, ";
-            }
-        }
-        Debug.Log(debug);*/
-        //  失敗
-        return -1;
-    }
-
     public int GetNullIdx()
     {
         for(int idx = 0; idx < _nowSelectDatas.Length; idx++)

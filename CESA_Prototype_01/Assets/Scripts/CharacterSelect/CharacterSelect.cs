@@ -120,6 +120,23 @@ public class CharacterSelect : Photon.PunBehaviour
         return type;
     }
 
+    public int InstanceCheck(GameObject obj)
+    {
+        int number = 0;
+        foreach (NowSelect now in _nowSelectDatas)
+        {
+            if (!now || now.gameObject != obj)
+            {
+                number++;
+                continue;
+            }
+
+            //  発見した
+            return number;
+        }
+        return -1;
+    }
+
     public virtual void GameStart()
     {
         SetChara();

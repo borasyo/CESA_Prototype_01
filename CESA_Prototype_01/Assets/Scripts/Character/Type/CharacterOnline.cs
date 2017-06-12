@@ -39,12 +39,8 @@ public class CharacterOnline : Character
     {
         // Walk or Waitじゃなければreturn
 
-        if (!photonView.isMine)
-        {
-            NumberUpdate();
-            _nOldNumber = GetDataNumber();
-            return;
-        }
+        NumberUpdate();
+        _nOldNumber = GetDataNumber();
     }
 
     public void OnlineMoveUpdate()
