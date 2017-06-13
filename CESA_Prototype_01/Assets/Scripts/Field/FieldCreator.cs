@@ -129,7 +129,7 @@ public class FieldCreator : MonoBehaviour
         }
     }
 
-    GameObject CreateObj(GameObject obj, Vector3 pos)
+    protected GameObject CreateObj(GameObject obj, Vector3 pos)
     {
         GameObject instance = (GameObject)Instantiate(obj, pos, obj.transform.rotation);
 
@@ -211,7 +211,7 @@ public class FieldCreator : MonoBehaviour
         return false;
     }
 
-    bool StageBlock(int x, int z)
+    protected virtual bool StageBlock(int x, int z)
     {
         //  ステージ番号取得
         int nStageNumber = SelectStage.GetStageNumber();
@@ -246,7 +246,7 @@ public class FieldCreator : MonoBehaviour
     }
 
     // TODO : returnの統一する
-    bool StageTwo(int x, int z)
+    protected bool StageTwo(int x, int z)
     {
         int min = StageScaler.GetScale() == 0 ? 2 : 3;
         int max = StageScaler.GetScale() == 0 ? 3 : 4;

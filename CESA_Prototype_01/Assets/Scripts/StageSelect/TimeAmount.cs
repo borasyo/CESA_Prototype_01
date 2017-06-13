@@ -67,6 +67,11 @@ public class TimeAmount : Photon.MonoBehaviour
         {
             return (nRand + 1) * 60;
         }
+        if(nTime_Sec == 3)
+        {
+            return -1;  //  ∞
+        }
+
         return (nTime_Sec + 1) * 60;
     }
 }

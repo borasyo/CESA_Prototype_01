@@ -71,7 +71,6 @@ public class Character : FieldObjectBase
         string charaName = this.name[this.name.IndexOf("Player") - 1].ToString();
         _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
 
-
         _nowDirection = (eDirection)(transform.eulerAngles.y / 90);
         //FieldData.Instance.CharaSet(this);
         FieldData.Instance.SetObjData(this, GetDataNumber());
@@ -285,7 +284,7 @@ public class Character : FieldObjectBase
 
     #region Other
 
-    protected void DirUpdate()
+    protected virtual void DirUpdate()
     {
         switch (_nowDirection)
         {

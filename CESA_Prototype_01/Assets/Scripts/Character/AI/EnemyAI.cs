@@ -44,6 +44,9 @@ public class EnemyAI : MonoBehaviour
     eState _state = eState.WAIT;
     public eState GetState { get { return _state; } }
 
+    //  AIを思考するか
+    bool _IsAI = true;
+
     //  AI選択用メソッド
     int _nLevel = 0;                                        //  低いほど頭が良くなる (0 : 強, 1 : 中, 2 : 弱)
     int[] _nActionRatio = new int[(int)eState.MAX];         //  通常時行動比率 (合計で100になるようにする)
@@ -59,15 +62,17 @@ public class EnemyAI : MonoBehaviour
     PutAI _putAI = null;
     BreakAI _breakAI = null;
 
-#if DEBUG
-    bool _IsAI = true;
-#endif
-
     #region Init
 
     //  キャラのタイプ、CPUのレベルによって設定する情報
     public void Set(int level, Character.eCharaType type)
     {
+        if (level < 0)
+        {
+            _IsAI = false;
+            level = 0;
+        }
+
         _nLevel = level;
         _character = GetComponent<Character>();
         _characterGauge = GetComponent<CharacterGauge>();

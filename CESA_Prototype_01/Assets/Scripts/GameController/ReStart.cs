@@ -24,7 +24,7 @@ public class ReStart : Photon.MonoBehaviour
             });
     }
 
-    IEnumerator DestroyReStart()
+    protected virtual IEnumerator DestroyReStart()
     {
         yield return new WaitForSeconds(2.0f);
 

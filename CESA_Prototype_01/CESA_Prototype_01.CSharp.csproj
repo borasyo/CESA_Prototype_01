@@ -366,6 +366,7 @@
     <Compile Include="Assets\Scripts\Item\SpecialItem.cs" />
     <Compile Include="Assets\Scripts\ModeSelect\ModeSelect.cs" />
     <Compile Include="Assets\Scripts\Online\CreateCharaSelect.cs" />
+    <Compile Include="Assets\Scripts\Online\NoneJoinLobby.cs" />
     <Compile Include="Assets\Scripts\Online\OnlineGameMainManager.cs" />
     <Compile Include="Assets\Scripts\Online\RoomButton.cs" />
     <Compile Include="Assets\Scripts\Online\RoomManager.cs" />
@@ -389,6 +390,15 @@
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveOscillator.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\FieldCreatorTutorial.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\FieldDataTutorial.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\GoTutorial.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\ItemCreatorTutorial.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\ReStartTutorial.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\TutorialArrow.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\TutorialCharacter.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\TutorialFlow.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\TutorialRange.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AssetStore\Elementals\Readme.txt" />

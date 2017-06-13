@@ -233,7 +233,10 @@ public class RoomManager : Photon.MonoBehaviour
 	// int index : roomInfo配列のindex
 	public void OnPressRoomButton(int index)
     {
-		RoomInfo room = PhotonNetwork.GetRoomList () [index];	// 指定room情報の取得
+        if (!PhotonNetwork.insideLobby)
+            return;
+
+        RoomInfo room = PhotonNetwork.GetRoomList () [index];	// 指定room情報の取得
 
 		// 部屋が満員であるとき、処理しない
 		if (room.playerCount >= 4) { // room.maxPlayers) {

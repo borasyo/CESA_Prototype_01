@@ -48,6 +48,12 @@ public class GameTimer : MonoBehaviour
         _fTime = (float)TimeAmount.GetTime();
         Text text = GetComponent<Text>();
 
+        if (_fTime < 0)
+        {
+            text.text = "Time : ∞";
+            return;
+        }
+
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
@@ -55,7 +61,10 @@ public class GameTimer : MonoBehaviour
                 text.text = "Time : " + (int)_fTime;
 
                 if (_fTime < 0.0f)
+                {
                     _fTime = 0.0f;
+                    // TODO : 引き分け？
+                }
             });
     }
 }
