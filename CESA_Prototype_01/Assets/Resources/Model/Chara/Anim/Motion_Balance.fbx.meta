@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 87d95b4176479f444a8c2bf988145af3
-timeCreated: 1497250586
+guid: b0ee074c0f86f144d8c456eb30e33f53
+timeCreated: 1497337912
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -91,7 +91,10 @@ ModelImporter:
     4300002: polySurface31
     4300004: polySurface32
     4300006: pCylinder7
-    7400000: Take 001
+    7400000: Action
+    7400002: Attack
+    7400004: Walk
+    7400006: Idle
     9500000: //RootNode
     13700000: pCylinder7
     13700002: polySurface30

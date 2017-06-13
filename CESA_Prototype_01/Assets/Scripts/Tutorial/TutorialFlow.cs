@@ -12,6 +12,8 @@ public class TutorialFlow : MonoBehaviour
     [SerializeField]
     GameObject _UpArrow = null;
     [SerializeField]
+    GameObject _UpArrow2 = null;
+    [SerializeField]
     GameObject _DownArrow = null;
     [SerializeField]
     GameObject _RightArrow = null;
@@ -21,6 +23,7 @@ public class TutorialFlow : MonoBehaviour
         _RightRange.SetActive(false);
         _LeftRange.SetActive(false);
         _UpArrow.SetActive(false);
+        _UpArrow2.SetActive(false);
         _DownArrow.SetActive(false);
         _RightArrow.SetActive(false);
 
@@ -62,14 +65,7 @@ public class TutorialFlow : MonoBehaviour
         _UpArrow.SetActive(true);
         tutoChara.SetNowAction = TutorialCharacter.eNowAction.FORWARD;
 
-        Vector3 pos = tutoChara.transform.position;
-        yield return new WaitWhile(() =>
-        {
-            if (pos.z != tutoChara.transform.position.z)
-                return false;
-
-            return true;
-        });
+        yield return new WaitWhile(() => tutoChara.GetDataNumberForDir() != tutoChara.GetDataNumber() + GameScaler._nWidth);
 
         //  上に置かせる
         _UpArrow.SetActive(false);
@@ -84,14 +80,7 @@ public class TutorialFlow : MonoBehaviour
         _DownArrow.SetActive(true);
         tutoChara.SetNowAction = TutorialCharacter.eNowAction.BACK;
 
-        pos = tutoChara.transform.position;
-        yield return new WaitWhile(() =>
-        {
-            if (pos.z != tutoChara.transform.position.z)
-                return false;
-
-            return true;
-        });
+        yield return new WaitWhile(() => tutoChara.GetDataNumberForDir() != tutoChara.GetDataNumber() - GameScaler._nWidth);
 
         //  下に置かせる
         _DownArrow.SetActive(false);
@@ -101,12 +90,20 @@ public class TutorialFlow : MonoBehaviour
 
         yield return new WaitWhile(() => !FieldData.Instance.GetObjData(tutoChara.GetDataNumber() - GameScaler._nWidth));
 
+        //  上を向かせる
+        _RightRange.SetActive(false);
+        _UpArrow2.SetActive(true);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.FORWARD;
+        
+        yield return new WaitWhile(() => tutoChara.GetDataNumberForDir() != tutoChara.GetDataNumber() + GameScaler._nWidth);
+
         // 壊させる
+        _UpArrow2.SetActive(false);
         _RightRange.SetActive(true);
         tutoChara.SetNowAction = TutorialCharacter.eNowAction.BREAK;
         charaGauge.GaugeMax();
 
-        yield return new WaitWhile(() => FieldData.Instance.GetObjData(tutoChara.GetDataNumber() - GameScaler._nWidth));
+        yield return new WaitWhile(() => FieldData.Instance.GetObjData(tutoChara.GetDataNumberForDir()));
 
         //  右側へ移動させる
         _RightRange.SetActive(false);

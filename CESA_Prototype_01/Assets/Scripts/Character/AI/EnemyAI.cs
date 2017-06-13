@@ -234,10 +234,8 @@ public class EnemyAI : MonoBehaviour
 
     bool AIUpdate(bool isDanger = false)
     {
-#if DEBUG
         if (!_IsAI)
             return false;
-#endif
 
         if (isDanger)
         {

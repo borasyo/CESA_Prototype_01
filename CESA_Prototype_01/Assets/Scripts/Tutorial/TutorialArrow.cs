@@ -20,17 +20,19 @@ public class TutorialArrow : MonoBehaviour
     [SerializeField]
     eArrowDir _arrowDir = eArrowDir.MAX;
     Vector3 _initPos = Vector3.zero;
+    RectTransform _rectTrans = null;
 
     void Awake()
     {
-        _initPos = transform.position;
+        _rectTrans = GetComponent<RectTransform>();
+        _initPos = _rectTrans.anchoredPosition;
     }
 
     void Start ()
     {
         const float fMove = 240.0f;
         const float fTime = 0.75f;
-
+        
         Vector3 min = new Vector3(0,0,0);
         Vector3 max = Vector3.zero;
         switch(_arrowDir)
@@ -57,7 +59,7 @@ public class TutorialArrow : MonoBehaviour
                 if (!triangleMove.IsAdd)
                     return;
 
-                transform.position = _initPos + triangleMove.CurrentValue;
+                _rectTrans.anchoredPosition = _initPos + triangleMove.CurrentValue;
             });
 
         Image image = GetComponent<Image>();
@@ -74,13 +76,13 @@ public class TutorialArrow : MonoBehaviour
         });
     }
 
-    void OnEnable()
+    /*void OnEnable()
     {
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            _initPos = Input.GetTouch(0).position - new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);
+            _initPos = Input.GetTouch(0).position - new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
         }
 
-        transform.position = _initPos;
-    }
+        _rectTrans.anchoredPosition = _initPos;
+    }*/
 }

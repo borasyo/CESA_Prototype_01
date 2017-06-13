@@ -42,7 +42,7 @@ public class RoundCounter : Photon.MonoBehaviour
         if (PhotonNetwork.inRoom && !PhotonNetwork.isMasterClient)
             return;
 
-        Debug.Log("Win");
+        //Debug.Log("Win");
         List<Character> charaData = FieldData.Instance.GetCharactors;
 
         if (!obj.name.Contains("CPU"))

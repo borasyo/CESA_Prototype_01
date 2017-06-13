@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 75232b556f6af6441a4922edb70249e2
-timeCreated: 1497250585
+guid: aef3cfde8809e1742a9035d9c64aaacb
+timeCreated: 1497337911
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -39,13 +39,16 @@ ModelImporter:
     100062: Character1_RightUpLeg
     100064: Character1_Spine
     100066: Character1_Spine1
-    100068: group11
-    100070: //RootNode
-    100072: pCylinder7
-    100074: polySurface29
-    100076: polySurface30
-    100078: polySurface31
-    100080: polySurface32
+    100068: //RootNode
+    100070: pCone1
+    100072: pCylinder6
+    100074: polySurface46
+    100076: polySurface47
+    100078: polySurface48
+    100080: polySurface49
+    100082: polySurface50
+    100084: polySurface51
+    100086: polySurface52
     400000: Character1_Head
     400002: Character1_Hips
     400004: Character1_LeftArm
@@ -80,23 +83,38 @@ ModelImporter:
     400062: Character1_RightUpLeg
     400064: Character1_Spine
     400066: Character1_Spine1
-    400068: group11
-    400070: //RootNode
-    400072: pCylinder7
-    400074: polySurface29
-    400076: polySurface30
-    400078: polySurface31
-    400080: polySurface32
-    4300000: polySurface30
-    4300002: polySurface31
-    4300004: polySurface32
-    4300006: pCylinder7
-    7400000: Take 001
+    400068: //RootNode
+    400070: pCone1
+    400072: pCylinder6
+    400074: polySurface46
+    400076: polySurface47
+    400078: polySurface48
+    400080: polySurface49
+    400082: polySurface50
+    400084: polySurface51
+    400086: polySurface52
+    2300000: polySurface48
+    3300000: polySurface48
+    4300000: pCone1
+    4300002: pCylinder6
+    4300004: polySurface47
+    4300006: polySurface48
+    4300008: polySurface49
+    4300010: polySurface50
+    4300012: polySurface51
+    4300014: polySurface52
+    7400000: Action
+    7400002: Attack
+    7400004: Walk
+    7400006: Idle
     9500000: //RootNode
-    13700000: pCylinder7
-    13700002: polySurface30
-    13700004: polySurface31
-    13700006: polySurface32
+    13700000: pCone1
+    13700002: pCylinder6
+    13700004: polySurface47
+    13700006: polySurface49
+    13700008: polySurface50
+    13700010: polySurface51
+    13700012: polySurface52
   materials:
     importMaterials: 1
     materialName: 0

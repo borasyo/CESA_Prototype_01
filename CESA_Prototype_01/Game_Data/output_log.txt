@@ -6,34 +6,6 @@ Direct3D:
     Vendor:   NVIDIA
     VRAM:     3072 MB
     Driver:   21.21.13.7619
-Initialize engine version: 5.6.1f1 (2860b30f0b54)
-GfxDevice: creating device client; threaded=1
-Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.dll into Unity Child Domain
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 960M (ID=0x139b)
-    Vendor:   NVIDIA
-    VRAM:     3072 MB
-    Driver:   21.21.13.7619
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\GETween.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\GETween.dll into Unity Child Domain
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\GUIAnimatorFREE.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\GUIAnimatorFREE.dll into Unity Child Domain
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
-Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.034 seconds
 Begin MonoManager ReloadAssembly
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\UnityEngine.dll into Unity Child Domain
@@ -53,34 +25,34 @@ Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototyp
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\GUIAnimatorFREE.dll into Unity Child Domain
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.023 seconds
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.dll (this message is harmless)
+- Completed reload, in  0.022 seconds
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\syota\Desktop\GitHub\CESA_Prototype_01\CESA_Prototype_01\Game_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
-<RI> Initializing input.
-<RI> Input initialized.
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
-<RI> Initialized touch support.
-UnloadTime: 1.650569 ms
-UnloadTime: 2.354174 ms
+UnloadTime: 1.914470 ms
 Setting up 4 worker threads for Enlighten.
-Setting up 4 worker threads for Enlighten.
-  Thread -> id: bb8 -> priority: 1 
-  Thread -> id: 4e7c -> priority: 1 
-  Thread -> id: 3edc -> priority: 1 
-  Thread -> id: 2da0 -> priority: 1 
-  Thread -> id: 1b24 -> priority: 1 
-  Thread -> id: 2be4 -> priority: 1 
-  Thread -> id: 4a2c -> priority: 1 
-  Thread -> id: 1fdc -> priority: 1 
+  Thread -> id: 4ab4 -> priority: 1 
+  Thread -> id: 4e58 -> priority: 1 
+  Thread -> id: 48ac -> priority: 1 
+  Thread -> id: 424c -> priority: 1 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.917040 ms
+UnloadTime: 4.187657 ms
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 845.
-Total: 0.527802 ms (FindLiveObjects: 0.094024 ms CreateObjectMapping: 0.088888 ms MarkObjects: 0.331061 ms  DeleteObjects: 0.013432 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 869.
+Total: 0.292740 ms (FindLiveObjects: 0.025679 ms CreateObjectMapping: 0.028839 ms MarkObjects: 0.225580 ms  DeleteObjects: 0.012246 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.058668 ms
+
+Unloading 157 unused Assets to reduce memory usage. Loaded Objects now: 5223.
+Total: 1.248396 ms (FindLiveObjects: 0.182913 ms CreateObjectMapping: 0.081777 ms MarkObjects: 0.930371 ms  DeleteObjects: 0.052938 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.714275 ms
+
+Unloading 211 unused Assets to reduce memory usage. Loaded Objects now: 938.
+Total: 0.895210 ms (FindLiveObjects: 0.069530 ms CreateObjectMapping: 0.060444 ms MarkObjects: 0.570469 ms  DeleteObjects: 0.194765 ms)
 
