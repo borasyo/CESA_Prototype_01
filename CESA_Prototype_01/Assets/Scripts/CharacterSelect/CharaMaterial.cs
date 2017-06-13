@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CharaMaterial : MonoBehaviour
 {
     [SerializeField]
     Character.eCharaType type = Character.eCharaType.MAX;
+
+    List<SkinnedMeshRenderer> _sMeRendList = new List<SkinnedMeshRenderer>();
 
     void Start()
     {
@@ -27,9 +30,18 @@ public class CharaMaterial : MonoBehaviour
         }
         materialName += (FindObjectOfType<CharacterSelect>().InstanceCheck(transform.parent.gameObject) + 1).ToString();
 
-        foreach (MeshRenderer meRend in GetComponentsInChildren<MeshRenderer>())
+        _sMeRendList = GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
+        foreach (SkinnedMeshRenderer sMeRend in _sMeRendList)
         {
-             meRend.material = Resources.Load<Material>(materialName);
+            sMeRend.material = Resources.Load<Material>(materialName);
+        }
+    }
+
+    public void SetMeshActive(bool isActive)
+    {
+        foreach (SkinnedMeshRenderer sMeRend in _sMeRendList)
+        {
+            sMeRend.enabled = isActive;
         }
     }
 }

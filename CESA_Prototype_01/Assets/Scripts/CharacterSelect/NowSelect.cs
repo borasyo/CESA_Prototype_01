@@ -12,6 +12,7 @@ public class NowSelect : Photon.PunBehaviour
     Text _text = null;
 
     [SerializeField] protected bool _IsOnNone = true;
+    List<CharaMaterial> _charaMatList = new List<CharaMaterial>();
    
 	// Use this for initialization
 	void Awake ()
@@ -23,6 +24,9 @@ public class NowSelect : Photon.PunBehaviour
 
         _text = GetComponent<Text>();
         GetComponentInParent<Image>().color = Color.clear;
+
+        for (int i = 1; i < transform.childCount - 1; i++)
+            _charaMatList.Add(transform.GetChild(i).GetComponent<CharaMaterial>());
     }
 	
 	// Update is called once per frame
@@ -50,9 +54,11 @@ public class NowSelect : Photon.PunBehaviour
         if (!_text)
             return;
 
-        for(int i = 0; i < transform.childCount; i++)
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(5).gameObject.SetActive(false);
+        foreach (CharaMaterial charaMat in _charaMatList)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            charaMat.SetMeshActive(false);
         }
 
         switch (_charaType)
@@ -63,19 +69,19 @@ public class NowSelect : Photon.PunBehaviour
                 break;
             case CharacterSelect.eCharaType.BALANCE:
                 _text.text = "Balance";
-                transform.GetChild(1).gameObject.SetActive(true);
+                _charaMatList[0].SetMeshActive(true);
                 break;
             case CharacterSelect.eCharaType.POWER:
                 _text.text = "Power";
-                transform.GetChild(2).gameObject.SetActive(true);
+                _charaMatList[1].SetMeshActive(true);
                 break;
             case CharacterSelect.eCharaType.SPEED:
                 _text.text = "Speed";
-                transform.GetChild(3).gameObject.SetActive(true);
+                _charaMatList[2].SetMeshActive(true);
                 break;
             case CharacterSelect.eCharaType.TECHNICAL:
                 _text.text = "Technical";
-                transform.GetChild(4).gameObject.SetActive(true);
+                _charaMatList[3].SetMeshActive(true);
                 break;
             case CharacterSelect.eCharaType.MAX:
                 _text.text = "???";

@@ -142,6 +142,26 @@ public class CharacterSelect : Photon.PunBehaviour
         SetChara();
         GetComponent<LevelSelect>().SetLevel();
 
+        if (PhotonNetwork.inRoom)
+        {
+            SceneManager.LoadScene("StageSelect");
+        }
+        else
+        {
+            StartCoroutine(Next());
+        }
+    }
+
+    IEnumerator Next()
+    {
+        Animator[] animList = FindObjectsOfType<Animator>();
+        foreach (Animator anim in animList)
+        {
+            anim.SetBool("OK", true);
+        }
+
+        yield return new WaitForSeconds(2.0f);
+
         SceneManager.LoadScene("StageSelect");
     }
 
