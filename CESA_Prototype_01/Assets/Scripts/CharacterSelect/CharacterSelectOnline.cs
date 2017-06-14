@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using UniRx;
 using UniRx.Triggers;
@@ -67,6 +68,14 @@ public class CharacterSelectOnline : CharacterSelect
         rectTrans.localPosition = _nowSelectPos[idx];
 
         _nowSelectDatas[idx] = nowSelect;
+    }
+
+    public NowSelect GetNowSelect(int idx)
+    {
+        if (idx < 0 || _nowSelectDatas.Length <= idx)
+            return null;
+
+        return _nowSelectDatas[idx];
     }
 
     public int GetNullIdx()
@@ -160,12 +169,16 @@ public class CharacterSelectOnline : CharacterSelect
         SetChara();
         GetComponent<LevelSelect>().SetLevel();
         PhotonNetwork.room.open = false;
-        StartCoroutine(GameLoad());
+        StartCoroutine(Next());
     }
 
-    IEnumerator GameLoad()
+    protected override IEnumerator Next()
     {
+        foreach (Button button in FindObjectsOfType<Button>())
+            button.enabled = false;
+
         yield return null;
+
         SceneManager.LoadScene("OnlineStageSelect");
     }
 }

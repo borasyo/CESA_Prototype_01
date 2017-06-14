@@ -64,8 +64,8 @@ public class ReadyGoOnline : Photon.MonoBehaviour
     {
         Time.timeScale = 0.0f;
 
-        Text ready = transform.Find("Ready").GetComponent<Text>();
-        Text go = transform.Find("Go").GetComponent<Text>();
+        Image ready = transform.Find("Ready").GetComponent<Image>();
+        Image go = transform.Find("Go").GetComponent<Image>();
 
         ready.transform.localScale = Vector3.zero;
         go.transform.localScale = Vector3.zero;

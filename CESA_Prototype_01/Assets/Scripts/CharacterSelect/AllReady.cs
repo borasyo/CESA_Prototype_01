@@ -11,7 +11,7 @@ public class AllReady : Photon.MonoBehaviour
 {
     void Awake()
     {
-        transform.localPosition = new Vector3(0, 0, 0);
+        transform.localPosition = new Vector3(0, 0, -100);
     }
 
 	void Start()
@@ -59,7 +59,7 @@ public class AllReady : Photon.MonoBehaviour
 
     void Update()
     {
-        transform.localPosition = new Vector3(0,0,0);
+        transform.localPosition = new Vector3(0, 0, -100);
     }
 
     void OnPhotonPlayerConnected()

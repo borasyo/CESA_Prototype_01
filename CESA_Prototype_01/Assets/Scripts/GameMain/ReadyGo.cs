@@ -18,8 +18,8 @@ public class ReadyGo : MonoBehaviour
     {
         Time.timeScale = 0.0f;
 
-        Text ready = transform.FindChild("Ready").GetComponent<Text>();
-        Text go = transform.FindChild("Go").GetComponent<Text>();
+        Image ready = transform.FindChild("Ready").GetComponent<Image>();
+        Image go = transform.FindChild("Go").GetComponent<Image>();
 
         ready.transform.localScale = Vector3.zero;
         go.transform.localScale = Vector3.zero;

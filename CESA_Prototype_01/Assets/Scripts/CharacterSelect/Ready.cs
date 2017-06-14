@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Ready : Photon.MonoBehaviour {
 
@@ -10,10 +11,13 @@ public class Ready : Photon.MonoBehaviour {
     Text _text = null;
     Button _CharaChangeButton = null;
 
+    List<Animator> _animList = new List<Animator>();
+
     void Start()
     {
         _text = GetComponentInChildren<Text>();
         _CharaChangeButton = transform.parent.GetComponent<Button>();
+        _animList = transform.parent.GetComponentsInChildren<Animator>().ToList();
     }
 
     public void OnClick()
@@ -33,6 +37,18 @@ public class Ready : Photon.MonoBehaviour {
             nReadyCnt--;
             _text.text = "Ready?";
             _CharaChangeButton.enabled = true;
+
+            ChangeAnim(_animList, false);
+
+            CharacterSelectOnline charaSele = FindObjectOfType<CharacterSelectOnline>();
+
+            if (charaSele.InstanceCheck(transform.parent.GetComponentInChildren<NowSelect>().gameObject) != 0)
+                return;
+
+            for (int i = PhotonNetwork.playerList.Length; i < 4; i++)
+            {
+                ChangeAnim(charaSele.GetNowSelect(i).transform.parent.GetComponentsInChildren<Animator>().ToList(), false);
+            }
         }
         else
         {
@@ -40,7 +56,25 @@ public class Ready : Photon.MonoBehaviour {
             nReadyCnt++;
             _text.text = "OK!";
             _CharaChangeButton.enabled = false;
+
+            ChangeAnim(_animList, true);
+
+            CharacterSelectOnline charaSele = FindObjectOfType<CharacterSelectOnline>();
+
+            if (charaSele.InstanceCheck(transform.parent.GetComponentInChildren<NowSelect>().gameObject) != 0)
+                return;
+
+            for (int i = PhotonNetwork.playerList.Length; i < 4; i++)
+            {
+                ChangeAnim(charaSele.GetNowSelect(i).transform.parent.GetComponentsInChildren<Animator>().ToList(), true);
+            }
         }
+    }
+
+    void ChangeAnim(List<Animator> animList, bool isOK)
+    {
+        foreach (Animator anim in animList)
+            anim.SetBool("OK", isOK);
     }
 
     void Reset()

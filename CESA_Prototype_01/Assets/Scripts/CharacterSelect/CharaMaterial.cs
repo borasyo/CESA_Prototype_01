@@ -12,6 +12,36 @@ public class CharaMaterial : MonoBehaviour
 
     void Start()
     {
+        if (PhotonNetwork.inRoom)
+        {
+            StartCoroutine(SetWait());
+        }
+        else
+        {
+            SetMaterial(FindObjectOfType<CharacterSelect>());
+        }
+    }
+
+    IEnumerator SetWait()
+    {
+        CharacterSelect charaSele = null;
+        yield return new WaitWhile(() =>
+        {
+            charaSele = FindObjectOfType<CharacterSelect>();
+
+            if (charaSele)
+                return false;
+
+            return true;
+        });
+
+        yield return new WaitWhile(() => charaSele.InstanceCheck(transform.parent.gameObject) < 0);
+
+        SetMaterial(charaSele);
+    }
+
+    void SetMaterial(CharacterSelect charaSele)
+    {
         string materialName = "Materials/Chara/";
         switch(type)
         {
@@ -28,7 +58,7 @@ public class CharaMaterial : MonoBehaviour
                 materialName += "Technique_";
                 break;
         }
-        materialName += (FindObjectOfType<CharacterSelect>().InstanceCheck(transform.parent.gameObject) + 1).ToString();
+        materialName += (charaSele.InstanceCheck(transform.parent.gameObject) + 1).ToString();
 
         _sMeRendList = GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
         foreach (SkinnedMeshRenderer sMeRend in _sMeRendList)

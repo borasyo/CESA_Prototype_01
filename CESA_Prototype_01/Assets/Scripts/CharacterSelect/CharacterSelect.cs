@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using UniRx;
 using UniRx.Triggers;
@@ -142,26 +143,21 @@ public class CharacterSelect : Photon.PunBehaviour
         SetChara();
         GetComponent<LevelSelect>().SetLevel();
 
-        if (PhotonNetwork.inRoom)
-        {
-            SceneManager.LoadScene("StageSelect");
-        }
-        else
-        {
-            StartCoroutine(Next());
-        }
+        StartCoroutine(Next());
     }
 
-    IEnumerator Next()
+    protected virtual IEnumerator Next()
     {
         Animator[] animList = FindObjectsOfType<Animator>();
+
         foreach (Animator anim in animList)
-        {
             anim.SetBool("OK", true);
-        }
 
+        foreach (Button button in FindObjectsOfType<Button>())
+            button.enabled = false;
+        
         yield return new WaitForSeconds(2.0f);
-
+        
         SceneManager.LoadScene("StageSelect");
     }
 

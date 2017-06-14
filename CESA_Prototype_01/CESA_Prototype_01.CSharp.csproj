@@ -327,6 +327,7 @@
     <Compile Include="Assets\Scripts\CharacterSelect\Ready.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\RoomLeaveButton.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\SandRangeSelect.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\SetCameraToCanvas.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\StageScaleSelect.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\StageScaleSelectOnline.cs" />
     <Compile Include="Assets\Scripts\Effect\AutoParticleDestroyer.cs" />
