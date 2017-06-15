@@ -24,6 +24,7 @@ public class SelectMass : FieldObjectBase
         _normalizeTrans = transform.parent.Find("NormalizePos");
         _character = GetComponentInParent<Character>();
         _charactorGauge = GetComponentInParent<CharacterGauge>();
+        transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
         float interval = _fInterval_Sec / 2.0f;
 

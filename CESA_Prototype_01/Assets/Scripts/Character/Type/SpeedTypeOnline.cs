@@ -61,6 +61,7 @@ public class SpeedTypeOnline : CharacterOnline
             }
         }
 
+        _IsNowMove = true;
         return true;
     }
 

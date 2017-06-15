@@ -6,11 +6,7 @@ using UniRx;
 using UniRx.Triggers;
 
 public class CharaMass : FieldObjectBase {
-
-    SpriteRenderer _SpRend = null;
-    TriangleWave<Color> _triangleWaveColor = null;
-    TriangleWave<Vector3> _triangleWaveScaler = null;
-
+    
     [SerializeField] float _fPeriod_Sec = 0.5f;
 
 	// Use this for initialization
@@ -27,36 +23,30 @@ public class CharaMass : FieldObjectBase {
                     transform.position = GetPosForNumber(number);
                 });
 
-        //  点滅運動
-        _SpRend = GetComponent<SpriteRenderer>();
-        Color defaultColor = _SpRend.color = SelectMassColor.Instance.GetBreakColor(transform.parent.name);
-        /*defaultColor.a = 0.25f;  //  min
-        _triangleWaveColor = TriangleWaveFactory.Color(defaultColor, _SpRend.color, _fPeriod_Sec / 2.0f);
-        this.UpdateAsObservable()
-            .Where(_ => this.enabled)
-            .Subscribe(_ =>
-                {
-                    _triangleWaveColor.Progress();
-                    _SpRend.color = _triangleWaveColor.CurrentValue;
-                });*/
+        SpriteRenderer spRend = GetComponent<SpriteRenderer>();
+        spRend.color = SelectMassColor.Instance.GetBreakColor(transform.parent.name);
+        CharacterGauge charaGauge = GetComponentInParent<CharacterGauge>();
 
         //  回転処理
         this.UpdateAsObservable()
             .Where(_ => this.enabled)
             .Subscribe(_ =>
             {
-                transform.eulerAngles += new Vector3(0, 0, 360) * (Time.deltaTime / 1.0f);
+                int gauge = (int)(charaGauge.GaugePercent * 4.0f);
+                transform.eulerAngles += new Vector3(0, 0, 90.0f * gauge * Time.deltaTime);
             });
 
-        // 拡大縮小処理
-        _triangleWaveScaler = TriangleWaveFactory.Vector3(transform.localScale / 2.0f, transform.localScale, _fPeriod_Sec / 2.0f);
-         this.UpdateAsObservable()
-             .Where(_ => this.enabled)
-             .Subscribe(_ =>
-                 {
-                     _triangleWaveScaler.Progress();
-                     transform.localScale = _triangleWaveScaler.CurrentValue;
-                 });
+        List<Sprite> circleList = new List<Sprite>();
+        circleList.Add(Resources.Load<Sprite>("Texture/GameMain/CharaCircle_Zero"));
+        circleList.Add(Resources.Load<Sprite>("Texture/GameMain/CharaCircle_One"));
+        circleList.Add(Resources.Load<Sprite>("Texture/GameMain/CharaCircle_Two"));
+        circleList.Add(Resources.Load<Sprite>("Texture/GameMain/CharaCircle_Three"));
+        circleList.Add(Resources.Load<Sprite>("Texture/GameMain/CharaCircle_Four"));
+        this.ObserveEveryValueChanged(_ => (int)(charaGauge.GaugePercent * 4.0f))
+            .Subscribe(_ =>
+            {
+                spRend.sprite = circleList[(int)(charaGauge.GaugePercent * 4.0f)];
+            });
     }
 
     Color ColorChange()

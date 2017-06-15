@@ -35,6 +35,6 @@ public class PowerTypeSelectMassSprite : SelectMassSprite
         }
 
         _SpRend.sprite = _notSprite;
-        transform.localScale = new Vector3(5,5,5);
+        transform.localScale = new Vector3(1,1,1);
     }
 }

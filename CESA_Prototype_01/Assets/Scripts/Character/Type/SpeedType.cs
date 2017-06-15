@@ -60,6 +60,7 @@ public class SpeedType : Character
             }
         }
 
+        _IsNowMove = true;
         return true;
     }
 
