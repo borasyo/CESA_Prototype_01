@@ -111,9 +111,10 @@ public class TechnicalType : Character
             return;
 
         GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumber), Quaternion.identity);
-        item.AddComponent<DelayPut>().Init(dirNumber);
+        StartCoroutine(item.AddComponent<DelayPut>().Init(dirNumber));
         _charactorGauge.PutAction();
         _fNotMoveTime = 0.0f;
+        _animator.SetBool("Put", true);
     }
 
     override public bool RunSpecialMode(bool IsRun)

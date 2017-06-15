@@ -50,11 +50,14 @@ public class Character : FieldObjectBase
     protected bool _IsSpecialMode = false;
     public bool GetSpecialModeFlg { get { return _IsSpecialMode; } }
 
-    bool _IsNotMove = false;
+    protected bool _IsNotMove = false;
     protected float _fNotMoveTime = 0.0f;
     public bool NotMove { get { return _IsNotMove; } }
+    protected bool _IsNowMove = false;
 
     public int Level { get; private set; }
+
+    protected Animator _animator = null;
 
     # endregion
 
@@ -67,6 +70,7 @@ public class Character : FieldObjectBase
         Level = level;
 
         _charactorGauge = GetComponent<CharacterGauge>();
+        _animator = GetComponent<Animator>();
 
         string charaName = this.name[this.name.IndexOf("Player") - 1].ToString();
         _sandItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem" + charaName);
@@ -113,22 +117,25 @@ public class Character : FieldObjectBase
         }
         materialName += GetPlayerNumber();
 
-        MeshRenderer[] all = GetComponentsInChildren<MeshRenderer>();
-        foreach(MeshRenderer meRend in all)
-            meRend.material = Resources.Load(materialName) as Material;
+        SkinnedMeshRenderer[] all = GetComponentsInChildren<SkinnedMeshRenderer>();
+        Material mat = Resources.Load(materialName) as Material;
+        foreach (SkinnedMeshRenderer meRend in all)
+            meRend.material = mat;
     }
 
     // Update is called once per frame
     protected void Update()
     {
-        // Walk or Waitじゃなければreturn
-
         _nOldNumber = GetDataNumber();
+        
+        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
+            return;
 
         MoveUpdate();
 
         DirUpdate();
         NumberUpdate();
+        NotMoveUpdate();
 
         //  アクション
         ItemPut();
@@ -166,16 +173,27 @@ public class Character : FieldObjectBase
             OnMove();
             return;
         }
-
-        _fNotMoveTime += Time.deltaTime;
-        _IsNotMove = _fNotMoveTime >= 1.0f;
-        // アニメーションをWaitに
     }
 
     void OnMove()
     {
         _fNotMoveTime = 0.0f;
-        //  アニメーションをWalkに
+        _animator.SetBool("Walk", true);
+    }
+
+    protected void NotMoveUpdate()
+    {
+        if (_IsNowMove)
+        {
+            _IsNowMove = false;
+            return;
+        }
+
+        _fNotMoveTime += Time.deltaTime;
+        _IsNotMove = _fNotMoveTime >= 1.0f;
+        _animator.SetBool("Walk", false);
+     
+        _IsNowMove = false;
     }
 
     virtual protected bool MoveCheck(eDirection dir)
@@ -230,6 +248,7 @@ public class Character : FieldObjectBase
                 return false;
         }
 
+        _IsNowMove = true;
         return true;
     }
       
@@ -263,6 +282,7 @@ public class Character : FieldObjectBase
         GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumber), Quaternion.identity);
         _charactorGauge.PutAction();
         _fNotMoveTime = 0.0f;
+        _animator.SetBool("Put", true);
     }
 
     protected virtual void ItemBreak()
@@ -275,9 +295,24 @@ public class Character : FieldObjectBase
         if (!obj || obj.GetSandType() == SandItem.eType.MAX)
             return;
 
-        obj.GetComponent<SandItem>().Break();
-        _charactorGauge.BreakAction();
-        _fNotMoveTime = 0.0f;
+        StartCoroutine(Break(obj));
+        _animator.SetBool("Break", true);
+    }
+
+    protected IEnumerator Break(FieldObjectBase obj)
+    {
+        yield return new WaitForSeconds(0.75f);
+
+        if (obj)
+        {
+            if (obj.tag == "SandItem")
+                obj.GetComponent<SandItem>().Break();
+            else
+                obj.GetComponent<Block>().Break();
+
+            _charactorGauge.BreakAction();
+            _fNotMoveTime = 0.0f;
+        }
     }
 
     #endregion

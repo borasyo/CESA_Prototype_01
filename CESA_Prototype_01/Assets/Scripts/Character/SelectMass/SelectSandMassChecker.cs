@@ -26,7 +26,7 @@ public class SelectSandMassChecker : MonoBehaviour
         else
             NormalSelectSandMass(selectSandMassList);
 
-        transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+        transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
     }
 
     void NormalSelectSandMass(SpriteRenderer[] selectSandMassList)

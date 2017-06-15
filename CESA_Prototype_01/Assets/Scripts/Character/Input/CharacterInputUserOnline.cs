@@ -19,7 +19,7 @@ public class CharacterInputUserOnline : CharacterInputUser
         if (!photonView.isMine)
             return;
 
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android | Application.platform == RuntimePlatform.IPhonePlayer)
         {
             if (!_moveButton.IsActiveAndMove)
             {

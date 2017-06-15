@@ -37,6 +37,7 @@ public class BalanceType : Character
 
         _charactorGauge.PutAction();
         _fNotMoveTime = 0.0f;
+        _animator.SetBool("Put", true);
     }
 
     int[] GetNumberList()

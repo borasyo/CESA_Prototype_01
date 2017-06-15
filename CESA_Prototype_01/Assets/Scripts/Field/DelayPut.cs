@@ -10,27 +10,21 @@ public class DelayPut : MonoBehaviour
     float _fDelayTime_Sec = 3.0f;
     float DangerTime { get { return 1.0f; } }
 
-    MeshRenderer _MeRend = null;
+    MeshRenderer _meRend = null;
     Vector3 _InitScale = Vector3.zero;
 
     static GameObject effectPrefab = null;
 
-    public void Init (int number)
+    public SandItem.eType SetType { get; set; }
+
+    public IEnumerator Init (int number)
     {
+        _meRend = GetComponentInChildren<MeshRenderer>();
         DelayPut me = GetComponent<DelayPut>();
 
         int nSetNumber = number;
-        SandItem.eType SetType = GetComponent<SandItem>().GetType;
-        GetComponent<SandItem>().GetType = SandItem.eType.MAX;
 
-        _MeRend = GetComponentInChildren<MeshRenderer>();
-        _MeRend.enabled = false;
-
-        //  子も隠す
-        for(int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(false);
-        }
+        yield return new WaitForSeconds(1.0f);
 
         _InitScale = transform.localScale;
         transform.localScale = Vector3.zero;
@@ -38,12 +32,12 @@ public class DelayPut : MonoBehaviour
         FieldData.Instance.SetObjData(this.GetComponent<FieldObjectBase>(), nSetNumber);
 
         this.UpdateAsObservable()
-            .Where(_ => me)
+            .Where(_ => me && enabled)
             .Subscribe(_ => 
             {
-                _fDelayTime_Sec -= Time.deltaTime;        
+                _fDelayTime_Sec -= Time.deltaTime;
 
-                if(_fDelayTime_Sec > 0.0f)
+                if (_fDelayTime_Sec > 0.0f)
                     return;
 
                 //  子も表示
@@ -60,7 +54,7 @@ public class DelayPut : MonoBehaviour
         this.ObserveEveryValueChanged(x => x._fDelayTime_Sec)
             .Where(_ => DangerTime >= this._fDelayTime_Sec)
             .Subscribe(_ => {
-                _MeRend.enabled = true;
+                _meRend.enabled = true;
             });
 
         if (!effectPrefab)
@@ -72,7 +66,7 @@ public class DelayPut : MonoBehaviour
 
     void Update ()
     {
-        if (!_MeRend.enabled)
+        if (!_meRend.enabled)
             return;
 
         transform.localScale += _InitScale * (Time.deltaTime / DangerTime);

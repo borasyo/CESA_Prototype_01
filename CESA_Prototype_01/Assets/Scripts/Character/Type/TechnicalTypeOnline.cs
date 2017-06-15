@@ -102,13 +102,14 @@ public class TechnicalTypeOnline : CharacterOnline
     public override void OnlineItemPut(Vector3 pos, int dirNumber, bool isPostProcess)
     {
         GameObject item = (GameObject)Instantiate(_sandItem, pos, Quaternion.identity);
-        item.AddComponent<DelayPut>().Init(dirNumber);
+        StartCoroutine(item.AddComponent<DelayPut>().Init(dirNumber));
 
         if (!isPostProcess)
             return;
 
         _charactorGauge.PutAction();
         _fNotMoveTime = 0.0f;
+        _animator.SetBool("Put", true);
     }
 
     override public bool RunSpecialMode(bool IsRun)

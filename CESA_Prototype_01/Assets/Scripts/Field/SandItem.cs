@@ -22,6 +22,7 @@ public class SandItem : FieldObjectBase
         MAX,
     };
     [SerializeField] eType _Type;
+    eType _SetType;
     public eType GetType { get { return _Type; } set { _Type = value; } }
     [SerializeField] float _fMaxLife_Sec = 15.0f;
     [SerializeField] GameObject _breakEffect = null;
@@ -31,6 +32,8 @@ public class SandItem : FieldObjectBase
         transform.position += new Vector3(0, 0.516f, 0);
         FieldData.Instance.SetObjData(this, GetDataNumber());
         FieldData.Instance.ExceptionChangeField();
+        _SetType = _Type;
+        _Type = eType.MAX;
 
         if (_SandItemHolder)
             return;
@@ -40,8 +43,35 @@ public class SandItem : FieldObjectBase
 
     void Start()
     {
+        StartCoroutine(Init());
+    }
+
+    IEnumerator Init()
+    {
         _sandItemData = this;
         transform.SetParent(_SandItemHolder.transform);
+
+        MeshRenderer meRend = GetComponentInChildren<MeshRenderer>();
+        meRend.enabled = false;
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).gameObject.SetActive(false);
+
+        DelayPut delayPut = GetComponent<DelayPut>();
+        if (delayPut)
+            delayPut.SetType = _SetType;
+
+        yield return new WaitForSeconds(1.0f);
+
+        //  テクニカルじゃなければ表示
+        if (!delayPut)
+        {
+            meRend.enabled = true;
+            for (int i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).gameObject.SetActive(true);
+
+            FieldData.Instance.ExceptionChangeField();
+            _Type = _SetType;
+        }
 
         float life = _fMaxLife_Sec;
 

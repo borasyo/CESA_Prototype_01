@@ -9,6 +9,7 @@ public class CharaMaterial : MonoBehaviour
     Character.eCharaType type = Character.eCharaType.MAX;
 
     List<SkinnedMeshRenderer> _sMeRendList = new List<SkinnedMeshRenderer>();
+    List<MeshRenderer> _meRendList = new List<MeshRenderer>();
 
     void Start()
     {
@@ -61,6 +62,7 @@ public class CharaMaterial : MonoBehaviour
         materialName += (charaSele.InstanceCheck(transform.parent.gameObject) + 1).ToString();
 
         _sMeRendList = GetComponentsInChildren<SkinnedMeshRenderer>().ToList();
+        _meRendList = GetComponentsInChildren<MeshRenderer>().ToList();
         foreach (SkinnedMeshRenderer sMeRend in _sMeRendList)
         {
             sMeRend.material = Resources.Load<Material>(materialName);
@@ -72,6 +74,10 @@ public class CharaMaterial : MonoBehaviour
         foreach (SkinnedMeshRenderer sMeRend in _sMeRendList)
         {
             sMeRend.enabled = isActive;
+        }
+        foreach (MeshRenderer meRend in _meRendList)
+        {
+            meRend.enabled = isActive;
         }
     }
 }

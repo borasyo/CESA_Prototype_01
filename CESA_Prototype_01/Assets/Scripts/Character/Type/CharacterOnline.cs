@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UniRx;
+using UniRx.Triggers;
+
 public class CharacterOnline : Character
 {
     protected override void SetInput(int level)
@@ -37,15 +40,15 @@ public class CharacterOnline : Character
 
     void Update()
     {
-        // Walk or Waitじゃなければreturn
-
         NumberUpdate();
         _nOldNumber = GetDataNumber();
+        NotMoveUpdate();
     }
 
     public void OnlineMoveUpdate()
     {
-        // Walk or Waitじゃなければreturn
+        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
+            return;
 
         if (photonView.isMine)
         {
@@ -63,7 +66,8 @@ public class CharacterOnline : Character
 
     public void OnlineActionUpdate()
     {
-        // Walk or Waitじゃなければreturn
+        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
+            return;
 
         //  アクション
         ItemPut();
@@ -115,6 +119,7 @@ public class CharacterOnline : Character
 
         _charactorGauge.PutAction();
         _fNotMoveTime = 0.0f;
+        _animator.SetBool("Put", true);
     } 
 
     [PunRPC]
@@ -125,12 +130,7 @@ public class CharacterOnline : Character
         if (!obj)
             return;
 
-        if(obj.tag == "SandItem")
-            obj.GetComponent<SandItem>().Break();
-        else
-            obj.GetComponent<Block>().Break();
-
-        _charactorGauge.BreakAction();
-        _fNotMoveTime = 0.0f;
+        StartCoroutine(Break(obj));
+        _animator.SetBool("Break", true);
     }
 }

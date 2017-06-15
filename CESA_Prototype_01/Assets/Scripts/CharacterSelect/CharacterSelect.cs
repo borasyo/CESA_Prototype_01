@@ -156,7 +156,7 @@ public class CharacterSelect : Photon.PunBehaviour
         foreach (Button button in FindObjectsOfType<Button>())
             button.enabled = false;
         
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         
         SceneManager.LoadScene("StageSelect");
     }

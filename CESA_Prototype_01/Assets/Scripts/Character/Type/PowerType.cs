@@ -37,13 +37,8 @@ public class PowerType : Character
                 return;
         }
 
-        if(obj.tag == "SandItem")
-            obj.GetComponent<SandItem>().Break();
-        else
-            obj.GetComponent<Block>().Break();
-
-        _charactorGauge.BreakAction();
-        _fNotMoveTime = 0.0f;
+        _animator.SetBool("Break", true);
+        StartCoroutine(Break(obj));
     }
 
     override public bool RunSpecialMode(bool IsRun)

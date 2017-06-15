@@ -400,6 +400,7 @@
     <Compile Include="Assets\Scripts\Tutorial\TutorialCharacter.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialFlow.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialRange.cs" />
+    <Compile Include="Assets\TriggerOff.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AssetStore\Elementals\Readme.txt" />
