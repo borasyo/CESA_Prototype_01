@@ -6,6 +6,9 @@ public class FieldDataTutorial : FieldData
 {
     protected override void Init()
     {
+        GameScaler._nWidth = 13;
+        GameScaler._nHeight = 11;
+
         //  データ配列生成
         _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
         _ChangeDataList = new tChangeData[GameScaler._nWidth * GameScaler._nHeight];
