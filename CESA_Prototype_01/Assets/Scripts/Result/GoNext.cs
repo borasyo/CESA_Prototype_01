@@ -26,6 +26,9 @@ public class GoNext : MonoBehaviour
 
     public void OnClick()
     {
+        if (PhotonNetwork.inRoom && !PhotonNetwork.isMasterClient)
+            return;
+
         ReCharaSelect();
     }
 
@@ -75,11 +78,17 @@ public class GoNext : MonoBehaviour
             if (PhotonNetwork.isMasterClient)
                 PhotonNetwork.DestroyAll();
 
-            SceneManager.LoadScene("OnlineRoom");
+            GetComponent<PhotonView>().RPC("OnlineReCharaSelect", PhotonTargets.All);
         }
         else
         {
             SceneManager.LoadScene("CharacterSelect");
         }
     }
+
+    [PunRPC]
+    public void OnlineReCharaSelect()
+    {
+        SceneManager.LoadScene("OnlineRoom");
+    } 
 }

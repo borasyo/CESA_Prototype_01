@@ -70,4 +70,9 @@ public class ReadyGo : MonoBehaviour
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
     }
+
+    void OnDestroy()
+    {
+        Time.timeScale = 1.0f;
+    }
 }

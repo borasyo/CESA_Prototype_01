@@ -119,4 +119,9 @@ public class ReadyGoOnline : Photon.MonoBehaviour
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
     }
+
+    void OnDestroy()
+    {
+        Time.timeScale = 1.0f;
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class ModeSelect : MonoBehaviour
 {
@@ -14,11 +15,44 @@ public class ModeSelect : MonoBehaviour
 
     public void Offline()
     {
-        SceneManager.LoadScene("CharacterSelect");
+        StartCoroutine(Anim(false));
     }
 
     public void Online()
     {
-        SceneManager.LoadScene("OnlineRoom");
+        StartCoroutine(Anim(true));
+    }
+
+    IEnumerator Anim(bool isOnline)
+    {
+        List<Animator> happyAnimList = new List<Animator>();
+        List<Animator> sadAnimList = new List<Animator>();
+        if (isOnline)
+        {
+            happyAnimList = GameObject.Find("OnlineChara").GetComponentsInChildren<Animator>().ToList();
+            sadAnimList = GameObject.Find("OfflineChara").GetComponentsInChildren<Animator>().ToList();
+        }
+        else
+        {
+            happyAnimList = GameObject.Find("OfflineChara").GetComponentsInChildren<Animator>().ToList();
+            sadAnimList = GameObject.Find("OnlineChara").GetComponentsInChildren<Animator>().ToList();
+        }
+
+        foreach (Animator happy in happyAnimList)
+            happy.SetTrigger("Happy");
+
+        foreach (Animator sad in sadAnimList)
+            sad.SetTrigger("Sad");
+
+        yield return new WaitForSeconds(2.0f);
+
+        if(isOnline)
+        {
+            SceneManager.LoadScene("OnlineRoom");
+        }
+        else
+        {
+            SceneManager.LoadScene("CharacterSelect");
+        }
     }
 }
