@@ -6,7 +6,7 @@ public class SendRateChecker : MonoBehaviour
 {
     void Start()
     {
-        PhotonNetwork.sendRateOnSerialize = PhotonNetwork.sendRate = 60;
+        PhotonNetwork.sendRateOnSerialize = PhotonNetwork.sendRate = 30;
     }
 
     /*void Update()

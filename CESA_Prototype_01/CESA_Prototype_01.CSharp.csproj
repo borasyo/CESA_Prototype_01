@@ -373,7 +373,13 @@
     <Compile Include="Assets\Scripts\Online\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Online\SendRateChecker.cs" />
     <Compile Include="Assets\Scripts\Online\UIScript.cs" />
+    <Compile Include="Assets\Scripts\Result\GoNext.cs" />
+    <Compile Include="Assets\Scripts\Result\ResultCharaMaterial.cs" />
+    <Compile Include="Assets\Scripts\Result\ResultCharacter.cs" />
     <Compile Include="Assets\Scripts\Result\ResultChecker.cs" />
+    <Compile Include="Assets\Scripts\Result\ResultRank.cs" />
+    <Compile Include="Assets\Scripts\Result\ResultStar.cs" />
+    <Compile Include="Assets\Scripts\Result\ResultUser.cs" />
     <Compile Include="Assets\Scripts\StageSelect\GoGame.cs" />
     <Compile Include="Assets\Scripts\StageSelect\ItemAmount.cs" />
     <Compile Include="Assets\Scripts\StageSelect\ItemAmountOnline.cs" />
@@ -386,7 +392,7 @@
     <Compile Include="Assets\Scripts\StageSelect\TimeAmount.cs" />
     <Compile Include="Assets\Scripts\StageSelect\TimeAmountOnline.cs" />
     <Compile Include="Assets\Scripts\System\IEnumerableExtensions.cs" />
-    <Compile Include="Assets\Scripts\Title\TouchStart.cs" />
+    <Compile Include="Assets\Scripts\System\Title\TouchStart.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\ICalculator.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />

@@ -42,7 +42,6 @@ public class CharacterOnline : Character
     {
         NumberUpdate();
         _nOldNumber = GetDataNumber();
-        NotMoveUpdate();
     }
 
     public void OnlineMoveUpdate()
@@ -62,7 +61,30 @@ public class CharacterOnline : Character
             MoveCheck(eDirection.LEFT);
         }
         DirUpdate();
+        NotMoveUpdate();
     }
+
+    /*protected override void DirUpdate()
+    {
+        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
+            return;
+
+        switch (_nowDirection)
+        {
+            case eDirection.FORWARD:
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                break;
+            case eDirection.BACK:
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                break;
+            case eDirection.RIGHT:
+                transform.eulerAngles = new Vector3(0, 90, 0);
+                break;
+            case eDirection.LEFT:
+                transform.eulerAngles = new Vector3(0, 270, 0);
+                break;
+        }
+    }*/
 
     public void OnlineActionUpdate()
     {
@@ -86,7 +108,7 @@ public class CharacterOnline : Character
         FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
         if (obj)
             return;
-
+        
         Vector3 pos = GetPosForNumber(dirNumber);
         photonView.RPC("OnlineItemPut", PhotonTargets.All, pos, dirNumber, true);
     }
@@ -101,7 +123,7 @@ public class CharacterOnline : Character
 
         if (!obj || obj.GetSandType() == SandItem.eType.MAX)
             return;
-
+        
         photonView.RPC("OnlineItemBreak", PhotonTargets.All, dirNumber);
     }
 

@@ -8,11 +8,22 @@ using UniRx.Triggers;
 public class SelectSandMass : MonoBehaviour
 {
     TriangleWave<Color> _triangleAlpha = null;
+    static Sprite _sandMassSprite = null;
+
+    void Awake()
+    {
+        if (_sandMassSprite)
+            return;
+
+        _sandMassSprite = Resources.Load<Sprite>("Texture/GameMain/SelectSandMass");
+    }
     	
 	public void Init (Color initCol)
     {
         SpriteRenderer spRend = GetComponent<SpriteRenderer>();
         spRend.color = initCol;
+        spRend.sprite = _sandMassSprite;
+
         Color minCol = spRend.color;
         minCol.a = 0.5f;
         Color maxCol = spRend.color;

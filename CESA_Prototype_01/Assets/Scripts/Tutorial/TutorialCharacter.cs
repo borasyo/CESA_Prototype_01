@@ -44,7 +44,10 @@ public class TutorialCharacter : BalanceType
 
     protected override void DirUpdate()
     {
-        switch (_nowDirection)
+        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
+            return;
+
+            switch (_nowDirection)
         {
             case eDirection.FORWARD:
                 if (_nowAction != eNowAction.FORWARD)

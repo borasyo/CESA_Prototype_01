@@ -49,6 +49,9 @@ public class NowSelectOnline : NowSelect
             {
                 _charaType = CharacterSelect.eCharaType.BALANCE;
             }
+
+            if(!transform.parent.name.Contains("CPU"))
+                transform.parent.Find("User").GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/CharaSelect/player_" + (_nInitNumber + 1).ToString() + "P");
         }
 
         //  CPUなら
@@ -137,6 +140,8 @@ public class NowSelectOnline : NowSelect
         {
             _charaType = CharacterSelect.eCharaType.BALANCE;
         }
+
+        transform.parent.Find("User").GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/CharaSelect/player_" + (_nInitNumber + 1).ToString() + "P");
     }
 
     IEnumerator SetLevel()
@@ -144,8 +149,7 @@ public class NowSelectOnline : NowSelect
         yield return new WaitWhile(() => _charaSele.InstanceCheck(gameObject) <= -1);
         transform.parent.GetComponentInChildren<NowLevelOnline>().SetLevel(_charaSele.InstanceCheck(gameObject));
     }
-
-    //IEnumerator SetDestroyCheck()
+    
     void SetDestroyCheck()
     {
         //yield return null;

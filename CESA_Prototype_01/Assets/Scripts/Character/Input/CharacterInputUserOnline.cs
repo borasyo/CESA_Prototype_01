@@ -19,19 +19,20 @@ public class CharacterInputUserOnline : CharacterInputUser
         if (!photonView.isMine)
             return;
 
-        if (Application.platform == RuntimePlatform.Android | Application.platform == RuntimePlatform.IPhonePlayer)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             if (!_moveButton.IsActiveAndMove)
             {
                 _IsForawrd = _IsBack = _IsRight = _IsLeft = false;
-                return;
             }
-
-            int angle = (int)(_moveButton.GetMoveAngle);
-            _IsForawrd = (angle < 135 && angle >= 45);
-            _IsBack = (angle < -45 && angle >= -135);
-            _IsRight = (angle < 45 && angle >= -45);
-            _IsLeft = (angle < -135 || angle >= 135);
+            else
+            {
+                int angle = (int)(_moveButton.GetMoveAngle);
+                _IsForawrd = (angle < 135 && angle >= 45);
+                _IsBack = (angle < -45 && angle >= -135);
+                _IsRight = (angle < 45 && angle >= -45);
+                _IsLeft = (angle < -135 || angle >= 135);
+            }
         }
         else
         {

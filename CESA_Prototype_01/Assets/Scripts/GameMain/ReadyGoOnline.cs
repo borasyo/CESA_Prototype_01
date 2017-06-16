@@ -34,7 +34,8 @@ public class ReadyGoOnline : Photon.MonoBehaviour
             //全員のフラグが設定されていたら初期化開始
             _isInitialized = true;
             ClearReadyStatus();
-            Reset();
+            StartCoroutine(SetReady());
+            //Reset();
         }
     }
 
@@ -57,13 +58,14 @@ public class ReadyGoOnline : Photon.MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        StartCoroutine(SetReady());
+        Time.timeScale = 0.0f;
+        Ready();
+        CheckAllPlayerState();
+        //StartCoroutine(SetReady());
     }
 
     IEnumerator SetReady()
     {
-        Time.timeScale = 0.0f;
-
         Image ready = transform.Find("Ready").GetComponent<Image>();
         Image go = transform.Find("Go").GetComponent<Image>();
 
@@ -109,8 +111,7 @@ public class ReadyGoOnline : Photon.MonoBehaviour
 
         yield return new WaitWhile(() => go.color.a < 1.0f);
 
-        Ready();
-        CheckAllPlayerState();
+        Reset();
     }
 
     void Reset()

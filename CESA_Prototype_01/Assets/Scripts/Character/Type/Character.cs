@@ -321,7 +321,10 @@ public class Character : FieldObjectBase
 
     protected virtual void DirUpdate()
     {
-        switch (_nowDirection)
+        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
+            return;
+
+            switch (_nowDirection)
         {
             case eDirection.FORWARD:
                 transform.eulerAngles = new Vector3(0, 0, 0);
@@ -340,12 +343,19 @@ public class Character : FieldObjectBase
 
     protected virtual void NumberUpdate()
     {
+        FieldData data = FieldData.Instance;
         int nowNumber = GetDataNumber();
-        if (_nOldNumber == nowNumber)
+        //if (_nOldNumber == nowNumber && 
+        if(!FieldData.Instance.ChangeFieldWithChara)
             return;
 
-        FieldData.Instance.SetObjData(null, _nOldNumber);
-        FieldData.Instance.SetObjData(this, nowNumber);
+        //  その場に何もなければキャラが登録されていないので登録
+        FieldObjectBase obj = data.GetObjData(nowNumber);
+        if (obj && obj.tag != "Character")
+            return;
+
+        data.SetObjData(null, _nOldNumber);
+        data.SetObjData(this, nowNumber);
     }
         
     //  向いている方向を元にデータ番号を取得

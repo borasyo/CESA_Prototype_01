@@ -32,6 +32,7 @@ public class RoundCounter : Photon.MonoBehaviour
     #endregion
 
     static public int[] nRoundCounter = new int[4];
+    static public int nNowWinerPlayer = 0;
 
     /// <summary>
     ///     勝者が確定した場合に呼び、リザルトへ行く
@@ -101,6 +102,7 @@ public class RoundCounter : Photon.MonoBehaviour
         {
             photonView.RPC("OnlineCountUp", PhotonTargets.All, idx);
         }
+        nNowWinerPlayer = idx;
     }
 
     [PunRPC]
