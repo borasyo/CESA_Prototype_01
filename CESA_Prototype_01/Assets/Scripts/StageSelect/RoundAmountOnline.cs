@@ -49,12 +49,12 @@ public class RoundAmountOnline : RoundAmount
         if (PhotonNetwork.isMasterClient)
         {
             stream.SendNext(nRound);
-            stream.SendNext(nRand);
+            //stream.SendNext(nRand);
         }
         else
         {
             nRound = (int)stream.ReceiveNext();
-            nRand = (int)stream.ReceiveNext();
+            //nRand = (int)stream.ReceiveNext();
         }
     }
 }

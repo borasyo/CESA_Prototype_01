@@ -19,13 +19,29 @@ public class ResultCharaMaterial : MonoBehaviour
         SetMaterial(FindObjectOfType<CharacterSelect>());
 
         Animator anim = GetComponent<Animator>();
-        if(nNumber == RoundCounter.nNowWinerPlayer)
+        if (RoundCounter.nNowWinerPlayer < 0)
         {
-            anim.SetBool("Win", true);
+            if (RoundCounter.nRoundCounter[nNumber] >= RoundAmount.GetRound())
+            {
+                anim.SetBool("Win", true);
+            }
+            else
+            {
+                anim.SetBool("Win", false);
+            }
         }
         else
         {
-            anim.SetBool("Win", false);
+            if (nNumber == RoundCounter.nNowWinerPlayer)
+            {
+                anim.SetBool("Win", true);
+                Debug.Log("Winer : " + RoundCounter.nNowWinerPlayer + ", This : " + nNumber);
+            }
+            else
+            {
+                anim.SetBool("Win", false);
+                Debug.Log("Winer : " + RoundCounter.nNowWinerPlayer + ", This : " + nNumber);
+            }
         }
     }
 
