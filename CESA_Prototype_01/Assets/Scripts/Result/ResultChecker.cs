@@ -14,16 +14,30 @@ public class ResultChecker : MonoBehaviour
     //  
     void Start ()
     {
+        GameObject canvas = null;
+
         //  ここでIntervalかLastか判断
         if(RoundCounter.nNowWinerPlayer >= 0)
         {
-            Instantiate(intervalCanvas); //.transform.SetParent(transform.parent);
+            canvas = intervalCanvas;
             //  flameも変更
         }
         else
         {
-            Instantiate(lastCanvas); //.transform.SetParent(transform.parent);
+            canvas = lastCanvas;
             //  flameも変更
+        }
+
+        if(PhotonNetwork.inRoom)
+        {
+            if (!PhotonNetwork.isMasterClient)
+                return;
+
+            PhotonNetwork.Instantiate("Prefabs/Result/" + canvas.name, canvas.transform.position, canvas.transform.rotation, 0);
+        }
+        else
+        {
+            Instantiate(canvas);
         }
     }
 }

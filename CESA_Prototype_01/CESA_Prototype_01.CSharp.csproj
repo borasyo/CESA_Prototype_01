@@ -378,6 +378,7 @@
     <Compile Include="Assets\Scripts\Online\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Online\SendRateChecker.cs" />
     <Compile Include="Assets\Scripts\Online\UIScript.cs" />
+    <Compile Include="Assets\Scripts\Other\TouchEffect.cs" />
     <Compile Include="Assets\Scripts\Result\GoNext.cs" />
     <Compile Include="Assets\Scripts\Result\ResultCharaMaterial.cs" />
     <Compile Include="Assets\Scripts\Result\ResultCharacter.cs" />

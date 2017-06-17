@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GoNext : MonoBehaviour
+public class GoNext : Photon.MonoBehaviour
 {
     // nNowWinerPlayerが0の時、最後のresultを生成
     void Start()
@@ -75,20 +75,18 @@ public class GoNext : MonoBehaviour
 
     void ReCharaSelect()
     {
-        for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
-        {
-            RoundCounter.nRoundCounter[i] = 0;
-        }
-
         if (PhotonNetwork.inRoom)
         {
-            if (PhotonNetwork.isMasterClient)
-                PhotonNetwork.DestroyAll();
-
-            GetComponent<PhotonView>().RPC("OnlineReCharaSelect", PhotonTargets.All);
+            photonView.RPC("OnlineReCharaSelect", PhotonTargets.All);
+            //StartCoroutine(Cleanup());
         }
         else
         {
+            for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
+            {
+                RoundCounter.nRoundCounter[i] = 0;
+            }
+
             SceneChanger.Instance.ChangeScene("CharacterSelect", true);
             //SceneManager.LoadScene("CharacterSelect");
         }
@@ -97,7 +95,20 @@ public class GoNext : MonoBehaviour
     [PunRPC]
     public void OnlineReCharaSelect()
     {
+        for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
+        {
+            RoundCounter.nRoundCounter[i] = 0;
+        }
+
         SceneChanger.Instance.ChangeScene("OnlineRoom", true);
         //SceneManager.LoadScene("OnlineRoom");
     } 
+
+    IEnumerator Cleanup()
+    {
+        yield return new WaitWhile(() => FadeManager.Instance.HalfFading);
+
+        if (PhotonNetwork.isMasterClient)
+            PhotonNetwork.DestroyAll();
+    }
 }

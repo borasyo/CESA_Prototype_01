@@ -41,6 +41,8 @@ public class FadeManager : MonoBehaviour
     /// フェード中かどうか
     bool isFading = false;
     public bool Fading { get { return isFading; } }
+    public bool HalfFading { get; private set; }
+
     /// フェード色
 	[SerializeField]
 	Color fadeColor = Color.black;
@@ -53,6 +55,7 @@ public class FadeManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+        HalfFading = false;
     }
 
     public void OnGUI()
@@ -72,7 +75,9 @@ public class FadeManager : MonoBehaviour
     {
         if (isFading) return;
 		this.isFading = true;
-		StartCoroutine(TransScene(scene, interval, bStopBgm));
+        HalfFading = true;
+
+        StartCoroutine(TransScene(scene, interval, bStopBgm));
     }
 
     /// <param name='scene'>シーン名</param>
@@ -93,11 +98,17 @@ public class FadeManager : MonoBehaviour
 			SoundManager.Instance.StopBGM ();
 		}
 
-		// キャッシュの開放（場合に合わせて行った方がいいと思う
-		//Resources.UnloadUnusedAssets();
+        HalfFading = false;
+
+        yield return null;
+
+        // キャッシュの開放（場合に合わせて行った方がいいと思う
+        //Resources.UnloadUnusedAssets();
         //シーン名を確認し、あればシーン切替 .
-        if(scene != "")
+        if (scene != "")
             SceneManager.LoadScene(scene);
+
+        yield return null;
 
         //だんだん明るく .
         time = 0;

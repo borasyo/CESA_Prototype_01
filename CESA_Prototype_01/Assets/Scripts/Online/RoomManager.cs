@@ -79,7 +79,7 @@ public class RoomManager : Photon.MonoBehaviour
             //全員のフラグが設定されていたら初期化開始
             _isInitialized = true;
             ClearReadyStatus();
-            RoomInit();
+            StartCoroutine(RoomInit());
         }
     }
 
@@ -118,6 +118,7 @@ public class RoomManager : Photon.MonoBehaviour
                 roomButtonPool.Add(roomButtonObj);
             }
 
+            _isInitialized = false;
             Ready();
             CheckAllPlayerState();
         }
@@ -334,12 +335,14 @@ public class RoomManager : Photon.MonoBehaviour
     {
 		Debug.Log ("Joined Room");
 
-		RoomInit ();	// Player作成
+		StartCoroutine(RoomInit());	// Player作成
 	}
 
 	// Player作成
-	void RoomInit()
+	IEnumerator RoomInit()
     {
+        yield return new WaitWhile(() => FadeManager.Instance.HalfFading);
+
 		Debug.Log("RoomInit");
 
         // 自分がMasterCliantであれば、Sceneに属するBossの生成
@@ -359,6 +362,6 @@ public class RoomManager : Photon.MonoBehaviour
 		
 	void OnGUI()
     {
-		GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
+		//GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString());
 	}
 }

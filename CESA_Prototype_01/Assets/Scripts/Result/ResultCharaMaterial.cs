@@ -35,12 +35,12 @@ public class ResultCharaMaterial : MonoBehaviour
             if (nNumber == RoundCounter.nNowWinerPlayer)
             {
                 anim.SetBool("Win", true);
-                Debug.Log("Winer : " + RoundCounter.nNowWinerPlayer + ", This : " + nNumber);
+                //Debug.Log("Winer : " + RoundCounter.nNowWinerPlayer + ", This : " + nNumber);
             }
             else
             {
                 anim.SetBool("Win", false);
-                Debug.Log("Winer : " + RoundCounter.nNowWinerPlayer + ", This : " + nNumber);
+                //Debug.Log("Winer : " + RoundCounter.nNowWinerPlayer + ", This : " + nNumber);
             }
         }
     }
