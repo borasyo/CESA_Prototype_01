@@ -20,10 +20,10 @@ public class TriangleWaveOscillator
 
     public int GetLapCnt { get { return (int)(m_fTime / (m_fHalfPeriod_Sec * 2.0f)); } }
 
-    public virtual void Progress ()
+    public virtual void Progress (bool isUnScaled)
     {
         // 指定した間隔で補正したdeltaTimeを加算
-        m_fTime += Time.deltaTime;
+        m_fTime += isUnScaled ? Time.unscaledDeltaTime : Time.deltaTime;
 
         float period = m_fHalfPeriod_Sec * 2.0f; // 半周期を1周期に変換
         m_fValue = Mathf.Acos (Mathf.Cos (2.0f * Mathf.PI * m_fTime / period)) / Mathf.PI;

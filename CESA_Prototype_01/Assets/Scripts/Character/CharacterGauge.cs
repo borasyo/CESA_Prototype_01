@@ -13,10 +13,8 @@ public class CharacterGauge : MonoBehaviour
     public float GetPutGauge { get { return _fPutGauge; } }
     [SerializeField] float _fBreakGauge = 2.0f;
     public float GetBreakGauge { get { return _fBreakGauge; } }
-
-#if DEBUG
-    bool isDebug = false;
-#endif
+    
+    bool _IsSuperMode = false;
 
     void Update()
     {
@@ -28,8 +26,8 @@ public class CharacterGauge : MonoBehaviour
 #if DEBUG
         if(Input.GetKeyDown(KeyCode.LeftControl))
         {
-            isDebug = !isDebug;
-            if (isDebug)
+            _IsSuperMode = !_IsSuperMode;
+            if (_IsSuperMode)
                 GaugeMax();
         }
 #endif
@@ -41,6 +39,12 @@ public class CharacterGauge : MonoBehaviour
     {
         _fGauge = _fMaxGauge;
     }
+
+    public void SuperMode()
+    {
+        _IsSuperMode = true;
+        GaugeMax();
+    } 
 
     public void ChangeChargeSpeed(float per)
     {
@@ -63,10 +67,9 @@ public class CharacterGauge : MonoBehaviour
 
     public void PutAction()
     {
-#if DEBUG
-        if (isDebug)
+        if (_IsSuperMode)
             return;
-#endif
+
         _fGauge -= _fPutGauge;
     }
 
@@ -91,10 +94,9 @@ public class CharacterGauge : MonoBehaviour
 
     public void BreakAction()
     {
-#if DEBUG
-        if (isDebug)
+        if (_IsSuperMode)
             return;
-#endif
+
         _fGauge -= _fBreakGauge;
     }
 

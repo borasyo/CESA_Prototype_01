@@ -36,25 +36,15 @@ public class TimeAmountOnline : TimeAmount
         base.Many();
     }
 
-    public override void Rand()
-    {
-        if (!PhotonNetwork.isMasterClient)
-            return;
-
-        base.Rand();
-    }
-
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (PhotonNetwork.isMasterClient)
         {
             stream.SendNext(nTime_Sec);
-            stream.SendNext(nRand);
         }
         else
         {
             nTime_Sec = (int)stream.ReceiveNext();
-            nRand = (int)stream.ReceiveNext();
         }
     }
 }

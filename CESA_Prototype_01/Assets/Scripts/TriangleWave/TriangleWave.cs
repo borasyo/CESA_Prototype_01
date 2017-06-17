@@ -54,8 +54,8 @@ public class TriangleWave<T>
     #endregion
 
     // 事前に時間を指定しておき、自律的に発振するように変更
-    public void Progress ()
+    public void Progress (bool isUnScaled = false)
     {
-        oscillator.Progress ();
+        oscillator.Progress (isUnScaled);
     }
 }

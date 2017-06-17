@@ -55,16 +55,24 @@ public class GameTimer : MonoBehaviour
         }
 
         this.UpdateAsObservable()
+            .Where(_ => _fTime > 0.0f)
             .Subscribe(_ =>
             {
                 _fTime -= Time.deltaTime;
+#if DEBUG
+                if (Input.GetKeyDown(KeyCode.Backspace))
+                    _fTime = 0.0f;
+#endif
                 text.text = "Time : " + (int)_fTime;
 
-                if (_fTime < 0.0f)
-                {
-                    _fTime = 0.0f;
-                    // TODO : 引き分け？
-                }
+            });
+
+        this.ObserveEveryValueChanged(_ => GameEnd)
+            .Where(_ => _fTime <= 0.0f)
+            .Subscribe(_ =>
+            {
+                _fTime = 0.0f;
+                Instantiate(Resources.Load<GameObject>("Prefabs/GameMain/SuddenDeath")).transform.SetParent(transform.parent);
             });
     }
 }

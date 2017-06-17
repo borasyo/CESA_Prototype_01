@@ -358,6 +358,7 @@
     <Compile Include="Assets\Scripts\GameMain\ReadyGoOnline.cs" />
     <Compile Include="Assets\Scripts\GameMain\RoundCounter.cs" />
     <Compile Include="Assets\Scripts\GameMain\SetStage.cs" />
+    <Compile Include="Assets\Scripts\GameMain\SuddenDeath.cs" />
     <Compile Include="Assets\Scripts\Item\FixText.cs" />
     <Compile Include="Assets\Scripts\Item\GaugeSpeedUp.cs" />
     <Compile Include="Assets\Scripts\Item\InvincibleItem.cs" />

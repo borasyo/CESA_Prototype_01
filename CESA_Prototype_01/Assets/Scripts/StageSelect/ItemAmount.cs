@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class ItemAmount : Photon.MonoBehaviour
 {
     static protected int nItemAmount = 2;
-    static protected int nRand = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -35,8 +34,6 @@ public class ItemAmount : Photon.MonoBehaviour
 
                 buttonList[nItemAmount].color = onColor;
             });
-
-        nRand = Random.Range(0, 4);
     }
 
     public virtual void None()
@@ -55,18 +52,9 @@ public class ItemAmount : Photon.MonoBehaviour
     {
         nItemAmount = 3;
     }
-    public virtual void Rand()
-    {
-        nItemAmount = 4;
-        nRand = Random.Range(0,4);
-    }
 
     static public int GetAmount()
     {
-        if(nItemAmount == 4)
-        {
-            return nRand;
-        }
         return nItemAmount;
     }
 }

@@ -200,7 +200,10 @@ public class Character : FieldObjectBase
     {
         if (!_charactorInput.GetMoveInput(dir))
             return false;
-        
+
+        if (Time.deltaTime <= 0.0f)
+            return false;
+
         _nowDirection = dir;
         int number = GetDataNumber();
 
