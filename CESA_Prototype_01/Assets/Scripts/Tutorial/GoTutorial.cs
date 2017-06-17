@@ -7,6 +7,10 @@ public class GoTutorial : MonoBehaviour
 {
     public void OnClick()
     {
-        SceneManager.LoadScene("Tutorial");
+        if (FadeManager.Instance.Fading)
+            return;
+
+        SceneChanger.Instance.ChangeScene("Tutorial", true);
+        //SceneManager.LoadScene("Tutorial");
     }
 }

@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.6.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -343,6 +345,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AssetStore\Elementals\Readme.txt" />
+    <None Include="Assets\AssetStore\FullTiltBoogie\Helpers\readme.txt" />
     <None Include="Assets\AssetStore\GE Common Assets\Readme.txt" />
     <None Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\!How to.txt" />
     <None Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Readme.txt" />

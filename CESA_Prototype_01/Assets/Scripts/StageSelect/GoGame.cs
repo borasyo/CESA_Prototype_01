@@ -84,6 +84,9 @@ public class GoGame : Photon.MonoBehaviour
 
     public void GameStart()
     {
+        if (FadeManager.Instance.Fading)
+            return;
+
         if (!_IsGoGame)
             return;
 
@@ -96,13 +99,15 @@ public class GoGame : Photon.MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("GameMain");
+            SceneChanger.Instance.ChangeScene("GameMain", true);
+            //SceneManager.LoadScene("GameMain");
         }
     }
 
     [PunRPC]
     public void LoadGameMain()
     {
-        SceneManager.LoadScene("OnlineGameMain");
+        SceneChanger.Instance.ChangeScene("OnlineGameMain", true);
+        //SceneManager.LoadScene("OnlineGameMain");
     }
 }

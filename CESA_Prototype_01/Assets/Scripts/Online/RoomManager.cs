@@ -202,8 +202,11 @@ public class RoomManager : Photon.MonoBehaviour
         if (!PhotonNetwork.insideLobby)
             return;
 
-		// 何も入力がされていないとき、処理しない
-		if (roomNameInputField.text == "") {
+        if (FadeManager.Instance.Fading)
+            return;
+
+        // 何も入力がされていないとき、処理しない
+        if (roomNameInputField.text == "") {
 			Debug.Log ("Failed to create the room. : Room's Name has not been entered.");
 			return;
 		}
@@ -225,7 +228,7 @@ public class RoomManager : Photon.MonoBehaviour
 
 		PhotonNetwork.CreateRoom(roomNameInputField.text, roomOpt, null);   // Roomを自分で作って参加する
 
-        lobbyUI.SetActive (false);		// lobbyUIの非表示
+        StartCoroutine(JoinRoomFade());
 	}
 
 	// roombuttonを押したときの処理
@@ -234,6 +237,9 @@ public class RoomManager : Photon.MonoBehaviour
 	public void OnPressRoomButton(int index)
     {
         if (!PhotonNetwork.insideLobby)
+            return;
+
+        if (FadeManager.Instance.Fading)
             return;
 
         RoomInfo room = PhotonNetwork.GetRoomList () [index];	// 指定room情報の取得
@@ -253,11 +259,20 @@ public class RoomManager : Photon.MonoBehaviour
         PhotonNetwork.JoinRoom (room.name);	// roomに参加
         nMyPlayerCount = room.playerCount;
 
-        lobbyUI.SetActive (false);		// lobbyUIの非表示
-	}
+        StartCoroutine(JoinRoomFade());
+    }
 
-	// 退室buttonが押されたときの処理
-	public void OnPressLeaveRoomButton()
+    IEnumerator JoinRoomFade()
+    {
+        SceneChanger.Instance.ChangeScene("", true);
+
+        yield return new WaitForSeconds(1.0f);
+
+        lobbyUI.SetActive(false);		// lobbyUIの非表示
+    }
+
+    // 退室buttonが押されたときの処理
+    public void OnPressLeaveRoomButton()
     {
         //PhotonNetwork.Destroy (charaSelectObj);	// playerの削除
         //  マスターが退室したら強制解散
@@ -280,6 +295,15 @@ public class RoomManager : Photon.MonoBehaviour
     [PunRPC]
     public void LeaveRoom()
     {
+        StartCoroutine(LeaveRoomFade());
+    }
+
+    IEnumerator LeaveRoomFade()
+    {
+        SceneChanger.Instance.ChangeScene("", true);
+
+        yield return new WaitForSeconds(1.0f);
+
         PhotonNetwork.LeaveRoom();      // 退室
 
         lobbyUI.SetActive(true);    // lobbyのUIを表示
@@ -290,11 +314,10 @@ public class RoomManager : Photon.MonoBehaviour
         roomNameInputField.text = "RoomName";       // room名入力領域の初期
 
         CharacterSelectOnline._nMyNumber = 0;
-        Debug.Log("LeaveRoom");
     }
 
-	// Lobbyに参加した時に呼ばれる
-	void OnJoinedLobby()
+    // Lobbyに参加した時に呼ばれる
+    void OnJoinedLobby()
     {
 		Debug.Log ("Joined lobby");
         //isJoinLobby = true;

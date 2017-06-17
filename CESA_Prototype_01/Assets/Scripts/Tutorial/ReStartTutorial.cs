@@ -9,12 +9,12 @@ public class ReStartTutorial : ReStart
     {
         yield return new WaitForSeconds(2.0f);
 
-        if (_winer)
+        /*if (_winer)
         {
             RoundCounter.Instance.WinCharacter(_winer);
-        }
+        }*/
 
-        SceneManager.LoadScene("ModeSelect");
+        SceneChanger.Instance.ChangeScene("ModeSelect", true);
         Destroy(this.gameObject);
     }
 }

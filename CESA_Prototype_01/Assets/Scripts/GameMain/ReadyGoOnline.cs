@@ -72,6 +72,8 @@ public class ReadyGoOnline : Photon.MonoBehaviour
         ready.transform.localScale = Vector3.zero;
         go.transform.localScale = Vector3.zero;
 
+        yield return new WaitWhile(() => FadeManager.Instance.Fading);
+
         this.UpdateAsObservable()
             .Where(_ => ready.transform.localScale.x < 1.0f)
             .Subscribe(_ =>

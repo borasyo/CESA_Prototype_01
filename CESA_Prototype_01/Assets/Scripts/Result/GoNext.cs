@@ -29,6 +29,9 @@ public class GoNext : MonoBehaviour
         if (PhotonNetwork.inRoom && !PhotonNetwork.isMasterClient)
             return;
 
+        if (FadeManager.Instance.Fading)
+            return;
+
         ReCharaSelect();
     }
 
@@ -41,11 +44,13 @@ public class GoNext : MonoBehaviour
             if (PhotonNetwork.isMasterClient)
                 PhotonNetwork.DestroyAll();
 
-            SceneManager.LoadScene("OnlineGameMain");
+            SceneChanger.Instance.ChangeScene("OnlineGameMain", true);
+            //SceneManager.LoadScene("OnlineGameMain");
         }
         else
         {
-            SceneManager.LoadScene("GameMain");
+            SceneChanger.Instance.ChangeScene("GameMain", true);
+            //SceneManager.LoadScene("GameMain");
         }
     }
 
@@ -58,11 +63,13 @@ public class GoNext : MonoBehaviour
 
         if (PhotonNetwork.inRoom)
         {
-            SceneManager.LoadScene("OnlineResult");
+            SceneChanger.Instance.ChangeScene("OnlineResult", true);
+            //SceneManager.LoadScene("OnlineResult");
         }
         else
         {
-            SceneManager.LoadScene("Result");
+            SceneChanger.Instance.ChangeScene("Result", true);
+            //SceneManager.LoadScene("Result");
         }
     }
 
@@ -82,13 +89,15 @@ public class GoNext : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("CharacterSelect");
+            SceneChanger.Instance.ChangeScene("CharacterSelect", true);
+            //SceneManager.LoadScene("CharacterSelect");
         }
     }
 
     [PunRPC]
     public void OnlineReCharaSelect()
     {
-        SceneManager.LoadScene("OnlineRoom");
+        SceneChanger.Instance.ChangeScene("OnlineRoom", true);
+        //SceneManager.LoadScene("OnlineRoom");
     } 
 }

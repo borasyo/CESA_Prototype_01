@@ -9,21 +9,35 @@ public class NowSelect : Photon.PunBehaviour
     public CharacterSelect.eCharaType CharaType {  get { return _charaType; } set { _charaType = value; } }
     protected CharacterSelect.eCharaType _oldCharaType = CharacterSelect.eCharaType.BALANCE;
 
-    Text _text = null;
+    Image _image = null;
+    RectTransform _rectTrans = null;
+    float _fDefaultHeight = 35.0f;
 
     [SerializeField] protected bool _IsOnNone = true;
     List<CharaMaterial> _charaMatList = new List<CharaMaterial>();
+
+    static Sprite[] _typeSprite = new Sprite[(int)CharacterSelect.eCharaType.MAX];
    
 	// Use this for initialization
 	void Awake ()
     {
+        if (!_typeSprite[1])
+        {
+            _typeSprite[(int)CharacterSelect.eCharaType.BALANCE - 1] = Resources.Load<Sprite>("Texture/CharaSelect/BALANCE");
+            _typeSprite[(int)CharacterSelect.eCharaType.POWER - 1] = Resources.Load<Sprite>("Texture/CharaSelect/POWER");
+            _typeSprite[(int)CharacterSelect.eCharaType.SPEED - 1] = Resources.Load<Sprite>("Texture/CharaSelect/SPEED");
+            _typeSprite[(int)CharacterSelect.eCharaType.TECHNICAL - 1] = Resources.Load<Sprite>("Texture/CharaSelect/TECHNIC");
+            _typeSprite[(int)CharacterSelect.eCharaType.MAX - 1] = Resources.Load<Sprite>("Texture/CharaSelect/RANDOM");
+        }
+
         if (!_IsOnNone)
             _charaType = CharacterSelect.eCharaType.BALANCE;
         else
             _charaType = CharacterSelect.eCharaType.NONE;
 
-        _text = GetComponent<Text>();
-        GetComponentInParent<Image>().color = Color.clear;
+        _image = GetComponent<Image>();
+        _rectTrans = GetComponent<RectTransform>();
+        transform.parent.GetComponent<Image>().color = Color.clear;
 
         for (int i = 1; i < transform.childCount - 1; i++)
             _charaMatList.Add(transform.GetChild(i).GetComponent<CharaMaterial>());
@@ -51,7 +65,7 @@ public class NowSelect : Photon.PunBehaviour
 
     public void CharaUpdate()
     {
-        if (!_text)
+        if (!_image)
             return;
 
         transform.GetChild(0).gameObject.SetActive(false);
@@ -61,30 +75,37 @@ public class NowSelect : Photon.PunBehaviour
             charaMat.SetMeshActive(false);
         }
 
+        _image.color = Color.white;
         switch (_charaType)
         {
             case CharacterSelect.eCharaType.NONE:
-                _text.text = "";
+                _image.sprite = null;
+                _image.color = Color.clear;
                 transform.GetChild(0).gameObject.SetActive(true);
                 break;
             case CharacterSelect.eCharaType.BALANCE:
-                _text.text = "Balance";
+                _image.sprite = _typeSprite[0];
+                _rectTrans.sizeDelta = new Vector2(200.0f, _fDefaultHeight);
                 _charaMatList[0].SetMeshActive(true);
                 break;
             case CharacterSelect.eCharaType.POWER:
-                _text.text = "Power";
+                _image.sprite = _typeSprite[1];
+                _rectTrans.sizeDelta = new Vector2(153.0f, _fDefaultHeight);
                 _charaMatList[1].SetMeshActive(true);
                 break;
             case CharacterSelect.eCharaType.SPEED:
-                _text.text = "Speed";
+                _image.sprite = _typeSprite[2];
+                _rectTrans.sizeDelta = new Vector2(136.0f, _fDefaultHeight);
                 _charaMatList[2].SetMeshActive(true);
                 break;
             case CharacterSelect.eCharaType.TECHNICAL:
-                _text.text = "Technical";
+                _image.sprite = _typeSprite[3];
+                _rectTrans.sizeDelta = new Vector2(178.0f, _fDefaultHeight);
                 _charaMatList[3].SetMeshActive(true);
                 break;
             case CharacterSelect.eCharaType.MAX:
-                _text.text = "???";
+                _image.sprite = _typeSprite[4];
+                _rectTrans.sizeDelta = new Vector2(183.0f, _fDefaultHeight);
                 transform.GetChild(5).gameObject.SetActive(true);
                 break;
         }

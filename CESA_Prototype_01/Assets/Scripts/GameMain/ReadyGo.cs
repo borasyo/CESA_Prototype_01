@@ -25,6 +25,7 @@ public class ReadyGo : MonoBehaviour
         go.transform.localScale = Vector3.zero;
 
         yield return null;  //  開始後1Fずらす
+        yield return new WaitWhile(() => FadeManager.Instance.Fading);
 
         this.UpdateAsObservable()
             .Where(_ => ready.transform.localScale.x < 1.0f)

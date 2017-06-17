@@ -51,7 +51,8 @@ public class TouchStart : MonoBehaviour
 
     void LoadModeSelect()
     {
-        SceneManager.LoadScene("ModeSelect");
+        SceneChanger.Instance.ChangeScene("ModeSelect", true);
+        //SceneManager.LoadScene("ModeSelect");
     }
 }
 

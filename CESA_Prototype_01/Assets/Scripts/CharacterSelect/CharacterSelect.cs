@@ -140,6 +140,9 @@ public class CharacterSelect : Photon.PunBehaviour
 
     public virtual void GameStart()
     {
+        if (FadeManager.Instance.Fading)
+            return;
+
         SetChara();
         GetComponent<LevelSelect>().SetLevel();
 
@@ -157,8 +160,9 @@ public class CharacterSelect : Photon.PunBehaviour
             button.enabled = false;
         
         yield return new WaitForSeconds(1.0f);
-        
-        SceneManager.LoadScene("StageSelect");
+
+        SceneChanger.Instance.ChangeScene("StageSelect", true);
+        //SceneManager.LoadScene("StageSelect");
     }
 
     public static void Reset()

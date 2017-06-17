@@ -179,6 +179,7 @@ public class CharacterSelectOnline : CharacterSelect
 
         yield return null;
 
-        SceneManager.LoadScene("OnlineStageSelect");
+        SceneChanger.Instance.ChangeScene("OnlineStageSelect", true);
+        //SceneManager.LoadScene("OnlineStageSelect");
     }
 }

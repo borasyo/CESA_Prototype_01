@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AssetStore\Elementals\Demo\Scripts\GE_Elementals_Demo.cs" />
+    <Compile Include="Assets\AssetStore\FullTiltBoogie\RotateFlareHolder.cs" />
     <Compile Include="Assets\AssetStore\GE Common Assets\GE Orbit Camera\Scripts\GE_OrbitCamera.cs" />
     <Compile Include="Assets\AssetStore\GE Common Assets\GE Orbit Camera\Scripts\GE_OrbitCameraUI.cs" />
     <Compile Include="Assets\AssetStore\GE Common Assets\GE Toggle Full Screen\Scripts\GE_ToggleFullScreenUI.cs" />
@@ -302,6 +303,7 @@
     <Compile Include="Assets\Scripts\Character\SelectMass\SelectMassSprite.cs" />
     <Compile Include="Assets\Scripts\Character\SelectMass\SelectSandMass.cs" />
     <Compile Include="Assets\Scripts\Character\SelectMass\SelectSandMassChecker.cs" />
+    <Compile Include="Assets\Scripts\Character\TriggerOff.cs" />
     <Compile Include="Assets\Scripts\Character\Type\BalanceType.cs" />
     <Compile Include="Assets\Scripts\Character\Type\BalanceTypeOnline.cs" />
     <Compile Include="Assets\Scripts\Character\Type\Character.cs" />
@@ -365,6 +367,8 @@
     <Compile Include="Assets\Scripts\Item\ItemHolder.cs" />
     <Compile Include="Assets\Scripts\Item\MoveSpeedUp.cs" />
     <Compile Include="Assets\Scripts\Item\SpecialItem.cs" />
+    <Compile Include="Assets\Scripts\ModeSelect\FieldCreatorModeSelect.cs" />
+    <Compile Include="Assets\Scripts\ModeSelect\FieldDataModeSelect.cs" />
     <Compile Include="Assets\Scripts\ModeSelect\ModeSelect.cs" />
     <Compile Include="Assets\Scripts\Online\CreateCharaSelect.cs" />
     <Compile Include="Assets\Scripts\Online\NoneJoinLobby.cs" />
@@ -380,6 +384,10 @@
     <Compile Include="Assets\Scripts\Result\ResultRank.cs" />
     <Compile Include="Assets\Scripts\Result\ResultStar.cs" />
     <Compile Include="Assets\Scripts\Result\ResultUser.cs" />
+    <Compile Include="Assets\Scripts\Result\WinEffect.cs" />
+    <Compile Include="Assets\Scripts\Scene\FadeManager.cs" />
+    <Compile Include="Assets\Scripts\Scene\SceneChanger.cs" />
+    <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
     <Compile Include="Assets\Scripts\StageSelect\GoGame.cs" />
     <Compile Include="Assets\Scripts\StageSelect\ItemAmount.cs" />
     <Compile Include="Assets\Scripts\StageSelect\ItemAmountOnline.cs" />
@@ -406,10 +414,10 @@
     <Compile Include="Assets\Scripts\Tutorial\TutorialCharacter.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialFlow.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialRange.cs" />
-    <Compile Include="Assets\TriggerOff.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AssetStore\Elementals\Readme.txt" />
+    <None Include="Assets\AssetStore\FullTiltBoogie\Helpers\readme.txt" />
     <None Include="Assets\AssetStore\GE Common Assets\Readme.txt" />
     <None Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\!How to.txt" />
     <None Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Readme.txt" />

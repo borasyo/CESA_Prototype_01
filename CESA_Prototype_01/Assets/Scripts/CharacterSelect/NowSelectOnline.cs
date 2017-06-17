@@ -9,7 +9,7 @@ using UniRx.Triggers;
 public class NowSelectOnline : NowSelect
 {
     CharacterSelectOnline _charaSele = null;
-    RectTransform _rectTrans = null;
+    RectTransform _parentRectTrans = null;
     Vector2 anchoredPos = Vector2.zero;
     PhotonView _photonView = null;
 
@@ -27,7 +27,7 @@ public class NowSelectOnline : NowSelect
         yield return new WaitWhile(() => (selectCanvas = GameObject.FindWithTag("SelectCanvas")) == null);
         
         _charaSele = selectCanvas.GetComponent<CharacterSelectOnline>();    //  Missingバグ発生
-        _rectTrans = transform.parent.GetComponent<RectTransform>();
+        _parentRectTrans = transform.parent.GetComponent<RectTransform>();
         _photonView = GetComponent<PhotonView>();
 
         if (_IsInit)
@@ -68,10 +68,10 @@ public class NowSelectOnline : NowSelect
             });
 
         this.UpdateAsObservable()
-            .Where(_ => _rectTrans)
+            .Where(_ => _parentRectTrans)
             .Subscribe(_ =>
             {
-                _rectTrans.localPosition = _charaSele.GetLocalPos(gameObject);
+                _parentRectTrans.localPosition = _charaSele.GetLocalPos(gameObject);
                 transform.parent.localScale = Vector3.one;
             });
 

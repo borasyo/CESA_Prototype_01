@@ -117,12 +117,14 @@ public class RoundCounter : Photon.MonoBehaviour
     void GoResult()
     {
         if (PhotonNetwork.inRoom)
-        {
-            SceneManager.LoadScene("OnlineResult");
+        { 
+            SceneChanger.Instance.ChangeScene("OnlineResult", true);
+            //SceneManager.LoadScene("OnlineResult");
         }
         else
         {
-            SceneManager.LoadScene("Result");
+            SceneChanger.Instance.ChangeScene("Result", true);
+            //SceneManager.LoadScene("Result");
         }
     }
 }

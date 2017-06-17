@@ -15,11 +15,17 @@ public class ModeSelect : MonoBehaviour
 
     public void Offline()
     {
+        if (FadeManager.Instance.Fading)
+            return;
+
         StartCoroutine(Anim(false));
     }
 
     public void Online()
     {
+        if (FadeManager.Instance.Fading)
+            return;
+
         StartCoroutine(Anim(true));
     }
 
@@ -48,11 +54,11 @@ public class ModeSelect : MonoBehaviour
 
         if(isOnline)
         {
-            SceneManager.LoadScene("OnlineRoom");
+            SceneChanger.Instance.ChangeScene("OnlineRoom", true);
         }
         else
         {
-            SceneManager.LoadScene("CharacterSelect");
+            SceneChanger.Instance.ChangeScene("CharacterSelect", true);
         }
     }
 }

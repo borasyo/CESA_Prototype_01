@@ -8,6 +8,9 @@ public class ReLoadScene : Photon.MonoBehaviour
 {
     public void ReLoadModeSelect()
     {
+        if (FadeManager.Instance.Fading)
+            return;
+
         if (PhotonNetwork.inRoom)
         {
             if(PhotonNetwork.isMasterClient)
@@ -17,16 +20,22 @@ public class ReLoadScene : Photon.MonoBehaviour
             CharacterSelectOnline._nMyNumber = 0;
         }
 
-        SceneManager.LoadScene("ModeSelect");
+        SceneChanger.Instance.ChangeScene("ModeSelect", true);
+        //SceneManager.LoadScene("ModeSelect");
     }
+
     public void ReLoadCharaSelect()
     {
+        if (FadeManager.Instance.Fading)
+            return;
+
         if (!PhotonNetwork.inRoom)
         {
             for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
                 RoundCounter.nRoundCounter[i] = 0;
 
-            SceneManager.LoadScene("CharacterSelect");
+            SceneChanger.Instance.ChangeScene("CharacterSelect", true);
+            //SceneManager.LoadScene("CharacterSelect");
         }
         else
         {
@@ -41,9 +50,13 @@ public class ReLoadScene : Photon.MonoBehaviour
     [PunRPC]
     public void LoadOnlineRoom()
     {
+        if (FadeManager.Instance.Fading)
+            return;
+
         for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
             RoundCounter.nRoundCounter[i] = 0;
-        
-        SceneManager.LoadScene("OnlineRoom");
+
+        SceneChanger.Instance.ChangeScene("OnlineRoom", true);
+        //SceneManager.LoadScene("OnlineRoom");
     }
 }
