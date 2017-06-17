@@ -116,10 +116,12 @@ public class SpeedTypeOnline : CharacterOnline
         if (IsRun)
         {
             SetSpeed(_fInitSpeed * 1.5f);
+            _animator.SetBool("Fast", true);
         }
         else
         {
             SetSpeed(_fInitSpeed);
+            _animator.SetBool("Fast", false);
         }
         return true;
     }

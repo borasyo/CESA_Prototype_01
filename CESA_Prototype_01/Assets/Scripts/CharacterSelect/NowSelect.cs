@@ -11,7 +11,7 @@ public class NowSelect : Photon.PunBehaviour
 
     Image _image = null;
     RectTransform _rectTrans = null;
-    float _fDefaultHeight = 35.0f;
+    const float _fDefaultHeight = 35.0f;
 
     [SerializeField] protected bool _IsOnNone = true;
     List<CharaMaterial> _charaMatList = new List<CharaMaterial>();

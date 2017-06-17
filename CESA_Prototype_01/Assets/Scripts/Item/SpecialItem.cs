@@ -5,6 +5,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine.UI;
+using System.Linq;
 
 public class SpecialItem : ItemBase
 {
@@ -15,14 +16,21 @@ public class SpecialItem : ItemBase
     void Start()
     {
         MeshRenderer meRend = GetComponent<MeshRenderer>();
-        ParticleSystem particle = GetComponentInChildren<ParticleSystem>();
-        particle.startSize *= 0.5f;
+        List<ParticleSystem> particleList = transform.GetComponentsInChildren<ParticleSystem>().ToList();
+        foreach (ParticleSystem particle in particleList)
+        {
+            //particle.startSize *= 0.75f;
+        }
         this.UpdateAsObservable()
             .Where(_ => this.enabled && !transform.parent.parent)
             .Subscribe(_ => {
                 Color setCol = Random.ColorHSV();
                 setCol.a = meRend.material.color.a;
-                particle.startColor = setCol;
+
+                foreach (ParticleSystem particle in particleList)
+                {
+                    particle.startColor = setCol;
+                }
             });
 
         _itemType = ItemBase.eItemType.SPECIAL;
@@ -39,19 +47,26 @@ public class SpecialItem : ItemBase
         }
 
         //transform.Find("ItemEffect").gameObject.SetActive(true);
-        ParticleSystem particle = transform.GetComponentInChildren<ParticleSystem>();
-        particle.startColor = GetColor(_character.GetPlayerNumber());
-        particle.startSize *= 2.0f;
-        transform.localPosition = Vector3.zero + new Vector3(0.0f, 0.48f, 0.0f);
+        List<ParticleSystem> particleList = transform.GetComponentsInChildren<ParticleSystem>().ToList();
+        foreach (ParticleSystem particle in particleList)
+        {
+            particle.startColor = GetColor(_character.GetPlayerNumber());
+            particle.startSize *= 1.75f;
+        }
+        transform.localPosition = Vector3.zero + new Vector3(0.0f, 0.52f, 0.0f);
 
         _charactorGauge = this.GetComponentInParent<CharacterGauge>();
         _charactorGauge.GaugeMax();
 
+        float max = _fDuration_Sec;
         this.UpdateAsObservable()
             .Subscribe(_ => {
                 _fDuration_Sec -= Time.deltaTime;
 
-                if(_fDuration_Sec > 0.0f
+                foreach (ParticleSystem particle in particleList)
+                    particle.startColor -= new Color(0, 0, 0, 1 * (Time.deltaTime / max));
+
+                if (_fDuration_Sec > 0.0f
                     #if DEBUG
                     && !Input.GetKeyDown(KeyCode.RightShift)
                     #endif

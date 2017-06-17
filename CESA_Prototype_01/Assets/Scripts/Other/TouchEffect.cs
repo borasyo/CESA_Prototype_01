@@ -33,7 +33,16 @@ public class TouchEffect : MonoBehaviour
                     transform.position = pos;
                 }
 
-                particle.Emit(1);
+                StartCoroutine(Emit(particle));
             });
 	}
+
+    IEnumerator Emit(ParticleSystem particle)
+    {
+        for(int i = 0; i < 1; i++)
+        {
+            particle.Emit(1);
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
 }

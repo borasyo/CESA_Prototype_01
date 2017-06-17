@@ -114,11 +114,13 @@ public class SpeedType : Character
         _IsSpecialMode = IsRun;
         if (IsRun)
         {
-            SetSpeed(_fInitSpeed * 2.0f);
+            SetSpeed(_fInitSpeed * 1.5f);
+            _animator.SetBool("Fast", true);
         }
         else
         {
             SetSpeed(_fInitSpeed);
+            _animator.SetBool("Fast", false);
         }
         return true;
     }
