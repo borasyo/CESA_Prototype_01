@@ -410,6 +410,14 @@ public class Character : FieldObjectBase
         return number;
     }
 
+    public void Win()
+    {
+        _animator.SetBool("Happy", true);
+        transform.eulerAngles = new Vector3(0, 180, 0);
+        enabled = false;
+        Camera.main.GetComponent<WinCamera>().Run(this);
+    }
+
     #endregion
 
     #region VirtualMethod

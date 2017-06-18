@@ -116,7 +116,7 @@ public class GameTimer : MonoBehaviour
         }
    
         this.UpdateAsObservable()
-            .Where(_ => _fTime > 0.0f)
+            .Where(_ => _fTime > 0.0f && FieldData.Instance.GetCharactors.Count > 0)
             .Subscribe(_ =>
             {
                 _fTime -= Time.deltaTime;

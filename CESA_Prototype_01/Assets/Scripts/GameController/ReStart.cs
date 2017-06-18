@@ -20,19 +20,20 @@ public class ReStart : Photon.MonoBehaviour
                 if (particle.isPlaying)
                     return;
 
-                StartCoroutine(DestroyReStart());
+                DestroyReStart();
+                //StartCoroutine(DestroyReStart());
             });
     }
 
-    protected virtual IEnumerator DestroyReStart()
+    protected virtual void DestroyReStart()
     {
-        yield return new WaitForSeconds(2.0f);
-
         if (_winer)
         {
             RoundCounter.Instance.WinCharacter(_winer);
         }
 
         Destroy(this.gameObject);
+
+        //yield return new WaitForSeconds(2.0f);
     }
 }

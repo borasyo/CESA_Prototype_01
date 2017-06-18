@@ -96,13 +96,33 @@ public class RoundCounter : Photon.MonoBehaviour
             nRoundCounter[idx]++;
 
             //  リザルトへ
-            GoResult();
+            StartCoroutine(GoResult());
         }
         else
         {
             photonView.RPC("OnlineCountUp", PhotonTargets.All, idx);
         }
         nNowWinerPlayer = idx;
+
+        // CPUが残っていれば死亡させる
+        GameObject CPUDeath = Resources.Load<GameObject>("Prefabs/Effect/CPUDeath");
+        List<Character> charaList = FieldData.Instance.GetCharactors;
+        for (int i = 0; i < charaList.Count; i++)
+        {
+            //Debug.Log(charaList[i].name);
+            if (nNowWinerPlayer == charaList[i].GetPlayerNumberToInt() - 1)
+            {
+                //  TODO : 勝利演出
+                charaList[i].Win();
+            }
+            else
+            {
+                GameObject effect = Instantiate(CPUDeath, charaList[i].transform.position + new Vector3(0.0f, GameScaler._fScale * 0.5f, 0.0f), Quaternion.identity);
+                effect.GetComponent<PlayerDeathEffect>().Init(charaList[i].GetPlayerNumber() + "P");
+                Destroy(charaList[i].gameObject);
+            }
+        }
+        charaList.Clear();
     }
 
     [PunRPC]
@@ -111,11 +131,13 @@ public class RoundCounter : Photon.MonoBehaviour
         nRoundCounter[idx]++;
 
         //  リザルトへ
-        GoResult();
+        StartCoroutine(GoResult());
     }
 
-    void GoResult()
+    IEnumerator GoResult()
     {
+        yield return new WaitForSeconds(3.0f);
+
         if (PhotonNetwork.inRoom)
         { 
             SceneChanger.Instance.ChangeScene("OnlineResult", true);

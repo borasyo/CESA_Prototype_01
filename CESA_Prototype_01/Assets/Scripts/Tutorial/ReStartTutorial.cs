@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ReStartTutorial : ReStart
 {
-    protected override IEnumerator DestroyReStart()
+    protected override void DestroyReStart()
     {
-        yield return new WaitForSeconds(2.0f);
+        //yield return new WaitForSeconds(2.0f);
 
         /*if (_winer)
         {

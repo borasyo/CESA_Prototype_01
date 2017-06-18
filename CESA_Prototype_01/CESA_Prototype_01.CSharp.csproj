@@ -353,12 +353,14 @@
     <Compile Include="Assets\Scripts\GameController\ReStart.cs" />
     <Compile Include="Assets\Scripts\GameController\Referee.cs" />
     <Compile Include="Assets\Scripts\GameController\RefereeOnline.cs" />
+    <Compile Include="Assets\Scripts\GameMain\CPUDeath.cs" />
     <Compile Include="Assets\Scripts\GameMain\GameTimer.cs" />
     <Compile Include="Assets\Scripts\GameMain\ReadyGo.cs" />
     <Compile Include="Assets\Scripts\GameMain\ReadyGoOnline.cs" />
     <Compile Include="Assets\Scripts\GameMain\RoundCounter.cs" />
     <Compile Include="Assets\Scripts\GameMain\SetStage.cs" />
     <Compile Include="Assets\Scripts\GameMain\SuddenDeath.cs" />
+    <Compile Include="Assets\Scripts\GameMain\WinCamera.cs" />
     <Compile Include="Assets\Scripts\Icon\MoveIcon.cs" />
     <Compile Include="Assets\Scripts\Item\FixText.cs" />
     <Compile Include="Assets\Scripts\Item\GaugeSpeedUp.cs" />
