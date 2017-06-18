@@ -25,9 +25,14 @@ public class CharacterInputUser : CharacterInput
             .Where(_ => Input.touchCount > 0)
             .Subscribe(_ =>
             {
+                if (Time.timeScale <= 0.0f)
+                    return;
+
                 if (Input.touchCount >= 1)
                 {
-                    if (Input.GetTouch(0).phase == TouchPhase.Began && Input.GetTouch(0).position.x >= Screen.width / 2.0f)
+                    if (Input.GetTouch(0).phase == TouchPhase.Began && 
+                        Input.GetTouch(0).position.x >= Screen.width / 2.0f && 
+                        Input.GetTouch(0).position.y <= Screen.height / 1.5f)
                     {
                         StartCoroutine(ActionClick());
                         return;
@@ -35,7 +40,9 @@ public class CharacterInputUser : CharacterInput
                 }
                 if (Input.touchCount >= 2)
                 {
-                    if (Input.GetTouch(1).phase == TouchPhase.Began && Input.GetTouch(1).position.x >= Screen.width / 2.0f)
+                    if (Input.GetTouch(1).phase == TouchPhase.Began &&
+                        Input.GetTouch(1).position.x >= Screen.width / 2.0f && 
+                        Input.GetTouch(1).position.y >= Screen.height / 1.5f)
                     {
                         StartCoroutine(ActionClick());
                         return;

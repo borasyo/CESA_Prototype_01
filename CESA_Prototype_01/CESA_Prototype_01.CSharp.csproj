@@ -368,12 +368,14 @@
     <Compile Include="Assets\Scripts\Item\ItemHolder.cs" />
     <Compile Include="Assets\Scripts\Item\MoveSpeedUp.cs" />
     <Compile Include="Assets\Scripts\Item\SpecialItem.cs" />
+    <Compile Include="Assets\Scripts\Menu\PoseWindow.cs" />
     <Compile Include="Assets\Scripts\ModeSelect\FieldCreatorModeSelect.cs" />
     <Compile Include="Assets\Scripts\ModeSelect\FieldDataModeSelect.cs" />
     <Compile Include="Assets\Scripts\ModeSelect\ModeSelect.cs" />
     <Compile Include="Assets\Scripts\Online\CreateCharaSelect.cs" />
     <Compile Include="Assets\Scripts\Online\NoneJoinLobby.cs" />
     <Compile Include="Assets\Scripts\Online\OnlineGameMainManager.cs" />
+    <Compile Include="Assets\Scripts\Online\PushCreate.cs" />
     <Compile Include="Assets\Scripts\Online\RoomButton.cs" />
     <Compile Include="Assets\Scripts\Online\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Online\SendRateChecker.cs" />

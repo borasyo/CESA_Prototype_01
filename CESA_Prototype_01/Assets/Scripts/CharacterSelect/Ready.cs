@@ -8,16 +8,24 @@ public class Ready : Photon.MonoBehaviour {
 
     public static int nReadyCnt = 0;
     bool _isReady = false;
-    Text _text = null;
+    Image _image = null;
     Button _CharaChangeButton = null;
 
     List<Animator> _animList = new List<Animator>();
 
+    static Sprite _onSprite = null;
+    static Sprite _offSprite = null;
+
     void Start()
     {
-        _text = GetComponentInChildren<Text>();
+        _image = GetComponentInChildren<Image>();
         _CharaChangeButton = transform.parent.GetComponent<Button>();
         _animList = transform.parent.GetComponentsInChildren<Animator>().ToList();
+
+        if (!_onSprite)
+            _onSprite = Resources.Load<Sprite>("Texture/CharaSelect/ready_ON");
+        if (!_offSprite)
+            _offSprite = Resources.Load<Sprite>("Texture/CharaSelect/ready_OFF");
     }
 
     public void OnClick()
@@ -35,7 +43,7 @@ public class Ready : Photon.MonoBehaviour {
         {
             _isReady = false;
             nReadyCnt--;
-            _text.text = "Ready?";
+            _image.sprite = _offSprite;
             _CharaChangeButton.enabled = true;
 
             ChangeAnim(_animList, false);
@@ -54,7 +62,7 @@ public class Ready : Photon.MonoBehaviour {
         {
             _isReady = true;
             nReadyCnt++;
-            _text.text = "OK!";
+            _image.sprite = _onSprite;
             _CharaChangeButton.enabled = false;
 
             ChangeAnim(_animList, true);
@@ -80,7 +88,7 @@ public class Ready : Photon.MonoBehaviour {
     void Reset()
     {
         _isReady = false;
-        _text.text = "Ready?";
+        _image.sprite = _offSprite;
         _CharaChangeButton.enabled = true;
     }
 

@@ -26,9 +26,9 @@ public class AllReady : Photon.MonoBehaviour
 
         ColorBlock offColBlock = new ColorBlock();
         offColBlock = button.colors;
-        offColBlock.normalColor *= 0.75f;
-        offColBlock.highlightedColor *= 0.75f;
-        offColBlock.pressedColor *= 0.75f;
+        offColBlock.normalColor *= new Color(0.5f, 0.5f, 0.5f, 1.0f);
+        offColBlock.highlightedColor *= new Color(0.5f, 0.5f, 0.5f, 1.0f);
+        offColBlock.pressedColor *= new Color(0.5f, 0.5f, 0.5f, 1.0f);
         //Transform setParent = transform.parent;
         //transform.parent = null;
 
@@ -69,13 +69,13 @@ public class AllReady : Photon.MonoBehaviour
             });
 
         Image _image = GetComponent<Image>();
-        TriangleWave<float> triangleAlpha = TriangleWaveFactory.Float(0.5f, 1.0f, 0.25f);
+        TriangleWave<Color> triangleColor = TriangleWaveFactory.Color(new Color(0.5f, 0.5f, 0.5f,1.0f), new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.5f);
         this.UpdateAsObservable()
             .Where(_ => button.enabled)
             .Subscribe(_ =>
             {
-                triangleAlpha.Progress();
-                _image.color = new Color(1,1,1, triangleAlpha.CurrentValue);
+                triangleColor.Progress();
+                _image.color = triangleColor.CurrentValue;
             });
     }
 

@@ -13,15 +13,27 @@ public class ReLoadScene : Photon.MonoBehaviour
 
         if (PhotonNetwork.inRoom)
         {
-            if(PhotonNetwork.isMasterClient)
+            if (!PhotonNetwork.isMasterClient && SceneManager.GetActiveScene().name != "OnlineRoom")
+                return;
+
+            if (PhotonNetwork.isMasterClient)
                 PhotonNetwork.DestroyAll();
 
-            PhotonNetwork.LeaveRoom();      // 退室
-            CharacterSelectOnline._nMyNumber = 0;
+            photonView.RPC("OnlineReLoadModeSelect", PhotonTargets.All);
         }
+        else
+        {
+            SceneChanger.Instance.ChangeScene("ModeSelect", true);
+            //SceneManager.LoadScene("ModeSelect");
+        }
+    }
 
+    [PunRPC]
+    public void OnlineReLoadModeSelect()
+    {
+        PhotonNetwork.LeaveRoom();      // 退室
+        CharacterSelectOnline._nMyNumber = 0;
         SceneChanger.Instance.ChangeScene("ModeSelect", true);
-        //SceneManager.LoadScene("ModeSelect");
     }
 
     public void ReLoadCharaSelect()
@@ -57,6 +69,42 @@ public class ReLoadScene : Photon.MonoBehaviour
             RoundCounter.nRoundCounter[i] = 0;
 
         SceneChanger.Instance.ChangeScene("OnlineRoom", true);
+        //SceneManager.LoadScene("OnlineRoom");
+    }
+
+    public void Retry()
+    {
+        if (FadeManager.Instance.Fading)
+            return;
+
+        if (!PhotonNetwork.inRoom)
+        {
+            for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
+                RoundCounter.nRoundCounter[i] = 0;
+
+            SceneChanger.Instance.ChangeScene("GameMain", true);
+            //SceneManager.LoadScene("CharacterSelect");
+        }
+        else
+        {
+            if (!PhotonNetwork.isMasterClient)
+                return;
+
+            PhotonNetwork.DestroyAll();
+            photonView.RPC("LoadGameMain", PhotonTargets.All);
+        }
+    }
+
+    [PunRPC]
+    public void LoadGameMain()
+    {
+        if (FadeManager.Instance.Fading)
+            return;
+
+        for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
+            RoundCounter.nRoundCounter[i] = 0;
+
+        SceneChanger.Instance.ChangeScene("OnlineGameMain", true);
         //SceneManager.LoadScene("OnlineRoom");
     }
 }

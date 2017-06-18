@@ -68,7 +68,6 @@ public class GoGame : Photon.MonoBehaviour
         CheckAllPlayerState();
     }
 
-
     void Init()
     {
         _IsGoGame = true;
@@ -89,6 +88,8 @@ public class GoGame : Photon.MonoBehaviour
 
         if (!_IsGoGame)
             return;
+
+        GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/StageSelect/gamestart_on");
 
         if (PhotonNetwork.inRoom)
         {
