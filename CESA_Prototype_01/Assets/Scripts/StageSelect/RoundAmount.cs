@@ -10,6 +10,8 @@ public class RoundAmount : Photon.MonoBehaviour
 {
     static protected int nRound = 3;
     //static protected int nRand = 0;
+    static Sprite _onSprite = null;
+    static Sprite _offSprite = null;
 
     // Use this for initialization
     void Start()
@@ -21,19 +23,21 @@ public class RoundAmount : Photon.MonoBehaviour
             buttonList.Add(stick.GetChild(i).GetComponent<Image>());
         }
 
-        Color onColor = Color.black;
-        Color offColor = Color.white;
+        if (!_onSprite)
+            _onSprite = Resources.Load<Sprite>("Texture/StageSelect/Check");
+        if (!_offSprite)
+            _offSprite = Resources.Load<Sprite>("Texture/StageSelect/Box");
 
-        //this.ObserveEveryValueChanged(_ => nRound)
-        this.UpdateAsObservable()  
+        //this.ObserveEveryValueChanged(_ => nItemAmount)
+        this.UpdateAsObservable()
             .Subscribe(_ =>
             {
                 for (int i = 0; i < buttonList.Count; i++)
                 {
-                    buttonList[i].color = offColor;
+                    buttonList[i].sprite = _offSprite;
                 }
 
-                buttonList[nRound - 1].color = onColor;
+                buttonList[nRound - 1].sprite = _onSprite;
             });
 
         //nRand = Random.Range(0, 5);

@@ -9,9 +9,11 @@ using UnityEngine.UI;
 public class ItemAmount : Photon.MonoBehaviour
 {
     static protected int nItemAmount = 2;
+    static Sprite _onSprite = null;
+    static Sprite _offSprite = null;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         List<Image> buttonList = new List<Image>();
         Transform stick = transform.GetChild(0);
@@ -20,8 +22,10 @@ public class ItemAmount : Photon.MonoBehaviour
             buttonList.Add(stick.GetChild(i).GetComponent<Image>());
         }
 
-        Color onColor = Color.black;
-        Color offColor = Color.white;
+        if (!_onSprite)
+            _onSprite = Resources.Load<Sprite>("Texture/StageSelect/Check");
+        if (!_offSprite)
+            _offSprite = Resources.Load<Sprite>("Texture/StageSelect/Box");
 
         //this.ObserveEveryValueChanged(_ => nItemAmount)
         this.UpdateAsObservable()  
@@ -29,10 +33,10 @@ public class ItemAmount : Photon.MonoBehaviour
             {
                 for (int i = 0; i < buttonList.Count; i++)
                 {
-                    buttonList[i].color = offColor;
+                    buttonList[i].sprite = _offSprite;
                 }
 
-                buttonList[nItemAmount].color = onColor;
+                buttonList[nItemAmount].sprite = _onSprite;
             });
     }
 

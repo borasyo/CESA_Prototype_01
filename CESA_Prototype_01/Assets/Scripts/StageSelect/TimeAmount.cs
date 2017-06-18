@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class TimeAmount : Photon.MonoBehaviour
 {
     static protected int nTime_Sec = 2;
+    static Sprite _onSprite = null;
+    static Sprite _offSprite = null;
 
     // Use this for initialization
     void Start()
@@ -20,19 +22,21 @@ public class TimeAmount : Photon.MonoBehaviour
             buttonList.Add(stick.GetChild(i).GetComponent<Image>());
         }
 
-        Color onColor = Color.black;
-        Color offColor = Color.white;
+        if (!_onSprite)
+            _onSprite = Resources.Load<Sprite>("Texture/StageSelect/Check");
+        if (!_offSprite)
+            _offSprite = Resources.Load<Sprite>("Texture/StageSelect/Box");
 
-        //this.ObserveEveryValueChanged(_ => nTime_Sec)
-        this.UpdateAsObservable()  
+        //this.ObserveEveryValueChanged(_ => nItemAmount)
+        this.UpdateAsObservable()
             .Subscribe(_ =>
             {
                 for (int i = 0; i < buttonList.Count; i++)
                 {
-                    buttonList[i].color = offColor;
+                    buttonList[i].sprite = _offSprite;
                 }
 
-                buttonList[nTime_Sec].color = onColor;
+                buttonList[nTime_Sec].sprite = _onSprite;
             });
     }
 

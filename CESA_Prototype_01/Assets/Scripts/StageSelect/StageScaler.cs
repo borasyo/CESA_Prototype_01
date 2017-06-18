@@ -10,6 +10,8 @@ public class StageScaler : Photon.MonoBehaviour
 {
     static protected int StageScale = 1;
     static protected int nRand = 0;
+    static Sprite _onSprite = null;
+    static Sprite _offSprite = null;
 
     // Use this for initialization
     void Start()
@@ -24,16 +26,21 @@ public class StageScaler : Photon.MonoBehaviour
         Color onColor = Color.black;
         Color offColor = Color.white;
 
-        //this.ObserveEveryValueChanged(_ => StageScale)
-        this.UpdateAsObservable()  
+        if (!_onSprite)
+            _onSprite = Resources.Load<Sprite>("Texture/StageSelect/Check");
+        if (!_offSprite)
+            _offSprite = Resources.Load<Sprite>("Texture/StageSelect/Box");
+
+        //this.ObserveEveryValueChanged(_ => nItemAmount)
+        this.UpdateAsObservable()
             .Subscribe(_ =>
             {
                 for (int i = 0; i < buttonList.Count; i++)
                 {
-                    buttonList[i].color = offColor;
+                    buttonList[i].sprite = _offSprite;
                 }
 
-                buttonList[StageScale].color = onColor;
+                buttonList[StageScale].sprite = _onSprite;
             });
 
         nRand = Random.Range(0, 3);

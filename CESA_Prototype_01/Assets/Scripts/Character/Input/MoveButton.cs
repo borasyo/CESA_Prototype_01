@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class MoveButton : MonoBehaviour
 {
+    Image _image = null;
+
     bool _IsActive = false;
     public bool IsActiveAndMove { get { return _IsActive && Vector2.Distance(CenterPosition, Input.GetTouch(0).position) >= 40;  } }
     Vector3 CenterPosition = Vector3.zero;
@@ -20,6 +22,7 @@ public class MoveButton : MonoBehaviour
 
     void Start()
     {
+        _image = GetComponent<Image>();
         StartCoroutine(Init());
     }
 
@@ -116,6 +119,7 @@ public class MoveButton : MonoBehaviour
 
     void SetActive(bool isActive)
     {
+        _image.enabled = isActive;
         if (isActive)
         {
             foreach (Image image in _moveVecList)
