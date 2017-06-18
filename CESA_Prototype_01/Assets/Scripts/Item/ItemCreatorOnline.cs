@@ -16,5 +16,6 @@ public class ItemCreatorOnline : ItemCreator
     {
         GameObject item = Instantiate(_ItemPrefabs[number]);
         item.transform.position = pos;
+        item.transform.position = pos + new Vector3(0.0f, 0.25f, 0.0f);
     }
 }

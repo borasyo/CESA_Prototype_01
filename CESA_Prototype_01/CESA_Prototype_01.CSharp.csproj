@@ -389,6 +389,7 @@
     <Compile Include="Assets\Scripts\Result\ResultStar.cs" />
     <Compile Include="Assets\Scripts\Result\ResultUser.cs" />
     <Compile Include="Assets\Scripts\Result\WinEffect.cs" />
+    <Compile Include="Assets\Scripts\Result\WinerPlayer.cs" />
     <Compile Include="Assets\Scripts\Scene\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />

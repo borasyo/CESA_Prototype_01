@@ -89,7 +89,6 @@ public class GoGame : Photon.MonoBehaviour
         if (!_IsGoGame)
             return;
 
-        GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/StageSelect/gamestart_on");
 
         if (PhotonNetwork.inRoom)
         {
@@ -100,6 +99,7 @@ public class GoGame : Photon.MonoBehaviour
         }
         else
         {
+            GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/StageSelect/gamestart_on");
             SceneChanger.Instance.ChangeScene("GameMain", true);
             //SceneManager.LoadScene("GameMain");
         }
@@ -108,6 +108,7 @@ public class GoGame : Photon.MonoBehaviour
     [PunRPC]
     public void LoadGameMain()
     {
+        GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/StageSelect/gamestart_on");
         SceneChanger.Instance.ChangeScene("OnlineGameMain", true);
         //SceneManager.LoadScene("OnlineGameMain");
     }

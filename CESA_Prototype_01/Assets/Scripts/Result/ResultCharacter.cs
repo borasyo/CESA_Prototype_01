@@ -57,12 +57,20 @@ public class ResultCharacter : MonoBehaviour
             rectTrans.sizeDelta = new Vector2(178.0f, _fDefaultHeight);
         }
 
-        for(int i = 0; i < transform.childCount; i++)
+        StartCoroutine(ChangeMesh(type));
+    }
+
+    IEnumerator ChangeMesh(int type)
+    {
+        yield return null;
+
+        for (int i = 0; i < transform.childCount; i++)
         {
             if (i == type)
                 continue;
 
             transform.GetChild(i).GetComponent<ResultCharaMaterial>().SetMeshActive(false);
         }
+
     }
 }

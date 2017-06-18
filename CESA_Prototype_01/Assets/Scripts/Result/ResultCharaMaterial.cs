@@ -10,11 +10,12 @@ public class ResultCharaMaterial : MonoBehaviour
 
     [SerializeField]
     int nNumber = 0;
+    public int SetNumber { set { nNumber = value; } }
 
     List<SkinnedMeshRenderer> _sMeRendList = new List<SkinnedMeshRenderer>();
     List<MeshRenderer> _meRendList = new List<MeshRenderer>();
 
-    void Awake()
+    void Start()
     {
         SetMaterial(FindObjectOfType<CharacterSelect>());
 

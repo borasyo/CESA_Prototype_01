@@ -7,6 +7,7 @@ public class ResultStar : MonoBehaviour
 {
     [SerializeField]
     int nNumber = 0;
+    public int SetNumber { set { nNumber = value; } }
 
     [SerializeField]
     GameObject starPrefabs = null;

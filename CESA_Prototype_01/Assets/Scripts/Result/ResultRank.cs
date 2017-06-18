@@ -7,9 +7,10 @@ public class ResultRank : MonoBehaviour
 {
     [SerializeField]
     int nNumber = 0;
+    public int SetNumber { set { nNumber = value; } }
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         int[] roundList = RoundCounter.nRoundCounter;
         int myCount = roundList[nNumber];
