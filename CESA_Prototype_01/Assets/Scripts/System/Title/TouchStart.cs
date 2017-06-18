@@ -41,7 +41,7 @@ public class TouchStart : MonoBehaviour
         else
         {
             this.UpdateAsObservable()
-                .Where(_ => Input.GetMouseButtonDown(0))
+                .Where(_ => Input.GetButtonDown("Action"))
                 .Subscribe(_ =>
                 {
                     LoadModeSelect();

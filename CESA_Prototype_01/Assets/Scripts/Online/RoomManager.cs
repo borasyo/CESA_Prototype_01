@@ -275,6 +275,9 @@ public class RoomManager : Photon.MonoBehaviour
     // 退室buttonが押されたときの処理
     public void OnPressLeaveRoomButton()
     {
+        if (!PhotonNetwork.inRoom)
+            return;
+
         //PhotonNetwork.Destroy (charaSelectObj);	// playerの削除
         //  マスターが退室したら強制解散
         if (PhotonNetwork.isMasterClient)

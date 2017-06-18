@@ -7,6 +7,14 @@ using UniRx.Triggers;
 
 public class TouchEffect : MonoBehaviour
 {
+    void Awake()
+    {
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+            return;
+
+        Destroy(gameObject);
+    }
+
 	// Use this for initialization
 	void Start ()
     {

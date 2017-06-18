@@ -30,12 +30,12 @@ public class ResultUser : MonoBehaviour
             num._Round = roundList[i];
             numberList[i] = num;
         }
-           
-        for(int i = 0; i < numberList.Length - 1; i++)
+
+        for (int i = 0; i < numberList.Length - 1; i++)
         {
-            for(int j = numberList.Length - 1; j > i; j--)
+            for (int j = numberList.Length - 1; j > i; j--)
             {
-                if(numberList[j]._Round > numberList[j - 1]._Round)
+                if (numberList[j]._Round > numberList[j - 1]._Round)
                 {
                     tNumber temp = numberList[j];
                     numberList[j] = numberList[j - 1];
