@@ -48,10 +48,11 @@ public class SpecialItem : ItemBase
 
         //transform.Find("ItemEffect").gameObject.SetActive(true);
         List<ParticleSystem> particleList = transform.GetComponentsInChildren<ParticleSystem>().ToList();
+        float fMultiSize = GetMultiSizeForChara(_character);
         foreach (ParticleSystem particle in particleList)
         {
             particle.startColor = GetColor(_character.GetPlayerNumber());
-            particle.startSize *= 1.75f;
+            particle.startSize *= fMultiSize;
         }
         transform.localPosition = Vector3.zero + new Vector3(0.0f, 0.52f, 0.0f);
 
@@ -97,5 +98,27 @@ public class SpecialItem : ItemBase
                 break;
         }
         return setCol;
+    }
+
+    float GetMultiSizeForChara(Character chara)
+    {
+        float fMulti = 0.0f;
+        if (chara.name.Contains("Balance"))
+        {
+            fMulti = 1.75f;
+        }
+        else if (chara.name.Contains("Power"))
+        {
+            fMulti = 2.0f;
+        }
+        else if(chara.name.Contains("Technical"))
+        {
+            fMulti = 2.0f;
+        }
+        else if(chara.name.Contains("Speed"))
+        {
+            fMulti = 1.5f;
+        }
+        return fMulti;
     }
 }

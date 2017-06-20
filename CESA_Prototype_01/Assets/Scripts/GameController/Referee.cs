@@ -10,6 +10,7 @@ using UnityEditor;
 public class Referee : Photon.MonoBehaviour
 {
     [SerializeField] protected GameObject _deathEffectPrefab = null;
+    private bool _IsEnd = false;
 
     void LateUpdate()
     {
@@ -19,6 +20,9 @@ public class Referee : Photon.MonoBehaviour
         List<Character> charaList = FieldData.Instance.GetCharactors;
         for (int i = 0; i < charaList.Count; i++)
         {
+            if (_IsEnd)
+                return;
+
             if (!charaList[i])
                 continue;
 
@@ -58,7 +62,8 @@ public class Referee : Photon.MonoBehaviour
             return;
 
         reStart._winer = charaList[0];
-        this.enabled = false;
+        //enabled = false;
+        _IsEnd = true;
     }
 
     protected SandItem.eType CheckType(string name)

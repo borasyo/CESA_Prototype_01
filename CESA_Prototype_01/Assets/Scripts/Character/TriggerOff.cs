@@ -21,7 +21,7 @@ public class TriggerOff : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
     {
         //Debug.Log(stateInfo.normalizedTime);
-        if (stateInfo.normalizedTime < 1.0f)
+        /*if (stateInfo.normalizedTime < 1.0f)
             return;
 
         switch (_type)
@@ -32,13 +32,22 @@ public class TriggerOff : StateMachineBehaviour
             case eBoolType.BREAK:
                 animator.SetBool("Break", false);
                 break;
-        }
+        }*/
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    //
-    //}
+	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        switch (_type)
+        {
+            case eBoolType.PUT:
+                animator.SetBool("Put", false);
+                break;
+            case eBoolType.BREAK:
+                animator.SetBool("Break", false);
+                break;
+        }
+    }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
 	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

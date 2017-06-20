@@ -45,6 +45,7 @@ public class RoundCounter : Photon.MonoBehaviour
 
         //Debug.Log("Win");
         List<Character> charaData = FieldData.Instance.GetCharactors;
+        Character data = charaData[0];
 
         if (!obj.name.Contains("CPU"))
         {
@@ -53,13 +54,12 @@ public class RoundCounter : Photon.MonoBehaviour
                 if (chara.gameObject != obj.gameObject)
                     continue;
 
-                //  勝者のカウントを1つ増加
-                CountUp(chara.GetPlayerNumberToInt() - 1);
+                data = chara;
+                break;
             }
         }
         else
         {
-            Character data = charaData[0];
             foreach (Character chara in charaData)
             {
                 //  同じならランダムで決定
@@ -83,12 +83,20 @@ public class RoundCounter : Photon.MonoBehaviour
                     continue;
                 }
             }
+        }
 
+        if (!PhotonNetwork.inRoom)
+        {
+            //  勝者のカウントを1つ増加
             CountUp(data.GetPlayerNumberToInt() - 1);
+        }
+        else
+        {
+            photonView.RPC("CountUp", PhotonTargets.All, data.GetPlayerNumberToInt() - 1);
         }
     }
 
-    void CountUp(int idx)
+    /*void CountUp(int idx)
     {
         if (!PhotonNetwork.inRoom)
         {
@@ -117,6 +125,7 @@ public class RoundCounter : Photon.MonoBehaviour
             }
             charaList.Clear();
 
+
             //  リザルトへ
             StartCoroutine(GoResult());
         }
@@ -124,10 +133,10 @@ public class RoundCounter : Photon.MonoBehaviour
         {
             photonView.RPC("OnlineCountUp", PhotonTargets.All, idx);
         }
-    }
+    }*/
 
     [PunRPC]
-    public void OnlineCountUp(int idx)
+    public void CountUp(int idx)
     {
         nRoundCounter[idx]++;
 
@@ -151,7 +160,7 @@ public class RoundCounter : Photon.MonoBehaviour
                 Destroy(charaList[i].gameObject);
             }
         }
-        charaList.Clear();
+        FieldData.Instance.ResetCharactors();
 
         //  リザルトへ
         StartCoroutine(GoResult());

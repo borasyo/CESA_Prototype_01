@@ -72,6 +72,7 @@ public class FieldData : Photon.MonoBehaviour
     protected List<Character> _CharaList = new List<Character>();
     public List<Character> GetCharactors { get { return _CharaList; } }
     public List<Character> GetCharactorsNonMe(GameObject obj) { return _CharaList.Where(x => x && x.gameObject != obj).ToList(); }    // 自分を除いたキャラにリストを返す
+    public void ResetCharactors() { _CharaList.Clear(); }
 
     #region Init
 
