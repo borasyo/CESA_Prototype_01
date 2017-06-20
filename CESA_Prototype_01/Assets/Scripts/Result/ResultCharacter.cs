@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ResultCharacter : MonoBehaviour
 {
     [SerializeField] int nNumber = 0;
+    public int SetNumber { set { nNumber = value; } }
     const float _fDefaultHeight = 35.0f;
     static Sprite[] _typeSprite = new Sprite[(int)CharacterSelect.eCharaType.MAX];
 

@@ -68,6 +68,7 @@ public class ReadyGo : MonoBehaviour
 
         yield return new WaitWhile(() => go.color.a > 0.0f);
 
+        //SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.BGM_GAMEMAIN);
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
     }

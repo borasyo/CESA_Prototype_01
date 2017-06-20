@@ -41,11 +41,9 @@ public class GoNext : Photon.MonoBehaviour
 
         if (PhotonNetwork.inRoom)
         {
-            if (PhotonNetwork.isMasterClient)
-                PhotonNetwork.DestroyAll();
-
             SceneChanger.Instance.ChangeScene("OnlineGameMain", true);
             //SceneManager.LoadScene("OnlineGameMain");
+            StartCoroutine(Cleanup());
         }
         else
         {
@@ -78,7 +76,7 @@ public class GoNext : Photon.MonoBehaviour
         if (PhotonNetwork.inRoom)
         {
             photonView.RPC("OnlineReCharaSelect", PhotonTargets.All);
-            //StartCoroutine(Cleanup());
+            StartCoroutine(Cleanup());
         }
         else
         {

@@ -11,7 +11,14 @@ public class ReLoadScene : Photon.MonoBehaviour
         if (FadeManager.Instance.Fading)
             return;
 
-        if (PhotonNetwork.inRoom)
+        if (!PhotonNetwork.inRoom)
+        {
+            for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
+                RoundCounter.nRoundCounter[i] = 0;
+            SceneChanger.Instance.ChangeScene("ModeSelect", true);
+            //SceneManager.LoadScene("ModeSelect");
+        }
+        else
         {
             if (!PhotonNetwork.isMasterClient && SceneManager.GetActiveScene().name != "OnlineRoom")
                 return;
@@ -21,16 +28,14 @@ public class ReLoadScene : Photon.MonoBehaviour
 
             photonView.RPC("OnlineReLoadModeSelect", PhotonTargets.All);
         }
-        else
-        {
-            SceneChanger.Instance.ChangeScene("ModeSelect", true);
-            //SceneManager.LoadScene("ModeSelect");
-        }
     }
 
     [PunRPC]
     public void OnlineReLoadModeSelect()
     {
+        for (int i = 0; i < RoundCounter.nRoundCounter.Length; i++)
+            RoundCounter.nRoundCounter[i] = 0;
+
         PhotonNetwork.LeaveRoom();      // 退室
         CharacterSelectOnline._nMyNumber = 0;
         SceneChanger.Instance.ChangeScene("ModeSelect", true);

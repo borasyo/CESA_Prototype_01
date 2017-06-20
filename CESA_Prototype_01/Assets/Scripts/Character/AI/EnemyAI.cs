@@ -55,7 +55,7 @@ public class EnemyAI : MonoBehaviour
     //  
     bool _IsDanger = false;     //  危険状態かどうか trueの時AI変更
     bool _IsOnRisk = true;      //  リスクチェックするかどうか    
-    public void OffRiskCheck() { _IsOnRisk = true; }
+    public void OffRiskCheck() { _IsOnRisk = false; }
 
     //  各行動AI
     MoveAI _moveAI = null;

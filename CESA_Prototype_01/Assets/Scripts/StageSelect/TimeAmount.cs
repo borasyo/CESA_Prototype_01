@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class TimeAmount : Photon.MonoBehaviour
 {
-    static protected int nTime_Sec = 2;
+    static protected int nTime_Sec = 1;
     static Sprite _onSprite = null;
     static Sprite _offSprite = null;
 

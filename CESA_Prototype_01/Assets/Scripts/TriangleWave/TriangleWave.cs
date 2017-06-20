@@ -58,4 +58,8 @@ public class TriangleWave<T>
     {
         oscillator.Progress (isUnScaled);
     }
+    public void Reset()
+    {
+        oscillator.Reset();
+    }
 }

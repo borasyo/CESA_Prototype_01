@@ -54,6 +54,18 @@ public class WinCamera : MonoBehaviour
                     obj.gameObject.SetActive(false);
                     FieldData.Instance.SetObjData(null, charaNumber - GameScaler._nWidth - 1);
                 }
+                obj = FieldData.Instance.GetObjData(charaNumber + 1);
+                if (obj)
+                {
+                    obj.gameObject.SetActive(false);
+                    FieldData.Instance.SetObjData(null, charaNumber + 1);
+                }
+                obj = FieldData.Instance.GetObjData(charaNumber - 1);
+                if (obj)
+                {
+                    obj.gameObject.SetActive(false);
+                    FieldData.Instance.SetObjData(null, charaNumber - 1);
+                }
             });
     }
 }

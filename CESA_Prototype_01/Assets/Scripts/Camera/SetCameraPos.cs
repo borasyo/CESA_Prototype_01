@@ -9,6 +9,8 @@ public class SetCameraPos : MonoBehaviour
     {
         float x = (float)(GameScaler._nWidth - 1) / 2.0f * GameScaler._fScale;
         float z = ((float)(GameScaler._nWidth - GameScaler._nHeight) * 0.1f * GameScaler._fScale);
+        if (StageScaler.GetScale() == 1)
+            z += 0.5f;
         float y = (GameScaler._nWidth + GameScaler._nHeight) / 10.0f * (GameScaler._fScale * 4.5f);
         Camera.main.transform.position = new Vector3(x,y,z);
 

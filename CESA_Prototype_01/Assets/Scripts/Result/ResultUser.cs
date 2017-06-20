@@ -47,6 +47,7 @@ public class ResultUser : MonoBehaviour
         //  指定されている順位のUser番号を格納
         //Debug.Log((nNumber + 1) + "位は" + (numberList[nNumber]._nUser + 1) + "Player!");
         nNumber = numberList[nNumber]._nUser;
+        transform.parent.GetComponentInChildren<ResultCharacter>().SetNumber = nNumber;
         transform.parent.GetComponentInChildren<ResultStar>().SetNumber = nNumber;
         transform.parent.GetComponentInChildren<ResultRank>().SetNumber = nNumber;
         foreach(ResultCharaMaterial charaMat in transform.parent.GetComponentsInChildren<ResultCharaMaterial>())

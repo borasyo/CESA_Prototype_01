@@ -28,4 +28,9 @@ public class TriangleWaveOscillator
         float period = m_fHalfPeriod_Sec * 2.0f; // 半周期を1周期に変換
         m_fValue = Mathf.Acos (Mathf.Cos (2.0f * Mathf.PI * m_fTime / period)) / Mathf.PI;
     }
+
+    public void Reset()
+    {
+        m_fTime = 0.0f;
+    }
 }

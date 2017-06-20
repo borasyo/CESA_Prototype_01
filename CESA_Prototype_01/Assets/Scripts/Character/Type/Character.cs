@@ -128,7 +128,7 @@ public class Character : FieldObjectBase
     {
         _nOldNumber = GetDataNumber();
         
-        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
+        if (_animator.GetBool("Put") || _animator.GetBool("Break") || _animator.GetBool("Happy"))
             return;
 
         MoveUpdate();
@@ -324,10 +324,10 @@ public class Character : FieldObjectBase
 
     protected virtual void DirUpdate()
     {
-        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
-            return;
+        //if (_animator.GetBool("Put") || _animator.GetBool("Break") || _animator.GetBool("Happy"))
+        //    return;
 
-            switch (_nowDirection)
+        switch (_nowDirection)
         {
             case eDirection.FORWARD:
                 transform.eulerAngles = new Vector3(0, 0, 0);
@@ -414,6 +414,7 @@ public class Character : FieldObjectBase
     {
         _animator.SetBool("Happy", true);
         transform.eulerAngles = new Vector3(0, 180, 0);
+        //Debug.Log(transform.eulerAngles);
         enabled = false;
         Camera.main.GetComponent<WinCamera>().Run(this);
     }

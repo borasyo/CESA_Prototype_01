@@ -40,7 +40,7 @@ public class MoveButton : MonoBehaviour
         float oldDistance = 0.0f;
 
         this.ObserveEveryValueChanged(_ => Input.touchCount)
-            .Where(_ => Input.touchCount <= 1)
+            .Where(_ => Input.touchCount <= 1 && enabled)
             .Subscribe(_ =>
             {
                 bool nowActive = (Input.touchCount == 1);
@@ -98,6 +98,21 @@ public class MoveButton : MonoBehaviour
                 oldTouchPos = nowTouchPos;
                 oldDistance = nowDistance;
             });
+
+        this.ObserveEveryValueChanged(_ => Time.timeScale > 0.0f)
+           .Subscribe(_ =>
+           {
+               if(Time.timeScale > 0.0f)
+               {
+                   enabled = true;
+               }
+               else
+               {
+                   enabled = false;
+                   _IsActive = false;
+                   SetActive(false);
+               }
+           });
     }
 
     void ColorChange()

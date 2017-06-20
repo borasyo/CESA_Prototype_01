@@ -21,7 +21,7 @@ public class SelectStage : Photon.MonoBehaviour
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                myImage.sprite = stageSpriteList[StageNumber];
+                myImage.sprite = stageSpriteList[StageNumber + (nMaxStage * StageScaler.GetScale())];
             });
 
         nRand = Random.Range(0, nMaxStage - 1);

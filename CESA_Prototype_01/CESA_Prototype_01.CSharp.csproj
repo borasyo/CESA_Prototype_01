@@ -383,6 +383,8 @@
     <Compile Include="Assets\Scripts\Online\RoomManager.cs" />
     <Compile Include="Assets\Scripts\Online\SendRateChecker.cs" />
     <Compile Include="Assets\Scripts\Online\UIScript.cs" />
+    <Compile Include="Assets\Scripts\Other\AutoAlphaChanger.cs" />
+    <Compile Include="Assets\Scripts\Other\AutoScaleChanger.cs" />
     <Compile Include="Assets\Scripts\Other\TouchEffect.cs" />
     <Compile Include="Assets\Scripts\Result\GoNext.cs" />
     <Compile Include="Assets\Scripts\Result\ResultCharaMaterial.cs" />
@@ -408,7 +410,7 @@
     <Compile Include="Assets\Scripts\StageSelect\TimeAmount.cs" />
     <Compile Include="Assets\Scripts\StageSelect\TimeAmountOnline.cs" />
     <Compile Include="Assets\Scripts\System\IEnumerableExtensions.cs" />
-    <Compile Include="Assets\Scripts\System\Title\TouchStart.cs" />
+    <Compile Include="Assets\Scripts\Title\TouchStart.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\ICalculator.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
     <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />

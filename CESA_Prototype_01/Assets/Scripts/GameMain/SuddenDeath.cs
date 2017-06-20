@@ -44,7 +44,7 @@ public class SuddenDeath : MonoBehaviour
             return false;
         });
 
-        Time.timeScale = 2.0f;
+        Time.timeScale = 1.5f;
         foreach (Character chara in FieldData.Instance.GetCharactors)
         {
             chara.GetComponent<CharacterGauge>().SuperMode();

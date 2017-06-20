@@ -46,7 +46,7 @@ public class CharacterOnline : Character
 
     public void OnlineMoveUpdate()
     {
-        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
+        if (_animator.GetBool("Put") || _animator.GetBool("Break") || _animator.GetBool("Happy"))
             return;
 
         if (photonView.isMine)

@@ -30,7 +30,7 @@ public class SoundManager : MonoBehaviour {
 	bool bUseSound = false;
 	
 	public enum eBgmValue {
-		BGM_a = 0,
+		BGM_GAMEMAIN = 0,
 		BGM_b,
 
 		BGM_MAX,

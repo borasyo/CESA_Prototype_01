@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
+using UniRx.Triggers;
 
 public class NowSelect : Photon.PunBehaviour
 {
@@ -41,6 +43,34 @@ public class NowSelect : Photon.PunBehaviour
 
         for (int i = 1; i < transform.childCount - 1; i++)
             _charaMatList.Add(transform.GetChild(i).GetComponent<CharaMaterial>());
+
+        Transform cpu = transform.parent.Find("CPU");
+        if (cpu)
+        {
+            //Image cpuSprite = cpu.GetComponent<Image>();
+            AutoAlphaChanger cpuAlpha = cpu.GetComponent<AutoAlphaChanger>();
+            if (!cpuAlpha)
+                return;
+
+            AutoAlphaChanger cpuLevelAlpha = transform.parent.GetChild(1).GetComponent<AutoAlphaChanger>();
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    switch (_charaType)
+                    {
+                        case CharacterSelect.eCharaType.NONE:
+                            //cpuSprite.color = Color.gray;
+                            cpuAlpha._IsOn = true;
+                            cpuLevelAlpha._IsOn = false;
+                            break;
+                        default:
+                            //cpuSprite.color = Color.white;
+                            cpuAlpha._IsOn = false;
+                            cpuLevelAlpha._IsOn = true;
+                            break;
+                    }
+                });
+        }
     }
 	
 	// Update is called once per frame
@@ -52,15 +82,7 @@ public class NowSelect : Photon.PunBehaviour
         // 範囲外処理
         if (_charaType == CharacterSelect.eCharaType.NONE)
             return;
-
-        if (_charaType > CharacterSelect.eCharaType.MAX)
-        {
-            _charaType = (CharacterSelect.eCharaType)1;
-        }
-        else if (_charaType < (CharacterSelect.eCharaType)1)
-        {
-            _charaType = CharacterSelect.eCharaType.MAX;
-        }
+      
 	}
 
     public void CharaUpdate()
@@ -114,7 +136,22 @@ public class NowSelect : Photon.PunBehaviour
     public virtual void Add()
     {
         _oldCharaType = _charaType;
-        _charaType ++;
+        _charaType++;
+
+        if (_charaType > CharacterSelect.eCharaType.MAX)
+        {
+            _charaType = (CharacterSelect.eCharaType)1;
+        }
+    }
+    public virtual void Sub()
+    {
+        _oldCharaType = _charaType;
+        _charaType--;
+
+        if (_charaType < (CharacterSelect.eCharaType)1)
+        {
+            _charaType = CharacterSelect.eCharaType.MAX;
+        }
     }
 
     public virtual void None()

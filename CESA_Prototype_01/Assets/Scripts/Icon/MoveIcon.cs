@@ -18,8 +18,8 @@ public class MoveIcon : MonoBehaviour
 
     void Awake()
     {
-        if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
-            return;
+        //if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+        //    return;
 
         Destroy(gameObject);
     }
