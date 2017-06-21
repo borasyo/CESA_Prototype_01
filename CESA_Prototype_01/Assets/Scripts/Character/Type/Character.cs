@@ -58,6 +58,7 @@ public class Character : FieldObjectBase
     public int Level { get; private set; }
 
     protected Animator _animator = null;
+    public Animator GetAnimator { get { return _animator; } }
 
     # endregion
 

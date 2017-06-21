@@ -66,6 +66,7 @@ public class ReadyGoOnline : Photon.MonoBehaviour
 
     IEnumerator SetReady()
     {
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.GAMESTART);
         Image ready = transform.Find("Ready").GetComponent<Image>();
         Image go = transform.Find("Go").GetComponent<Image>();
 

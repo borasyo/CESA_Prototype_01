@@ -71,6 +71,7 @@ public class SandItem : FieldObjectBase
 
             FieldData.Instance.ExceptionChangeField();
             _Type = _SetType;
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.PUT);
         }
 
         float life = _fMaxLife_Sec;
@@ -120,6 +121,7 @@ public class SandItem : FieldObjectBase
         FieldData.Instance.SetObjData(null, GetDataNumber());
         FieldData.Instance.ExceptionChangeField();
         Instantiate(_breakEffect, transform.position, _breakEffect.transform.rotation);
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.BREAK);
         Destroy(this.gameObject);
     }
 }

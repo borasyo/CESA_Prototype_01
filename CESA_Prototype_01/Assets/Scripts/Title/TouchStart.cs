@@ -41,7 +41,7 @@ public class TouchStart : MonoBehaviour
         else
         {
             this.UpdateAsObservable()
-                .Where(_ => Input.GetButtonDown("Action"))
+                .Where(_ => Input.GetButtonDown("Action") || Input.GetMouseButton(0))
                 .Subscribe(_ =>
                 {
                     LoadModeSelect();
@@ -51,6 +51,7 @@ public class TouchStart : MonoBehaviour
 
     void LoadModeSelect()
     {
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
         SceneChanger.Instance.ChangeScene("ModeSelect", true);
         //SceneManager.LoadScene("ModeSelect");
     }

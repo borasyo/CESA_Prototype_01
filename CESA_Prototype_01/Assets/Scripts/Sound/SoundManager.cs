@@ -29,18 +29,40 @@ public class SoundManager : MonoBehaviour {
 	[SerializeField]
 	bool bUseSound = false;
 	
-	public enum eBgmValue {
-		BGM_GAMEMAIN = 0,
-		BGM_b,
+	public enum eBgmValue
+    {
+        TITLE = 0,
+        MODESELECT,
+        CHARASELECT,
+        STAGESELECT,
+        GAMEMAIN,
+        INTERVAL,
+        RESULT,
+        RESULT_WIN,
+        RESULT_LOSE,
 
-		BGM_MAX,
+        WALK,
+        SPECIALMODE,
+
+        MAX,
 	};
 	
-	public enum eSeValue {
-		SE_a = 0,
-		SE_b,
+	public enum eSeValue
+    {
+        PUT = 0,
+		BREAK,
+        THUNDER,
+        ITEM,
+        ITEMGET,
+        DEATH,
+        GAMESTART,
+        GAMEEND,
+        TOUCH,
+        DECISION,
+        CHARACHANGE,
+        CPUCHANGE,
 
-		SE_MAX,
+        MAX,
 	};
 
 	// 音量
@@ -121,7 +143,7 @@ public class SoundManager : MonoBehaviour {
 		}*/
 	}
 
-	public bool PlayBGM(eBgmValue i) {
+	public bool PlayBGM(eBgmValue i, bool isOverlap = false) {
 		if (!bUseSound)
 			return false;
 
@@ -130,12 +152,17 @@ public class SoundManager : MonoBehaviour {
 			return false;
 		}
 
-		// 同じBGMの場合は何もしない
-		foreach (AudioSource source in BGMsource) {
-			if (source.clip == BGM [index]) {
-				return false;
-			}
-		}
+        if (!isOverlap)
+        {
+            // 同じBGMの場合は何もしない
+            foreach (AudioSource source in BGMsource)
+            {
+                if (source.clip == BGM[index])
+                {
+                    return false;
+                }
+            }
+        }
 
 		// 再生中で無いAudioSouceで鳴らす
 		foreach (AudioSource source in BGMsource) {

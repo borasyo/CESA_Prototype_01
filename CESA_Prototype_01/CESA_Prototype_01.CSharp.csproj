@@ -397,6 +397,8 @@
     <Compile Include="Assets\Scripts\Result\WinerPlayer.cs" />
     <Compile Include="Assets\Scripts\Scene\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneChanger.cs" />
+    <Compile Include="Assets\Scripts\Sound\PlayBgm.cs" />
+    <Compile Include="Assets\Scripts\Sound\PlaySeButtonClick.cs" />
     <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
     <Compile Include="Assets\Scripts\StageSelect\GoGame.cs" />
     <Compile Include="Assets\Scripts\StageSelect\ItemAmount.cs" />

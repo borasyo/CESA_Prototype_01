@@ -86,6 +86,7 @@ public class ItemBase : FieldObjectBase
         transform.SetParent(obj.transform);
         transform.GetComponentInChildren<MeshRenderer>().enabled = false;
         ItemHolder.Instance.Remove(this);
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.ITEMGET);
     }
 
     protected void Destroy()

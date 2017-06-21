@@ -74,6 +74,7 @@ public class SpecialItem : ItemBase
                 )
                     return;
 
+                SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.SPECIALMODE, true);
                 _character.RunSpecialMode(false);
                 Destroy(this.gameObject);
             });

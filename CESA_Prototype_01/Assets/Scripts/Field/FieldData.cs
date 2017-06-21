@@ -140,6 +140,31 @@ public class FieldData : Photon.MonoBehaviour
                     _ChangeDataList[i]._IsChange = false;
                 }
             });
+
+        //  歩行音をチェック
+        bool isWalk = false;
+        this.ObserveEveryValueChanged(_ =>
+        {
+            // isWalkが変化したら音も変える
+            foreach (Character chara in _CharaList)
+            {
+                isWalk = chara.GetAnimator.GetBool("Walk");
+                if (!isWalk)
+                    continue;
+                break;
+            }
+            return isWalk;
+        }).Subscribe(_ =>
+            {
+                if(isWalk)
+                {
+                    SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.WALK);
+                }
+                else
+                {
+                    SoundManager.Instance.StopBGM(SoundManager.eBgmValue.WALK);
+                }
+            });
     }
 
     #endregion

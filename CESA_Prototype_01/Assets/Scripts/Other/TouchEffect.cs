@@ -41,6 +41,7 @@ public class TouchEffect : MonoBehaviour
                     transform.position = pos;
                 }
 
+                SoundManager.Instance.PlaySE(SoundManager.eSeValue.TOUCH);
                 StartCoroutine(Emit(particle));
             });
 	}
