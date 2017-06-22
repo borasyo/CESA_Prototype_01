@@ -121,6 +121,7 @@ public class ReadyGoOnline : Photon.MonoBehaviour
     {
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
+        SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.GAMEMAIN, 0.25f);
     }
 
     void OnDestroy()

@@ -80,9 +80,8 @@ public class NowSelect : Photon.PunBehaviour
         CharaUpdate();
 
         // 範囲外処理
-        if (_charaType == CharacterSelect.eCharaType.NONE)
-            return;
-      
+        //if (_charaType == CharacterSelect.eCharaType.NONE)
+        //    return;
 	}
 
     public void CharaUpdate()
@@ -141,16 +140,6 @@ public class NowSelect : Photon.PunBehaviour
         if (_charaType > CharacterSelect.eCharaType.MAX)
         {
             _charaType = (CharacterSelect.eCharaType)1;
-        }
-    }
-    public virtual void Sub()
-    {
-        _oldCharaType = _charaType;
-        _charaType--;
-
-        if (_charaType < (CharacterSelect.eCharaType)1)
-        {
-            _charaType = CharacterSelect.eCharaType.MAX;
         }
     }
 

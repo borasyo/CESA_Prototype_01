@@ -25,8 +25,9 @@ public class SandMass : FieldObjectBase
     {
         //  Fieldの生成が終わるまで待つ
         yield return new WaitWhile(() => FieldData.Instance.IsStart == false);
+        yield return new WaitWhile(() => Time.timeScale <= 0.0f);
 
-        SandData.tData data = new SandData.tData();
+        SandData.tData data = SandData.Instance.GetSandDataList[GetDataNumber()];
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
@@ -71,16 +72,16 @@ public class SandMass : FieldObjectBase
         switch (data._type)
         {
             case SandItem.eType.ONE_P:
-                setColor = Color.red;
+                setColor = new Color(1.0f, 0.2f, 0.2f, 1.0f);
                 break;
             case SandItem.eType.TWO_P:
-                setColor = Color.blue;
+                setColor = new Color(0.25f, 0.25f, 1.0f, 1.0f);
                 break;
             case SandItem.eType.THREE_P:
-                setColor = Color.green;
+                setColor = new Color(0.0f, 1.0f, 0.0f, 1.0f);
                 break;
             case SandItem.eType.FOUR_P:
-                setColor = Color.yellow;
+                setColor = new Color(1.0f, 1.0f, 0.0f, 1.0f);
                 break;
             default:
                 break;
@@ -92,7 +93,7 @@ public class SandMass : FieldObjectBase
             thunder.endColor = setColor;
         }
 
-        DirUpdate(data._isVertical);
+        //DirUpdate(data._isVertical);
     }
 
     void DirUpdate(bool isVertical)
@@ -102,6 +103,5 @@ public class SandMass : FieldObjectBase
             transform.eulerAngles = new Vector3(0, 90, 0);
         else
             transform.eulerAngles = new Vector3(0, 0, 0);
-
     }
 }

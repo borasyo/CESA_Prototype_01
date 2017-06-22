@@ -26,7 +26,7 @@ public class NoneJoinLobby : MonoBehaviour
         {
             colBlock.normalColor = Color.gray;
             colBlock.highlightedColor = Color.gray;
-            colBlock.pressedColor = Color.gray / 2.0f;
+            colBlock.pressedColor = new Color(Color.gray.r / 2.0f, Color.gray.g / 2.0f, Color.gray.b / 2.0f, 1.0f);
             button.colors = colBlock;
         }
 
@@ -44,7 +44,7 @@ public class NoneJoinLobby : MonoBehaviour
                 {
                     colBlock.normalColor = Color.gray;
                     colBlock.highlightedColor = Color.gray;
-                    colBlock.pressedColor = Color.gray / 2.0f;
+                    colBlock.pressedColor = new Color(Color.gray.r / 2.0f, Color.gray.g / 2.0f, Color.gray.b / 2.0f, 1.0f);
                     button.colors = colBlock;
                 }
             });

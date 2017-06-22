@@ -145,12 +145,22 @@ public class FieldData : Photon.MonoBehaviour
         bool isWalk = false;
         this.ObserveEveryValueChanged(_ =>
         {
+            if(Time.timeScale <= 0.0f)
+            {
+                isWalk = false;
+                return isWalk;
+            }
+
             // isWalkが変化したら音も変える
             foreach (Character chara in _CharaList)
             {
+                if (!chara)
+                    continue;
+
                 isWalk = chara.GetAnimator.GetBool("Walk");
                 if (!isWalk)
                     continue;
+
                 break;
             }
             return isWalk;

@@ -316,6 +316,7 @@
     <Compile Include="Assets\Scripts\Character\Type\TechnicalTypeOnline.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\AllReady.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\CPUArriveCheck.cs" />
+    <Compile Include="Assets\Scripts\CharacterSelect\CharaDescription.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\CharaMaterial.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\CharacterSelect.cs" />
     <Compile Include="Assets\Scripts\CharacterSelect\CharacterSelectOnline.cs" />
@@ -393,12 +394,14 @@
     <Compile Include="Assets\Scripts\Result\ResultRank.cs" />
     <Compile Include="Assets\Scripts\Result\ResultStar.cs" />
     <Compile Include="Assets\Scripts\Result\ResultUser.cs" />
+    <Compile Include="Assets\Scripts\Result\StarEffect.cs" />
     <Compile Include="Assets\Scripts\Result\WinEffect.cs" />
     <Compile Include="Assets\Scripts\Result\WinerPlayer.cs" />
     <Compile Include="Assets\Scripts\Scene\FadeManager.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\Sound\PlayBgm.cs" />
     <Compile Include="Assets\Scripts\Sound\PlaySeButtonClick.cs" />
+    <Compile Include="Assets\Scripts\Sound\PlaySeOnAwake.cs" />
     <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
     <Compile Include="Assets\Scripts\StageSelect\GoGame.cs" />
     <Compile Include="Assets\Scripts\StageSelect\ItemAmount.cs" />

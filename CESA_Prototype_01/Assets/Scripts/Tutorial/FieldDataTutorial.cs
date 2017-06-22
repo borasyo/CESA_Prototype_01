@@ -8,6 +8,7 @@ public class FieldDataTutorial : FieldData
     {
         GameScaler._nWidth = 13;
         GameScaler._nHeight = 11;
+        StageScaler.Reset();
 
         //  データ配列生成
         _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];

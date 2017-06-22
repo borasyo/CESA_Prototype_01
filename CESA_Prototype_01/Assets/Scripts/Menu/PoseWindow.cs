@@ -76,6 +76,7 @@ public class PoseWindow : Photon.MonoBehaviour
 
     IEnumerator OnWindow()
     {
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW);
         yield return new WaitWhile(() => {
 
             transform.localScale += _initSize * (Time.unscaledDeltaTime / 0.25f);
@@ -113,6 +114,7 @@ public class PoseWindow : Photon.MonoBehaviour
 
     IEnumerator OffWindow()
     {
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
         yield return new WaitWhile(() => {
 
             transform.localScale -= _initSize * (Time.unscaledDeltaTime / 0.25f);

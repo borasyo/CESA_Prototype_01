@@ -183,14 +183,17 @@ public class NowSelectOnline : NowSelect
 
         if (transform.parent.name.Contains("CPU"))
         {
-            if (PhotonNetwork.isMasterClient)
-                _charaType++;
+            if (!PhotonNetwork.isMasterClient)
+                return;
 
+            base.Add();
             return;
         }
 
-        if (_photonView.isMine)
-            _charaType++;
+        if (!_photonView.isMine)
+            return;
+
+        base.Add();
     }
 
     public override void None()

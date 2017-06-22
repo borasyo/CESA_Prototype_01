@@ -45,6 +45,7 @@ public class SpecialItem : ItemBase
             Destroy();
             return;
         }
+        SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.SPECIALMODE, 1.0f, true);
 
         //transform.Find("ItemEffect").gameObject.SetActive(true);
         List<ParticleSystem> particleList = transform.GetComponentsInChildren<ParticleSystem>().ToList();
@@ -54,7 +55,7 @@ public class SpecialItem : ItemBase
             particle.startColor = GetColor(_character.GetPlayerNumber());
             particle.startSize *= fMultiSize;
         }
-        transform.localPosition = Vector3.zero + new Vector3(0.0f, 0.52f, 0.0f);
+        transform.localPosition = Vector3.zero + new Vector3(0.0f, 0.52f * (fMultiSize / 1.75f), 0.0f);
 
         _charactorGauge = this.GetComponentInParent<CharacterGauge>();
         _charactorGauge.GaugeMax();
@@ -74,7 +75,7 @@ public class SpecialItem : ItemBase
                 )
                     return;
 
-                SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.SPECIALMODE, true);
+                SoundManager.Instance.StopBGM(SoundManager.eBgmValue.SPECIALMODE);
                 _character.RunSpecialMode(false);
                 Destroy(this.gameObject);
             });
@@ -86,16 +87,16 @@ public class SpecialItem : ItemBase
         switch(player)
         {
             case "1":
-                setCol = Color.red + new Color(0.0f, 0.1f, 0.1f, 0.0f);
+                setCol = Color.red + new Color(0.0f, 0.2f, 0.2f, 0.0f);
                 break;
             case "2":
-                setCol = Color.blue + new Color(0.1f, 0.1f, 0.0f, 0.0f);
+                setCol = Color.blue + new Color(0.2f, 0.2f, 0.0f, 0.0f);
                 break;
             case "3":
-                setCol = Color.green + new Color(0.1f, 0.0f, 0.1f, 0.0f);
+                setCol = Color.green + new Color(0.2f, 0.0f, 0.2f, 0.0f);
                 break;
             case "4":
-                setCol = Color.yellow + new Color(0.0f, 0.0f, 0.1f, 0.0f);
+                setCol = Color.yellow + new Color(0.0f, 0.0f, 0.2f, 0.0f);
                 break;
         }
         return setCol;

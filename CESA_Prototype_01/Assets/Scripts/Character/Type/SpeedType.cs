@@ -92,10 +92,10 @@ public class SpeedType : Character
     {
         int nowNumber = GetDataNumber();
 
-        if(_IsSpecialMode && !FieldData.Instance.GetObjData(nowNumber))
+        if (_IsSpecialMode && !FieldData.Instance.GetObjData(nowNumber))
             FieldData.Instance.SetObjData(this, nowNumber);
 
-        if (_nOldNumber == nowNumber)
+        if (_nOldNumber == nowNumber && !FieldData.Instance.ChangeFieldWithChara)
             return;
 
         FieldData.Instance.SetObjData(null, _nOldNumber);

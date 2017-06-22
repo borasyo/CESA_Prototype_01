@@ -7,6 +7,9 @@ public class PlaySeButtonClick : Photon.MonoBehaviour
     [SerializeField]
     SoundManager.eSeValue eSeValue;
 
+    [SerializeField]
+    float Volume = 1.0f;
+
     public void OnClick()
     {
         if (PhotonNetwork.inRoom)
@@ -15,13 +18,13 @@ public class PlaySeButtonClick : Photon.MonoBehaviour
         }
         else
         {
-            SoundManager.Instance.PlaySE(eSeValue);
+            SoundManager.Instance.PlaySE(eSeValue, Volume);
         }
     }
 
     [PunRPC]
     public void OnlinePlaySe()
     {
-        SoundManager.Instance.PlaySE(eSeValue);
+        SoundManager.Instance.PlaySE(eSeValue, Volume);
     }
 }

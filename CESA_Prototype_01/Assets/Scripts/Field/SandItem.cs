@@ -121,7 +121,7 @@ public class SandItem : FieldObjectBase
         FieldData.Instance.SetObjData(null, GetDataNumber());
         FieldData.Instance.ExceptionChangeField();
         Instantiate(_breakEffect, transform.position, _breakEffect.transform.rotation);
-        SoundManager.Instance.PlaySE(SoundManager.eSeValue.BREAK);
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.BREAK, 0.5f);
         Destroy(this.gameObject);
     }
 }

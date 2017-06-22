@@ -72,6 +72,7 @@ public class ReadyGo : MonoBehaviour
         //SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.BGM_GAMEMAIN);
         Time.timeScale = 1.0f;
         gameObject.SetActive(false);
+        SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.GAMEMAIN, 0.25f);
     }
 
     void OnDestroy()

@@ -89,9 +89,9 @@ public class FadeManager : MonoBehaviour
         float time = 0;
         while (time <= interval)
         {
-            this.fadeAlpha = Mathf.Lerp(0f, 1f, time / interval);
+            this.fadeAlpha = Mathf.Lerp(0.0f, 1.0f, time / interval);
             time += Time.unscaledDeltaTime;
-            yield return 0;
+            yield return null;
         }
 
 		if (bStopBgm) {
@@ -108,15 +108,15 @@ public class FadeManager : MonoBehaviour
         if (scene != "")
             SceneManager.LoadScene(scene);
 
-        yield return null;
+        //yield return new WaitWhile(() => Time.unscaledDeltaTime > 0.1f);
 
         //だんだん明るく .
         time = 0;
 		while (this.fadeAlpha >= 0.2f)
         {
-            this.fadeAlpha = Mathf.Lerp(1f, 0f, time / interval);
+            this.fadeAlpha = Mathf.Lerp(1.0f, 0.0f, time / interval);
             time += Time.unscaledDeltaTime;
-            yield return 0;
+            yield return null;
         }
 
         this.isFading = false;

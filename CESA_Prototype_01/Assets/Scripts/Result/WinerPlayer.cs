@@ -27,5 +27,21 @@ public class WinerPlayer : MonoBehaviour
                 triangleScaler.Progress();
                 transform.localScale = triangleScaler.CurrentValue;
             });
+
+        if(PhotonNetwork.inRoom)
+        {
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.RESULT);
+        }
+        else
+        {
+            if(RoundCounter.nRoundCounter[0] >= RoundAmount.GetRound())
+            {
+                SoundManager.Instance.PlaySE(SoundManager.eSeValue.RESULT_WIN);
+            }
+            else
+            {
+                SoundManager.Instance.PlaySE(SoundManager.eSeValue.RESULT_LOSE);
+            }
+        }
     }
 }

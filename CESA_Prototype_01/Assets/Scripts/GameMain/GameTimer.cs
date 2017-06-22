@@ -107,6 +107,7 @@ public class GameTimer : MonoBehaviour
     {
         _fTime = (float)TimeAmount.GetTime();
         Text text = GetComponent<Text>();
+        Time.timeScale = 0.0f;
 
         if (_fTime < 0)
         {

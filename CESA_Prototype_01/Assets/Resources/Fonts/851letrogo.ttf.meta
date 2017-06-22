@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 13c25440ecbc7964e9aa75c98eef8094
+timeCreated: 1498112199
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: 851Letrogo
+  fontNames:
+  - 851Letrogo
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

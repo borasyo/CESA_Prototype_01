@@ -37,6 +37,10 @@ public class ResultStar : MonoBehaviour
             obj.transform.localPosition = new Vector3((-distance * i) + range, 0, 0);
             obj.transform.localScale = new Vector3(1,1,1);
 
+            //  今のゲームで追加された星なら演出
+            if (nNumber == RoundCounter.nNowWinerPlayer && i == RoundAmount.GetRound() - nowRound)
+                obj.AddComponent<StarEffect>();
+
             if (i < RoundAmount.GetRound() - nowRound)
                 continue;
 

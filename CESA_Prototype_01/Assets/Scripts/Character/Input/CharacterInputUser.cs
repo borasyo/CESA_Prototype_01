@@ -28,27 +28,16 @@ public class CharacterInputUser : CharacterInput
                 if (Time.timeScale <= 0.0f)
                     return;
 
-                if (Input.touchCount >= 1)
-                {
-                    if (Input.GetTouch(0).phase == TouchPhase.Began && 
-                        Input.GetTouch(0).position.x >= Screen.width / 2.0f && 
-                        Input.GetTouch(0).position.y <= Screen.height / 1.5f)
+                for(int i = 0; i < Input.touchCount; i++)
+                { 
+                    if (Input.GetTouch(i).phase == TouchPhase.Began && 
+                        Input.GetTouch(i).position.x >= Screen.width / 2.0f && 
+                        Input.GetTouch(i).position.y <= Screen.height / 1.5f)
                     {
                         StartCoroutine(ActionClick());
                         return;
                     }
                 }
-                if (Input.touchCount >= 2)
-                {
-                    if (Input.GetTouch(1).phase == TouchPhase.Began &&
-                        Input.GetTouch(1).position.x >= Screen.width / 2.0f && 
-                        Input.GetTouch(1).position.y >= Screen.height / 1.5f)
-                    {
-                        StartCoroutine(ActionClick());
-                        return;
-                    }
-                }
-
             });
         //CreateActionEvent(InputCanvas.Find("Action").gameObject.GetComponent<EventTrigger>());
     }

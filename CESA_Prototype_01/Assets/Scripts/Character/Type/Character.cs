@@ -179,6 +179,7 @@ public class Character : FieldObjectBase
     void OnMove()
     {
         _fNotMoveTime = 0.0f;
+        _IsNotMove = false;
         _animator.SetBool("Walk", true);
     }
 
@@ -325,9 +326,6 @@ public class Character : FieldObjectBase
 
     protected virtual void DirUpdate()
     {
-        //if (_animator.GetBool("Put") || _animator.GetBool("Break") || _animator.GetBool("Happy"))
-        //    return;
-
         switch (_nowDirection)
         {
             case eDirection.FORWARD:
@@ -349,8 +347,7 @@ public class Character : FieldObjectBase
     {
         FieldData data = FieldData.Instance;
         int nowNumber = GetDataNumber();
-        //if (_nOldNumber == nowNumber && 
-        if(!FieldData.Instance.ChangeFieldWithChara)
+        if (_nOldNumber == nowNumber && !FieldData.Instance.ChangeFieldWithChara)
             return;
 
         //  その場に何もなければキャラが登録されていないので登録

@@ -18,6 +18,7 @@ public class WinCamera : MonoBehaviour
 
         Time.timeScale = 0.0f;
         this.UpdateAsObservable()
+            .Where(_ => time < 1.0f)
             .Subscribe(_ =>
             {
                 time += Time.unscaledDeltaTime;
@@ -25,6 +26,7 @@ public class WinCamera : MonoBehaviour
                 {
                     time = 1.0f;
                     Time.timeScale = 1.0f;
+                    //CreateWinEffect(chara);
                 }
 
                 transform.position = Vector3.Lerp(minPos, maxPos, time);
@@ -36,36 +38,52 @@ public class WinCamera : MonoBehaviour
             .Subscribe(_ =>
             {
                 int charaNumber = chara.GetDataNumber();
-                FieldObjectBase obj = FieldData.Instance.GetObjData(charaNumber - GameScaler._nWidth);
-                if (obj)
+                FieldObjectBase obj = FieldData.Instance.GetObjData(charaNumber);
+                if (obj && obj.tag != "Character")
+                {
+                    obj.gameObject.SetActive(false);
+                    FieldData.Instance.SetObjData(null, charaNumber);
+                }
+
+                obj = FieldData.Instance.GetObjData(charaNumber - GameScaler._nWidth);
+                if (obj && obj.tag != "Character")
                 {
                     obj.gameObject.SetActive(false);
                     FieldData.Instance.SetObjData(null, charaNumber - GameScaler._nWidth);
                 }
                 obj = FieldData.Instance.GetObjData(charaNumber - GameScaler._nWidth + 1);
-                if (obj)
+                if (obj && obj.tag != "Character")
                 {
                     obj.gameObject.SetActive(false);
                     FieldData.Instance.SetObjData(null, charaNumber - GameScaler._nWidth + 1);
                 }
                 obj = FieldData.Instance.GetObjData(charaNumber - GameScaler._nWidth - 1);
-                if (obj)
+                if (obj && obj.tag != "Character")
                 {
                     obj.gameObject.SetActive(false);
                     FieldData.Instance.SetObjData(null, charaNumber - GameScaler._nWidth - 1);
                 }
                 obj = FieldData.Instance.GetObjData(charaNumber + 1);
-                if (obj)
+                if (obj && obj.tag != "Character")
                 {
                     obj.gameObject.SetActive(false);
                     FieldData.Instance.SetObjData(null, charaNumber + 1);
                 }
                 obj = FieldData.Instance.GetObjData(charaNumber - 1);
-                if (obj)
+                if (obj && obj.tag != "Character")
                 {
                     obj.gameObject.SetActive(false);
                     FieldData.Instance.SetObjData(null, charaNumber - 1);
                 }
             });
+    }
+
+    void CreateWinEffect(Character chara)
+    {
+        GameObject effectPrefabs = Resources.Load<GameObject>("Prefabs/Effect/IntervalEffect");
+        int number = chara.GetDataNumber();
+
+        Instantiate(effectPrefabs).transform.position = chara.GetPosForNumber(number + 1);
+        Instantiate(effectPrefabs).transform.position = chara.GetPosForNumber(number - 1);
     }
 }

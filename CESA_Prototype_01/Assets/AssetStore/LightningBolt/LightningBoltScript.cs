@@ -263,6 +263,9 @@ namespace DigitalRuby.LightningBolt
 
         private void UpdateLineRenderer()
         {
+            //if (Time.deltaTime <= 0.0f)
+            //    return;
+
             int segmentCount = (segments.Count - startIndex) + 1;
             lineRenderer.positionCount = segmentCount;
 
@@ -294,6 +297,9 @@ namespace DigitalRuby.LightningBolt
 
         private void Update()
         {
+            if (Time.deltaTime <= 0.0f)
+                return;
+
             orthographic = (Camera.main != null && Camera.main.orthographic);
             if (timer <= 0.0f)
             {

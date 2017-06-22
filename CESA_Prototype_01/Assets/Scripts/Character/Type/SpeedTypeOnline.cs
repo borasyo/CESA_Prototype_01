@@ -89,6 +89,7 @@ public class SpeedTypeOnline : CharacterOnline
 
         return true;
     }
+
     protected override void NumberUpdate()
     {
         int nowNumber = GetDataNumber();
@@ -96,7 +97,7 @@ public class SpeedTypeOnline : CharacterOnline
         if (_IsSpecialMode && !FieldData.Instance.GetObjData(nowNumber))
             FieldData.Instance.SetObjData(this, nowNumber);
 
-        if (_nOldNumber == nowNumber)
+        if (_nOldNumber == nowNumber && !FieldData.Instance.ChangeFieldWithChara)
             return;
 
         FieldData.Instance.SetObjData(null, _nOldNumber);

@@ -134,4 +134,9 @@ public class StageScaler : Photon.MonoBehaviour
         }
         return fMagni;
     }
+
+    static public void Reset()
+    {
+        StageScale = 1;
+    }
 }
