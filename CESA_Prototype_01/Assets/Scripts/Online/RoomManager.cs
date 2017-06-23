@@ -33,7 +33,7 @@ public class RoomManager : Photon.MonoBehaviour
 
     #endregion
 
-    public static readonly int LimitRoomCount = 1;	// Room上限数
+    public static readonly int LimitRoomCount = 5;	// Room上限数
 
 	public GameObject lobbyUI;					// lobbyのUI
 
@@ -210,14 +210,17 @@ public class RoomManager : Photon.MonoBehaviour
             return;
 
         // 何も入力がされていないとき、処理しない
-        if (roomNameInputField.text == "") {
+        if (roomNameInputField.text == "")
+        {
 			Debug.Log ("Failed to create the room. : Room's Name has not been entered.");
 			return;
 		}
 
 		// 同じ名前のroomがすでに存在していたとき、処理しない
-		for (int index = 0; index < PhotonNetwork.GetRoomList ().Length; ++index) {
-			if (roomNameInputField.text == PhotonNetwork.GetRoomList () [index].name) {
+		for (int index = 0; index < PhotonNetwork.GetRoomList ().Length; ++index)
+        {
+			if (roomNameInputField.text == PhotonNetwork.GetRoomList () [index].name)
+            {
 				Debug.Log ("Failed to create the room. : Already the room of the same name exists.");
 				return;
 			}
@@ -249,7 +252,8 @@ public class RoomManager : Photon.MonoBehaviour
         RoomInfo room = PhotonNetwork.GetRoomList () [index];	// 指定room情報の取得
 
 		// 部屋が満員であるとき、処理しない
-		if (room.playerCount >= 4) { // room.maxPlayers) {
+		if (room.playerCount >= 4)
+        {
 			Debug.Log ("The room is packed.");
 			return;
 		}
@@ -281,22 +285,14 @@ public class RoomManager : Photon.MonoBehaviour
         if (!PhotonNetwork.inRoom)
             return;
 
-        //PhotonNetwork.Destroy (charaSelectObj);	// playerの削除
-        //  マスターが退室したら強制解散
-        if (PhotonNetwork.isMasterClient)
-        {
-            photonView.RPC("LeaveRoom", PhotonTargets.All);
-        }
-        else
-        {
-            LeaveRoom();
-        }
+        LeaveRoom();
     }
 
     //  Masterが退室した時
     void OnMasterClientSwitched()
     {
-        LeaveRoom();
+        Instantiate(Resources.Load<GameObject>("Prefabs/Error/LeaveRoomCanvas")).GetComponentInChildren<Text>().text = "※ルームが解散となりました※";
+        //LeaveRoom();
     }
 
     [PunRPC]
@@ -326,20 +322,20 @@ public class RoomManager : Photon.MonoBehaviour
     // Lobbyに参加した時に呼ばれる
     void OnJoinedLobby()
     {
-		Debug.Log ("Joined lobby");
+		//Debug.Log ("Joined lobby");
         //isJoinLobby = true;
     }
 
 	// Lobbyに参加した時、Roomが作成されていなかった時に呼ばれる
 	void OnPhotonRandomJoinFailed()
     {
-		Debug.Log ("Joined Failed");
+		//Debug.Log ("Joined Failed");
 	}
 
 	// Room参加成功時に呼ばれる
 	void OnJoinedRoom()
     {
-		Debug.Log ("Joined Room");
+		//Debug.Log ("Joined Room");
 
 		StartCoroutine(RoomInit());	// Player作成
 	}
@@ -349,7 +345,7 @@ public class RoomManager : Photon.MonoBehaviour
     {
         yield return new WaitWhile(() => FadeManager.Instance.HalfFading);
 
-		Debug.Log("RoomInit");
+		//Debug.Log("RoomInit");
 
         // 自分がMasterCliantであれば、Sceneに属するBossの生成
         if (PhotonNetwork.isMasterClient)

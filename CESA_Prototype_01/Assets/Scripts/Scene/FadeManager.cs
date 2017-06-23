@@ -47,24 +47,26 @@ public class FadeManager : MonoBehaviour
 	[SerializeField]
 	Color fadeColor = Color.black;
 
+    //  現在実行中のフェード処理
+    Coroutine _coroutine = null;
 
     public void Awake() {
         if (this != Instance) {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
         HalfFading = false;
     }
 
     public void OnGUI()
     {
-        if (this.isFading)
+        if (isFading)
         {
             //色と透明度を更新して白テクスチャを描画 .
-            this.fadeColor.a = this.fadeAlpha;
-            GUI.color = this.fadeColor;
+            fadeColor.a = fadeAlpha;
+            GUI.color = fadeColor;
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture);
         }
     }
@@ -74,10 +76,10 @@ public class FadeManager : MonoBehaviour
 	public void LoadLevel(string scene, float interval, bool bStopBgm)
     {
         if (isFading) return;
-		this.isFading = true;
+		isFading = true;
         HalfFading = true;
 
-        StartCoroutine(TransScene(scene, interval, bStopBgm));
+        _coroutine = StartCoroutine(TransScene(scene, interval, bStopBgm));
     }
 
     /// <param name='scene'>シーン名</param>
@@ -89,7 +91,7 @@ public class FadeManager : MonoBehaviour
         float time = 0;
         while (time <= interval)
         {
-            this.fadeAlpha = Mathf.Lerp(0.0f, 1.0f, time / interval);
+            fadeAlpha = Mathf.Lerp(0.0f, 1.0f, time / interval);
             time += Time.unscaledDeltaTime;
             yield return null;
         }
@@ -112,14 +114,29 @@ public class FadeManager : MonoBehaviour
 
         //だんだん明るく .
         time = 0;
-		while (this.fadeAlpha >= 0.2f)
+		while (fadeAlpha >= 0.2f)
         {
-            this.fadeAlpha = Mathf.Lerp(1.0f, 0.0f, time / interval);
+            fadeAlpha = Mathf.Lerp(1.0f, 0.0f, time / interval);
             time += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        this.isFading = false;
+        isFading = false;
+        _coroutine = null;
+    }
+
+    public void StopFade()
+    {
+        if (!isFading)
+            return;
+
+        StopCoroutine(_coroutine);
+        isFading = false;
+        HalfFading = false;
+        fadeAlpha = 0.0f;
+        fadeColor.a = fadeAlpha;
+        GUI.color = fadeColor;
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture);
     }
 }
 

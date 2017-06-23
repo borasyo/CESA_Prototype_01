@@ -332,6 +332,7 @@
     <Compile Include="Assets\Scripts\CharacterSelect\StageScaleSelectOnline.cs" />
     <Compile Include="Assets\Scripts\Effect\AutoParticleDestroyer.cs" />
     <Compile Include="Assets\Scripts\Effect\PlayerDeathEffect.cs" />
+    <Compile Include="Assets\Scripts\Error\LeaveRoom.cs" />
     <Compile Include="Assets\Scripts\Field\AutoMoveObj.cs" />
     <Compile Include="Assets\Scripts\Field\Block.cs" />
     <Compile Include="Assets\Scripts\Field\DelayPut.cs" />
@@ -375,7 +376,7 @@
     <Compile Include="Assets\Scripts\ModeSelect\ModeSelect.cs" />
     <Compile Include="Assets\Scripts\Online\CreateCharaSelect.cs" />
     <Compile Include="Assets\Scripts\Online\NoneJoinLobby.cs" />
-    <Compile Include="Assets\Scripts\Online\OnlineGameMainManager.cs" />
+    <Compile Include="Assets\Scripts\Online\OnlineStateChecker.cs" />
     <Compile Include="Assets\Scripts\Online\PushCreate.cs" />
     <Compile Include="Assets\Scripts\Online\RoomButton.cs" />
     <Compile Include="Assets\Scripts\Online\RoomManager.cs" />
