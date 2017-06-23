@@ -23,7 +23,7 @@ public class ReStart : Photon.MonoBehaviour
                 DestroyReStart();
                 //StartCoroutine(DestroyReStart());
             });
-        SoundManager.Instance.PlaySE(SoundManager.eSeValue.DEATH);
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.DEATH, 0.25f);
     }
 
     protected virtual void DestroyReStart()
@@ -32,7 +32,6 @@ public class ReStart : Photon.MonoBehaviour
         {
             RoundCounter.Instance.WinCharacter(_winer);
             SoundManager.Instance.StopBGM();
-            SoundManager.Instance.PlaySE(SoundManager.eSeValue.GAMEEND);
         }
 
         Destroy(this.gameObject);

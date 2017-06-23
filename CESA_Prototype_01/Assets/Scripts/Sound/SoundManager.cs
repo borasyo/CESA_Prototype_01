@@ -2,6 +2,8 @@
 using System;
 using System.Collections;
 using System.Linq;
+using UniRx;
+using UniRx.Triggers;
 
 public class SoundManager : MonoBehaviour {
 
@@ -124,6 +126,16 @@ public class SoundManager : MonoBehaviour {
             source.volume = 0.25f;
         foreach (AudioSource source in SEsources)
             source.volume = 1.0f;
+
+        this.ObserveEveryValueChanged(_ => Time.timeScale)
+            .Where(_ => Time.timeScale > 0.0f)
+            .Subscribe(_ =>
+            {
+                foreach (AudioSource source in BGMsource)
+                    source.pitch = Time.timeScale;
+                foreach (AudioSource source in SEsources)
+                    source.pitch = Time.timeScale;
+            }); 
     }
 
 	public bool PlayBGM(eBgmValue i, float volume = 1.0f, bool isOverlap = false)

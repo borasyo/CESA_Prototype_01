@@ -15,7 +15,7 @@ public class NoneJoinLobby : MonoBehaviour
         ColorBlock colBlock = new ColorBlock();
         colBlock = button.colors;
 
-        if (PhotonNetwork.insideLobby)
+        if (PhotonNetwork.insideLobby && PhotonNetwork.GetRoomList().Length < RoomManager.LimitRoomCount)
         {
             colBlock.normalColor = Color.white;
             colBlock.highlightedColor = Color.white;
@@ -30,10 +30,10 @@ public class NoneJoinLobby : MonoBehaviour
             button.colors = colBlock;
         }
 
-        this.ObserveEveryValueChanged(_ => PhotonNetwork.insideLobby)
+        this.ObserveEveryValueChanged(_ => PhotonNetwork.insideLobby && PhotonNetwork.GetRoomList().Length < RoomManager.LimitRoomCount)
             .Subscribe(_ =>
             {
-                if (PhotonNetwork.insideLobby)
+                if (PhotonNetwork.insideLobby && PhotonNetwork.GetRoomList().Length < RoomManager.LimitRoomCount)
                 {
                     colBlock.normalColor = Color.white;
                     colBlock.highlightedColor = Color.white;

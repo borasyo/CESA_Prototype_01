@@ -36,11 +36,11 @@ public class WinerPlayer : MonoBehaviour
         {
             if(RoundCounter.nRoundCounter[0] >= RoundAmount.GetRound())
             {
-                SoundManager.Instance.PlaySE(SoundManager.eSeValue.RESULT_WIN);
+                SoundManager.Instance.PlaySE(SoundManager.eSeValue.RESULT_WIN, 0.25f);
             }
             else
             {
-                SoundManager.Instance.PlaySE(SoundManager.eSeValue.RESULT_LOSE);
+                SoundManager.Instance.PlaySE(SoundManager.eSeValue.RESULT_LOSE, 0.25f);
             }
         }
     }

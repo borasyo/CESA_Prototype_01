@@ -27,6 +27,7 @@ public class WinCamera : MonoBehaviour
                     time = 1.0f;
                     Time.timeScale = 1.0f;
                     //CreateWinEffect(chara);
+                    SoundManager.Instance.PlaySE(SoundManager.eSeValue.GAMEEND);
                 }
 
                 transform.position = Vector3.Lerp(minPos, maxPos, time);

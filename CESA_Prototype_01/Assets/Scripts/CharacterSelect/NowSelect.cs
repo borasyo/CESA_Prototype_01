@@ -78,10 +78,6 @@ public class NowSelect : Photon.PunBehaviour
     {
         //  テキスト更新
         CharaUpdate();
-
-        // 範囲外処理
-        //if (_charaType == CharacterSelect.eCharaType.NONE)
-        //    return;
 	}
 
     public void CharaUpdate()
@@ -151,11 +147,13 @@ public class NowSelect : Photon.PunBehaviour
         if (_charaType == CharacterSelect.eCharaType.NONE)
         {
             _charaType = _oldCharaType;
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW);
         }
         else
         {
             _oldCharaType = _charaType;
             _charaType = CharacterSelect.eCharaType.NONE;
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
         }
     }
 }

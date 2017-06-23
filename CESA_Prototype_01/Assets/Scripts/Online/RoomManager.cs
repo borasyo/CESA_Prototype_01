@@ -33,7 +33,7 @@ public class RoomManager : Photon.MonoBehaviour
 
     #endregion
 
-    private static readonly int LimitRoomCount = 5;	// Room上限数
+    public static readonly int LimitRoomCount = 1;	// Room上限数
 
 	public GameObject lobbyUI;					// lobbyのUI
 
@@ -160,15 +160,15 @@ public class RoomManager : Photon.MonoBehaviour
 		RoomInfo[] roomInfo = PhotonNetwork.GetRoomList ();	// room情報の取得
 
 		// roo数が更新されたとき、
-		if (roomInfo.Length != preRoomCount) {
-
+		if (roomInfo.Length != preRoomCount)
+        {
 			// roomButtonを必要数表示
 			for (int index = 0; index < LimitRoomCount; ++index)
 				roomButtonPool [index].SetActive (index < roomInfo.Length ? true : false);
 
 			// room情報をbuttonに反映
-			for(int index = 0 ; index < roomInfo.Length ; ++index){
-
+			for(int index = 0 ; index < roomInfo.Length ; ++index)
+            {
 				RoomInfo room = roomInfo [index];
 
 				// buttonに自身のindexを保持させる(別のいい方法があるかも)
@@ -181,11 +181,11 @@ public class RoomManager : Photon.MonoBehaviour
 		} 
 
 		// room数の更新がないとき、
-		else {
-			
+		else
+        {	
 			// room情報の更新
-			for(int index = 0 ; index < roomInfo.Length ; ++index){
-
+			for(int index = 0 ; index < roomInfo.Length ; ++index)
+            {
 				RoomInfo room = roomInfo [index];
 
 				// buttonの文字列を更新
@@ -204,6 +204,9 @@ public class RoomManager : Photon.MonoBehaviour
             return;
 
         if (FadeManager.Instance.Fading)
+            return;
+
+        if (PhotonNetwork.GetRoomList().Length >= LimitRoomCount)
             return;
 
         // 何も入力がされていないとき、処理しない
