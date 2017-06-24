@@ -299,7 +299,6 @@ public class RoomManager : Photon.MonoBehaviour
     void OnMasterClientSwitched()
     {
         Instantiate(Resources.Load<GameObject>("Prefabs/Error/LeaveRoomCanvas")).GetComponentInChildren<Text>().text = "※ルームが解散となりました※";
-        //LeaveRoom();
     }
 
     [PunRPC]
@@ -341,14 +340,21 @@ public class RoomManager : Photon.MonoBehaviour
 	// Room参加成功時に呼ばれる
 	void OnJoinedRoom()
     {
-        Debug.Log ("Joined Room");
-
         StartCoroutine(Wait());
         StartCoroutine(RoomInit());	// Player作成
+
+        //Debug.Log ("Joined Room");
     }
 
-	// Player作成
-	IEnumerator RoomInit()
+    void OnPhotonJoinRoomFailed(object[] codeAndMsg)
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Error/LeaveRoomCanvas")).GetComponentInChildren<Text>().text = "※ルームの入室に失敗しました※";
+
+        //Debug.Log("Joined Room Failed");
+    }
+
+    // Player作成
+    IEnumerator RoomInit()
     {
         yield return new WaitWhile(() => FadeManager.Instance.HalfFading);
 

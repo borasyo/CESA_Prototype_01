@@ -8,7 +8,7 @@ public class LeaveRoom : MonoBehaviour
 {
     void Awake()
     {
-        FadeManager.Instance.StopFade();
+        StartCoroutine(FadeManager.Instance.StopFade());
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             this.UpdateAsObservable()

@@ -62,13 +62,13 @@ public class FadeManager : MonoBehaviour
 
     public void OnGUI()
     {
-        if (isFading)
-        {
-            //色と透明度を更新して白テクスチャを描画 .
-            fadeColor.a = fadeAlpha;
-            GUI.color = fadeColor;
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture);
-        }
+        if (!isFading)
+            return;
+
+        //色と透明度を更新して白テクスチャを描画 .
+        fadeColor.a = fadeAlpha;
+        GUI.color = fadeColor;
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture);
     }
 
     /// <param name='scene'>シーン名</param>
@@ -125,18 +125,19 @@ public class FadeManager : MonoBehaviour
         _coroutine = null;
     }
 
-    public void StopFade()
+    public IEnumerator StopFade()
     {
         if (!isFading)
-            return;
+            yield break;
 
         StopCoroutine(_coroutine);
-        isFading = false;
         HalfFading = false;
         fadeAlpha = 0.0f;
         fadeColor.a = fadeAlpha;
-        GUI.color = fadeColor;
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture);
+
+        yield return null;
+
+        isFading = false;
     }
 }
 
