@@ -374,6 +374,7 @@
     <Compile Include="Assets\Scripts\ModeSelect\FieldCreatorModeSelect.cs" />
     <Compile Include="Assets\Scripts\ModeSelect\FieldDataModeSelect.cs" />
     <Compile Include="Assets\Scripts\ModeSelect\ModeSelect.cs" />
+    <Compile Include="Assets\Scripts\Online\AlreadyRoomName.cs" />
     <Compile Include="Assets\Scripts\Online\CreateCharaSelect.cs" />
     <Compile Include="Assets\Scripts\Online\NoneJoinLobby.cs" />
     <Compile Include="Assets\Scripts\Online\OnlineStateChecker.cs" />

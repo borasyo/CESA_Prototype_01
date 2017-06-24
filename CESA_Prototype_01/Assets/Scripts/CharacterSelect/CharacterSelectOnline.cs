@@ -24,7 +24,11 @@ public class CharacterSelectOnline : CharacterSelect
             _nowSelectDatas[idx].transform.parent.gameObject.SetActive(false);
             _nowSelectDatas[idx] = null;
         }
-        PhotonNetwork.room.open = true;
+
+        if (!PhotonNetwork.isMasterClient)
+            return;
+
+        PhotonNetwork.room.IsOpen = true;
     }
 
     void Start()
@@ -168,7 +172,7 @@ public class CharacterSelectOnline : CharacterSelect
         _IsChange = false;
         SetChara();
         GetComponent<LevelSelect>().SetLevel();
-        PhotonNetwork.room.open = false;
+        PhotonNetwork.room.IsOpen = false;
         StartCoroutine(Next());
     }
 

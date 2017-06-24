@@ -120,7 +120,6 @@ public class NowSelectOnline : NowSelect
         _photonView.RPC("AllSet", PhotonTargets.All, _nInitNumber);
     }
 
-
     [PunRPC]
     public void AllSet(int idx)
     {
@@ -142,6 +141,8 @@ public class NowSelectOnline : NowSelect
         }
 
         transform.parent.Find("User").GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/CharaSelect/player_" + (_nInitNumber + 1).ToString() + "P");
+
+        //yield return new WaitForSeconds(1.0f);
     }
 
     IEnumerator SetLevel()
@@ -217,7 +218,7 @@ public class NowSelectOnline : NowSelect
             else
             {
                 // データの受信
-                this._charaType = (CharacterSelect.eCharaType)stream.ReceiveNext();
+                _charaType = (CharacterSelect.eCharaType)stream.ReceiveNext();
             }
         }
         else
@@ -230,7 +231,7 @@ public class NowSelectOnline : NowSelect
             else
             {
                 // データの受信
-                this._charaType = (CharacterSelect.eCharaType)stream.ReceiveNext();
+                _charaType = (CharacterSelect.eCharaType)stream.ReceiveNext();
             }
         }
     }
