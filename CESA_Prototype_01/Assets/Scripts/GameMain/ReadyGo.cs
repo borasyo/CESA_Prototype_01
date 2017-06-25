@@ -19,8 +19,8 @@ public class ReadyGo : MonoBehaviour
         Time.timeScale = 0.0f;
 
         SoundManager.Instance.PlaySE(SoundManager.eSeValue.GAMESTART);
-        Image ready = transform.FindChild("Ready").GetComponent<Image>();
-        Image go = transform.FindChild("Go").GetComponent<Image>();
+        Image ready = transform.Find("Ready").GetComponent<Image>();
+        Image go = transform.Find("Go").GetComponent<Image>();
 
         ready.transform.localScale = Vector3.zero;
         go.transform.localScale = Vector3.zero;

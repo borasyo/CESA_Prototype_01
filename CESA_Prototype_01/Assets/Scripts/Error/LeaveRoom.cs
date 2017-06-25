@@ -9,6 +9,8 @@ public class LeaveRoom : MonoBehaviour
     void Awake()
     {
         StartCoroutine(FadeManager.Instance.StopFade());
+        PhotonNetwork.LeaveRoom();      // 退室
+        CharacterSelectOnline._nMyNumber = 0;
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             this.UpdateAsObservable()
@@ -36,9 +38,7 @@ public class LeaveRoom : MonoBehaviour
 
     void Return()
     {
-        PhotonNetwork.LeaveRoom();      // 退室
-        CharacterSelectOnline._nMyNumber = 0;
-        SceneChanger.Instance.ChangeScene("ModeSelect", true);
+        SceneChanger.Instance.ChangeScene("OnlineRoom", true);
         SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
     }
 

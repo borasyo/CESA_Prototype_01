@@ -6,9 +6,10 @@ public class FieldDataTutorial : FieldData
 {
     protected override void Init()
     {
-        GameScaler._nWidth = 13;
-        GameScaler._nHeight = 11;
-        StageScaler.Reset();
+        GameScaler._nWidth = 17;
+        GameScaler._nHeight = 13;
+        StageScaler.Set(2);
+        Camera.main.GetComponent<SetCameraPos>().Init();
 
         //  データ配列生成
         _ObjectDataArray = new FieldObjectBase[GameScaler._nWidth * GameScaler._nHeight];
@@ -23,5 +24,7 @@ public class FieldDataTutorial : FieldData
 
         GameObject readyGo = Resources.Load<GameObject>("Prefabs/GameMain/ReadyGo");
         Instantiate(readyGo, readyGo.transform.position, Quaternion.identity);
+
+        SandItem._IsTutorial = true; 
     }
 }

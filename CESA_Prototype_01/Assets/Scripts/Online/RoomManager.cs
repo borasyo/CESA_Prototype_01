@@ -348,9 +348,15 @@ public class RoomManager : Photon.MonoBehaviour
 
     void OnPhotonJoinRoomFailed(object[] codeAndMsg)
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/Error/LeaveRoomCanvas")).GetComponentInChildren<Text>().text = "※ルームの入室に失敗しました※";
+        StartCoroutine(JoinRoomFailedError());
 
         //Debug.Log("Joined Room Failed");
+    }
+
+    IEnumerator JoinRoomFailedError()
+    {
+        yield return new WaitWhile(() => FadeManager.Instance.Fading);
+        Instantiate(Resources.Load<GameObject>("Prefabs/Error/LeaveRoomCanvas")).GetComponentInChildren<Text>().text = "※ルームの入室に失敗しました※";
     }
 
     // Player作成

@@ -426,6 +426,7 @@
     <Compile Include="Assets\Scripts\Tutorial\ReStartTutorial.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialArrow.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialCharacter.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\TutorialDescription.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialFlow.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialRange.cs" />
   </ItemGroup>

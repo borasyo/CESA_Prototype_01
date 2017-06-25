@@ -5,29 +5,26 @@ using UnityEngine;
 public class TutorialFlow : MonoBehaviour
 {
     [SerializeField]
-    GameObject _RightRange = null;
+    TutorialRange _RightRange = null;
     [SerializeField]
-    GameObject _LeftRange = null;
+    TutorialRange _LeftRange = null;
 
     [SerializeField]
-    GameObject _UpArrow = null;
+    TutorialArrow _UpArrow = null;
     [SerializeField]
-    GameObject _UpArrow2 = null;
+    TutorialArrow _UpArrow2 = null;
     [SerializeField]
-    GameObject _DownArrow = null;
+    TutorialArrow _DownArrow = null;
     [SerializeField]
-    GameObject _RightArrow = null;
+    TutorialArrow _RightArrow = null;
+
+    [SerializeField]
+    TutorialDescription _Description = null;
 
     void Start()
     {
-        _RightRange.SetActive(false);
-        _LeftRange.SetActive(false);
-        _UpArrow.SetActive(false);
-        _UpArrow2.SetActive(false);
-        _DownArrow.SetActive(false);
-        _RightArrow.SetActive(false);
-
         StartCoroutine(Flow());
+        Camera.main.GetComponent<SetCameraPos>().AdjustmentPos(new Vector3(0,0,1));
     }
 
     IEnumerator Flow()
@@ -39,8 +36,13 @@ public class TutorialFlow : MonoBehaviour
         CharacterGauge charaGauge = tutoChara.GetComponent<CharacterGauge>();
         CharacterInput charaInput = tutoChara.GetComponent<CharacterInput>();
 
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+
         //  左側をタッチさせる
-        _LeftRange.SetActive(true);
+        StartCoroutine(_LeftRange.OnWindow());
+        yield return new WaitWhile(() => !_LeftRange.IsNext);
+
         yield return new WaitWhile(() => 
         {
             if (charaInput.GetMoveInput(Character.eDirection.RIGHT))
@@ -51,74 +53,124 @@ public class TutorialFlow : MonoBehaviour
 
             return true;
         });
-
-        //  右側へ移動させる
-        _LeftRange.SetActive(false);
-        _RightArrow.SetActive(true);
-        tutoChara.SetNowAction = TutorialCharacter.eNowAction.RIGHT;
-
-        yield return new WaitWhile(() => tutoChara.GetDataNumber() != 70);
-        yield return new WaitWhile(() => tutoChara.GetPosForNumber(tutoChara.GetDataNumber()).x - tutoChara.transform.position.x > 0.1f);
-
-        //  上を向かせる
-        _RightArrow.SetActive(false);
-        _UpArrow.SetActive(true);
-        tutoChara.SetNowAction = TutorialCharacter.eNowAction.FORWARD;
-
-        yield return new WaitWhile(() => tutoChara.GetDataNumberForDir() != tutoChara.GetDataNumber() + GameScaler._nWidth);
-
-        //  上に置かせる
-        _UpArrow.SetActive(false);
-        _RightRange.SetActive(true);
-        tutoChara.SetNowAction = TutorialCharacter.eNowAction.PUT;
-        charaGauge.GaugeMax();
-
-        yield return new WaitWhile(() => !FieldData.Instance.GetObjData(tutoChara.GetDataNumber() + GameScaler._nWidth));
-
-        //  下を向かせる
-        _RightRange.SetActive(false);
-        _DownArrow.SetActive(true);
-        tutoChara.SetNowAction = TutorialCharacter.eNowAction.BACK;
-
-        yield return new WaitWhile(() => tutoChara.GetDataNumberForDir() != tutoChara.GetDataNumber() - GameScaler._nWidth);
-
-        //  下に置かせる
-        _DownArrow.SetActive(false);
-        _RightRange.SetActive(true);
-        tutoChara.SetNowAction = TutorialCharacter.eNowAction.PUT;
-        charaGauge.GaugeMax();
-
-        yield return new WaitWhile(() => !FieldData.Instance.GetObjData(tutoChara.GetDataNumber() - GameScaler._nWidth));
-
-        //  上を向かせる
-        _RightRange.SetActive(false);
-        _UpArrow2.SetActive(true);
-        tutoChara.SetNowAction = TutorialCharacter.eNowAction.FORWARD;
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
         
+        //  右側へ移動させる
+        StartCoroutine(_LeftRange.OffWindow());
+        yield return new WaitWhile(() => !_LeftRange.IsNext);
+        StartCoroutine(_RightArrow.OnWindow());
+        yield return new WaitWhile(() => !_RightArrow.IsNext);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.RIGHT;
+        yield return new WaitWhile(() => tutoChara.GetDataNumber() != 109);
+        yield return new WaitWhile(() => tutoChara.GetPosForNumber(tutoChara.GetDataNumber()).x - tutoChara.transform.position.x > 0.1f);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
+        StartCoroutine(_RightArrow.OffWindow());
+        yield return new WaitWhile(() => !_RightArrow.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+
+        //  上を向かせる
+        StartCoroutine(_UpArrow.OnWindow());
+        yield return new WaitWhile(() => !_UpArrow.IsNext);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.FORWARD;
         yield return new WaitWhile(() => tutoChara.GetDataNumberForDir() != tutoChara.GetDataNumber() + GameScaler._nWidth);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
+        
+        //  上に置かせる
+        StartCoroutine(_UpArrow.OffWindow());
+        yield return new WaitWhile(() => !_UpArrow.IsNext);
+        StartCoroutine(_RightRange.OnWindow());
+        yield return new WaitWhile(() => !_RightRange.IsNext);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.PUT;
+        charaGauge.GaugeMax();
+        yield return new WaitWhile(() => !FieldData.Instance.GetObjData(tutoChara.GetDataNumber() + GameScaler._nWidth));
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(_RightRange.OffWindow());
+        yield return new WaitWhile(() => !_RightRange.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+
+        //  左を向かせる
+        StartCoroutine(_DownArrow .OnWindow());
+        yield return new WaitWhile(() => !_DownArrow.IsNext);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.LEFT;
+        yield return new WaitWhile(() => tutoChara.GetDataNumberForDir() != tutoChara.GetDataNumber() - 1);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
+
+        //  左に置かせる
+        StartCoroutine(_DownArrow.OffWindow());
+        yield return new WaitWhile(() => !_DownArrow.IsNext);
+        StartCoroutine(_RightRange.OnWindow());
+        yield return new WaitWhile(() => !_RightRange.IsNext);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.PUT;
+        charaGauge.GaugeMax();
+        yield return new WaitWhile(() => !FieldData.Instance.GetObjData(tutoChara.GetDataNumber() - 1));
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(_RightRange.OffWindow());
+        yield return new WaitWhile(() => !_RightRange.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+
+        //  上を向かせる
+        StartCoroutine(_UpArrow2.OnWindow());
+        yield return new WaitWhile(() => !_UpArrow2.IsNext);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.FORWARD;
+        yield return new WaitWhile(() => tutoChara.GetDataNumberForDir() != tutoChara.GetDataNumber() + GameScaler._nWidth);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
 
         // 壊させる
-        _UpArrow2.SetActive(false);
-        _RightRange.SetActive(true);
+        StartCoroutine(_UpArrow2.OffWindow());
+        yield return new WaitWhile(() => !_UpArrow2.IsNext);
+        StartCoroutine(_RightRange.OnWindow());
+        yield return new WaitWhile(() => !_RightRange.IsNext);
         tutoChara.SetNowAction = TutorialCharacter.eNowAction.BREAK;
         charaGauge.GaugeMax();
-
         yield return new WaitWhile(() => FieldData.Instance.GetObjData(tutoChara.GetDataNumberForDir()));
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
+        StartCoroutine(_RightRange.OffWindow());
+        yield return new WaitWhile(() => !_RightRange.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
 
         //  右側へ移動させる
-        _RightRange.SetActive(false);
-        _RightArrow.SetActive(true);
+        StartCoroutine(_RightArrow.OnWindow());
+        yield return new WaitWhile(() => !_RightArrow.IsNext);
         tutoChara.SetNowAction = TutorialCharacter.eNowAction.RIGHT;
-
-        yield return new WaitWhile(() => tutoChara.GetDataNumber() != 74);
+        yield return new WaitWhile(() => tutoChara.GetDataNumber() != 115);
         yield return new WaitWhile(() => tutoChara.GetPosForNumber(tutoChara.GetDataNumber()).x - tutoChara.transform.position.x > 0.1f);
+        tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
 
-        _RightArrow.SetActive(false);
-        _RightRange.SetActive(true);
+        //  右側に置かせる
+        StartCoroutine(_RightArrow.OffWindow());
+        yield return new WaitWhile(() => !_RightArrow.IsNext);
+        StartCoroutine(_RightRange.OnWindow());
+        yield return new WaitWhile(() => !_RightRange.IsNext);
         tutoChara.SetNowAction = TutorialCharacter.eNowAction.PUT;
         yield return new WaitWhile(() => !FieldData.Instance.GetObjData(tutoChara.GetDataNumber() + 1));
-
         tutoChara.SetNowAction = TutorialCharacter.eNowAction.MAX;
-        _RightRange.SetActive(false);
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(_RightRange.OffWindow());
+        yield return new WaitWhile(() => !_RightRange.IsNext);
+
+        //  最後
+        yield return new WaitForSeconds(1.0f);
+        FieldData.Instance.GetCharactors[0].Win();
+        yield return new WaitWhile(() => Time.timeScale <= 0.0f);
+
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+
+
+        SceneChanger.Instance.ChangeScene("ModeSelect", true);
     }
 }

@@ -14,7 +14,7 @@ public class ReStartTutorial : ReStart
             RoundCounter.Instance.WinCharacter(_winer);
         }*/
 
-        SceneChanger.Instance.ChangeScene("ModeSelect", true);
+        //SceneChanger.Instance.ChangeScene("ModeSelect", true);
         Destroy(this.gameObject);
     }
 }

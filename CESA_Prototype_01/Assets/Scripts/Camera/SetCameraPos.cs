@@ -5,7 +5,7 @@ using UnityEngine;
 public class SetCameraPos : MonoBehaviour 
 {
 	// Use this for initialization
-	void Start () 
+	public void Init () 
     {
         float x = (float)(GameScaler._nWidth - 1) / 2.0f * GameScaler._fScale;
         float z = ((float)(GameScaler._nWidth - GameScaler._nHeight) * 0.1f * GameScaler._fScale);
@@ -16,4 +16,9 @@ public class SetCameraPos : MonoBehaviour
 
         Camera.main.transform.eulerAngles = new Vector3(70, 0, 0);
    	}
+
+    public void AdjustmentPos(Vector3 pos)
+    {
+        Camera.main.transform.position += pos;
+    }
 }

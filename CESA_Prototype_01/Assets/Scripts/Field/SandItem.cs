@@ -27,6 +27,8 @@ public class SandItem : FieldObjectBase
     [SerializeField] float _fMaxLife_Sec = 15.0f;
     [SerializeField] GameObject _breakEffect = null;
 
+    static public bool _IsTutorial = false;
+
     void Awake()
     {
         transform.position += new Vector3(0, 0.516f, 0);
@@ -84,6 +86,9 @@ public class SandItem : FieldObjectBase
         List<float> initSize = new List<float>();
         foreach (ParticleSystem particle in particleList)
             initSize.Add(particle.startSize);
+
+        if (_IsTutorial)
+            yield break;
 
         this.UpdateAsObservable()
             .Subscribe(_ =>

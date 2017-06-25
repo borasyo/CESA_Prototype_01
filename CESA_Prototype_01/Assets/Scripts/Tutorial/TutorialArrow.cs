@@ -22,15 +22,21 @@ public class TutorialArrow : MonoBehaviour
     Vector3 _initPos = Vector3.zero;
     RectTransform _rectTrans = null;
 
+    public bool IsNext { get; private set; }
+    [SerializeField] [Multiline] string[] _Description = new string[1];
+    int _nCnt = 0;
+
     void Awake()
     {
+        IsNext = false;
+        GetComponent<Image>().enabled = false;
         _rectTrans = GetComponent<RectTransform>();
         _initPos = _rectTrans.anchoredPosition;
     }
 
     void Start ()
     {
-        const float fMove = 240.0f;
+        const float fMove = 200.0f;
         const float fTime = 0.75f;
         
         Vector3 min = new Vector3(0,0,0);
@@ -76,13 +82,48 @@ public class TutorialArrow : MonoBehaviour
         });
     }
 
-    /*void OnEnable()
+    public IEnumerator OnWindow()
     {
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            _initPos = Input.GetTouch(0).position - new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
-        }
+        Image image = GetComponent<Image>();
+        image.enabled = false;
+        IsNext = false;
+        GameObject descriptionFlame = transform.parent.Find("DescriptionFlame").gameObject;
+        descriptionFlame.GetComponentInChildren<Text>().text = _Description[_nCnt];
+        _nCnt++;
 
-        _rectTrans.anchoredPosition = _initPos;
-    }*/
+        float time = 0.0f;
+        yield return new WaitWhile(() =>
+        {
+            time += Time.deltaTime / 0.5f;
+            if (time > 1.0f)
+                time = 1.0f;
+
+            descriptionFlame.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, time);
+
+            return (time < 1.0f);
+        });
+
+        image.enabled = true;
+        IsNext = true;
+    }
+
+    public IEnumerator OffWindow()
+    {
+        Image image = GetComponent<Image>();
+        image.enabled = false;
+        IsNext = false;
+        GameObject descriptionFlame = transform.parent.Find("DescriptionFlame").gameObject;
+
+        float time = 0.0f;
+        yield return new WaitWhile(() =>
+        {
+            time += Time.deltaTime / 0.5f;
+            descriptionFlame.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, time);
+
+            return (time < 1.0f);
+        });
+
+        image.enabled = false;
+        IsNext = true;
+    }
 }

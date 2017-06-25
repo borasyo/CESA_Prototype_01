@@ -8,6 +8,16 @@ using UniRx.Triggers;
 
 public class TutorialRange : MonoBehaviour
 {
+    public bool IsNext { get; private set; }
+    [SerializeField] [Multiline] string[] _Description = null;
+    int _nCnt = 0;
+
+    void Awake()
+    {
+        IsNext = false;
+        GetComponent<Image>().enabled = false;
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -22,5 +32,50 @@ public class TutorialRange : MonoBehaviour
                 triangleCol.Progress();
                 image.color = triangleCol.CurrentValue;
             });
+    }
+
+    public IEnumerator OnWindow()
+    {
+        Image image = GetComponent<Image>();
+        image.enabled = false;
+        IsNext = false;
+        GameObject descriptionFlame = transform.parent.Find("DescriptionFlame").gameObject;
+        descriptionFlame.GetComponentInChildren<Text>().text = _Description[_nCnt];
+        _nCnt++;
+
+        float time = 0.0f;
+        yield return new WaitWhile(() =>
+        {
+            time += Time.deltaTime / 0.5f;
+            if (time > 1.0f)
+                time = 1.0f;
+
+            descriptionFlame.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, time);
+
+            return (time < 1.0f);
+        });
+
+        image.enabled = true;
+        IsNext = true;
+    }
+
+    public IEnumerator OffWindow()
+    {
+        Image image = GetComponent<Image>();
+        image.enabled = false;
+        IsNext = false;
+        GameObject descriptionFlame = transform.parent.Find("DescriptionFlame").gameObject;
+
+        float time = 0.0f;
+        yield return new WaitWhile(() =>
+        {
+            time += Time.deltaTime / 0.5f;
+            descriptionFlame.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, time);
+
+            return (time < 1.0f);
+        });
+
+        image.enabled = false;
+        IsNext = true;
     }
 }

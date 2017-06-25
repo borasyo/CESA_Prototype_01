@@ -79,11 +79,17 @@ public class FieldData : Photon.MonoBehaviour
     void Awake()
     {
         //  スケールに合わせて拡大
+        // TODO : よくわからない
         if (RoundCounter.nRoundCounter.Where(count => count == 0).ToList().Count == 4)
         {
             GameScaler._nWidth = StageScaler.GetWidth(); // (int)(GameScaler._nBaseWidth * StageScaler.GetMagni());
             GameScaler._nHeight = StageScaler.GetHeight(); // (int)(GameScaler._nBaseHeight * StageScaler.GetMagni());
         }
+
+        if(Camera.main.GetComponent<SetCameraPos>())
+            Camera.main.GetComponent<SetCameraPos>().Init();
+
+        SandItem._IsTutorial = false;
         Init();
     }
 
