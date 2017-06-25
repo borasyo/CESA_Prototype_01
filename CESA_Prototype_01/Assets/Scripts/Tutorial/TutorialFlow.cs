@@ -94,8 +94,6 @@ public class TutorialFlow : MonoBehaviour
         yield return new WaitWhile(() => !_Description.IsNext);
         StartCoroutine(_Description.OnWindow());
         yield return new WaitWhile(() => !_Description.IsNext);
-        StartCoroutine(_Description.OnWindow());
-        yield return new WaitWhile(() => !_Description.IsNext);
 
         //  左を向かせる
         StartCoroutine(_DownArrow .OnWindow());
@@ -165,6 +163,14 @@ public class TutorialFlow : MonoBehaviour
         FieldData.Instance.GetCharactors[0].Win();
         yield return new WaitWhile(() => Time.timeScale <= 0.0f);
 
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
+        StartCoroutine(_Description.OnWindow());
+        yield return new WaitWhile(() => !_Description.IsNext);
         StartCoroutine(_Description.OnWindow());
         yield return new WaitWhile(() => !_Description.IsNext);
         StartCoroutine(_Description.OnWindow());

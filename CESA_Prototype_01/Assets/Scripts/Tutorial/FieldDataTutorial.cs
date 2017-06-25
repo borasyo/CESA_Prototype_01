@@ -22,8 +22,8 @@ public class FieldDataTutorial : FieldData
         UpdateStart();
         StartCoroutine(CharaSet());
 
-        GameObject readyGo = Resources.Load<GameObject>("Prefabs/GameMain/ReadyGo");
-        Instantiate(readyGo, readyGo.transform.position, Quaternion.identity);
+        //GameObject readyGo = Resources.Load<GameObject>("Prefabs/GameMain/ReadyGo");
+        //Instantiate(readyGo, readyGo.transform.position, Quaternion.identity);
 
         SandItem._IsTutorial = true; 
     }
