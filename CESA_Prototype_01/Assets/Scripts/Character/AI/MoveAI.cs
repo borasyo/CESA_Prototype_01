@@ -119,7 +119,12 @@ public class MoveAI : MonoBehaviour
             if (objList[i])
                 continue;
 
-            SandItem.eType type = SandData.Instance.GetSandDataList[i]._type;
+            // TODO : 繰り返し文に変更する
+            //  どちらかに挟まれる可能性があれば回避
+            SandItem.eType type = SandData.Instance.GetSandDataList[i]._type[0];
+            if (type != SandItem.eType.MAX && !FieldDataChecker.Instance.TypeCheck(name, type))
+                continue;
+            type = SandData.Instance.GetSandDataList[i]._type[1];
             if (type != SandItem.eType.MAX && !FieldDataChecker.Instance.TypeCheck(name, type))
                 continue;
 

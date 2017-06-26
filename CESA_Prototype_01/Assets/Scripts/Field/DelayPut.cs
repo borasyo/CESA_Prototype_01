@@ -91,6 +91,9 @@ public class DelayPut : MonoBehaviour
             case "4":
                 col = Color.yellow;
                 break;
+            default:
+                col = Color.gray;
+                break;
         }
 
         return col;

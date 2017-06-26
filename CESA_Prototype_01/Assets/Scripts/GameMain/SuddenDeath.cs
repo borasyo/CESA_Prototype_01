@@ -17,9 +17,11 @@ public class SuddenDeath : MonoBehaviour
 
     IEnumerator Init()
     {
+        transform.localScale = Vector3.one * (Screen.width / 1920.0f);
+        float size = Screen.width / 9.6f;
         Time.timeScale = 0.0f;
         RectTransform rectTrans = GetComponent<RectTransform>();
-        rectTrans.position = new Vector2(960 * 2 + 200.0f, 540);  // 2320.0f / 2.0f, 0.0f);
+        rectTrans.position = new Vector2(Screen.width + size, Screen.height / 2.0f);  // 2320.0f / 2.0f, 0.0f);
 
         Image image = GetComponent<Image>();
         Color min = new Color(1, 1, 1, 0);
@@ -30,7 +32,7 @@ public class SuddenDeath : MonoBehaviour
             {
                 triangleColor.Progress(true);
                 image.color = triangleColor.CurrentValue;
-                rectTrans.position -= new Vector3((960 * 2 + 400) * (Time.unscaledDeltaTime / fTime), 0.0f, 0.0f);
+                rectTrans.position -= new Vector3((Screen.width + size * 2.0f) * (Time.unscaledDeltaTime / fTime), 0.0f, 0.0f);
             });
 
         float time = fTime;
@@ -44,11 +46,13 @@ public class SuddenDeath : MonoBehaviour
             return false;
         });
 
-        Time.timeScale = 1.5f;
-        foreach (Character chara in FieldData.Instance.GetCharactors)
-        {
-            chara.GetComponent<CharacterGauge>().SuperMode();
-        }
+        //Time.timeScale = 1.5f;
+        Time.timeScale = 1.0f;
+        //foreach (Character chara in FieldData.Instance.GetCharactors)
+        //{
+        //    chara.GetComponent<CharacterGauge>().SuperMode();
+        //}
+        SandMassData.Instance.Run();
         Destroy(gameObject);
     }
 }

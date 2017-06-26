@@ -39,6 +39,10 @@ public class CharacterGauge : MonoBehaviour
     {
         _fGauge = _fMaxGauge;
     }
+    public void GaugeEmpty()
+    {
+        _fGauge = 0.0f;
+    }
 
     public void SuperMode()
     {

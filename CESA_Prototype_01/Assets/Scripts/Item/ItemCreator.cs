@@ -60,7 +60,7 @@ public class ItemCreator : Photon.MonoBehaviour
         int number = Random.Range(0, _ItemPrefabs.Length);
         Vector3 pos = FieldData.Instance.GetNonObjPos();
         GameObject item = Instantiate(_ItemPrefabs[number]);
-        item.transform.position = pos + new Vector3(0.0f, 0.25f, 0.0f);
+        item.transform.position = pos + new Vector3(0.0f, 0.35f, 0.0f);
         SoundManager.Instance.PlaySE(SoundManager.eSeValue.ITEM);
     }
 }

@@ -20,8 +20,13 @@ public class TechnicalTypeMoveAI : MoveAI
 
                 if (objList[i])
                     continue;
-
-                SandItem.eType type = SandData.Instance.GetSandDataList[i]._type;
+                
+                // TODO : 繰り返し文に変更する
+                //  どちらかに挟まれる可能性があれば回避
+                SandItem.eType type = SandData.Instance.GetSandDataList[i]._type[0];
+                if (type != SandItem.eType.MAX && !FieldDataChecker.Instance.TypeCheck(name, type))
+                    continue;
+                type = SandData.Instance.GetSandDataList[i]._type[1];
                 if (type != SandItem.eType.MAX && !FieldDataChecker.Instance.TypeCheck(name, type))
                     continue;
 
@@ -41,7 +46,12 @@ public class TechnicalTypeMoveAI : MoveAI
                 if (objList[i] && objList[i].tag != "SandItem")
                     continue; //  蹴れるオブジェクトとNullマス
 
-                SandItem.eType type = SandData.Instance.GetSandDataList[i]._type;
+                // TODO : 繰り返し文に変更する
+                //  どちらかに挟まれる可能性があれば回避
+                SandItem.eType type = SandData.Instance.GetSandDataList[i]._type[0];
+                if (type != SandItem.eType.MAX && !FieldDataChecker.Instance.TypeCheck(name, type))
+                    continue;
+                type = SandData.Instance.GetSandDataList[i]._type[1];
                 if (type != SandItem.eType.MAX && !FieldDataChecker.Instance.TypeCheck(name, type))
                     continue;
 

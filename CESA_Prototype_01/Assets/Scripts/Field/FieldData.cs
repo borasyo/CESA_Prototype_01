@@ -219,20 +219,53 @@ public class FieldData : Photon.MonoBehaviour
 
     public Vector3 GetNonObjPos()
     {
-        Vector3 pos = Vector3.zero;
-        while (true)
+        List<int> nullMassList = new List<int>();
+        for (int i = 0; i < _ObjectDataArray.Length; i++)
         {
-            int number = Random.Range(0, _ObjectDataArray.Length);
-            FieldObjectBase obj = GetObjData(number);
-        
-            if (obj)
+            if (_ObjectDataArray[i])
                 continue;
 
-            pos = GetPosForNumber(number);
-            break;
+            nullMassList.Add(i);
         }
-        
-        return pos;
+
+        if (nullMassList.Count <= 0)
+            return -Vector3.one;
+
+        return GetPosForNumber(nullMassList[Random.Range(0, nullMassList.Count)]);
+    }
+
+    public Vector3 GetNonObjPosForMostLeave()
+    {
+        List<int> nullMassList = new List<int>();
+        for (int i = 0; i < _ObjectDataArray.Length; i++)
+        {
+            if (_ObjectDataArray[i])
+                continue;
+
+            nullMassList.Add(i);
+        }
+
+        if (nullMassList.Count <= 0)
+            return -Vector3.one;
+
+        Vector2 center = new Vector3(GameScaler._nWidth / 2, GameScaler._nHeight / 2);
+        int idx = 0;
+        int minDistance = 1000;
+        for(int i = 0; i < nullMassList.Count; i++)
+        {
+            int x = nullMassList[i] % GameScaler._nWidth;
+            int y = nullMassList[i] / GameScaler._nWidth;
+            //int distance = (int)Mathf.Abs(center.x - x) + (int)Mathf.Abs(center.y - y);
+            Vector2 distance = new Vector2(center.x < x ? (GameScaler._nWidth - 1) - x : x, center.y < y ? (GameScaler._nHeight - 1) - y : y);
+            int min = (int)(distance.x < distance.y ? distance.x : distance.y);
+
+            if (min >= minDistance)
+                continue;
+
+            minDistance = min;
+            idx = nullMassList[i];
+        }
+        return GetPosForNumber(idx);
     }
 
     Vector3 GetPosForNumber(int number)

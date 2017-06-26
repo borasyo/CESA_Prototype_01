@@ -23,10 +23,15 @@ public class RefereeOnline : Referee
                 continue;
 
             SandItem.eType charaType = CheckType(charaList[i].name);
-            SandItem.eType type = SandData.Instance.GetSandDataList[charaList[i].GetDataNumber()]._type;
 
+            //  どちらかに挟まれていれば死亡
+            SandItem.eType type = SandData.Instance.GetSandDataList[charaList[i].GetDataNumber()]._type[0];
             if (type == SandItem.eType.MAX || type == charaType)
-                continue;
+            {
+                type = SandData.Instance.GetSandDataList[charaList[i].GetDataNumber()]._type[1];
+                if (type == SandItem.eType.MAX || type == charaType)
+                    continue;
+            }
 
             //  全体に通知
             string player = charaList[i].name;

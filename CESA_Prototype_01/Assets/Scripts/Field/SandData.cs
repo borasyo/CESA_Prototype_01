@@ -45,16 +45,28 @@ public class SandData : MonoBehaviour
         public FieldObjectBase first;
         public FieldObjectBase second;
     };
+
+    public enum eSandDir
+    {
+        VERTICAL = 0,
+        HORIZONTAL,
+        NONE,
+    }
     public struct tData
     {        
         // 上下と左右があるため２つずつ用意する
-        public SandItem.eType _type;
-        public bool _isVertical;    //  縦横どちらで挟んだか
+        public SandItem.eType[] _type;
+        public eSandDir[] _sandDir;    //  縦横どちらで挟んだか
 
         public void Init()
         {
-            _type = SandItem.eType.MAX;
-            _isVertical = true;
+            _type = new SandItem.eType[2];
+            _sandDir = new eSandDir[2];
+            for (int i = 0; i < 2; i++)
+            {
+                _type[i] = SandItem.eType.MAX;
+                _sandDir[i] = eSandDir.NONE;
+            }
         }
     };
     tData[] _SandDataList = null;      //  はさまれている箇所のリスト
@@ -134,7 +146,11 @@ public class SandData : MonoBehaviour
         
         for (int number = 0; number < objDataArray.Length; number++)
         {
-            _SandDataList[number]._type = SandItem.eType.MAX;
+            for (int i = 0; i < _SandDataList[number]._type.Length; i++)
+            {
+                _SandDataList[number]._type[i] = SandItem.eType.MAX;
+                _SandDataList[number]._sandDir[i] = eSandDir.NONE;
+            }
 
             //  既に何か配置されていて、キャラクターではないなら
             if (objDataArray[number] && objDataArray[number].tag != "Character")
@@ -227,15 +243,17 @@ public class SandData : MonoBehaviour
             }
         }
 
-        //  はさまれているが重複しているので削除
-        if (!_IsOverLapToSafe && _SandDataList[number]._type != SandItem.eType.MAX && _SandDataList[number]._type != type)
+        //  ※修正箇所※ はさまれているが重複しているので削除
+        if (checkData.first.GetDataNumber() - number >= GameScaler._nWidth) // && _SandDataList[number]._type[0] != type)
         {
-            _SandDataList[number]._type = SandItem.eType.MAX;
-            return false;
+            _SandDataList[number]._type[0] = type;
+            _SandDataList[number]._sandDir[0] = eSandDir.VERTICAL;
         }
-        
-        _SandDataList[number]._type = type;
-        _SandDataList[number]._isVertical = (checkData.first.GetDataNumber() - number >= GameScaler._nWidth);
+        else
+        {
+            _SandDataList[number]._type[1] = type;
+            _SandDataList[number]._sandDir[1] = eSandDir.HORIZONTAL;
+        }
         return true;
     }
 
@@ -277,10 +295,15 @@ public class SandData : MonoBehaviour
 
     bool OnSand(int number)
     {
-        if (_SandDataList[number]._type == SandItem.eType.MAX)
-            return false;
+        for (int i = 0; i < _SandDataList[number]._type.Length; i++)
+        {
+            if (_SandDataList[number]._type[i] == SandItem.eType.MAX)
+                continue;
 
-        return true;
+            return true;
+        }
+
+        return false;
     }
 
     bool HalfSand(int number, int add)

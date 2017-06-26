@@ -8,6 +8,8 @@ using UniRx.Triggers;
 public class SandMass : FieldObjectBase
 {
     List<LineRenderer> _ThunderList = new List<LineRenderer>();
+    SandData.eSandDir _sandDir = SandData.eSandDir.NONE; 
+    public SandData.eSandDir SetSandDir { set { _sandDir = value; } }
 
     void Start()
     {
@@ -35,17 +37,18 @@ public class SandMass : FieldObjectBase
                 //Debug.Log("data" + data._type);
             });
 
-        this.ObserveEveryValueChanged(_ => data._type)
+        int idx = (int)_sandDir;
+        this.ObserveEveryValueChanged(_ => data._type[idx])
             .Subscribe(_ =>
             {
-                if (data._type != SandItem.eType.MAX)
+                if (data._sandDir[idx] == _sandDir && data._type[idx] != SandItem.eType.MAX)
                 {
                     foreach (LineRenderer thunder in _ThunderList)
                     {
                         thunder.gameObject.SetActive(true);
                         SoundManager.Instance.PlaySE(SoundManager.eSeValue.THUNDER);
                     }
-                    ThunderUpdate(data);
+                    ThunderUpdate(data._type[idx]);
                     //Debug.Log("true");
                 }
                 else
@@ -57,19 +60,13 @@ public class SandMass : FieldObjectBase
                     //Debug.Log("false");
                 }
             });
-
-        this.ObserveEveryValueChanged(_ => data._isVertical)
-            .Subscribe(_ =>
-            {
-                DirUpdate(data._isVertical);
-            });
     }
 
-    void ThunderUpdate(SandData.tData data)
+    void ThunderUpdate(SandItem.eType type)
     {
         //  色を更新
         Color setColor = Color.clear;
-        switch (data._type)
+        switch (type)
         {
             case SandItem.eType.ONE_P:
                 setColor = new Color(1.0f, 0.2f, 0.2f, 1.0f);
@@ -83,6 +80,9 @@ public class SandMass : FieldObjectBase
             case SandItem.eType.FOUR_P:
                 setColor = new Color(1.0f, 1.0f, 0.0f, 1.0f);
                 break;
+            case SandItem.eType.ALL:
+                setColor = Color.gray * 1.5f;
+                break;
             default:
                 break;
         }
@@ -92,16 +92,5 @@ public class SandMass : FieldObjectBase
             thunder.startColor = setColor;
             thunder.endColor = setColor;
         }
-
-        //DirUpdate(data._isVertical);
-    }
-
-    void DirUpdate(bool isVertical)
-    {
-        //  向きを更新
-        if (isVertical)
-            transform.eulerAngles = new Vector3(0, 90, 0);
-        else
-            transform.eulerAngles = new Vector3(0, 0, 0);
     }
 }

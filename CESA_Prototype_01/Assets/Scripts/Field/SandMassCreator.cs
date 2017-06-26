@@ -5,19 +5,16 @@ using UnityEngine;
 public class SandMassCreator : MonoBehaviour
 {
     int _nWidth, _nHeight;
-    SandMass[] _sandMassArray = null;
+    //SandMass[] _sandMassArray = null;
     GameObject _sandMassHolder = null;
 
-    public SandMass[] Create (int w, int h)
+    public void Create (int w, int h)
     {
         _nWidth  = w;
         _nHeight = h;
-        _sandMassArray = new SandMass[w * h];
 
         //  地形生成
         CreateSandMass();
-
-        return _sandMassArray;
     }
 
     void CreateSandMass()
@@ -39,8 +36,14 @@ public class SandMassCreator : MonoBehaviour
                 Vector3 createPos = new Vector3(x * GameScaler._fScale, 0.0f, z * GameScaler._fScale);
 
                 GameObject sandMass = CreateObj(SandMass, createPos);
-                sandMass.transform.eulerAngles = new Vector3(90,0,0);
-                _sandMassArray[x + (z * _nWidth)] = sandMass.GetComponent<SandMass>();
+                sandMass.transform.eulerAngles = new Vector3(0, 90, 0);
+                //_sandMassArray[x + (z * _nWidth)] = sandMass.GetComponent<SandMass>();
+                sandMass.GetComponent<SandMass>().SetSandDir = SandData.eSandDir.VERTICAL;
+
+                sandMass = CreateObj(SandMass, createPos);
+                sandMass.transform.eulerAngles = new Vector3(0, 0, 0);
+                //_sandMassArray[x + (z * _nWidth)] = sandMass.GetComponent<SandMass>();
+                sandMass.GetComponent<SandMass>().SetSandDir = SandData.eSandDir.HORIZONTAL;
             }
         } 
     }

@@ -23,11 +23,13 @@ public class PlayerDeathEffect : MonoBehaviour
             case "1P":
                 return Color.red + new Color(0, add, add, 0);
             case "2P":
-                return Color.blue + new Color(add, add, 0, 0); ;
+                return Color.blue + new Color(add, add, 0, 0);
             case "3P":
-                return Color.green + new Color(add, 0, add, 0); ;
+                return Color.green + new Color(add, 0, add, 0);
             case "4P":
-                return Color.yellow + new Color(0, 0, add, 0); ;
+                return Color.yellow + new Color(0, 0, add, 0);
+            default:
+                return Color.gray;
         }
         return Color.clear;
     }

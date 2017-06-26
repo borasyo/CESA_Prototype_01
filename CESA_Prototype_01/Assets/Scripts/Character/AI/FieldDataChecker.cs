@@ -112,36 +112,41 @@ public class FieldDataChecker : MonoBehaviour
     {
         return SandCheck(ToIdx(x,z), p);
     }
+
     public bool SandCheck(int idx, string name)
     {
         //  変換
         string player = name[name.IndexOf("Player") - 1].ToString();
 
-        SandItem.eType type = SandData.Instance.GetSandDataList[idx]._type;
-        if (type == SandItem.eType.MAX)
-            return false;
-        
-        switch (player)
+        foreach (SandItem.eType type in SandData.Instance.GetSandDataList[idx]._type)
         {
-            case "1":
-                if (type == SandItem.eType.ONE_P)
-                    return false;
-                break;
-            case "2":
-                if (type == SandItem.eType.TWO_P)
-                    return false;
-                break;
-            case "3":
-                if (type == SandItem.eType.THREE_P)
-                    return false;
-                break;
-            case "4":
-                if (type == SandItem.eType.FOUR_P)
-                    return false;
-                break;
+            if (type == SandItem.eType.MAX)
+                continue;
+
+            switch (player)
+            {
+                case "1":
+                    if (type == SandItem.eType.ONE_P)
+                        continue; 
+                    break;
+                case "2":
+                    if (type == SandItem.eType.TWO_P)
+                        continue;
+                    break;
+                case "3":
+                    if (type == SandItem.eType.THREE_P)
+                        continue;
+                    break;
+                case "4":
+                    if (type == SandItem.eType.FOUR_P)
+                        continue;
+                    break;
+            }
+
+            return true;
         }
            
-        return true;
+        return false;
     }
     public bool TypeCheck(string name, SandItem.eType type)
     {
