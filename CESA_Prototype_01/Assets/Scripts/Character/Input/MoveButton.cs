@@ -11,7 +11,7 @@ public class MoveButton : MonoBehaviour
     Image _image = null;
 
     bool _IsActive = false;
-    public bool IsActiveAndMove { get { return _IsActive && Vector2.Distance(CenterPosition, Input.GetTouch(0).position) >= 40;  } }
+    public bool IsActiveAndMove { get { return _IsActive && Vector2.Distance(CenterPosition, Input.GetTouch(0).position) >= 60;  } }
     Vector3 CenterPosition = Vector3.zero;
     public float GetMoveAngle { get { return Mathf.Atan2(Input.GetTouch(0).position.y - CenterPosition.y, Input.GetTouch(0).position.x - CenterPosition.x) * Mathf.Rad2Deg; } }
 
@@ -84,6 +84,13 @@ public class MoveButton : MonoBehaviour
             .Subscribe(_ =>
             { 
                 Vector2 nowTouchPos = Input.GetTouch(0).position;
+                if(nowTouchPos.x > Screen.width / 2.0f)
+                {
+                    _IsActive = false;
+                    SetActive(false);
+                    return;
+                }
+
                 float nowDistance = Vector2.Distance(CenterPosition, Input.GetTouch(0).position);
 
                 if(nowDistance < oldDistance)
