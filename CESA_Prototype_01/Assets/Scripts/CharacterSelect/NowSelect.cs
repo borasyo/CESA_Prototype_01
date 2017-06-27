@@ -143,7 +143,7 @@ public class NowSelect : Photon.PunBehaviour
         else
         {
             _charaType = _oldCharaType;
-            SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW);
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW, 0.5f);
         }
     }
 
@@ -153,12 +153,12 @@ public class NowSelect : Photon.PunBehaviour
         {
             _oldCharaType = _charaType;
             _charaType = CharacterSelect.eCharaType.NONE;
-            SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW, 0.5f);
         }
         else
         {
             _charaType = _oldCharaType;
-            SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW);
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW, 0.5f);
         }
     }
 }
