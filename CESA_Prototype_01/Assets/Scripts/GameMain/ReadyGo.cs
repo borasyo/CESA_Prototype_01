@@ -18,7 +18,6 @@ public class ReadyGo : MonoBehaviour
     {
         Time.timeScale = 0.0f;
 
-        SoundManager.Instance.PlaySE(SoundManager.eSeValue.GAMESTART);
         Image ready = transform.Find("Ready").GetComponent<Image>();
         Image go = transform.Find("Go").GetComponent<Image>();
 
@@ -28,6 +27,7 @@ public class ReadyGo : MonoBehaviour
         yield return null;  //  開始後1Fずらす
         yield return new WaitWhile(() => FadeManager.Instance.Fading);
 
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.READY);
         this.UpdateAsObservable()
             .Where(_ => ready.transform.localScale.x < 1.0f)
             .Subscribe(_ =>
@@ -51,6 +51,7 @@ public class ReadyGo : MonoBehaviour
 
         ready.gameObject.SetActive(false);
 
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.GO);
         this.UpdateAsObservable()
             .Where(_ => go.transform.localScale.x < 1.0f)
             .Subscribe(_ =>

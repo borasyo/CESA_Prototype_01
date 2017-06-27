@@ -65,8 +65,7 @@ public class ReadyGoOnline : Photon.MonoBehaviour
     }
 
     IEnumerator SetReady()
-    {
-        SoundManager.Instance.PlaySE(SoundManager.eSeValue.GAMESTART);
+    { 
         Image ready = transform.Find("Ready").GetComponent<Image>();
         Image go = transform.Find("Go").GetComponent<Image>();
 
@@ -75,6 +74,7 @@ public class ReadyGoOnline : Photon.MonoBehaviour
 
         yield return new WaitWhile(() => FadeManager.Instance.Fading);
 
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.READY);
         this.UpdateAsObservable()
             .Where(_ => ready.transform.localScale.x < 1.0f)
             .Subscribe(_ =>
@@ -97,6 +97,7 @@ public class ReadyGoOnline : Photon.MonoBehaviour
 
         ready.gameObject.SetActive(false);
 
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.GO);
         this.UpdateAsObservable()
             .Where(_ => go.transform.localScale.x < 1.0f)
             .Subscribe(_ =>

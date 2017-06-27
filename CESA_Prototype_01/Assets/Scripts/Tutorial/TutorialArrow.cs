@@ -91,6 +91,7 @@ public class TutorialArrow : MonoBehaviour
         descriptionFlame.GetComponentInChildren<Text>().text = _Description[_nCnt];
         _nCnt++;
 
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW);
         float time = 0.0f;
         yield return new WaitWhile(() =>
         {

@@ -16,6 +16,10 @@ public class WinCamera : MonoBehaviour
         Vector3 minAngle = transform.eulerAngles;
         Vector3 maxAngle = new Vector3(0.0f, 0.0f, 0.0f);
 
+        SoundManager.Instance.StopSE();
+        SoundManager.Instance.StopBGM();
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.GAMEEND, 0.5f);
+
         Time.timeScale = 0.0f;
         this.UpdateAsObservable()
             .Where(_ => time < 1.0f)
@@ -27,7 +31,6 @@ public class WinCamera : MonoBehaviour
                     time = 1.0f;
                     Time.timeScale = 1.0f;
                     //CreateWinEffect(chara);
-                    SoundManager.Instance.PlaySE(SoundManager.eSeValue.GAMEEND);
                 }
 
                 transform.position = Vector3.Lerp(minPos, maxPos, time);

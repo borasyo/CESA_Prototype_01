@@ -7,6 +7,7 @@ using UniRx.Triggers;
 
 public class SandMass : FieldObjectBase
 {
+    //List<ParticleSystem> _ThunderList = new List<ParticleSystem>();
     List<LineRenderer> _ThunderList = new List<LineRenderer>();
     SandData.eSandDir _sandDir = SandData.eSandDir.NONE; 
     public SandData.eSandDir SetSandDir { set { _sandDir = value; } }
@@ -16,6 +17,7 @@ public class SandMass : FieldObjectBase
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform child = transform.GetChild(i);
+            //_ThunderList.Add(child.GetComponent<ParticleSystem>());
             _ThunderList.Add(child.GetComponent<LineRenderer>());
             child.gameObject.SetActive(false);
         }
@@ -36,13 +38,14 @@ public class SandMass : FieldObjectBase
                 data = SandData.Instance.GetSandDataList[GetDataNumber()];
                 //Debug.Log("data" + data._type);
             });
-
+        
         int idx = (int)_sandDir;
         this.ObserveEveryValueChanged(_ => data._type[idx])
             .Subscribe(_ =>
             {
                 if (data._sandDir[idx] == _sandDir && data._type[idx] != SandItem.eType.MAX)
                 {
+                    //foreach (ParticleSystem thunder in _ThunderList)
                     foreach (LineRenderer thunder in _ThunderList)
                     {
                         thunder.gameObject.SetActive(true);
@@ -53,6 +56,7 @@ public class SandMass : FieldObjectBase
                 }
                 else
                 {
+                    //foreach (ParticleSystem thunder in _ThunderList)
                     foreach (LineRenderer thunder in _ThunderList)
                     {
                         thunder.gameObject.SetActive(false);
@@ -87,6 +91,7 @@ public class SandMass : FieldObjectBase
                 break;
         }
 
+        //foreach (ParticleSystem thunder in _ThunderList)
         foreach (LineRenderer thunder in _ThunderList)
         {
             thunder.startColor = setColor;

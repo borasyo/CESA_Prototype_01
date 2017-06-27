@@ -146,12 +146,15 @@ public class FieldData : Photon.MonoBehaviour
                     _ChangeDataList[i]._IsChange = false;
                 }
             });
+    }
 
+    /*void Start()
+    {
         //  歩行音をチェック
         bool isWalk = false;
         this.ObserveEveryValueChanged(_ =>
         {
-            if(Time.timeScale <= 0.0f)
+            if (Time.timeScale <= 0.0f)
             {
                 isWalk = false;
                 return isWalk;
@@ -171,17 +174,17 @@ public class FieldData : Photon.MonoBehaviour
             }
             return isWalk;
         }).Subscribe(_ =>
+        {
+            if (isWalk)
             {
-                if(isWalk)
-                {
-                    SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.WALK);
-                }
-                else
-                {
-                    SoundManager.Instance.StopBGM(SoundManager.eBgmValue.WALK);
-                }
-            });
-    }
+                SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.WALK);
+            }
+            else
+            {
+                SoundManager.Instance.StopBGM(SoundManager.eBgmValue.WALK);
+            }
+        });
+    }*/
 
     #endregion
 

@@ -23,14 +23,14 @@ public class CPUArriveCheck : MonoBehaviour
             buttonList.Add(transform.GetChild(i).GetComponent<Button>());
         }
 
-        Button myButton = GetComponent<Button>();
+        //Button myButton = GetComponent<Button>();
         //GameObject chara = transform.Find("Chara").gameObject;
         this.ObserveEveryValueChanged(_ => nowSelect.CharaType)
             .Subscribe(_ =>
             {
                 bool enabled = nowSelect.CharaType != CharacterSelect.eCharaType.NONE;
 
-                myButton.enabled = enabled;
+                //myButton.enabled = enabled;
                 foreach (Button button in buttonList)
                 {
                     button.enabled = enabled;

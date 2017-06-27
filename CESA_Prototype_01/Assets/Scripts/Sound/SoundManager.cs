@@ -41,7 +41,6 @@ public class SoundManager : MonoBehaviour {
 
         WALK,
         SPECIALMODE,
-        GAMEMAIN_TIMEUP,
 
         MAX,
 	};
@@ -54,7 +53,7 @@ public class SoundManager : MonoBehaviour {
         ITEM,
         ITEMGET,
         DEATH,
-        GAMESTART,
+        READY,
         GAMEEND,
         TOUCH,
         DECISION,
@@ -66,6 +65,8 @@ public class SoundManager : MonoBehaviour {
         RESULT_LOSE,
         ONWINDOW,
         OFFWINDOW,
+        GO,
+        TIMEUP,
 
         MAX,
 	};
@@ -127,7 +128,7 @@ public class SoundManager : MonoBehaviour {
         foreach (AudioSource source in SEsources)
             source.volume = 1.0f;
 
-        this.ObserveEveryValueChanged(_ => Time.timeScale)
+        /*this.ObserveEveryValueChanged(_ => Time.timeScale)
             .Where(_ => Time.timeScale > 0.0f)
             .Subscribe(_ =>
             {
@@ -135,10 +136,10 @@ public class SoundManager : MonoBehaviour {
                     source.pitch = Time.timeScale;
                 foreach (AudioSource source in SEsources)
                     source.pitch = Time.timeScale;
-            }); 
+            });*/ 
     }
 
-	public bool PlayBGM(eBgmValue i, float volume = 1.0f, bool isOverlap = false)
+	public bool PlayBGM(eBgmValue i, float volume = 1.0f, bool isOverlap = false, float pitch = 1.0f)
     {
 		if (!bUseSound)
 			return false;
@@ -166,6 +167,7 @@ public class SoundManager : MonoBehaviour {
             {
                 source.clip = BGM[index];
                 source.volume = volume;
+                source.pitch = pitch;
                 source.Play();
 				return true;
 			}

@@ -39,10 +39,19 @@ public class TutorialRange : MonoBehaviour
         Image image = GetComponent<Image>();
         image.enabled = false;
         IsNext = false;
+
+        if (_nCnt >= _Description.Length)
+        {
+            image.enabled = true;
+            IsNext = true;
+            yield break;
+        }
+
         GameObject descriptionFlame = transform.parent.Find("DescriptionFlame").gameObject;
         descriptionFlame.GetComponentInChildren<Text>().text = _Description[_nCnt];
         _nCnt++;
 
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW);
         float time = 0.0f;
         yield return new WaitWhile(() =>
         {
@@ -64,6 +73,14 @@ public class TutorialRange : MonoBehaviour
         Image image = GetComponent<Image>();
         image.enabled = false;
         IsNext = false;
+
+        if (_nCnt >= _Description.Length)
+        {
+            image.enabled = false;
+            IsNext = true;
+            yield break;
+        }
+
         GameObject descriptionFlame = transform.parent.Find("DescriptionFlame").gameObject;
 
         float time = 0.0f;

@@ -22,6 +22,7 @@ public class SuddenDeath : MonoBehaviour
         Time.timeScale = 0.0f;
         RectTransform rectTrans = GetComponent<RectTransform>();
         rectTrans.position = new Vector2(Screen.width + size, Screen.height / 2.0f);  // 2320.0f / 2.0f, 0.0f);
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.TIMEUP);
 
         Image image = GetComponent<Image>();
         Color min = new Color(1, 1, 1, 0);
@@ -53,6 +54,7 @@ public class SuddenDeath : MonoBehaviour
         //    chara.GetComponent<CharacterGauge>().SuperMode();
         //}
         SandMassData.Instance.Run();
+        SoundManager.Instance.StopSE(SoundManager.eSeValue.TIMEUP);
         Destroy(gameObject);
     }
 }

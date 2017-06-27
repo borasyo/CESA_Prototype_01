@@ -246,6 +246,7 @@ public class RoomManager : Photon.MonoBehaviour
 	// int index : roomInfo配列のindex
 	public void OnPressRoomButton(int index)
     {
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
         if (!PhotonNetwork.insideLobby)
             return;
 

@@ -9,11 +9,18 @@ public class TutorialDescription : MonoBehaviour
     [SerializeField] [Multiline] string[] _Description = null;
     int _nCnt = 0;
 
+    TutorialRange _DescriptionTouch = null;
+    void Start()
+    {
+        _DescriptionTouch = GetComponentInChildren<TutorialRange>();
+    }
+
     public IEnumerator OnWindow()
     {
         IsNext = false;
         gameObject.GetComponentInChildren<Text>().text = _Description[_nCnt];
         _nCnt++;
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW);
 
         float time = 0.0f;
         yield return new WaitWhile(() =>
@@ -26,6 +33,8 @@ public class TutorialDescription : MonoBehaviour
 
             return (time < 1.0f);
         });
+
+        StartCoroutine(_DescriptionTouch.OnWindow());
 
         yield return new WaitWhile(() =>
         {
@@ -54,6 +63,7 @@ public class TutorialDescription : MonoBehaviour
     public IEnumerator OffWindow()
     {
         IsNext = false;
+        StartCoroutine(_DescriptionTouch.OffWindow());
 
         float time = 0.0f;
         yield return new WaitWhile(() =>

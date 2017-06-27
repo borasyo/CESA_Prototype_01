@@ -4,7 +4,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 
-public class SandMassData : MonoBehaviour
+public class SandMassData : Photon.MonoBehaviour
 {
     ///<summary>
     /// 
@@ -38,37 +38,76 @@ public class SandMassData : MonoBehaviour
 
     #endregion
 
+    GameObject _SuddenDeathItem = null;
+
     void Awake()
     {
         //  フィールドにオブジェクトを生成し、データを格納
         SandMassCreator creator = new SandMassCreator();
         creator.Create(GameScaler._nWidth, GameScaler._nHeight);
+        _SuddenDeathItem = Resources.Load<GameObject>("Prefabs/SandItem/SandItem5");
     }
 
     public void Run()
     {
-        float time = 1.0f;
-        GameObject obj = Resources.Load<GameObject>("Prefabs/SandItem/SandItem5");
-        this.UpdateAsObservable()
-            .Subscribe(_ =>
-            {
-                time += Time.deltaTime / 1.5f;
-            });
+        if (PhotonNetwork.inRoom)
+        {
+            if (!PhotonNetwork.isMasterClient)
+                return;
 
-        this.ObserveEveryValueChanged(_ => time >= 1.0f)
-            .Where(_ => time >= 1.0f)
-            .Subscribe(_ =>
-            {
-                Vector3 createPos = FieldData.Instance.GetNonObjPos();
-                if (createPos.x <= 0.0f)
+            float time = 1.0f;
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
                 {
-                    time = 0.0f;
-                    return;
-                }
+                    time += Time.deltaTime / 1.5f;
+                });
 
-                FieldObjectBase item = Instantiate(obj, createPos, Quaternion.identity).GetComponent<FieldObjectBase>();
-                StartCoroutine(item.gameObject.AddComponent<DelayPut>().Init(item.GetDataNumber()));
-                time = 0.0f;
-            });
+            this.ObserveEveryValueChanged(_ => time >= 1.0f)
+                .Where(_ => time >= 1.0f)
+                .Subscribe(_ =>
+                {
+                    Vector3 createPos = FieldData.Instance.GetNonObjPos();
+                    if (createPos.x <= 0.0f)
+                    {
+                        time = 0.0f;
+                        return;
+                    }
+
+                    photonView.RPC("CreateItem", PhotonTargets.All, createPos);
+                    time = 0.0f;
+                });
+        }
+        else
+        {
+            float time = 1.0f;
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    time += Time.deltaTime / 1.5f;
+                });
+
+            this.ObserveEveryValueChanged(_ => time >= 1.0f)
+                .Where(_ => time >= 1.0f)
+                .Subscribe(_ =>
+                {
+                    Vector3 createPos = FieldData.Instance.GetNonObjPos();
+                    if (createPos.x <= 0.0f)
+                    {
+                        time = 0.0f;
+                        return;
+                    }
+
+                    FieldObjectBase item = Instantiate(_SuddenDeathItem, createPos, Quaternion.identity).GetComponent<FieldObjectBase>();
+                    StartCoroutine(item.gameObject.AddComponent<DelayPut>().Init(item.GetDataNumber()));
+                    time = 0.0f;
+                });
+        }
+    }
+
+    [PunRPC]
+    public void CreateItem(Vector3 createPos)
+    {
+        FieldObjectBase item = Instantiate(_SuddenDeathItem, createPos, Quaternion.identity).GetComponent<FieldObjectBase>();
+        StartCoroutine(item.gameObject.AddComponent<DelayPut>().Init(item.GetDataNumber()));
     }
 }

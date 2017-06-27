@@ -202,6 +202,9 @@ public class NowSelectOnline : NowSelect
         if (!photonView.isMine)
             return;
 
+        if (Ready.nReadyCnt == PhotonNetwork.playerList.Length)
+            return;
+
         base.None();
     }
 
