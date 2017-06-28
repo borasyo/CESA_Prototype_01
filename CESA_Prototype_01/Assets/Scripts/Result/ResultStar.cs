@@ -12,6 +12,9 @@ public class ResultStar : MonoBehaviour
     [SerializeField]
     GameObject starPrefabs = null;
 
+    [SerializeField]
+    bool IsLoopEffect = false;
+
     void Start()
     {
         int nMaxRound = RoundAmount.GetRound();
@@ -38,7 +41,9 @@ public class ResultStar : MonoBehaviour
             obj.transform.localScale = new Vector3(1,1,1);
 
             //  今のゲームで追加された星なら演出
-            if (nNumber == RoundCounter.nNowWinerPlayer && i == RoundAmount.GetRound() - nowRound)
+            if(IsLoopEffect)
+                obj.AddComponent<StarEffectLoop>(); 
+            else if (nNumber == RoundCounter.nNowWinerPlayer && i == RoundAmount.GetRound() - nowRound)
                 obj.AddComponent<StarEffect>();
 
             if (i < RoundAmount.GetRound() - nowRound)

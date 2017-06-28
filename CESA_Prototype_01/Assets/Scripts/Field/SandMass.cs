@@ -49,7 +49,6 @@ public class SandMass : FieldObjectBase
                     foreach (LineRenderer thunder in _ThunderList)
                     {
                         thunder.gameObject.SetActive(true);
-                        SoundManager.Instance.PlaySE(SoundManager.eSeValue.THUNDER);
                     }
                     ThunderUpdate(data._type[idx]);
                     //Debug.Log("true");

@@ -10,7 +10,7 @@ public class StarEffect : MonoBehaviour
         StartCoroutine(Run());
 	}
 
-    IEnumerator Run()
+    virtual protected IEnumerator Run()
     {
         yield return new WaitForSeconds(0.5f);
 

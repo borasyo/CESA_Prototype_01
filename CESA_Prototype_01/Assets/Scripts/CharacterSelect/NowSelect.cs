@@ -96,8 +96,8 @@ public class NowSelect : Photon.PunBehaviour
         switch (_charaType)
         {
             case CharacterSelect.eCharaType.NONE:
-                //_image.sprite = null;
-                //_image.color = Color.clear;
+                _image.sprite = null;
+                _image.color = Color.clear;
                 transform.GetChild(0).gameObject.SetActive(true);
                 break;
             case CharacterSelect.eCharaType.BALANCE:
@@ -130,21 +130,24 @@ public class NowSelect : Photon.PunBehaviour
 
     public virtual void Add()
     {
-        if (_charaType != CharacterSelect.eCharaType.NONE)
-        {
+        //if (_charaType != CharacterSelect.eCharaType.NONE)
+        //{
             _oldCharaType = _charaType;
             _charaType++;
 
             if (_charaType > CharacterSelect.eCharaType.MAX)
             {
-                _charaType = (CharacterSelect.eCharaType)1;
+                if(_IsOnNone)
+                    _charaType = 0;
+                else
+                    _charaType = (CharacterSelect.eCharaType)1;
             }
-        }
-        else
+        //}
+        /*else
         {
             _charaType = _oldCharaType;
             SoundManager.Instance.PlaySE(SoundManager.eSeValue.ONWINDOW, 0.5f);
-        }
+        }*/
     }
 
     public virtual void None()

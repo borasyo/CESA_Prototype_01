@@ -74,7 +74,7 @@ public class SandItem : FieldObjectBase
 
             FieldData.Instance.ExceptionChangeField();
             _Type = _SetType;
-            SoundManager.Instance.PlaySE(SoundManager.eSeValue.PUT);
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.THUNDER);
         }
 
         float life = _fMaxLife_Sec;

@@ -48,7 +48,7 @@ public class DelayPut : MonoBehaviour
 
                 GetComponent<SandItem>().GetType = SetType;
                 FieldData.Instance.ExceptionChangeField();
-                SoundManager.Instance.PlaySE(SoundManager.eSeValue.PUT);
+                SoundManager.Instance.PlaySE(SoundManager.eSeValue.THUNDER);
                 Destroy(me);
             });
 

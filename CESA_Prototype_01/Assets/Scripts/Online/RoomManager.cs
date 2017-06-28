@@ -202,20 +202,18 @@ public class RoomManager : Photon.MonoBehaviour
 	// room作成buttonが押されたときの処理
 	public void OnPressCreateRoomButton()
     {
-        if (!PhotonNetwork.insideLobby)
+        if (!PhotonNetwork.insideLobby || FadeManager.Instance.Fading || PhotonNetwork.GetRoomList().Length >= LimitRoomCount)
+        {
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
             return;
-
-        if (FadeManager.Instance.Fading)
-            return;
-
-        if (PhotonNetwork.GetRoomList().Length >= LimitRoomCount)
-            return;
+        }
 
         // 何も入力がされていないとき、処理しない
         if (roomNameInputField.text == "")
         {
 			Debug.Log ("Failed to create the room. : Room's Name has not been entered.");
-			return;
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
+            return;
 		}
 
 		// 同じ名前のroomがすでに存在していたとき、処理しない
@@ -225,7 +223,8 @@ public class RoomManager : Photon.MonoBehaviour
             {
                 roomNameInputField.GetComponent<AlreadyRoomName>().Run();
                 Debug.Log ("Failed to create the room. : Already the room of the same name exists.");
-				return;
+                SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
+                return;
 			}
 		}
 
@@ -239,19 +238,19 @@ public class RoomManager : Photon.MonoBehaviour
 		PhotonNetwork.CreateRoom(roomNameInputField.text, roomOpt, null);   // Roomを自分で作って参加する
 
         StartCoroutine(JoinRoomFade());
-	}
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
+    }
 
 	// roombuttonを押したときの処理
 	// RoomButtonから呼ばれる
 	// int index : roomInfo配列のindex
 	public void OnPressRoomButton(int index)
     {
-        SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
-        if (!PhotonNetwork.insideLobby)
+        if (!PhotonNetwork.insideLobby || FadeManager.Instance.Fading)
+        {
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
             return;
-
-        if (FadeManager.Instance.Fading)
-            return;
+        }
 
         RoomInfo room = PhotonNetwork.GetRoomList () [index];	// 指定room情報の取得
 
@@ -259,19 +258,22 @@ public class RoomManager : Photon.MonoBehaviour
         if (room.playerCount >= 4)
         {
 			Debug.Log ("The room is packed.");
-			return;
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
+            return;
 		}
 
         if(!room.IsOpen)
         {
             Debug.Log("NotRoomOpen");
+            SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
             return;
         }
 
         PhotonNetwork.JoinRoom (room.name); // roomに参加
         nMyPlayerCount = room.playerCount;
-        
+
         StartCoroutine(JoinRoomFade());
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
     }
 
     IEnumerator JoinRoomFade()
