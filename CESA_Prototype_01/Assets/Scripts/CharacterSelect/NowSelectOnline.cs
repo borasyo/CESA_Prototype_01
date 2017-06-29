@@ -168,6 +168,11 @@ public class NowSelectOnline : NowSelect
     {
         _nInitNumber = idx;
 
+        //  セットし直し
+        transform.parent.Find("User").GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/CharaSelect/player_" + (_nInitNumber + 1).ToString() + "P");
+        foreach (CharaMaterial charaMat in GetComponentsInChildren<CharaMaterial>())
+            charaMat.ReSetMaterial(_nInitNumber + 1);
+
         if (PhotonNetwork.isMasterClient)
             return;
 

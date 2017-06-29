@@ -101,7 +101,7 @@ public class RoomManager : Photon.MonoBehaviour
 
     #endregion
 
-    void Start ()
+    void Start()
     {
         if (PhotonNetwork.inRoom)
         {
@@ -147,7 +147,19 @@ public class RoomManager : Photon.MonoBehaviour
                 roomButtonPool.Add(roomButtonObj);
             }
         }
-	}
+
+        int oldPlayerCount = PhotonNetwork.inRoom ? PhotonNetwork.playerList.Length : 0;
+        this.UpdateAsObservable()
+            .Where(_ => PhotonNetwork.inRoom && PhotonNetwork.isMasterClient)
+            .Subscribe(_ =>
+            {
+                if(oldPlayerCount != PhotonNetwork.playerList.Length && oldPlayerCount > PhotonNetwork.playerList.Length)
+                {
+                    StartCoroutine(CloseRoomTime());
+                }
+                oldPlayerCount = PhotonNetwork.playerList.Length;
+            });
+    }
 
 	void Update()
     {
@@ -308,6 +320,7 @@ public class RoomManager : Photon.MonoBehaviour
     public void LeaveRoom()
     {
         StartCoroutine(LeaveRoomFade());
+        photonView.RPC("CloseRoom", PhotonTargets.MasterClient, null);
     }
 
     IEnumerator LeaveRoomFade()
@@ -326,6 +339,28 @@ public class RoomManager : Photon.MonoBehaviour
         roomNameInputField.text = "RoomName";       // room名入力領域の初期
 
         CharacterSelectOnline._nMyNumber = 0;
+    }
+
+    [PunRPC]
+    public void CloseRoom()
+    {
+        StartCoroutine(CloseRoomTime());
+    }
+
+    public IEnumerator CloseRoomTime()
+    {
+        if (!PhotonNetwork.isMasterClient)
+            yield break;
+
+        //Debug.Log("CloseStart");
+
+        PhotonNetwork.room.IsOpen = false;
+
+        yield return new WaitForSeconds(2.0f);
+
+        PhotonNetwork.room.IsOpen = true;
+
+        //Debug.Log("CloseEnd");
     }
 
     // Lobbyに参加した時に呼ばれる

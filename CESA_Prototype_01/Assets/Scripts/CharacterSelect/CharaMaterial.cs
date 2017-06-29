@@ -69,6 +69,33 @@ public class CharaMaterial : MonoBehaviour
         }
     }
 
+    public void ReSetMaterial(int number)
+    {
+        string materialName = "Materials/Chara/";
+        switch (type)
+        {
+            case Character.eCharaType.BALANCE:
+                materialName += "Balance_";
+                break;
+            case Character.eCharaType.POWER:
+                materialName += "Power_";
+                break;
+            case Character.eCharaType.SPEED:
+                materialName += "Speed_";
+                break;
+            case Character.eCharaType.TECHNICAL:
+                materialName += "Technique_";
+                break;
+        }
+        materialName += number;
+
+        Material mat = Resources.Load<Material>(materialName);
+        foreach (SkinnedMeshRenderer sMeRend in _sMeRendList)
+        {
+            sMeRend.material = mat;
+        }
+    }
+
     public void SetMeshActive(bool isActive)
     {
         foreach (SkinnedMeshRenderer sMeRend in _sMeRendList)
