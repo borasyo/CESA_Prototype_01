@@ -137,7 +137,7 @@ public class SelectSandMassChecker : MonoBehaviour
                         selectSandMassList[1].enabled = true;
                         selectSandMassList[1].transform.position = transform.position - new Vector3(0, 0, GameScaler._fScale * 2);
                     }
-                    if (SelectSand(dirNumber + 1, player, Character.eDirection.LEFT))
+                    /*if (SelectSand(dirNumber + 1, player, Character.eDirection.LEFT))
                     {
                         selectSandMassList[2].enabled = true;
                         selectSandMassList[2].transform.position = transform.position + new Vector3(GameScaler._fScale, 0, 0);
@@ -146,8 +146,12 @@ public class SelectSandMassChecker : MonoBehaviour
                     {
                         selectSandMassList[3].enabled = true;
                         selectSandMassList[3].transform.position = transform.position - new Vector3(GameScaler._fScale, 0, 0);
+                    }*/
+                    if (SandData.Instance.GetSandDataList[dirNumber]._type[0] == SandItem.eType.MAX && SandData.Instance.GetSandDataList[dirNumber]._type[1] == SandItem.eType.MAX)
+                    {
+                        selectSandMassList[2].enabled = true;
+                        selectSandMassList[2].transform.position = transform.position;
                     }
-
                     if (SelectSand(dirNumber + GameScaler._nWidth + 1, player, Character.eDirection.LEFT))
                     {
                         selectSandMassList[4].enabled = true;
@@ -173,7 +177,7 @@ public class SelectSandMassChecker : MonoBehaviour
                 //　縦向き
                 else
                 {
-                    if (SelectSand(dirNumber + GameScaler._nWidth, player, Character.eDirection.BACK))
+                    /*if (SelectSand(dirNumber + GameScaler._nWidth, player, Character.eDirection.BACK))
                     {
                         selectSandMassList[0].enabled = true;
                         selectSandMassList[0].transform.position = transform.position + new Vector3(0, 0, GameScaler._fScale);
@@ -182,6 +186,11 @@ public class SelectSandMassChecker : MonoBehaviour
                     {
                         selectSandMassList[1].enabled = true;
                         selectSandMassList[1].transform.position = transform.position - new Vector3(0, 0, GameScaler._fScale);
+                    }*/
+                    if (SandData.Instance.GetSandDataList[dirNumber]._type[0] == SandItem.eType.MAX && SandData.Instance.GetSandDataList[dirNumber]._type[1] == SandItem.eType.MAX)
+                    {
+                        selectSandMassList[0].enabled = true;
+                        selectSandMassList[0].transform.position = transform.position;
                     }
                     if (SelectSand(dirNumber + 2, player, Character.eDirection.LEFT))
                     {

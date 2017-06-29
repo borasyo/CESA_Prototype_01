@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BalanceType : Character
 {
-    [SerializeField] int _nNum = 3;
+    const int _nNum = 2;
 
     public override void Init(int level)
     {
@@ -23,13 +23,13 @@ public class BalanceType : Character
             if (dirNumbers[i] < 0 || GameScaler.GetRange <= dirNumbers[i])
                 continue;
 
-            FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumbers[i]);
+            /*FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumbers[i]);
             if (obj)
             {
                 if(i == 0)  //  目の前に置けない場合は置けない
                     return;
                 continue;
-            }
+            }*/
 
             GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumbers[i]), Quaternion.identity);
             FieldData.Instance.SetObjData(item.GetComponent<FieldObjectBase>(), dirNumbers[i]);
@@ -44,31 +44,27 @@ public class BalanceType : Character
     {
         int[] numbers;
 
-        if (_IsSpecialMode)
-        {
-            numbers = new int[_nNum];
-        }
-        else
+        if (!_IsSpecialMode)
         {
             numbers = new int[1];
+            numbers[0] = GetDataNumberForDir();
+            return numbers;
         }
 
-        numbers[0] = GetDataNumberForDir();
-
-        if (!_IsSpecialMode)
-            return numbers;
-
+        numbers = new int[_nNum];
+   
+        int dirNumber = GetDataNumberForDir();
         switch (_nowDirection)
         {
             case eDirection.FORWARD:
             case eDirection.BACK:
-                numbers[1] = numbers[0] - 1;
-                numbers[2] = numbers[0] + 1;
+                numbers[0] = dirNumber - 1;
+                numbers[1] = dirNumber + 1;
                 break;
             case eDirection.RIGHT:
             case eDirection.LEFT:
-                numbers[1] = numbers[0] - GameScaler._nWidth;
-                numbers[2] = numbers[0] + GameScaler._nWidth;
+                numbers[0] = dirNumber - GameScaler._nWidth;
+                numbers[1] = dirNumber + GameScaler._nWidth;
                 break;
         }
 
