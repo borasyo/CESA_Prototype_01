@@ -258,6 +258,6 @@ public class NowSelectOnline : NowSelect
         if (player == "0" || player == "1")
             return;
 
-        GameObject obj = PhotonNetwork.Instantiate("Prefabs/CharacterSelect/" + player + "P_CPU", Vector3.zero, Quaternion.identity, 0);
+        GameObject obj = PhotonNetwork.Instantiate("Prefabs/CharacterSelect/" + player + "P_CPU", new Vector3(10000, 10000, 10000), Quaternion.identity, 0);
     }
 }

@@ -380,7 +380,7 @@ public class RoomManager : Photon.MonoBehaviour
         }
         else
         {
-            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/CharaSelect", Vector3.zero, Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/CharaSelect", new Vector3(10000,10000,10000), Quaternion.identity, 0);
         }
     }
 

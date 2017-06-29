@@ -24,7 +24,10 @@ public class ReLoadScene : Photon.MonoBehaviour
                 return;
 
             if (PhotonNetwork.isMasterClient)
-                PhotonNetwork.DestroyAll();
+            {
+                StartCoroutine(DestroyAll());
+                //PhotonNetwork.DestroyAll();
+            }
 
             photonView.RPC("OnlineReLoadModeSelect", PhotonTargets.All);
         }
@@ -59,7 +62,8 @@ public class ReLoadScene : Photon.MonoBehaviour
             if (!PhotonNetwork.isMasterClient)
                 return;
 
-            PhotonNetwork.DestroyAll();
+            StartCoroutine(DestroyAll());
+            //PhotonNetwork.DestroyAll();
             photonView.RPC("LoadOnlineRoom", PhotonTargets.All);
         }
     }
@@ -95,7 +99,8 @@ public class ReLoadScene : Photon.MonoBehaviour
             if (!PhotonNetwork.isMasterClient)
                 return;
 
-            PhotonNetwork.DestroyAll();
+            StartCoroutine(DestroyAll());
+            //PhotonNetwork.DestroyAll();
             photonView.RPC("LoadGameMain", PhotonTargets.All);
         }
     }
@@ -111,5 +116,23 @@ public class ReLoadScene : Photon.MonoBehaviour
 
         SceneChanger.Instance.ChangeScene("OnlineGameMain", true);
         //SceneManager.LoadScene("OnlineRoom");
+    }
+
+    IEnumerator DestroyAll()
+    {
+        //Debug.Log("DestroyAllStart");
+        float time = 0.0f;
+        yield return new WaitWhile(() =>
+        {
+            time += Time.unscaledDeltaTime;
+
+            return time < 0.95f;
+        });
+
+        //Debug.Log("DestroyAllEnd");
+        if (!PhotonNetwork.inRoom)
+            yield break;
+
+        PhotonNetwork.DestroyAll();
     }
 }

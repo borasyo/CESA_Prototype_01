@@ -44,16 +44,11 @@ public class SceneChanger : MonoBehaviour {
 		DontDestroyOnLoad (this.gameObject);
 	}
 
-	public void ChangeScene(string sceneName, bool bNext, bool bStopBgm = true) {
+	public void ChangeScene(string sceneName, bool bNext, bool bStopBgm = true)
+    {
 		if (FadeManager.Instance.Fading) 
 			return;
 
-		FadeManager.Instance.LoadLevel(sceneName, 1.0f, bStopBgm);
-
-		/*if (bNext) {
-			SoundManager.Instance.PlaySE (SoundManager.eSeValue.SE_SCENECHANGE);
-		} else {
-			SoundManager.Instance.PlaySE (SoundManager.eSeValue.SE_OFFWINDOW);
-		}*/
+		FadeManager.Instance.LoadLevel(sceneName, 1.0f, bStopBgm);    
 	}
 }

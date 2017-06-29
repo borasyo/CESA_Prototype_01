@@ -99,6 +99,5 @@ public class ResultChecker : Photon.MonoBehaviour
         {
             Instantiate(canvas);
         }
-
     }
 }
