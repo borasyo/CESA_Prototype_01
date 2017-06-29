@@ -45,7 +45,7 @@ public class SpecialItem : ItemBase
             Destroy();
             return;
         }
-        SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.SPECIALMODE, 0.25f, true);
+        SoundManager.Instance.PlayBGM(SoundManager.eBgmValue.SPECIALMODE, 1.0f, true);
 
         //transform.Find("ItemEffect").gameObject.SetActive(true);
         List<ParticleSystem> particleList = transform.GetComponentsInChildren<ParticleSystem>().ToList();

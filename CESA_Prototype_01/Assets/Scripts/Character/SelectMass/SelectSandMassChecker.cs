@@ -124,6 +124,7 @@ public class SelectSandMassChecker : MonoBehaviour
                 string player = Character.GetPlayerNumber();
                 transform.position = Character.GetPosForNumber(dirNumber);
 
+                //  横向き
                 if (1 == Mathf.Abs(number - dirNumber))
                 {
                     if (SelectSand(dirNumber + GameScaler._nWidth * 2, player, Character.eDirection.BACK))
@@ -169,6 +170,7 @@ public class SelectSandMassChecker : MonoBehaviour
                         selectSandMassList[7].transform.position = transform.position + new Vector3(-GameScaler._fScale, 0, -GameScaler._fScale);
                     }
                 }
+                //　縦向き
                 else
                 {
                     if (SelectSand(dirNumber + GameScaler._nWidth, player, Character.eDirection.BACK))

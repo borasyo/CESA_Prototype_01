@@ -63,6 +63,7 @@ public class Ready : Photon.MonoBehaviour
         _CharaChangeButton.enabled = false;
 
         ChangeAnim(_animList, true);
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
 
         CharacterSelectOnline charaSele = FindObjectOfType<CharacterSelectOnline>();
 
@@ -85,6 +86,7 @@ public class Ready : Photon.MonoBehaviour
         _CharaChangeButton.enabled = true;
 
         ChangeAnim(_animList, false);
+        SoundManager.Instance.PlaySE(SoundManager.eSeValue.OFFWINDOW);
 
         CharacterSelectOnline charaSele = FindObjectOfType<CharacterSelectOnline>();
 
