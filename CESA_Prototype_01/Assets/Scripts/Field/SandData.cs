@@ -293,7 +293,7 @@ public class SandData : MonoBehaviour
 #endif
     }
 
-    /*bool OnSand(int number)
+    bool OnSand(int number)
     {
         int nSand = 0;
         for (int i = 0; i < _SandDataList[number]._type.Length; i++)
@@ -305,18 +305,6 @@ public class SandData : MonoBehaviour
         }
 
         return nSand == _SandDataList[number]._type.Length;
-    }*/
-    bool OnSand(int number)
-    {
-        for (int i = 0; i < _SandDataList[number]._type.Length; i++)
-        {
-            if (_SandDataList[number]._type[i] == SandItem.eType.MAX)
-                continue;
-
-            return true;
-        }
-
-        return false;
     }
 
     bool HalfSand(int number, int add)

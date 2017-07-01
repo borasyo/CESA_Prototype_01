@@ -20,8 +20,9 @@ public class DelayPut : MonoBehaviour
     public IEnumerator Init (int number)
     {
         _meRend = GetComponentInChildren<MeshRenderer>();
-        DelayPut me = GetComponent<DelayPut>();
+        transform.name += ",DelayPut";
 
+        DelayPut me = GetComponent<DelayPut>();
         int nSetNumber = number;
 
         yield return new WaitForSeconds(1.0f);

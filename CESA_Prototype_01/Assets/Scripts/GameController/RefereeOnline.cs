@@ -16,6 +16,9 @@ public class RefereeOnline : Referee
         List<Character> charaList = FieldData.Instance.GetCharactors;
         for (int i = 0; i < charaList.Count; i++)
         {
+            if (_IsEnd)
+                return;
+
             if (!charaList[i])
                 continue;
 

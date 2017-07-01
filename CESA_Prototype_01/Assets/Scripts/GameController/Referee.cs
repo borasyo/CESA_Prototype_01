@@ -10,7 +10,7 @@ using UnityEditor;
 public class Referee : Photon.MonoBehaviour
 {
     [SerializeField] protected GameObject _deathEffectPrefab = null;
-    private bool _IsEnd = false;
+    protected bool _IsEnd = false;
 
     void LateUpdate()
     {
