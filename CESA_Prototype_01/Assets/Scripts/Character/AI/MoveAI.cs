@@ -92,7 +92,6 @@ public class MoveAI : MonoBehaviour
                 if (SearchRoute(GetTarget, _nNowArrive))
                     return;
             }
-
             _state = eState.WAIT;
         }
     }

@@ -51,7 +51,7 @@ public class BalanceTypeSelectMassSprite : SelectMassSprite
         FieldObjectBase obj = FieldData.Instance.GetObjData(number);
         if (obj)
         {
-            if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck())
+            if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck() && number == _character.GetDataNumberForDir())
             {
                 return;
             }

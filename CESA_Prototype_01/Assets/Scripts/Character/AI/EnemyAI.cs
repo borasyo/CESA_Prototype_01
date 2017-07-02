@@ -244,11 +244,12 @@ public class EnemyAI : MonoBehaviour
                 return isSuccess;
         }
 
+        //  特定条件下でのAIは、Levelに応じて出にくくする
         if (_character.NotMove)
             return CharaNotMoveAI();
 
         int number = CheckStopEnemyChara();
-        if(number >= 0)
+        if (number >= 0)
             return EnemyStopAI(number);
 
         return NormalAI();
@@ -261,17 +262,20 @@ public class EnemyAI : MonoBehaviour
         {
             isSuccess = _putAI.HalfSandPut(true);
             if (isSuccess)
+            { 
                 _state = eState.PUT;
+            //    OffRiskCheck();     //  リスクAIに成功したらその行動はリスクチェックしない
+            }
         }
         else
         {
             isSuccess = _moveAI.SearchRoute(_moveAI.RandomNullMass(2 * (_nLevel + 1)), 0);
             if (isSuccess)
+            {
                 _state = eState.MOVE;
+                OffRiskCheck();     //  リスクAIに成功したらその行動はリスクチェックしない
+            }
         }
-        //Debug.Log(name + "のDangerAI実行" + isSuccess);
-        if (isSuccess)
-            OffRiskCheck(); //  リスクAIに成功したらその行動はリスクチェックしない
 
         return isSuccess;
     }

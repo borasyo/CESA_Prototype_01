@@ -55,7 +55,7 @@ public class BalanceTypeSelectMass : SelectMass
         Color setCol = _notColor;
         if (obj)
         {
-            if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck())
+            if (obj.GetSandType() != SandItem.eType.MAX && _charactorGauge.BreakGaugeCheck() && number == _character.GetDataNumberForDir())
             {
                 setCol = _breakColor;
             }
