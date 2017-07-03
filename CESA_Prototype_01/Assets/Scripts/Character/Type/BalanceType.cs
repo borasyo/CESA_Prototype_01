@@ -27,7 +27,8 @@ public class BalanceType : Character
             if (dirNumbers[i] < 0 || GameScaler.GetRange <= dirNumbers[i])
                 continue;
 
-            if (FieldData.Instance.GetObjData(dirNumbers[i]))
+            FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumbers[i]);
+            if (obj) // && obj.gameObject != gameObject)
             {
                 //if(i == 0)  //  目の前に置けない場合は置けない
                 //    return;
@@ -74,7 +75,6 @@ public class BalanceType : Character
                 numbers[1] = dirNumber + GameScaler._nWidth;
                 break;
         }
-
         return numbers;
     }
 

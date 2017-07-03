@@ -281,7 +281,7 @@ public class Character : FieldObjectBase
             return;
 
         FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
-        if (obj)
+        if (obj) // && obj.gameObject != gameObject)
             return;
 
         GameObject item = (GameObject)Instantiate(_sandItem, GetPosForNumber(dirNumber), Quaternion.identity);

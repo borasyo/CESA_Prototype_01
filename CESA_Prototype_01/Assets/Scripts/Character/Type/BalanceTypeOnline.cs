@@ -26,13 +26,15 @@ public class BalanceTypeOnline : CharacterOnline
             if (dirNumbers[i] < 0 || GameScaler.GetRange < dirNumbers[i])
                 continue;
 
-            if (FieldData.Instance.GetObjData(dirNumbers[i]))
+            FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumbers[i]);
+            if (obj && obj.gameObject != gameObject)
             {
                 //if(i == 0)  //  目の前に置けない場合は置けない
                 //    return;
                 continue;
             }
 
+            _animator.SetBool("Put", true);
             Vector3 pos = GetPosForNumber(dirNumbers[i]);
             photonView.RPC("OnlineItemPut", PhotonTargets.All, pos, dirNumbers[i], i == dirNumbers.Length - 1);
         }

@@ -12,7 +12,7 @@ public class CharacterOnline : Character
         // Input生成
         if (this.name.Contains("CPU"))
         {
-            CharacterInputAI ai = this.gameObject.GetComponent<CharacterInputAIOnline>();
+            CharacterInputAI ai = gameObject.GetComponent<CharacterInputAIOnline>();
             _charactorInput = ai;
 
             if (!ai._enemyAI)
@@ -22,7 +22,7 @@ public class CharacterOnline : Character
         }
         else
         {
-            _charactorInput = this.gameObject.GetComponent<CharacterInputUserOnline>();
+            _charactorInput = gameObject.GetComponent<CharacterInputUserOnline>();
         }
 
         //  Synchronizeを設定
@@ -49,9 +49,11 @@ public class CharacterOnline : Character
         if (_animator.GetBool("Put") || _animator.GetBool("Break") || _animator.GetBool("Happy"))
             return;
 
+        //if (PhotonNetwork.isMasterClient)
         if (photonView.isMine)
         {
             MoveUpdate();
+            //photonView.RPC("SerializePos", PhotonTargets.Others, transform.position);
         }
         else
         {
@@ -63,28 +65,6 @@ public class CharacterOnline : Character
         DirUpdate();
         NotMoveUpdate();
     }
-
-    /*protected override void DirUpdate()
-    {
-        if (_animator.GetBool("Put") || _animator.GetBool("Break"))
-            return;
-
-        switch (_nowDirection)
-        {
-            case eDirection.FORWARD:
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                break;
-            case eDirection.BACK:
-                transform.eulerAngles = new Vector3(0, 180, 0);
-                break;
-            case eDirection.RIGHT:
-                transform.eulerAngles = new Vector3(0, 90, 0);
-                break;
-            case eDirection.LEFT:
-                transform.eulerAngles = new Vector3(0, 270, 0);
-                break;
-        }
-    }*/
 
     public void OnlineActionUpdate()
     {
@@ -106,9 +86,10 @@ public class CharacterOnline : Character
             return;
 
         FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
-        if (obj)
+        if (obj) // && obj.gameObject != gameObject)
             return;
-        
+
+        _animator.SetBool("Put", true);
         Vector3 pos = GetPosForNumber(dirNumber);
         photonView.RPC("OnlineItemPut", PhotonTargets.All, pos, dirNumber, true);
     }
@@ -123,7 +104,8 @@ public class CharacterOnline : Character
 
         if (!obj || obj.GetSandType() == SandItem.eType.MAX)
             return;
-        
+
+        _animator.SetBool("Break", true);
         photonView.RPC("OnlineItemBreak", PhotonTargets.All, dirNumber);
     }
 
@@ -131,7 +113,7 @@ public class CharacterOnline : Character
     public virtual void OnlineItemPut(Vector3 pos, int dirNumber, bool isPostProcess)
     {
         FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
-        if (obj)
+        if (obj && obj.gameObject != gameObject)
             return;
 
         Instantiate(_sandItem, pos, Quaternion.identity);

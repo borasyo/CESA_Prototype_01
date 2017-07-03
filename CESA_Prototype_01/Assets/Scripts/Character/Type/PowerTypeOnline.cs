@@ -37,6 +37,7 @@ public class PowerTypeOnline : CharacterOnline
                 return;
         }
 
+        _animator.SetBool("Break", true);
         photonView.RPC("OnlineItemBreak", PhotonTargets.All, dirNumber);
     }
 

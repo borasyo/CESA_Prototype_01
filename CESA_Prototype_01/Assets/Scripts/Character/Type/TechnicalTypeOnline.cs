@@ -101,7 +101,7 @@ public class TechnicalTypeOnline : CharacterOnline
     [PunRPC]
     public override void OnlineItemPut(Vector3 pos, int dirNumber, bool isPostProcess)
     {
-        GameObject item = (GameObject)Instantiate(_sandItem, pos, Quaternion.identity);
+        GameObject item = Instantiate(_sandItem, pos, Quaternion.identity);
         StartCoroutine(item.AddComponent<DelayPut>().Init(dirNumber));
 
         if (!isPostProcess)
