@@ -26,6 +26,8 @@ public class FPSDrawer : MonoBehaviour
                 time = 0.0f;
                 framecount = 0;
             });
+
+        transform.localScale *= Screen.width / 1920.0f;
     }
 
 }
