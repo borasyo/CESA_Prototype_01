@@ -24,7 +24,7 @@ public class CharaMass : FieldObjectBase {
                 });
 
         SpriteRenderer spRend = GetComponent<SpriteRenderer>();
-        spRend.color = SelectMassColor.Instance.GetBreakColor(transform.parent.name);
+        spRend.color = ColorChange(); // SelectMassColor.Instance.GetBreakColor(transform.parent.name);
         CharacterGauge charaGauge = GetComponentInParent<CharacterGauge>();
 
         //  回転処理
@@ -37,15 +37,23 @@ public class CharaMass : FieldObjectBase {
             });
 
         //  拡縮処理
-        /*TriangleWave<Vector3> triangleScaler = TriangleWaveFactory.Vector3(Vector3.zero, transform.localScale, 0.5f);
+        TriangleWave<Vector3> triangleScaler = TriangleWaveFactory.Vector3(transform.localScale, transform.localScale * 0.75f, 0.25f);
+        Vector3 initLocalScale = transform.localScale;
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                triangleScaler.SetRange(Vector3.zero, initScale * (charaGauge.GaugePercent * 2.0f + 1.0f));
+                //triangleScaler.SetRange(Vector3.zero, initScale * (charaGauge.GaugePercent * 2.0f + 1.0f));
 
-                triangleScaler.Progress();
-                transform.localScale = triangleScaler.CurrentValue;
-            });*/
+                if (charaGauge.GaugePercent >= 1.0f)
+                {
+                    triangleScaler.Progress();
+                    transform.localScale = triangleScaler.CurrentValue;
+                }
+                else
+                {
+                    transform.localScale = initLocalScale * 0.75f;
+                }
+            });
 
         List<Sprite> circleList = new List<Sprite>();
         circleList.Add(Resources.Load<Sprite>("Texture/GameMain/CharaCircle_Zero"));
@@ -58,6 +66,23 @@ public class CharaMass : FieldObjectBase {
             {
                 spRend.sprite = circleList[(int)(charaGauge.GaugePercent * 4.0f)];
             });
+
+        /*ParticleSystem maxGauge = Instantiate(Resources.Load<GameObject>("Prefabs/Effect/MaxGaugeEffect"), transform.position, transform.rotation).GetComponent<ParticleSystem>();
+        maxGauge.transform.SetParent(transform.parent);
+        maxGauge.startColor = ColorChange();
+        maxGauge.transform.position += new Vector3(0.0f, 0.5f, 0.0f);
+        this.ObserveEveryValueChanged(_ => charaGauge.GaugePercent >= 1.0f)
+            .Subscribe(_ =>
+            {
+                if(charaGauge.GaugePercent >= 1.0f)
+                {
+                    maxGauge.Play();
+                }
+                else
+                {
+                    maxGauge.Stop();
+                }
+            });*/
     }
 
     Color ColorChange()
@@ -81,7 +106,7 @@ public class CharaMass : FieldObjectBase {
             result = Color.yellow;
         }
 
-        result.a = 0.75f;
+        //result.a = 0.75f;
         return result;
     }
 }

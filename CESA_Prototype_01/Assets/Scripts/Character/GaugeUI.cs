@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 
-public class GaugeUI : MonoBehaviour {
+public class GaugeUI : MonoBehaviour
+{
     
     [SerializeField] SandItem.eType _type = SandItem.eType.MAX;
     CharacterGauge _charaGauge = null;
