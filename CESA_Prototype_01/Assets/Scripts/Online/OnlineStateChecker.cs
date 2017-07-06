@@ -11,6 +11,7 @@ public class OnlineStateChecker : Photon.MonoBehaviour
     {
         bool isInit = false;
         this.ObserveEveryValueChanged(_ => PhotonNetwork.playerList.Length)
+            .Where(_ => FadeManager.Instance.NextSceneName != "ModeSelect")
             .Subscribe(_ =>
             {
                 if (!isInit)

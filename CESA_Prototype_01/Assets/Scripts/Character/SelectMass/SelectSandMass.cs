@@ -42,6 +42,7 @@ public class SelectSandMass : MonoBehaviour
                 triangleScaler.Progress();
                 transform.localScale = triangleScaler.CurrentValue;
             });*/
+
         transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
 
         this.UpdateAsObservable()

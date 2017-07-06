@@ -42,6 +42,7 @@ public class FadeManager : MonoBehaviour
     bool isFading = false;
     public bool Fading { get { return isFading; } }
     public bool HalfFading { get; private set; }
+    public string NextSceneName { get; private set; }
 
     /// フェード色
 	[SerializeField]
@@ -58,6 +59,7 @@ public class FadeManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         HalfFading = false;
+        NextSceneName = "";
     }
 
     public void OnGUI()
@@ -78,6 +80,7 @@ public class FadeManager : MonoBehaviour
         if (isFading) return;
 		isFading = true;
         HalfFading = true;
+        NextSceneName = scene;
 
         _coroutine = StartCoroutine(TransScene(scene, interval, bStopBgm));
     }
@@ -122,6 +125,7 @@ public class FadeManager : MonoBehaviour
         }
 
         isFading = false;
+        NextSceneName = "";
         _coroutine = null;
     }
 
