@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Online/OnlineRoom.unity
+- path: Assets/Scenes/Common/ModeSelect.unity
   isLoaded: 1
   isActive: 1
