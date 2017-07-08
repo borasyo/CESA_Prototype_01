@@ -48,7 +48,7 @@ public class SelectSandMass : MonoBehaviour
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                transform.eulerAngles += new Vector3(0, 4, 0);
+                transform.eulerAngles += new Vector3(0, 120 * Time.deltaTime, 0);
             });
     }
 }

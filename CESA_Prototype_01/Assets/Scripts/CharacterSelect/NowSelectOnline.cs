@@ -90,34 +90,60 @@ public class NowSelectOnline : NowSelect
     IEnumerator Set()
     //void Set()
     {
-        if (_photonView.isMine)
+        if (!_photonView.isMine)
+            yield break;
+
+        yield return null;
+
+        if (!_charaSele)
+            _charaSele = GameObject.FindWithTag("SelectCanvas").GetComponent<CharacterSelectOnline>();
+
+        int idx = 0;
+        if (CharacterSelectOnline._nMyNumber <= 0)
         {
-            yield return null;
-
-            if (!_charaSele)
-                _charaSele = GameObject.FindWithTag("SelectCanvas").GetComponent<CharacterSelectOnline>();
-
-            int idx = 0;
-            if (CharacterSelectOnline._nMyNumber <= 0)
-            {
-                idx = RoomManager.Instance.nMyPlayerCount;
-                //Debug.Log("Start : " + idx);
-            }
-            else
-            {
-                idx = CharacterSelectOnline._nMyNumber;
-                //Debug.Log("Already : " + idx);
-            }
-            _photonView.RPC("AllSet", PhotonTargets.All, idx);
+            idx = RoomManager.Instance.nMyPlayerCount;
+            //Debug.Log("Start : " + idx);
         }
+        else
+        {
+            idx = CharacterSelectOnline._nMyNumber;
+            //Debug.Log("Already : " + idx);
+        }
+        _photonView.RPC("AllSet", PhotonTargets.All, idx);
     }
 
     void OnPhotonPlayerConnected()
     {
-        if (!_photonView.isMine || transform.parent.name.Contains("CPU") || PhotonNetwork.isMasterClient)
+        if (!_photonView.isMine)
             return;
 
+        int type = (int)_charaType;
+        _photonView.RPC("SetChara", PhotonTargets.Others, type);
+
+        if (transform.parent.name.Contains("CPU") || PhotonNetwork.isMasterClient)
+            return;
+        
         _photonView.RPC("AllSet", PhotonTargets.All, _nInitNumber);
+    }
+
+    [PunRPC]
+    public void SetChara(int type)
+    {
+        StartCoroutine(WaitSetChara(type));
+    }
+
+    IEnumerator WaitSetChara(int type)
+    {
+        yield return new WaitWhile(() => _charaSele == null);
+
+        _charaType = (CharacterSelect.eCharaType)type;
+        if (_charaType == CharacterSelect.eCharaType.NONE && !_IsOnNone)
+        {
+            _charaType = CharacterSelect.eCharaType.BALANCE;
+        }
+
+        transform.parent.GetComponentInChildren<NowLevelOnline>().WaitSet();
+        //Debug.Log(_charaType);
     }
 
     [PunRPC]
@@ -134,11 +160,6 @@ public class NowSelectOnline : NowSelect
 
         _charaSele.SetNowSelect(this, _nInitNumber);
         SetDestroyCheck();
-        _charaType = _charaSele.GetCharaType(_nInitNumber);
-        if(_charaType == CharacterSelect.eCharaType.NONE && !_IsOnNone)
-        {
-            _charaType = CharacterSelect.eCharaType.BALANCE;
-        }
 
         transform.parent.Find("User").GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/CharaSelect/player_" + (_nInitNumber + 1).ToString() + "P");
 

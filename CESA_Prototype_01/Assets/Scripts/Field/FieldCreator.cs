@@ -272,7 +272,7 @@ public class FieldCreator : MonoBehaviour
         if (z < 2 || z >= GameScaler._nHeight - 2)
             return false;
 
-        if (Random.Range(0, 10) != 0)
+        if (Random.Range(0, 5) != 0)
             return false;
 
         return true;

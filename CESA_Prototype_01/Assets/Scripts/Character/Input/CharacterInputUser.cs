@@ -39,21 +39,6 @@ public class CharacterInputUser : CharacterInput
                     }
                 }
             });
-        //CreateActionEvent(InputCanvas.Find("Action").gameObject.GetComponent<EventTrigger>());
-    }
-
-    void CreateActionEvent(EventTrigger eventTrigger)
-    {
-        eventTrigger.triggers.Add(CreateActionEntry());
-    }
-
-    EventTrigger.Entry CreateActionEntry()
-    {
-        EventTrigger.Entry press = new EventTrigger.Entry();
-        press.eventID = EventTriggerType.PointerDown;
-        press.callback.AddListener((data) => { StartCoroutine(ActionClick()); });
-
-        return press;
     }
 
     public virtual IEnumerator ActionClick()

@@ -387,6 +387,7 @@
     <Compile Include="Assets\Scripts\Online\UIScript.cs" />
     <Compile Include="Assets\Scripts\Other\AutoAlphaChanger.cs" />
     <Compile Include="Assets\Scripts\Other\AutoAlphaChangerText.cs" />
+    <Compile Include="Assets\Scripts\Other\AutoRotation.cs" />
     <Compile Include="Assets\Scripts\Other\AutoScaleChanger.cs" />
     <Compile Include="Assets\Scripts\Other\TouchEffect.cs" />
     <Compile Include="Assets\Scripts\Result\GoNext.cs" />

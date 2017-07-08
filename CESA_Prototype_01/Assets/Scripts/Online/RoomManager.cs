@@ -358,6 +358,9 @@ public class RoomManager : Photon.MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
 
+        if (!PhotonNetwork.inRoom)
+            yield break;
+
         PhotonNetwork.room.IsOpen = true;
 
         //Debug.Log("CloseEnd");

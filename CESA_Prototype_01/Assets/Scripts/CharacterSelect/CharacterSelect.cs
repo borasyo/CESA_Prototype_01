@@ -41,7 +41,7 @@ public class CharacterSelect : Photon.PunBehaviour
         MAX,
     };
 
-    protected void SetChara()
+    virtual protected void SetChara()
     {
         GameObject BalanceObj = Resources.Load<GameObject>("Prefabs/Chara/Balance");
         GameObject PowerObj = Resources.Load<GameObject>("Prefabs/Chara/Power");

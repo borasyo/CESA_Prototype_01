@@ -14,6 +14,8 @@ public class CharacterSelectOnline : CharacterSelect
     [SerializeField] Vector3[] _nowSelectPos = new Vector3[4];
     bool _IsChange = true;
 
+    GameObject[] _RandomObj = null;
+
     // オンライン時のキャラセレクト
     void Awake()
     {
@@ -34,8 +36,61 @@ public class CharacterSelectOnline : CharacterSelect
     void Start()
     {
         // baseのStartを呼ばせないため
+
+        //if (!PhotonNetwork.isMasterClient)
+        //    return;
+
+        //_setChara = PhotonNetwork.Instantiate("Prefabs/Online/SetChara", Vector3.zero, Quaternion.identity, 0).GetComponent<SetChara>();
     }
-    
+
+    override protected void SetChara()
+    {
+        GameObject BalanceObj = Resources.Load<GameObject>("Prefabs/Chara/Balance");
+        GameObject PowerObj = Resources.Load<GameObject>("Prefabs/Chara/Power");
+        GameObject SpeedObj = Resources.Load<GameObject>("Prefabs/Chara/Speed");
+        GameObject TechnicalObj = Resources.Load<GameObject>("Prefabs/Chara/Technical");
+        _RandomObj = new GameObject[4] { BalanceObj, PowerObj, SpeedObj, TechnicalObj };
+
+        for (int i = 0; i < _nowSelectDatas.Length; i++)
+        {
+            switch (_nowSelectDatas[i].CharaType)
+            {
+                case eCharaType.NONE:
+                    SelectCharas[i] = null;
+                    break;
+                case eCharaType.BALANCE:
+                    SelectCharas[i] = BalanceObj;
+                    IsRandom[i] = false;
+                    break;
+                case eCharaType.POWER:
+                    SelectCharas[i] = PowerObj;
+                    IsRandom[i] = false;
+                    break;
+                case eCharaType.SPEED:
+                    SelectCharas[i] = SpeedObj;
+                    IsRandom[i] = false;
+                    break;
+                case eCharaType.TECHNICAL:
+                    SelectCharas[i] = TechnicalObj;
+                    IsRandom[i] = false;
+                    break;
+                case eCharaType.MAX:
+                    if (PhotonNetwork.isMasterClient)
+                        break;
+
+                    photonView.RPC("RandomSetChara", PhotonTargets.All, i, Random.Range(0, _RandomObj.Length)); 
+                    break;
+            }
+        }
+    }
+
+    [PunRPC]
+    public void RandomSetChara(int idx, int rand)
+    {
+        SelectCharas[idx] = _RandomObj[rand];
+        IsRandom[idx] = true;
+    }
+
     //  自身のプレイヤー番号をセット 
     public void SetPlayerNumber(int number)
     {

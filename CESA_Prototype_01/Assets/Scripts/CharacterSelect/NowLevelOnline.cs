@@ -8,7 +8,7 @@ public class NowLevelOnline : NowLevel
     {
         GameObject selectCanvas = GameObject.FindWithTag("SelectCanvas");
         selectCanvas.GetComponent<LevelSelectOnline>().SetLevel(this, number);
-        _nNowLevel = LevelSelectOnline.SelectLevel[number];
+        //_nNowLevel = LevelSelectOnline.SelectLevel[number];
     }
 
     public override void OnClick()
@@ -22,6 +22,28 @@ public class NowLevelOnline : NowLevel
         _nNowLevel--;
         if (_nNowLevel < 0)
             _nNowLevel += 3;
+    }
+
+    public void WaitSet()
+    {
+        if (!PhotonNetwork.isMasterClient)
+            return;
+
+        photonView.RPC("Set", PhotonTargets.Others, _nNowLevel);
+    }
+
+    [PunRPC] 
+    public void Set(int level)
+    {
+        StartCoroutine(SetWait(_nNowLevel));
+    }
+
+    IEnumerator SetWait(int level)
+    {
+        yield return new WaitWhile(() => !FindObjectOfType<CharacterSelectOnline>());
+
+        _nNowLevel = level;
+        Debug.Log(transform.name + "," + _nNowLevel);
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

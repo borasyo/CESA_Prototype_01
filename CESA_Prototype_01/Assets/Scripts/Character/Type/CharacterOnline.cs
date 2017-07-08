@@ -7,6 +7,8 @@ using UniRx.Triggers;
 
 public class CharacterOnline : Character
 {
+    PhotonTransformView _photonTransformView = null;
+
     protected override void SetInput(int level)
     {
         // Input生成
@@ -26,7 +28,8 @@ public class CharacterOnline : Character
         }
 
         //  Synchronizeを設定
-        GetComponent<PhotonTransformView>().SetSynchronizedValues(new Vector3(_moveAmount_Sec, 0.0f, _moveAmount_Sec), 0);
+        _photonTransformView = GetComponent<PhotonTransformView>();
+        _photonTransformView.SetSynchronizedValues(new Vector3(_moveAmount_Sec, 0.0f, _moveAmount_Sec), 0);
     }
 
     [PunRPC]

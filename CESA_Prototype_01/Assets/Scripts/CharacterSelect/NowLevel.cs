@@ -23,24 +23,15 @@ public class NowLevel : Photon.MonoBehaviour
         }
 
         Image image = GetComponent<Image>();
-        //Text text = GetComponentInChildren<Text>();
         this.UpdateAsObservable()
+            .Where(_ => cpuSpriteList.Count > _nNowLevel && _nNowLevel >= 0)
             .Subscribe(_ =>
             {
                 image.sprite = cpuSpriteList[_nNowLevel];
-                /*switch(_nNowLevel)
-                {
-                    case 0:
-                        text.text = "つよい";
-                        break;
-                    case 1:
-                        text.text = "ふつう";
-                        break;
-                    case 2:
-                        text.text = "よわい";
-                        break;
-                }*/
             });
+
+        if (transform.childCount <= 0)
+            return;
 
         Destroy(transform.GetChild(0).gameObject);
 	}

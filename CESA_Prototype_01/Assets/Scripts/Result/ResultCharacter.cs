@@ -72,6 +72,5 @@ public class ResultCharacter : MonoBehaviour
 
             transform.GetChild(i).GetComponent<ResultCharaMaterial>().SetMeshActive(false);
         }
-
     }
 }

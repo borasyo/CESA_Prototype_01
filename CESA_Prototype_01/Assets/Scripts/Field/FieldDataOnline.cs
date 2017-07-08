@@ -9,6 +9,7 @@ using UniRx.Triggers;
 public class FieldDataOnline : FieldData
 {
     GameObject _BlockObj = null;
+
     private bool _isInitialized = false;
     private readonly string ReadyStateKey = "SceneReady";
     /// <param name="data"></param>
@@ -50,7 +51,6 @@ public class FieldDataOnline : FieldData
         PhotonNetwork.player.SetCustomProperties(cp);
     }    
 
-
     void Start()
     {
         Ready();
@@ -75,6 +75,8 @@ public class FieldDataOnline : FieldData
 
         GameObject readyGo = Resources.Load<GameObject>("Prefabs/GameMain/ReadyGoOnline");
         Instantiate(readyGo, readyGo.transform.position, Quaternion.identity);
+
+        Destroy(GameObject.Find("LoadCircle").gameObject);
     }
 
     protected override void Init()
