@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UniRx;
+using UniRx.Triggers;
 
 #if DEBUG
 using UnityEditor;
@@ -12,45 +14,53 @@ public class Referee : Photon.MonoBehaviour
     [SerializeField] protected GameObject _deathEffectPrefab = null;
     protected bool _IsEnd = false;
 
-    void LateUpdate()
+    void Start()
     {
-        if (!FieldData.Instance.IsStart)
-            return;
+        StartCoroutine(InitWait());
+    }
 
-        List<Character> charaList = FieldData.Instance.GetCharactors;
-        for (int i = 0; i < charaList.Count; i++)
-        {
-            if (_IsEnd)
-                return;
+    IEnumerator InitWait()
+    {
+        yield return new WaitWhile(() => !FieldData.Instance.IsStart);
 
-            if (!charaList[i])
-                continue;
-
-            if (charaList[i].name.Contains("Invincible"))
-                continue;
-
-            SandItem.eType charaType = CheckType(charaList[i].name);
-            
-            //  どちらかに挟まれていれば死亡
-            SandItem.eType type = SandData.Instance.GetSandDataList[charaList[i].GetDataNumber()]._type[0];
-            if (type == SandItem.eType.MAX || type == charaType)
+        this.LateUpdateAsObservable()
+            .Subscribe(_ =>
             {
-                type = SandData.Instance.GetSandDataList[charaList[i].GetDataNumber()]._type[1];
-                if (type == SandItem.eType.MAX || type == charaType)
-                    continue;
-            }
+                List<Character> charaList = FieldData.Instance.GetCharactors;
+                for (int i = 0; i < charaList.Count; i++)
+                {
+                    if (_IsEnd)
+                        return;
 
-            Character obj = charaList[i];
-            charaList.Remove(obj);
+                    if (!charaList[i])
+                        continue;
+
+                    if (charaList[i].name.Contains("Invincible"))
+                        continue;
+
+                    SandItem.eType charaType = CheckType(charaList[i].name);
+
+                    //  どちらかに挟まれていれば死亡
+                    SandItem.eType type = SandData.Instance.GetSandDataList[charaList[i].GetDataNumber()]._type[0];
+                    if (type == SandItem.eType.MAX || type == charaType)
+                    {
+                        type = SandData.Instance.GetSandDataList[charaList[i].GetDataNumber()]._type[1];
+                        if (type == SandItem.eType.MAX || type == charaType)
+                            continue;
+                    }
+
+                    Character obj = charaList[i];
+                    charaList.Remove(obj);
 
 #if DEBUG
-            // 死ぬ判定にバグがある可能性があるのでチェック
-            //EditorApplication.isPaused = true;
+                    // 死ぬ判定にバグがある可能性があるのでチェック
+                    //EditorApplication.isPaused = true;
 #endif
 
-            CheckResult(obj, GetTypeText(type), charaList);
-            return;
-        }
+                    CheckResult(obj, GetTypeText(type), charaList);
+                    return;
+                }
+            });
     }
 
     protected void CheckResult(FieldObjectBase obj, string type, List<Character> charaList)
