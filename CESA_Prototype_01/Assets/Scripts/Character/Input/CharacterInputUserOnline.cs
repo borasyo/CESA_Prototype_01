@@ -41,7 +41,8 @@ public class CharacterInputUserOnline : CharacterInputUser
             _IsRight = (Input.GetAxisRaw("Horizontal") >= 1.0f); //Input.GetKey(KeyCode.D);
             _IsLeft = (Input.GetAxisRaw("Horizontal") <= -1.0f); //Input.GetKey(KeyCode.A);
             _IsPut = _IsBreak = Input.GetButtonDown("Action"); // Input.GetKeyDown(KeyCode.T);
-            photonView.RPC("SetAction", PhotonTargets.All, _IsPut, _IsBreak);
+            photonView.RPC("SetAction", PhotonTargets.MasterClient, _IsPut, _IsBreak);
+            _characterOnline.OnlineActionCheck(_IsPut);
         }
         
         photonView.RPC("SetMove", PhotonTargets.All, _IsForawrd, _IsBack, _IsRight, _IsLeft);
@@ -52,7 +53,8 @@ public class CharacterInputUserOnline : CharacterInputUser
         _IsPut = true;
         _IsBreak = true;
 
-        photonView.RPC("SetAction", PhotonTargets.All, _IsPut, _IsBreak);
+        photonView.RPC("SetAction", PhotonTargets.MasterClient, _IsPut, _IsBreak);
+        _characterOnline.OnlineActionCheck(_IsPut);
 
         yield return null;
 
@@ -82,8 +84,8 @@ public class CharacterInputUserOnline : CharacterInputUser
         _IsBreak = isBreak;
 
         // 追加
-        if (!photonView.isMine)
-            return;
+        /*if (!photonView.isMine)
+            return;*/
 
         if (!_characterOnline)
             _characterOnline = GetComponent<CharacterOnline>();

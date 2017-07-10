@@ -19,7 +19,8 @@ public class CharacterInputAIOnline : CharacterInputAI
         _IsBreak = _enemyAI.GetAction(Character.eAction.BREAK);
 
         photonView.RPC("SetMove", PhotonTargets.All, _IsForawrd, _IsBack, _IsRight, _IsLeft);
-        photonView.RPC("SetAction", PhotonTargets.All, _IsPut, _IsBreak);
+        photonView.RPC("SetAction", PhotonTargets.MasterClient, _IsPut, _IsBreak);
+        _characterOnline.OnlineActionCheck(_IsPut);
     }
 
     [PunRPC]
@@ -44,8 +45,8 @@ public class CharacterInputAIOnline : CharacterInputAI
         _IsBreak = isBreak;
 
         // 追加
-        if (!photonView.isMine)
-            return;
+        /*if (!photonView.isMine)
+            return;*/
 
         if (!_characterOnline)
             _characterOnline = GetComponent<CharacterOnline>();

@@ -8,6 +8,7 @@ using UniRx.Triggers;
 public class CharacterOnline : Character
 {
     PhotonTransformView _photonTransformView = null;
+    bool _IsPutWait = false;
 
     protected override void SetInput(int level)
     {
@@ -49,7 +50,7 @@ public class CharacterOnline : Character
 
     public void OnlineMoveUpdate()
     {
-        if (_animator.GetBool("Put") || _animator.GetBool("Break") || _animator.GetBool("Happy"))
+        if (_IsPutWait || _animator.GetBool("Put") || _animator.GetBool("Break") || _animator.GetBool("Happy"))
             return;
 
         //if (PhotonNetwork.isMasterClient)
@@ -79,9 +80,9 @@ public class CharacterOnline : Character
         ItemBreak();
     }
 
-    protected override void ItemPut()
+    public void OnlineActionCheck(bool isPut) //, bool isBreak)
     {
-        if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
+        if (!_charactorGauge.PutGaugeCheck() || !isPut)
             return;
 
         int dirNumber = GetDataNumberForDir();
@@ -92,7 +93,31 @@ public class CharacterOnline : Character
         if (obj) // && obj.gameObject != gameObject)
             return;
 
-        _animator.SetBool("Put", true);
+        _IsPutWait = true;
+    }
+
+    protected override void ItemPut()
+    {
+        if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
+        {
+            photonView.RPC("OffPutWait", PhotonTargets.All, 0);
+            return;
+        }
+
+        int dirNumber = GetDataNumberForDir();
+        if (dirNumber < 0 || GameScaler.GetRange < dirNumber)
+        {
+            photonView.RPC("OffPutWait", PhotonTargets.All, 0);
+            return;
+        }
+
+        FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
+        if (obj) // && obj.gameObject != gameObject)
+        {
+            photonView.RPC("OffPutWait", PhotonTargets.All, 0);
+            return;
+        }
+        
         Vector3 pos = GetPosForNumber(dirNumber);
         photonView.RPC("OnlineItemPut", PhotonTargets.All, pos, dirNumber, true);
     }
@@ -116,14 +141,18 @@ public class CharacterOnline : Character
     public virtual void OnlineItemPut(Vector3 pos, int dirNumber, bool isPostProcess)
     {
         FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
-        if (obj && obj.gameObject != gameObject)
+        if (obj) // && obj.gameObject != gameObject)
+        {
+            _IsPutWait = false;
             return;
+        }
 
         Instantiate(_sandItem, pos, Quaternion.identity);
 
         if (!isPostProcess)
             return;
 
+        _IsPutWait = false;
         _charactorGauge.PutAction();
         _fNotMoveTime = 0.0f;
         _animator.SetBool("Put", true);
@@ -139,5 +168,11 @@ public class CharacterOnline : Character
 
         StartCoroutine(Break(obj));
         _animator.SetBool("Break", true);
+    }
+
+    [PunRPC]
+    public void OffPutWait()
+    {
+        _IsPutWait = false;
     }
 }

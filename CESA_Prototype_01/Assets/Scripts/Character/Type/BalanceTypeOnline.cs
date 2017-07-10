@@ -27,7 +27,7 @@ public class BalanceTypeOnline : CharacterOnline
                 continue;
 
             FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumbers[i]);
-            if (obj && obj.gameObject != gameObject)
+            if (obj) // && obj.gameObject != gameObject)
             {
                 //if(i == 0)  //  目の前に置けない場合は置けない
                 //    return;
