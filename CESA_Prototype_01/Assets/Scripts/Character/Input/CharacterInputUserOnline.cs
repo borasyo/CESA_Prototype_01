@@ -11,6 +11,7 @@ public class CharacterInputUserOnline : CharacterInputUser
         if (!photonView.isMine)
             return;
 
+        _characterOnline = GetComponent<CharacterOnline>();
         base.Start();
     }
 

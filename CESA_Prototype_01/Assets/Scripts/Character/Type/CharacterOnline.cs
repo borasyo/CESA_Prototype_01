@@ -8,7 +8,7 @@ using UniRx.Triggers;
 public class CharacterOnline : Character
 {
     PhotonTransformView _photonTransformView = null;
-    bool _IsPutWait = false;
+    protected bool _IsPutWait = false;
 
     protected override void SetInput(int level)
     {
@@ -100,21 +100,21 @@ public class CharacterOnline : Character
     {
         if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
         {
-            photonView.RPC("OffPutWait", PhotonTargets.All, 0);
+            photonView.RPC("OffPutWait", PhotonTargets.All);
             return;
         }
 
         int dirNumber = GetDataNumberForDir();
         if (dirNumber < 0 || GameScaler.GetRange < dirNumber)
         {
-            photonView.RPC("OffPutWait", PhotonTargets.All, 0);
+            photonView.RPC("OffPutWait", PhotonTargets.All);
             return;
         }
 
         FieldObjectBase obj = FieldData.Instance.GetObjData(dirNumber);
         if (obj) // && obj.gameObject != gameObject)
         {
-            photonView.RPC("OffPutWait", PhotonTargets.All, 0);
+            photonView.RPC("OffPutWait", PhotonTargets.All);
             return;
         }
         

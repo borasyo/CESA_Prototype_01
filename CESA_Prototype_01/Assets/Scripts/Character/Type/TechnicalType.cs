@@ -98,8 +98,7 @@ public class TechnicalType : Character
 
     override protected void ItemPut()
     {
-        if (!_charactorGauge.PutGaugeCheck() || 
-            !_charactorInput.GetActionInput(eAction.PUT))
+        if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
             return;
 
         int dirNumber = GetDataNumberForDir();

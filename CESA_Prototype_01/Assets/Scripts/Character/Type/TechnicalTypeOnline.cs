@@ -110,6 +110,7 @@ public class TechnicalTypeOnline : CharacterOnline
         _charactorGauge.PutAction();
         _fNotMoveTime = 0.0f;
         _animator.SetBool("Put", true);
+        _IsPutWait = false;
     }
 
     override public bool RunSpecialMode(bool IsRun)

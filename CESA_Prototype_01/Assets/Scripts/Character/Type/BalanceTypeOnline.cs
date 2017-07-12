@@ -15,10 +15,16 @@ public class BalanceTypeOnline : CharacterOnline
     override protected void ItemPut()
     {
         if (!_charactorGauge.PutGaugeCheck() || !_charactorInput.GetActionInput(eAction.PUT))
+        {
+            photonView.RPC("OffPutWait", PhotonTargets.All);
             return;
+        }
 
         if (FieldData.Instance.GetObjData(GetDataNumberForDir()))
+        {
+            photonView.RPC("OffPutWait", PhotonTargets.All);
             return;
+        }
 
         int[] dirNumbers = GetNumberList();
         for (int i = 0; i < dirNumbers.Length; i++)
@@ -31,6 +37,7 @@ public class BalanceTypeOnline : CharacterOnline
             {
                 //if(i == 0)  //  目の前に置けない場合は置けない
                 //    return;
+                photonView.RPC("OffPutWait", PhotonTargets.All);
                 continue;
             }
 

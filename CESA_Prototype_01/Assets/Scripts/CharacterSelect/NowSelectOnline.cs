@@ -142,6 +142,9 @@ public class NowSelectOnline : NowSelect
             _charaType = CharacterSelect.eCharaType.BALANCE;
         }
 
+        if (!transform.name.Contains("CPU"))
+            yield break;
+
         transform.parent.GetComponentInChildren<NowLevelOnline>().WaitSet();
         //Debug.Log(_charaType);
     }
