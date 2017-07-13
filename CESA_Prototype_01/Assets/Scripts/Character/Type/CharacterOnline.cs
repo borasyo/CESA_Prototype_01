@@ -7,13 +7,12 @@ using UniRx.Triggers;
 
 public class CharacterOnline : Character
 {
-    PhotonTransformView _photonTransformView = null;
     protected bool _IsPutWait = false;
 
     protected override void SetInput(int level)
     {
         // Input生成
-        if (this.name.Contains("CPU"))
+        if (name.Contains("CPU"))
         {
             CharacterInputAI ai = gameObject.GetComponent<CharacterInputAIOnline>();
             _charactorInput = ai;
@@ -29,8 +28,7 @@ public class CharacterOnline : Character
         }
 
         //  Synchronizeを設定
-        _photonTransformView = GetComponent<PhotonTransformView>();
-        _photonTransformView.SetSynchronizedValues(new Vector3(_moveAmount_Sec, 0.0f, _moveAmount_Sec), 0);
+        GetComponent<PhotonTransformView>().SetSynchronizedValues(new Vector3(_moveAmount_Sec, 0.0f, _moveAmount_Sec), 0);
     }
 
     [PunRPC]

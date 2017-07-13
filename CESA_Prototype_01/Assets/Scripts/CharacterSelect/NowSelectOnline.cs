@@ -166,7 +166,12 @@ public class NowSelectOnline : NowSelect
 
         transform.parent.Find("User").GetComponent<Image>().sprite = Resources.Load<Sprite>("Texture/CharaSelect/player_" + (_nInitNumber + 1).ToString() + "P");
 
-        //yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
+
+        if(photonView.isMine)
+        {
+            Destroy(GameObject.FindWithTag("LoadCircle"));
+        }
     }
 
     IEnumerator SetLevel()

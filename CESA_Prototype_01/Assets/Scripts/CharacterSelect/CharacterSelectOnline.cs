@@ -36,11 +36,6 @@ public class CharacterSelectOnline : CharacterSelect
     void Start()
     {
         // baseのStartを呼ばせないため
-
-        //if (!PhotonNetwork.isMasterClient)
-        //    return;
-
-        //_setChara = PhotonNetwork.Instantiate("Prefabs/Online/SetChara", Vector3.zero, Quaternion.identity, 0).GetComponent<SetChara>();
     }
 
     override protected void SetChara()
@@ -122,7 +117,7 @@ public class CharacterSelectOnline : CharacterSelect
             return;
 
         //  自分の位置に挿入
-        nowSelect.transform.parent.SetParent(this.transform);
+        nowSelect.transform.parent.SetParent(transform);
         RectTransform rectTrans = nowSelect.transform.parent.GetComponent<RectTransform>();
         rectTrans.localPosition = _nowSelectPos[idx];
 

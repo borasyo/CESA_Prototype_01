@@ -37,10 +37,17 @@ public class CharacterInputUserOnline : CharacterInputUser
         }
         else
         {
+#if DEBUG
+            _IsForawrd = Input.GetKey(KeyCode.RightShift) ? Input.GetKeyDown(KeyCode.W) : Input.GetKey(KeyCode.W);
+            _IsBack    = Input.GetKey(KeyCode.RightShift) ? Input.GetKeyDown(KeyCode.S) : Input.GetKey(KeyCode.S);
+            _IsRight   = Input.GetKey(KeyCode.RightShift) ? Input.GetKeyDown(KeyCode.D) : Input.GetKey(KeyCode.D);
+            _IsLeft    = Input.GetKey(KeyCode.RightShift) ? Input.GetKeyDown(KeyCode.A) : Input.GetKey(KeyCode.A);
+#else
             _IsForawrd = (Input.GetAxisRaw("Vertical") >= 1.0f);// Input.GetKey(KeyCode.W);
             _IsBack = (Input.GetAxisRaw("Vertical") <= -1.0f);  //Input.GetKey(KeyCode.S);
             _IsRight = (Input.GetAxisRaw("Horizontal") >= 1.0f); //Input.GetKey(KeyCode.D);
             _IsLeft = (Input.GetAxisRaw("Horizontal") <= -1.0f); //Input.GetKey(KeyCode.A);
+#endif
             _IsPut = _IsBreak = Input.GetButtonDown("Action"); // Input.GetKeyDown(KeyCode.T);
             photonView.RPC("SetAction", PhotonTargets.MasterClient, _IsPut, _IsBreak);
             _characterOnline.OnlineActionCheck(_IsPut);

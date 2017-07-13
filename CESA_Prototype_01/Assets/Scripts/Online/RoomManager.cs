@@ -249,7 +249,7 @@ public class RoomManager : Photon.MonoBehaviour
 
 		PhotonNetwork.CreateRoom(roomNameInputField.text, roomOpt, null);   // Roomを自分で作って参加する
 
-        StartCoroutine(JoinRoomFade());
+        StartCoroutine(JoinRoomFade(false));
         SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
     }
 
@@ -284,17 +284,23 @@ public class RoomManager : Photon.MonoBehaviour
         PhotonNetwork.JoinRoom (room.name); // roomに参加
         nMyPlayerCount = room.playerCount;
 
-        StartCoroutine(JoinRoomFade());
+        StartCoroutine(JoinRoomFade(true));
         SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
     }
 
-    IEnumerator JoinRoomFade()
+    IEnumerator JoinRoomFade(bool isLoad)
     {
         SceneChanger.Instance.ChangeScene("", true);
 
         yield return new WaitForSeconds(1.0f);
 
-        lobbyUI.SetActive(false);		// lobbyUIの非表示
+        lobbyUI.SetActive(false);		                            // lobbyUIの非表示
+
+        // TODO : Load画面表示判定改善必要
+        if (isLoad)
+        {
+            Instantiate(Resources.Load("Prefabs/Online/LoadCircle"));   // Load画面
+        }
     }
 
     // 退室buttonが押されたときの処理
@@ -418,7 +424,7 @@ public class RoomManager : Photon.MonoBehaviour
         }
         else
         {
-            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/CharaSelect", new Vector3(10000,10000,10000), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Prefabs/CharacterSelect/CharaSelect", new Vector3(10000, 10000, 10000), Quaternion.identity, 0);
         }
     }
 
