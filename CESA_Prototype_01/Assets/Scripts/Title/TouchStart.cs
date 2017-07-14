@@ -35,7 +35,7 @@ public class TouchStart : MonoBehaviour
                 .Where(_ => Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
                 .Subscribe(_ =>
                 {
-                    LoadModeSelect();
+                    LoadNextScene();
                 });
         }
         else
@@ -44,16 +44,25 @@ public class TouchStart : MonoBehaviour
                 .Where(_ => Input.GetButtonDown("Action") || Input.GetMouseButton(0))
                 .Subscribe(_ =>
                 {
-                    LoadModeSelect();
+						LoadNextScene();
                 });
         }
     }
 
-    void LoadModeSelect()
+	void LoadNextScene()
     {
-        SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
-        SceneChanger.Instance.ChangeScene("ModeSelect", true);
-        //SceneManager.LoadScene("ModeSelect");
+		if (!PlayerPrefs.HasKey ("Init")) 
+		{
+			SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
+			SceneChanger.Instance.ChangeScene("Tutorial", true);
+			PlayerPrefs.SetInt ("Init", 1);
+		}
+		else
+		{
+			SoundManager.Instance.PlaySE(SoundManager.eSeValue.DECISION);
+        	SceneChanger.Instance.ChangeScene("ModeSelect", true);
+        	//SceneManager.LoadScene("ModeSelect");
+		}
     }
 }
 

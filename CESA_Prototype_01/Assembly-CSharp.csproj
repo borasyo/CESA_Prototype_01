@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_1;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;UNITY_HAS_GOOGLEVR</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -39,82 +39,401 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Elementals\Demo\Scripts\GE_Elementals_Demo.cs" />
+     <Compile Include="Assets\AssetStore\Elementals\Demo\Scripts\GE_Elementals_Demo.cs" />
+     <Compile Include="Assets\AssetStore\FullTiltBoogie\RotateFlareHolder.cs" />
+     <Compile Include="Assets\AssetStore\GE Common Assets\GE Orbit Camera\Scripts\GE_OrbitCamera.cs" />
+     <Compile Include="Assets\AssetStore\GE Common Assets\GE Orbit Camera\Scripts\GE_OrbitCameraUI.cs" />
+     <Compile Include="Assets\AssetStore\GE Common Assets\GE Toggle Full Screen\Scripts\GE_ToggleFullScreenUI.cs" />
+     <Compile Include="Assets\AssetStore\GE Common Assets\Scripts\GE_UIResponder.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_Demo00.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_Demo01.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_Demo02.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_Demo03.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_Demo04.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_Demo05.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_Demo06.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_Demo07.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_Demo08.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_DemoPlaySound.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo (CSharp)\Scripts\GA_FREE_OpenOtherScene.cs" />
+     <Compile Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Demo Basic (CSharp)\Scripts\GUIAnimatorFREEDemo.cs" />
+     <Compile Include="Assets\AssetStore\LightningBolt\LightningBoltScript.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayerApply.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoBoxes\DemoBoxesGui.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoBoxes\OnAwakePhysicsSettings.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoBoxes\OnClickFlashRpc.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoBoxes\OnDoubleclickDestroy.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChangeOwner\ClickAndDrag.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChangeOwner\DemoOwnershipGui.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChangeOwner\HighlightOwnedGameObj.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChangeOwner\InstantiateCube.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChangeOwner\MaterialPerOwner.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChangeOwner\OnClickDisableObj.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChangeOwner\OnClickRequestOwnership.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChangeOwner\OnClickRightDestroy.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChangeOwner\ShowInfoOfPlayer.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChat\ChannelSelector.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChat\ChatGui.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChat\FriendItem.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoChat\NamePickGui.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoFriendsAndCustomAuth\GUICustomAuth.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoFriendsAndCustomAuth\GUIFriendFinding.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoFriendsAndCustomAuth\GUIFriendsInRoom.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoFriendsAndCustomAuth\OnClickCallMethod.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoHub\HubGui.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoHub\MoveCam.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoHub\Scripts\DemoHubManager.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoHub\Scripts\ToDemoHubButton.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoHub\ToHubButton.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoMecanim\Scripts\DemoMecanimGUI.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoPickup\Scripts\MessageOverlay.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoPickup\Scripts\OnCollideSwitchTeam.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoPickup\Scripts\OnPickedUpScript.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoPickup\Scripts\PickupCamera.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoPickup\Scripts\PickupController.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoPickup\Scripts\PickupDemoGui.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoPickup\Scripts\PickupTriggerForward.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoRPGMovement\Scripts\DemoRPGMovement.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoRPGMovement\Scripts\RPGCamera.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoRPGMovement\Scripts\RPGMovement.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoRockPaperScissors\Scripts\RpsCore.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoRockPaperScissors\Scripts\RpsDebug.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoRockPaperScissors\Scripts\RpsDemoConnect.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoSynchronization\CubeExtra.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoSynchronization\CubeInter.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoSynchronization\CubeLerp.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoSynchronization\DragToMove.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoSynchronization\IELdemo.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoWorker\Scripts\Game\Player\ThirdPersonCamera.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoWorker\Scripts\Game\Player\ThirdPersonController.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoWorker\Scripts\Game\Player\ThirdPersonNetwork.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoWorker\Scripts\WorkerInGame.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoWorker\Scripts\WorkerMenu.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\MarcoPolo-Tutorial\AudioRpc.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\MarcoPolo-Tutorial\ClickDetector.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\MarcoPolo-Tutorial\GameLogic.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\MarcoPolo-Tutorial\Monstergame\Resources\Scripts\myThirdPersonController.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\MarcoPolo-Tutorial\NetworkCharacter.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\MarcoPolo-Tutorial\OnClickLoadSomething.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\MarcoPolo-Tutorial\RandomMatchmaker.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\CameraWork.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\GameManager.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\Launcher.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\LoaderAnime.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\PlayerAnimatorManager.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\PlayerManager.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\PlayerNameInputField.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\PlayerUI.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\Shared Assets\Scripts\IdleRunJump.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\Shared Assets\Scripts\PlayerDiamond.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Demos\Shared Assets\Scripts\PlayerVariables.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\FriendInfo.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\GizmoType.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\PhotonClasses.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\PhotonLagSimulationGui.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\PhotonPlayer.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStreamQueue.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\PingCloudRegions.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\RPC.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Room.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\RoomInfo.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\RpcIndexComponent.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\ServerSettings.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\SocketUdp.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\SocketWebTcp.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonAnimatorView.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbody2DView.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonRigidbodyView.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformView.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionControl.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewPositionModel.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationControl.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewRotationModel.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleControl.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\Plugins\PhotonNetwork\Views\PhotonTransformViewScaleModel.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\CullArea.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\InRoomChat.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\InRoomRoundTimer.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\InRoomTime.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\InputToEvent.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\ManualPhotonViewAllocator.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\MoveByKeys.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\NetworkCullingHandler.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\OnAwakeUsePhotonView.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\OnClickDestroy.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\OnClickInstantiate.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\OnClickLoadSomething.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\OnJoinedInstantiate.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\OnStartDelete.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\PhotonPlayer\PlayerRoomIndexing.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\PickupItem.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\PickupItemSimple.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\PickupItemSyncer.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\PointedAtGameObjectInfo.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\PunPlayerScores.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\PunTeams.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\PunTurnManager.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\QuitOnEscapeOrBack.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\ServerTime.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\ShowStatusWhenConnecting.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\SmoothSyncMovement.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\SupportLogger.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\TimeKeeper.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
+     <Compile Include="Assets\AssetStore\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\ChatChannel.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\ChatClient.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\ChatDisconnectCause.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\ChatEventCode.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\ChatOperationCode.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\ChatParameterCode.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\ChatPeer.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\ChatState.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\ChatUserStatus.cs" />
+     <Compile Include="Assets\AssetStore\PhotonChatApi\IChatClientListener.cs" />
      <Compile Include="Assets\Scripts\Camera\PullsObject.cs" />
      <Compile Include="Assets\Scripts\Camera\SetCameraPos.cs" />
-     <Compile Include="Assets\Scripts\Charactor\AI\EnemyAI.cs" />
-     <Compile Include="Assets\Scripts\Charactor\CharaMass.cs" />
-     <Compile Include="Assets\Scripts\Charactor\Charactor.cs" />
-     <Compile Include="Assets\Scripts\Charactor\CharactorGauge.cs" />
-     <Compile Include="Assets\Scripts\Charactor\CharactorInput.cs" />
-     <Compile Include="Assets\Scripts\Charactor\CharactorInputAI.cs" />
-     <Compile Include="Assets\Scripts\Charactor\CharactorInputUser.cs" />
-     <Compile Include="Assets\Scripts\Charactor\GaugeUI.cs" />
-     <Compile Include="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMass.cs" />
-     <Compile Include="Assets\Scripts\Charactor\SelectMass\PowerTypeSelectMassSprite.cs" />
-     <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMass.cs" />
-     <Compile Include="Assets\Scripts\Charactor\SelectMass\SelectMassSprite.cs" />
-     <Compile Include="Assets\Scripts\Charactor\Type\BalanceType.cs" />
-     <Compile Include="Assets\Scripts\Charactor\Type\PowerType.cs" />
-     <Compile Include="Assets\Scripts\Charactor\Type\SpeedType.cs" />
-     <Compile Include="Assets\Scripts\Charactor\Type\TechnicalType.cs" />
-     <Compile Include="Assets\Scripts\CharactorSelect\CharactorSelect.cs" />
-     <Compile Include="Assets\Scripts\CharactorSelect\NowSelect.cs" />
-     <Compile Include="Assets\Scripts\CharactorSelect\SandRangeSelect.cs" />
-     <Compile Include="Assets\Scripts\CharactorSelect\StageScaleSelect.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\AIData.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\AStar.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\BreakAI.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\EnemyAI.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\FieldDataChecker.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\MoveAI.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\PowerTypeBreakAI.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\PutAI.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\RiskData.cs" />
+     <Compile Include="Assets\Scripts\Character\AI\TechnicalTypeMoveAI.cs" />
+     <Compile Include="Assets\Scripts\Character\CharaMass.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterGauge.cs" />
+     <Compile Include="Assets\Scripts\Character\GaugeUI.cs" />
+     <Compile Include="Assets\Scripts\Character\Input\ActionButton.cs" />
+     <Compile Include="Assets\Scripts\Character\Input\AngleDebug.cs" />
+     <Compile Include="Assets\Scripts\Character\Input\CharacterInput.cs" />
+     <Compile Include="Assets\Scripts\Character\Input\CharacterInputAI.cs" />
+     <Compile Include="Assets\Scripts\Character\Input\CharacterInputAIOnline.cs" />
+     <Compile Include="Assets\Scripts\Character\Input\CharacterInputUser.cs" />
+     <Compile Include="Assets\Scripts\Character\Input\CharacterInputUserOnline.cs" />
+     <Compile Include="Assets\Scripts\Character\Input\MoveButton.cs" />
+     <Compile Include="Assets\Scripts\Character\SelectMass\BalanceTypeSelectMass.cs" />
+     <Compile Include="Assets\Scripts\Character\SelectMass\BalanceTypeSelectMassSprite.cs" />
+     <Compile Include="Assets\Scripts\Character\SelectMass\PowerTypeSelectMass.cs" />
+     <Compile Include="Assets\Scripts\Character\SelectMass\PowerTypeSelectMassSprite.cs" />
+     <Compile Include="Assets\Scripts\Character\SelectMass\SelectMass.cs" />
+     <Compile Include="Assets\Scripts\Character\SelectMass\SelectMassColor.cs" />
+     <Compile Include="Assets\Scripts\Character\SelectMass\SelectMassSprite.cs" />
+     <Compile Include="Assets\Scripts\Character\SelectMass\SelectSandMass.cs" />
+     <Compile Include="Assets\Scripts\Character\SelectMass\SelectSandMassChecker.cs" />
+     <Compile Include="Assets\Scripts\Character\TriggerOff.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\BalanceType.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\BalanceTypeOnline.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\Character.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\CharacterOnline.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\PowerType.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\PowerTypeOnline.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\SpeedType.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\SpeedTypeOnline.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\TechnicalType.cs" />
+     <Compile Include="Assets\Scripts\Character\Type\TechnicalTypeOnline.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\AllReady.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\CPUArriveCheck.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\CharaDescription.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\CharaMaterial.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\CharacterSelect.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\CharacterSelectOnline.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\LevelSelect.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\LevelSelectOnline.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\NowLevel.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\NowLevelOnline.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\NowSelect.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\NowSelectOnline.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\PlayerNumber.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\Ready.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\RoomLeaveButton.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\SandRangeSelect.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\SetCameraToCanvas.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\StageScaleSelect.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelect\StageScaleSelectOnline.cs" />
+     <Compile Include="Assets\Scripts\Effect\AutoParticleDestroyer.cs" />
+     <Compile Include="Assets\Scripts\Effect\PlayerDeathEffect.cs" />
+     <Compile Include="Assets\Scripts\Error\LeaveRoom.cs" />
      <Compile Include="Assets\Scripts\Field\AutoMoveObj.cs" />
      <Compile Include="Assets\Scripts\Field\Block.cs" />
      <Compile Include="Assets\Scripts\Field\DelayPut.cs" />
      <Compile Include="Assets\Scripts\Field\FieldCreator.cs" />
+     <Compile Include="Assets\Scripts\Field\FieldCreatorOnline.cs" />
      <Compile Include="Assets\Scripts\Field\FieldData.cs" />
+     <Compile Include="Assets\Scripts\Field\FieldDataOnline.cs" />
      <Compile Include="Assets\Scripts\Field\SandData.cs" />
      <Compile Include="Assets\Scripts\Field\SandItem.cs" />
      <Compile Include="Assets\Scripts\Field\SandMass.cs" />
      <Compile Include="Assets\Scripts\Field\SandMassCreator.cs" />
      <Compile Include="Assets\Scripts\Field\SandMassData.cs" />
+     <Compile Include="Assets\Scripts\GameController\FPSDrawer.cs" />
      <Compile Include="Assets\Scripts\GameController\FieldObjectBase.cs" />
      <Compile Include="Assets\Scripts\GameController\GameScaler.cs" />
-     <Compile Include="Assets\Scripts\GameController\ReCharaSelect.cs" />
+     <Compile Include="Assets\Scripts\GameController\ReLoadScene.cs" />
      <Compile Include="Assets\Scripts\GameController\ReStart.cs" />
      <Compile Include="Assets\Scripts\GameController\Referee.cs" />
+     <Compile Include="Assets\Scripts\GameController\RefereeOnline.cs" />
+     <Compile Include="Assets\Scripts\GameMain\CPUDeath.cs" />
+     <Compile Include="Assets\Scripts\GameMain\GameTimer.cs" />
+     <Compile Include="Assets\Scripts\GameMain\ReadyGo.cs" />
+     <Compile Include="Assets\Scripts\GameMain\ReadyGoOnline.cs" />
+     <Compile Include="Assets\Scripts\GameMain\RoundCounter.cs" />
+     <Compile Include="Assets\Scripts\GameMain\SetStage.cs" />
+     <Compile Include="Assets\Scripts\GameMain\SuddenDeath.cs" />
+     <Compile Include="Assets\Scripts\GameMain\WinCamera.cs" />
+     <Compile Include="Assets\Scripts\Icon\MoveIcon.cs" />
      <Compile Include="Assets\Scripts\Item\FixText.cs" />
      <Compile Include="Assets\Scripts\Item\GaugeSpeedUp.cs" />
      <Compile Include="Assets\Scripts\Item\InvincibleItem.cs" />
      <Compile Include="Assets\Scripts\Item\ItemBase.cs" />
      <Compile Include="Assets\Scripts\Item\ItemCreator.cs" />
+     <Compile Include="Assets\Scripts\Item\ItemCreatorOnline.cs" />
+     <Compile Include="Assets\Scripts\Item\ItemHolder.cs" />
      <Compile Include="Assets\Scripts\Item\MoveSpeedUp.cs" />
      <Compile Include="Assets\Scripts\Item\SpecialItem.cs" />
+     <Compile Include="Assets\Scripts\Menu\PoseWindow.cs" />
+     <Compile Include="Assets\Scripts\ModeSelect\FieldCreatorModeSelect.cs" />
+     <Compile Include="Assets\Scripts\ModeSelect\FieldDataModeSelect.cs" />
+     <Compile Include="Assets\Scripts\ModeSelect\ModeSelect.cs" />
+     <Compile Include="Assets\Scripts\Online\AlreadyRoomName.cs" />
+     <Compile Include="Assets\Scripts\Online\CreateCharaSelect.cs" />
+     <Compile Include="Assets\Scripts\Online\NoneJoinLobby.cs" />
+     <Compile Include="Assets\Scripts\Online\OnlineStateChecker.cs" />
+     <Compile Include="Assets\Scripts\Online\PushCreate.cs" />
+     <Compile Include="Assets\Scripts\Online\RoomButton.cs" />
+     <Compile Include="Assets\Scripts\Online\RoomManager.cs" />
+     <Compile Include="Assets\Scripts\Online\SendRateChecker.cs" />
+     <Compile Include="Assets\Scripts\Online\UIScript.cs" />
+     <Compile Include="Assets\Scripts\Other\AutoAlphaChanger.cs" />
+     <Compile Include="Assets\Scripts\Other\AutoAlphaChangerText.cs" />
+     <Compile Include="Assets\Scripts\Other\AutoRotation.cs" />
+     <Compile Include="Assets\Scripts\Other\AutoScaleChanger.cs" />
+     <Compile Include="Assets\Scripts\Other\TouchEffect.cs" />
+     <Compile Include="Assets\Scripts\Result\GoNext.cs" />
+     <Compile Include="Assets\Scripts\Result\ResultCharaMaterial.cs" />
+     <Compile Include="Assets\Scripts\Result\ResultCharacter.cs" />
+     <Compile Include="Assets\Scripts\Result\ResultChecker.cs" />
+     <Compile Include="Assets\Scripts\Result\ResultRank.cs" />
+     <Compile Include="Assets\Scripts\Result\ResultStar.cs" />
+     <Compile Include="Assets\Scripts\Result\ResultUser.cs" />
+     <Compile Include="Assets\Scripts\Result\StarEffect.cs" />
+     <Compile Include="Assets\Scripts\Result\StarEffectLoop.cs" />
+     <Compile Include="Assets\Scripts\Result\WinEffect.cs" />
+     <Compile Include="Assets\Scripts\Result\WinerPlayer.cs" />
+     <Compile Include="Assets\Scripts\Scene\FadeManager.cs" />
+     <Compile Include="Assets\Scripts\Scene\SceneChanger.cs" />
+     <Compile Include="Assets\Scripts\Sound\PlayBgm.cs" />
+     <Compile Include="Assets\Scripts\Sound\PlaySeButtonClick.cs" />
+     <Compile Include="Assets\Scripts\Sound\PlaySeOnAwake.cs" />
+     <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\GoGame.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\ItemAmount.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\ItemAmountOnline.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\RoundAmount.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\RoundAmountOnline.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\SelectStage.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\SelectStageOnline.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\StageScaler.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\StageScalerOnline.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\TimeAmount.cs" />
+     <Compile Include="Assets\Scripts\StageSelect\TimeAmountOnline.cs" />
      <Compile Include="Assets\Scripts\System\IEnumerableExtensions.cs" />
+     <Compile Include="Assets\Scripts\Title\TouchStart.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\ICalculator.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWave.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveFactory.cs" />
      <Compile Include="Assets\Scripts\TriangleWave\TriangleWaveOscillator.cs" />
-     <None Include="Assets\Elementals\Readme.txt" />
+     <Compile Include="Assets\Scripts\Tutorial\FieldCreatorTutorial.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\FieldDataTutorial.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\GoTutorial.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\ItemCreatorTutorial.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\ReStartTutorial.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\TutorialArrow.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\TutorialCharacter.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\TutorialDescription.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\TutorialFlow.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\TutorialRange.cs" />
+     <None Include="Assets\Shaders\GPUInstancingFade.shader" />
+     <None Include="Assets\AssetStore\Photon Unity Networking\Demos\MarcoPolo-Tutorial\marcopolo-readme.txt" />
+     <None Include="Assets\AssetStore\Photon Unity Networking\link.xml" />
+     <None Include="Assets\AssetStore\LightningBolt\Readme.txt" />
+     <None Include="Assets\Shaders\GPUInstancing.shader" />
+     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
+     <None Include="Assets\AssetStore\FullTiltBoogie\Helpers\readme.txt" />
+     <None Include="Assets\Plugins\release_history.txt" />
+     <None Include="Assets\AssetStore\Elementals\Readme.txt" />
+     <None Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />
      <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
+     <None Include="Assets\AssetStore\Photon Unity Networking\Demos\Shared Assets\Skin\3dText.shader" />
+     <None Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\Readme.txt" />
+     <None Include="Assets\AssetStore\Photon Unity Networking\readme.txt" />
+     <None Include="Assets\AssetStore\GE Common Assets\Readme.txt" />
+     <None Include="Assets\AssetStore\GUI Animator\GUI Animator FREE\!How to.txt" />
+     <None Include="Assets\AssetStore\Photon Unity Networking\Demos\DemoRockPaperScissors\Assets\OpenSans\Apache License.txt" />
+     <None Include="Assets\AssetStore\Photon Unity Networking\changelog.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.PlaymodeTestsRunner">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="GETween">
+ <HintPath>C:/Users/syota/Desktop/GitHub/CESA_Prototype_01/CESA_Prototype_01/Assets/AssetStore/GUI Animator/Common/Plugins/GETween.dll</HintPath>
+ </Reference>
+ <Reference Include="GUIAnimatorFREE">
+ <HintPath>C:/Users/syota/Desktop/GitHub/CESA_Prototype_01/CESA_Prototype_01/Assets/AssetStore/GUI Animator/GUI Animator FREE/Plugins/GUIAnimatorFREE.dll</HintPath>
+ </Reference>
+ <Reference Include="Photon3Unity3D">
+ <HintPath>C:/Users/syota/Desktop/GitHub/CESA_Prototype_01/CESA_Prototype_01/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ </Reference>
+ <Reference Include="websocket-sharp">
+ <HintPath>C:/Users/syota/Desktop/GitHub/CESA_Prototype_01/CESA_Prototype_01/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Common">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
