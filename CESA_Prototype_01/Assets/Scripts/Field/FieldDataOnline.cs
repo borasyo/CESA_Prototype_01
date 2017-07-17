@@ -52,9 +52,10 @@ public class FieldDataOnline : FieldData
     }    
 
     void Start()
-    {
+	{
+		Instantiate(Resources.Load("Prefabs/Online/LoadCircle"));   // Load画面
         Ready();
-        CheckAllPlayerState();
+		CheckAllPlayerState();
     }
 
     /// <summary>
@@ -76,7 +77,7 @@ public class FieldDataOnline : FieldData
         GameObject readyGo = Resources.Load<GameObject>("Prefabs/GameMain/ReadyGoOnline");
         Instantiate(readyGo, readyGo.transform.position, Quaternion.identity);
 
-        Destroy(GameObject.Find("LoadCircle").gameObject);
+        Destroy(GameObject.FindWithTag("LoadCircle").gameObject);
     }
 
     protected override void Init()

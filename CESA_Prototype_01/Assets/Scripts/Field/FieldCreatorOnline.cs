@@ -19,60 +19,61 @@ public class FieldCreatorOnline : FieldCreator
         GameObject[] SelectCharas = CharacterSelect.SelectCharas;
         int[] SelectLevels = LevelSelect.SelectLevel;
 
-        if (PhotonNetwork.isMasterClient)
-        {
-            // 左下に生成
-            pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
-            obj = CreateCharaObj(SelectCharas[0], pos);
-            obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",1Player", 90, _nWidth + 1, 0);
+		if (!PhotonNetwork.isMasterClient)
+			return;
+		
+        // 左下に生成
+        pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
+        obj = CreateCharaObj(SelectCharas[0], pos);
+        obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",1Player", 90, _nWidth + 1, 0);
 
-            //  右上に生成
-            if (SelectCharas[1] && SelectLevels[1] >= 0)
-            {
-                pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
-                obj = CreateCPUCharaObj(SelectCharas[1], pos);
-                obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",2Player" + ",CPU", 270, _nWidth * (_nHeight - 2) + _nWidth - 2, SelectLevels[1]);
-            }
+        //  右上に生成
+		if (SelectCharas [1]) 
+		{
+			pos = new Vector3 ((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
+			if (SelectLevels [1] >= 0) 
+			{
+				obj = CreateCPUCharaObj (SelectCharas [1], pos);
+				obj.GetComponent<PhotonView> ().RPC ("Create", PhotonTargets.All, ",2Player" + ",CPU", 270, _nWidth * (_nHeight - 2) + _nWidth - 2, SelectLevels [1]);
+			} 
+			else 
+			{
+				obj = CreateCharaObj(SelectCharas[1], pos);
+				obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",2Player", 270, _nWidth * (_nHeight - 2) + _nWidth - 2, 0);
+			}
+		}
 
-            //  左上に生成
-            if (SelectCharas[2] && SelectLevels[2] >= 0)
-            {
-                pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
-                obj = CreateCPUCharaObj(SelectCharas[2], pos);
-                obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",3Player" + ",CPU", 90, 1 + _nWidth * (_nHeight - 2), SelectLevels[2]);
-            }
+         //  左上に生成
+		if (SelectCharas [2]) 
+		{
+			pos = new Vector3 (1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
+			if (SelectLevels [2] >= 0) 
+			{
+				obj = CreateCPUCharaObj (SelectCharas [2], pos);
+				obj.GetComponent<PhotonView> ().RPC ("Create", PhotonTargets.All, ",3Player" + ",CPU", 90, 1 + _nWidth * (_nHeight - 2), SelectLevels [2]);
+			} 
+			else 
+			{
+				obj = CreateCharaObj (SelectCharas [1], pos);
+				obj.GetComponent<PhotonView> ().RPC ("Create", PhotonTargets.All, ",2Player", 270, _nWidth * (_nHeight - 2) + _nWidth - 2, 0);
+			}
+		}
 
-            //  右上に生成
-            if (SelectCharas[3] && SelectLevels[3] >= 0)
-            {
-                pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
-                obj = CreateCPUCharaObj(SelectCharas[3], pos);
-                obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",4Player" + ",CPU", 270, (_nWidth - 2) + _nWidth, SelectLevels[3]);
-            }
-        }
-        else
-        {
-            int number = CharacterSelectOnline._nMyNumber;
-            //Debug.Log(number);
-            switch(number)
-            {
-                case 1:
-                    pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
-                    obj = CreateCharaObj(SelectCharas[1], pos);
-                    obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",2Player", 270, _nWidth * (_nHeight - 2) + _nWidth - 2, 0);
-                    break;
-                case 2:
-                    pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
-                    obj = CreateCharaObj(SelectCharas[2], pos);
-                    obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",3Player", 90, 1 + _nWidth * (_nHeight - 2), 0);
-                    break;
-                case 3:
-                    pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
-                    obj = CreateCharaObj(SelectCharas[3], pos);
-                    obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",4Player", 270, (_nWidth - 2) + _nWidth, 0);
-                    break;
-            }
-        }
+         //  右上に生成
+		if (SelectCharas [3]) 
+		{
+			pos = new Vector3 ((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
+			if (SelectLevels [3] >= 0) 
+			{
+				obj = CreateCPUCharaObj (SelectCharas [3], pos);
+				obj.GetComponent<PhotonView> ().RPC ("Create", PhotonTargets.All, ",4Player" + ",CPU", 270, (_nWidth - 2) + _nWidth, SelectLevels [3]);
+			} 
+			else 
+			{
+				obj = CreateCharaObj(SelectCharas[3], pos);
+				obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",4Player", 270, (_nWidth - 2) + _nWidth, 0);
+			}
+		}
     }
 
     GameObject CreateCharaObj(GameObject obj, Vector3 pos)
@@ -85,4 +86,59 @@ public class FieldCreatorOnline : FieldCreator
         GameObject instance = PhotonNetwork.Instantiate("Prefabs/Chara/" + obj.name + "_Online,CPU", pos, obj.transform.rotation, 0);
         return instance;
     }
+
+	/*if (PhotonNetwork.isMasterClient)
+	{
+		// 左下に生成
+		pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
+		obj = CreateCharaObj(SelectCharas[0], pos);
+		obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",1Player", 90, _nWidth + 1, 0);
+
+		//  右上に生成
+		if (SelectCharas[1] && SelectLevels[1] >= 0)
+		{
+			pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
+			obj = CreateCPUCharaObj(SelectCharas[1], pos);
+			obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",2Player" + ",CPU", 270, _nWidth * (_nHeight - 2) + _nWidth - 2, SelectLevels[1]);
+		}
+
+		//  左上に生成
+		if (SelectCharas[2] && SelectLevels[2] >= 0)
+		{
+			pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
+			obj = CreateCPUCharaObj(SelectCharas[2], pos);
+			obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",3Player" + ",CPU", 90, 1 + _nWidth * (_nHeight - 2), SelectLevels[2]);
+		}
+
+		//  右上に生成
+		if (SelectCharas[3] && SelectLevels[3] >= 0)
+		{
+			pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
+			obj = CreateCPUCharaObj(SelectCharas[3], pos);
+			obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",4Player" + ",CPU", 270, (_nWidth - 2) + _nWidth, SelectLevels[3]);
+		}
+	}
+	else
+	{
+		int number = CharacterSelectOnline._nMyNumber;
+		//Debug.Log(number);
+		switch(number)
+		{
+		case 1:
+			pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
+			obj = CreateCharaObj(SelectCharas[1], pos);
+			obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",2Player", 270, _nWidth * (_nHeight - 2) + _nWidth - 2, 0);
+			break;
+		case 2:
+			pos = new Vector3(1.0f * GameScaler._fScale, 0.0f, (_nHeight - 2.0f) * GameScaler._fScale);
+			obj = CreateCharaObj(SelectCharas[2], pos);
+			obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",3Player", 90, 1 + _nWidth * (_nHeight - 2), 0);
+			break;
+		case 3:
+			pos = new Vector3((_nWidth - 2.0f) * GameScaler._fScale, 0.0f, 1.0f * GameScaler._fScale);
+			obj = CreateCharaObj(SelectCharas[3], pos);
+			obj.GetComponent<PhotonView>().RPC("Create", PhotonTargets.All, ",4Player", 270, (_nWidth - 2) + _nWidth, 0);
+			break;
+		}
+	}*/
 }

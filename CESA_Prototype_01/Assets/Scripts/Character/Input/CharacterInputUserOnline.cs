@@ -8,16 +8,16 @@ public class CharacterInputUserOnline : CharacterInputUser
 
     void Start()
     {
-        if (!photonView.isMine)
-            return;
+		if (!name.Contains ((CharacterSelectOnline._nMyNumber + 1).ToString ()))
+			return;
 
-        _characterOnline = GetComponent<CharacterOnline>();
-        base.Start();
+		_characterOnline = GetComponent<CharacterOnline> ();
+		base.Start ();
     }
 
     override protected void InputCheck()
     {
-        if (!photonView.isMine)
+		if (!name.Contains ((CharacterSelectOnline._nMyNumber + 1).ToString ())) 
             return;
 
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
